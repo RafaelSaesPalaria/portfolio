@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Mine Sweeper</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        section#level {
+            float: left;
+            background-color: rgb(0, 182, 0);
+            width: 70vw;
+        }
+        section#statistics {
+            float: right;
+            width: 28vw;
+            height: 30vh;
+            background-color: gray;
+        }
+        div.block {
+            display: inline-block;
+            margin: 5px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgb(0, 92, 0);
+            background-color: green;
+        }
+    </style>
+</head>
+<body onload="startGame()">
+    <main>
+        <h1>Mine Sweeper</h1>
+        <section id="level">
+
+        </section>
+        <section id="statistics">
+            Highscore
+
+        </section>
+    </main>
+    <script>
+        function startGame() {
+            createBlocks();
+        }
+
+        function createBlocks() {
+            level = window.document.getElementById("level");
+            for (x=0;x<30;x++) {
+                level.innerHTML += '<div onclick="clickBlock()" class="block"></div>';
+            }
+        }
+
+        function clickBlock() {
+            alert("bloco clicado!");
+        }
+    </script>
+</body>
+</html>
