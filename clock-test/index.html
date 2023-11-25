@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="style.css">
     <title>Relógio</title>
 </head>
-<body>
-    <div id="relogio">
-        <div class="ponteiro" id="horas"></div>
-        <div class="ponteiro" id="minutos"></div>
-        <div class="ponteiro" id="segundos"></div>
+<body onload="start()">
+    <div id="analog-clock">
+        <div class="pointer" id="hours"></div>
+        <div class="pointer" id="minutes"></div>
+        <div class="pointer" id="seconds"></div>
+        <div id="axis"></div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
