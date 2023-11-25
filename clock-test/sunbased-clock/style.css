@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font: normal 1.25em'Arial';
+}
+
+body {
+    background-color: lightblue;
+}
+
+div#digital-clock {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    background-color: white;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    width: 8em;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px black; /*Make shadow run oposite to the sun*/
+}
+
+div#distance { /*This div shouldn't exist*/
+    position: absolute;
+    top: 99%;
+    left: 50%;
+    transform: translate(0,0);
+
+    background-color: rgb(255, 0, 0); 
+    height: 5px;
+    width: 600px;
+}
+
+div#sun {
+    position: relative;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%,-50%);
+
+    background-color: yellow;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.829);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
