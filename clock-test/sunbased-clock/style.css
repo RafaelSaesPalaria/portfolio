@@ -3,11 +3,13 @@
 * {
     margin: 0px;
     padding: 0px;
-    font: normal 1.25em'Arial';
+    font: normal 1.25em 'Arial';
 }
 
 body {
-    background-color: lightblue;
+    background-color: rgb(0, 0, 44);  /*Change color based on sun*/
+    background-image: radial-gradient(circle at 20% 20%,red, blue, yellow);
+    overflow: hidden;
 }
 
 div#digital-clock {
@@ -26,26 +28,39 @@ div#digital-clock {
     box-shadow: 1px 1px 1px black; /*Make shadow run oposite to the sun*/
 }
 
-div#distance { /*This div shouldn't exist*/
+div#sun-axis, div#moon-axis { /*This divs shouldn't exist*/
     position: absolute;
-    top: 99%;
+    bottom: 0%;
     left: 50%;
-    transform: translate(0,0);
+}
 
-    background-color: rgb(255, 0, 0); 
-    height: 5px;
+div#sun-axis {
     width: 600px;
 }
 
-div#sun {
+div#moon-axis {
+    width: 500px;
+}
+
+div#sun, div#moon {
     position: relative;
     top: 50%;
     left: 100%;
     transform: translate(-50%,-50%);
 
-    background-color: yellow;
+    
     box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.829);
+    border-radius: 50%;
+}
+
+div#sun {
+    background-color: yellow;
     width: 70px;
     height: 70px;
-    border-radius: 50%;
+}
+
+div#moon {
+    background-color: white; /*Make shadow*/
+    width: 50px;
+    height: 50px;
 }
