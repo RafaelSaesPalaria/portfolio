@@ -14,6 +14,7 @@ function start() {
     rotatePointer(pointer_hours     ,parseAngle(time.getHours()    ,12))
     rotatePointer(pointer_minutes ,parseAngle(time.getMinutes() ,60))
     rotatePointer(pointer_seconds,parseAngle(time.getSeconds(),60))
+    updateDigitalClock()
 }
 
 //Methods
@@ -41,5 +42,9 @@ function rotatePointer(pointer, deg) {
     deg+=180 // TODO: +180degs because the clock start at the bottom 
     pointer.style.transformOrigin = 'top left';
     pointer.style.transform = `rotate(${deg}deg)` 
-    
+}
+
+function updateDigitalClock() {
+    let digital_clock = document.querySelector("div#digital-clock")
+    digital_clock.innerHTML = `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
 }

@@ -3,16 +3,17 @@
 * {
     margin: 0px;
     padding: 0px;
-    font: normal normal 'Arial';
 }
 
 body {
-    background-color: darkgray;
+    background-color: rgb(209, 209, 209);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
 }
 
 div#analog-clock {
     position: absolute;
-    top: 25%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%,-50%);
 
@@ -63,4 +64,18 @@ div#seconds {
     width: 2px;
     height: 140px;
     background-color: red;
+}
+
+div#digital-clock {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.226);
 }
