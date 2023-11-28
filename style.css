@@ -69,6 +69,10 @@ div#project2-img {
     background-image: url(clock-test/sunbased-clock/project-img.png);
 }
 
+div#project3-img {
+    background-image: url(clock-test/solar-system/project-image.png);
+}
+
 div.paralax {
     position: relative;
     height: 250px;
