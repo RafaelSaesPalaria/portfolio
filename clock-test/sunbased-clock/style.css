@@ -7,8 +7,10 @@
 }
 
 body {
+    width: 100vw;
+    height: 100vh;
     background-color: rgb(0, 0, 44);  /*Change color based on sun*/
-    background-image: radial-gradient(circle at 20% 20%,red, blue, yellow);
+    background-image: radial-gradient(circle at 20px 20px, yellow 5%, lightblue 70%, blue);
     overflow: hidden;
 }
 

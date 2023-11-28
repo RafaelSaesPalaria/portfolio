@@ -8,6 +8,7 @@ function start() {
     updateDigitalClock();
     updateSun();
     updateMoon();
+    updateBackground();
 }
 
 //Methods
@@ -52,4 +53,12 @@ function updateMoon() {
     deg-=90                         // TODO: +90degs because the clock start at the left
     moon_axis.style.transformOrigin = 'top left';
     moon_axis.style.transform = `rotate(${deg}deg)` 
+}
+
+function updateBackground() {
+    let body = document.body;
+    let sun_x = document.querySelector("div#sun").getBoundingClientRect().left;
+    let sun_y = document.querySelector("div#sun").getBoundingClientRect().top;
+
+    body.style.backgroundImage = `radial-gradient(circle at ${sun_x}px ${sun_y}px , yellow 5%, lightblue 70%, blue)`
 }
