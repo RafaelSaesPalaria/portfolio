@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+    --ncolumns:10;
+    --nrows:10;
+}
+section#level {
+    float: left;
+    background-color: rgb(0, 182, 0);
+    width: 70.5vh;
+    height: 80vh;
+}
+section#statistics {
+    float: right;
+    width: 28vw;
+    height: 30vh;
+    background-color: gray;
+    font-size: 2em;
+    color: white;
+    padding: 5px;
+}
+
+div.container {
+    display: block;
+    background-color: rgb(4, 168, 4);
+    height: 10%;
+    margin-bottom: -6px;
+}
+div.block {
+    display: inline-block;
+    margin: 2px;
+    width: calc(10% - 4px);
+    height: calc(100% - 10px);
+    box-shadow: 1px 1px 1px green;
+    background-color: green;
+}
