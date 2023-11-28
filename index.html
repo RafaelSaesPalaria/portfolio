@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Projetos</title>
 </head>
-<body onresize="resize()">
+<body onresize="adjustToSize()" onload="adjustToSize()">
     <header>
         <h1>Projetos</h1>
         <p>O propósito deste repositório é mostrar meus projetos web</p>
     </header>
     <nav>
-        <a href="" onclick="clickMenu()" class="button" id="icon">
+        <a onclick="clickMenu()" class="button" id="icon">
             <span class="material-symbols-outlined" class="button">menu</span>
         </a>
-        <a href="" onclick="showWeb()" target="_blank" class="button item">web</a>
-        <a href="" onclick="showJava()" target="_blank" class="button item">java</a>
-        <a href="" onclick="showPython()" target="_blank" class="button item">python</a>
+        <a onclick="showWeb()" target="_blank" class="button item">web</a>
+        <a onclick="showJava()" target="_blank" class="button item">java</a>
+        <a onclick="showPython()" target="_blank" class="button item">python</a>
     </nav>
     <main>
         <h2>Projetos Completos</h2>

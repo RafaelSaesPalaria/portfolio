@@ -2,7 +2,6 @@ var menuDisplay = true;
 
 function clickMenu() {
     let menuItems = document.querySelectorAll("nav .item");
-
     if (menuDisplay) {
         menuItems.forEach(element => {
             element.style.display = "none";
@@ -13,7 +12,7 @@ function clickMenu() {
     menuDisplay = !menuDisplay;
 }
 
-function resize() {
+function adjustToSize() {
     if (window.innerWidth>=768) {
         openMenu();
         document.querySelector("nav #icon").style.display = "none"
