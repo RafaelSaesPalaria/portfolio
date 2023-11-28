@@ -4,105 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
     <title>Mine Sweeper</title>
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-
-            --ncolumns:10;
-            --nrows:10;
-        }
-        section#level {
-            position: absolute;
-            top: 10%;
-            left: 0%;
-
-            background-color: rgb(0, 182, 0);
-            width: 70.5vh;
-            height: 80vh;
-        }
-        section#statistics {
-            position: absolute;
-            top: 10%;
-            right: 10%;
-
-            width: 28vw;
-            height: 30vh;
-            background-color: gray;
-        }
-        div.container {
-            display: block;
-            background-color: rgb(4, 168, 4);
-            height: 10%;
-            margin-bottom: -6px;
-        }
-        div.block {
-            display: inline-block;
-            margin: 2px;
-            width: 9.1%;
-            height: 80.1%;
-            /*border: 1px solid rgb(0, 92, 0);*/
-            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.445);
-            background-color: green;
-        }
-    </style>
 </head>
 <body onload="startGame()">
     <main>
         <h1>Mine Sweeper</h1>
-        <section id="level">
-
-        </section>
+        <section id="level"></section>
         <section id="statistics">
             Highscore
-
         </section>
     </main>
-    <script>
-        let clicks=0;
-        function startGame() {
-            createBlocks();
-        }
-
-        function createBlocks() {
-            level = window.document.getElementById("level");
-            for (y=0;y<10;y++) {
-                container = document.createElement("div")
-                container.classList.add("container")
-                for (x=0;x<10;x++) {
-                    block = document.createElement("div");
-                    block.classList.add("block")
-                    block.setAttribute("onclick","clickBlock()")
-                    container.appendChild(block)
-                }
-                level.appendChild(container)
-            }
-            
-        }
-
-        function clickBlock() {
-            if (clicks==0) {
-                alert("bloco clicado!, primeira vez");
-            } else {
-                alert("bloco clicado!, Clique n: "+(clicks+1));
-            }
-            clicks++;
-        }
-
-        function putBombs() {
-            for (y=0;y<10;y++) {
-                container = document.querySelector("div.container") [y]
-                for (x=0;x<10;x++) {
-                    block = document.querySelector("div.block")[x];
-                    block.classList.add("block")
-                    block.setAttribute("onclick","clickBlock()")
-                    container.appendChild(block)
-                }
-                level.appendChild(container)
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
