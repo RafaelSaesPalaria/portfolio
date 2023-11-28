@@ -4,40 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media-queries.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Projetos</title>
 </head>
-<body>
+<body onresize="resize()">
     <header>
         <h1>Projetos</h1>
         <p>O propósito deste repositório é mostrar meus projetos web</p>
     </header>
+    <nav>
+        <a href="" onclick="clickMenu()" class="button" id="icon">
+            <span class="material-symbols-outlined" class="button">menu</span>
+        </a>
+        <a href="" onclick="showWeb()" target="_blank" class="button item">web</a>
+        <a href="" onclick="showJava()" target="_blank" class="button item">java</a>
+        <a href="" onclick="showPython()" target="_blank" class="button item">python</a>
+    </nav>
     <main>
         <h2>Projetos Completos</h2>
         <p>Projetos completos ou funcionais</p>
         <ul>
-            <li>
+            <li><a href="clock-test/analog-clock/index.html" target="_blank" class="button">
                 <strong>Relógio Analógico</strong>
                 <p>
                     Um relógio analógio que funciona com a hora com computador
                 </p>
-                <div class="paralax" id="project1-img"><a href="clock-test/analog-clock/index.html" target="_blank">Clique aqui</a></div>
+                <div class="paralax" id="project1-img"></div>
+            </a>
             </li>
-            <li>
+            <li><a href="clock-test/sunbased-clock/index.html" target="_blank" class="button">
                 <strong>'Relógio Solar'</strong>
                 <p>
                     Um relógio digital com uma representação visual do espaço nesse horário
                 </p>
-                <div class="paralax" id="project2-img"><a href="clock-test/sunbased-clock/index.html" target="_blank">Clique aqui</a></div>
+                <div class="paralax" id="project2-img"></div>
+            </a>
             </li>
-            <li>
+            <li><a href="clock-test/solar-system/index.html" target="_blank" class="button">
                 <strong>Sistema Solar</strong>
                 <p>Um sistema solar</p>
-                <div class="paralax" id="project3-img"><a href="clock-test/solar-system/index.html" target="_blank">Clique Aqui</a></div>
+                <div class="paralax" id="project3-img"></div>
+                </a>
             </li>
         </ul>
     </main>
     <footer>
         Rafael Saes Palaria
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

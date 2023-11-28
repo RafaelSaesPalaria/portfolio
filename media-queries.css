@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+
+@media screen and (min-width: 768px) {
+body {
+    /*overflow-y: hidden;*/
+}
+
+    nav {
+        position: absolute;
+        left: 0%;
+        display: block;
+        width: 25vw;
+    }
+
+    main {
+        position: absolute;
+        left: 25vw;
+        width: 75vw;
+        display: block;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0%;
+    }
+}

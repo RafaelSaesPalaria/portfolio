@@ -31,6 +31,7 @@
 body {
     background-color: var(--backgroundColor);
     color: var(--textColor);
+    overflow-x: hidden;
 }
 
 header {
@@ -54,11 +55,18 @@ h2 {
 main {
     padding: 10px;
     font-size: 1.2em;
-    max-width: 800px;
-    background-color: white;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.329);
-    margin: auto;
+    background-color: rgb(187, 187, 187);
     border-radius: 0px 0px 10px 10px;
+    overflow-y: auto;
+    width: 100vw;
+}
+
+nav {
+    background-color: rgb(228, 228, 228);
+    display: block;
+    padding: 5px;
+    font-size: 1.5em;
+    text-align: center;
 }
 
 div#project1-img {
@@ -76,17 +84,17 @@ div#project3-img {
 div.paralax {
     position: relative;
     height: 250px;
-    width: 100%;
+    max-width: 100%;
     background-attachment: fixed;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-div.paralax a {
+#button {
     display: none;
     vertical-align: middle;
-    width: 100%;
+    max-width: 100%;
     height: 100%;
     color: rgb(255, 255, 255);
     text-decoration: none;
@@ -104,13 +112,19 @@ p {
 }
 
 li {
+    max-width: 1200px;
+    display: block;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692);
+    padding: 10px;
+    background-color: white;
     list-style-type: none;
     list-style-position: none;
     margin-top: 15px;
 }
 
 a.button {
-    display: inline-block;
+    display: block;
+    border-radius: 10px;
     margin: 10px;
     border: 1px solid black;
     padding: 7px 12px;
@@ -118,7 +132,7 @@ a.button {
     text-decoration: none;
 }
 
-a.button:hover {
+a.button:hover, nav .item:hover {
     background-color: rgb(228, 228, 228);
     outline: 1px solid black;
 }
@@ -128,6 +142,7 @@ a.button:active {
 }
 
 footer {
+    display: block;
     margin-top: 20px;
     box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.329);
     padding: 7px;
