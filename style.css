@@ -118,22 +118,29 @@ p {
 li {
     max-width: 1200px;
     display: block;
+    border-radius: 10px;
+    border: 1px solid black;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692);
-    padding: 10px;
     background-color: white;
     list-style-type: none;
-    list-style-position: none;
     margin-top: 15px;
 }
 
 a.button {
     display: block;
     border-radius: 10px;
-    margin: 10px;
     border: 1px solid black;
     padding: 7px 12px;
     color: var(--textColor);
     text-decoration: none;
+}
+
+nav {
+    height: 100vh;
+}
+
+nav .item {
+    margin: 10px;
 }
 
 a.button:hover, nav .item:hover {
