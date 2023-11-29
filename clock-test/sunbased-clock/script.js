@@ -60,5 +60,5 @@ function updateBackground() {
     let sun_x = document.querySelector("div#sun").getBoundingClientRect().left;
     let sun_y = document.querySelector("div#sun").getBoundingClientRect().top;
 
-    body.style.backgroundImage = `radial-gradient(circle at ${sun_x}px ${sun_y}px , yellow 5%, lightblue 70%, blue)`
+    body.style.backgroundImage = `radial-gradient(circle at ${sun_x}px ${sun_y}px , yellow, orange, lightblue, blue)`
 }
