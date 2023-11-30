@@ -57,8 +57,9 @@ main {
     font-size: 1.2em;
     background-color: rgb(187, 187, 187);
     border-radius: 0px 0px 10px 10px;
-    overflow-y: auto;
+    overflow-y: hidden;
     width: 100vw;
+    height: 83%;
 }
 
 nav {
@@ -136,11 +137,16 @@ a.button {
 }
 
 nav {
-    height: 100vh;
+    height: 83%;
 }
 
 nav .item {
     margin: 10px;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
 }
 
 a.button:hover, nav .item:hover {
