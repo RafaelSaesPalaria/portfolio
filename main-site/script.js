@@ -30,3 +30,15 @@ function openMenu() {
         element.style.display = "block";
     });
 }
+
+function showWeb() {
+
+}
+
+function showJava() {
+
+}
+
+function showPython() {
+    
+}

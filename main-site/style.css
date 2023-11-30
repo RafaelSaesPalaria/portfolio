@@ -74,15 +74,15 @@ nav a:hover {
 }
 
 div#project1-img {
-    background-image: url(clock-test/analog-clock/project-img.png);
+    background-image: url(../projects/clock-test/analog-clock/project-img.png);
 }
 
 div#project2-img {
-    background-image: url(clock-test/sunbased-clock/project-img.png);
+    background-image: url(../projects/clock-test/sunbased-clock/project-img.png);
 }
 
 div#project3-img {
-    background-image: url(clock-test/solar-system/project-image.png);
+    background-image: url(../projects/clock-test/solar-system/project-image.png);
 }
 
 div.paralax {
