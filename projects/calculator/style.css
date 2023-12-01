@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+}
+
+main {
+    display: block;
+    padding: 2px;
+    background-color: yellow;
+    margin: auto;
+}
+
+input {
+    padding: 5px 20px;
+    margin: 1px 1px 0px 0px;
+}
