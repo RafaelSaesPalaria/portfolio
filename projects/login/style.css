@@ -1,0 +1,55 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    outline: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    background-color: blueviolet;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    width: 50vw;
+    height: 40vh;
+    background-color: white;
+    border-radius: 15px;
+}
+
+section#login {
+    width: 50%;
+    height: 100%;
+}
+
+div#name, div#password {
+    display: inline-block;
+    margin: 20px 0px 0px 20px;
+    padding: 5px;
+    background-color: purple;
+    border-radius: 10px;
+}
+
+input {
+    width: 200px;
+    height: 1.8em;
+    background-color: cyan;
+    border-radius: 5px;
+}
+
+input:focus {
+    background-color: white;
+}
+
+input[type="button"] {
+    text-align: center;
+    margin: 20px 0px 0px 20px;
+    padding: 20px;
+}
