@@ -40,11 +40,19 @@ function parseAngle(actualTime,cycleMax) {
  */
 function rotatePointer(pointer, deg) {
     deg+=180 // TODO: +180degs because the clock start at the bottom 
-    pointer.style.transformOrigin = 'top left';
+    pointer.style.transformOrigin = 'top center';
     pointer.style.transform = `rotate(${deg}deg)` 
 }
 
 function updateDigitalClock() {
-    let digital_clock = document.querySelector("div#digital-clock")
-    digital_clock.innerHTML = `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
+    let digital_clock = document.querySelector("div#digital-clock");
+    let hours     = time.getHours();
+    let minutes = time.getMinutes();
+    let seconds= time.getSeconds();
+
+    hours      = hours    < 10 ? "0" +  hours     : hours;
+    minutes  = minutes < 10 ? "0" +  minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
 }

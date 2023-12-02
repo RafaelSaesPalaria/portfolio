@@ -28,8 +28,16 @@ function getTime() {
 }
 
 function updateDigitalClock() {
-    let digital_clock = document.querySelector("div#digital-clock")
-    digital_clock.innerHTML = `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
+    let digital_clock = document.querySelector("div#digital-clock");
+    let hours     = time.getHours();
+    let minutes = time.getMinutes();
+    let seconds= time.getSeconds();
+    
+    hours      = hours    < 10 ? "0" +  hours     : hours;
+    minutes  = minutes < 10 ? "0" +  minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
 }
 
 function getAngle() {
