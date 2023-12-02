@@ -16,7 +16,7 @@ main {
 }
 
 input {
-    margin: 1px 1px 0px 0px;
+    margin: 1px;
 }
 
 input[type=number] {
