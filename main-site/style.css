@@ -47,9 +47,40 @@ h1 {
     letter-spacing: 0.1em;
 }
 
-h2 {
-    font-family: var(--font4);
+p {
+    text-indent: 30px;
+}
+
+nav {
+    background-color: rgb(228, 228, 228);
+    display: block;
+    padding: 5px;
     font-size: 1.5em;
+    text-align: center;
+    height: 83%;
+}
+
+nav a.button {
+    display: block;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 7px 12px;
+    color: var(--textColor);
+    text-decoration: none;
+}
+
+nav a.button:hover {
+    cursor: pointer;
+    background-color: lightgray;
+    outline: 1px solid black;
+}
+
+nav a.button:active {
+    background-color: rgb(207, 206, 206);
+}
+
+nav a.item {
+    margin: 10px;
 }
 
 main {
@@ -65,100 +96,9 @@ main {
     height: 0px;
 }
 
-nav {
-    background-color: rgb(228, 228, 228);
-    display: block;
-    padding: 5px;
-    font-size: 1.5em;
-    text-align: center;
-}
-
-nav a:hover {
-    cursor: pointer;
-}
-
-div#project1-img {
-    background-image: url(../projects/clock-test/analog-clock/project-img.png);
-}
-
-div#project2-img {
-    background-image: url(../projects/clock-test/sunbased-clock/project-img.png);
-}
-
-div#project3-img {
-    background-image: url(../projects/clock-test/solar-system/project-image.png);
-}
-
-div.paralax {
-    position: relative;
-    height: 250px;
-    max-width: 100%;
-    background-attachment: fixed;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#button {
-    display: none;
-    vertical-align: middle;
-    max-width: 100%;
-    height: 100%;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.712);
-    font-size: 2em;
-}
-
-div.paralax:hover a {
-    display: inline-block;
-}
-
-p {
-    text-indent: 30px;
-}
-
-li {
-    max-width: 1200px;
-    display: block;
-    border-radius: 10px;
-    border: 1px solid black;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692);
-    background-color: white;
-    list-style-type: none;
-    margin-top: 15px;
-}
-
-a.button {
-    display: block;
-    border-radius: 10px;
-    border: 1px solid black;
-    padding: 7px 12px;
-    color: var(--textColor);
-    text-decoration: none;
-}
-
-nav {
-    height: 83%;
-}
-
-nav .item {
-    margin: 10px;
-}
-
 iframe {
     width: 100%;
     height: 500px;
-}
-
-a.button:hover, nav .item:hover {
-    background-color: rgb(228, 228, 228);
-    outline: 1px solid black;
-}
-
-a.button:active {
-    background-color: rgb(207, 206, 206);
 }
 
 footer {
