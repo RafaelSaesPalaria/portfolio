@@ -1,14 +1,25 @@
 var main = document.querySelector("main");
 
+var value = Number();
+
+var normalCalculator = [[                   "="],
+                                                      ["7","8","9"   ,"+"],
+                                                      ["4","5","6"   ,"-"],
+                                                      ["3","2","1"   ,"*"],
+                                                      [">","0","del","/"]]
+
 function start() {
-    createComponents();
+    createComponents(normalCalculator);
 }
 
-function createComponents() {
-    for (y = 0 ; y < 3 ; y++) {
-        for (x = 0 ; x < 3 ; x++) {
-            createButton(1+(y*3)+x);
+function createComponents(calculator) {
+    createTextField()
+    for (y = 0 ; y < calculator.length ; y++) {
+        for (x = 0 ; x < calculator[y].length ; x++) {
+            let button = createButton(calculator[y][x]);
+            button.setAttribute("onclick",`onClick(${calculator[y][x]})`);
         }
+        main.appendChild(document.createElement("br"));
     }
 }
 
@@ -16,11 +27,24 @@ function createButton(txt) {
     let button = document.createElement("input");
     button.setAttribute("type","button");
     button.setAttribute("value",txt);
-    button.setAttribute("onclick",`onClick_number(${txt})`)
-
-    main.appendChild(button)
+    main.appendChild(button);
+    return button;
 }
 
-function onClick_number(number) {
-    document.write(number)
+function createTextField() {
+    let txtField = document.createElement("input");
+    txtField.setAttribute("type","number")
+    txtField.setAttribute("id","txtFieldResult")
+    main.appendChild(txtField)
+    return txtField
+}
+
+function onClick(txt) {
+    window.alert("clicked")
+    if (typeof(txt)==="number") {
+        window.alert("number "+txt)
+    }
+    if (value.length===undefined) {
+        window.alert("a")
+    }
 }
