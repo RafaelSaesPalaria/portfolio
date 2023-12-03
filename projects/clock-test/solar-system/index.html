@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="style.css">
     <title>Sistema Solar</title>
 </head>
-<body>
+<body onload="start()">
     <main>
-        <div id="sun">
-            <div id="earth">
+        <div id="sun" onmousedown="sunCentered()">
+            <div id="earth" onmousedown="earthCentered()">
                 <div id="moon"></div>
             </div>
         </div>
