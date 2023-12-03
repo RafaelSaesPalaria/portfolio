@@ -68,30 +68,37 @@ function onClick_operator(operator) {
             textField.value = ""
             break;
         default:
-            if (value.length===undefined) {
-                value = textField.value;
-                textField.value = null;
-            } else {
-                if (!(operator === "=")) {
-                    lastOperator = operator
-                }
-                switch (operator) {            
-                    case "-":
-                        textField.value = Number(value) - Number(textField.value)
-                        break;
-                    case "*":
-                        textField.value = Number(value) * Number(textField.value)
-                        break;
-                    case "/":
-                        textField.value = Number(value) / Number(textField.value)
-                        break;
-                    case "+":
-                    default:
-                        textField.value = Number(value) + Number(textField.value)
-                        break;
-                }
-                value = Number()
+            aritmeticOperator(operator);
             break;
+    }
+}
+
+function aritmeticOperator(operator) {
+    let textField = document.querySelector(`input[type="number"]#txtResult`);
+
+    if (!(operator === "=")) {
+        lastOperator = operator
+    }
+
+    if (value.length===undefined) {
+        value = textField.value;
+        textField.value = null;
+    } else {
+        switch (lastOperator) {            
+            case "-":
+                textField.value = Number(value) - Number(textField.value)
+                break;
+            case "*":
+                textField.value = Number(value) * Number(textField.value)
+                break;
+            case "/":
+                textField.value = Number(value) / Number(textField.value)
+                break;
+            case "+":
+            default:
+                textField.value = Number(value) + Number(textField.value)
+                break;
         }
+        value = Number()
     }
 }

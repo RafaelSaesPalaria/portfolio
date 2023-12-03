@@ -8,6 +8,11 @@
 }
 
 main {
+    position: absolute;
+    top: 25%;
+    right: 25%;
+    transform: translate(-50%,-50%);
+
     width: 25%;
     display: block;
     padding: 2px;
@@ -20,8 +25,9 @@ input {
 }
 
 input[type=number] {
+    border: 1px solid black;
     padding: 5px 5px;
-    width: calc(75% - 15px);
+    width: calc(75% - 16.2px);
     text-align: right;
     -moz-appearance: textfield;
 }
@@ -32,5 +38,5 @@ input::-webkit-inner-spin-button {
 
 input[type=button] {
     padding: 5px 20px;
-    width: calc(25% - 1px);
+    width: calc(25% - 2px);
 }
