@@ -51,6 +51,10 @@ div#project3-img {
     background-image: url(../../projects/clock-test/solar-system/project-image.png);
 }
 
+div#project4-img {
+    background-image: url(../../projects/calculator/project-img.png);
+}
+
 li {
     border-radius: 10px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692);
