@@ -16,7 +16,7 @@ function getTime() {
     time = new Date();
     /*time = {
         getHours() {
-            return 18
+            return 12
         },
         getMinutes() {
             return 0
@@ -24,7 +24,7 @@ function getTime() {
         getSeconds() {
             return 0
         }
-    }*/ 
+    }*/
 }
 
 function updateDigitalClock() {
@@ -65,8 +65,19 @@ function updateMoon() {
 
 function updateBackground() {
     let body = document.body;
-    let sun_x = document.querySelector("div#sun").getBoundingClientRect().left;
-    let sun_y = document.querySelector("div#sun").getBoundingClientRect().top;
+    let sun = document.querySelector("div#sun");
+    let moon = document.querySelector("div#moon")
 
-    body.style.backgroundImage = `radial-gradient(circle at ${sun_x}px ${sun_y}px , yellow, orange, lightblue, blue)`
+    let sun_x = sun.getBoundingClientRect().left+35; //70 is the sun width
+    let sun_y = sun.getBoundingClientRect().top+35;
+
+    let moon_x = moon.getBoundingClientRect().left+25; // 50 is the moon width
+    let moon_y = moon.getBoundingClientRect().top+25;
+
+    if (time.getHours()>5 && time.getHours()<18) {
+        body.style.backgroundImage = `radial-gradient(circle at ${sun_x}px ${sun_y}px , yellow, orange 10%, lightblue 35%, blue 95%)`
+
+    } else {
+        body.style.backgroundImage = `radial-gradient(circle at ${moon_x}px ${moon_y}px , darkblue 5%, blue 35%)`
+    }
 }

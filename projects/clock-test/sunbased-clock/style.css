@@ -10,7 +10,6 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: rgb(0, 0, 44);  /*Change color based on sun*/
-    background-image: radial-gradient(circle at 20px 20px, yellow 5%, lightblue 70%, blue);
     overflow: hidden;
 }
 
@@ -49,9 +48,6 @@ div#sun, div#moon {
     top: 50%;
     left: 100%;
     transform: translate(-50%,-50%);
-
-    
-    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.829);
     border-radius: 50%;
 }
 
@@ -62,7 +58,8 @@ div#sun {
 }
 
 div#moon {
-    background-color: white; /*Make shadow*/
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.829);
+    background-color: white;
     width: 50px;
     height: 50px;
 }
