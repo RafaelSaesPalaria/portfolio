@@ -57,30 +57,29 @@ div#project4-img {
 
 li {
     border-radius: 10px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692);
     background-color: white;
     list-style-type: none;
     margin-top: 15px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692);
+}
+
+li:hover {
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.692);
+    background-color: rgb(228, 228, 228);
+}
+
+li:active {
+    background-color: rgb(207, 206, 206);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692), inset 1px 1px 3px rgba(0, 0, 0, 0.692);
 }
 
 a.button {
     display: block;
     border-radius: 10px;
     border: 1px solid transparent;
-
     padding: 7px 12px;
     color: var(--textColor);
     text-decoration: none;
-}
-
-a.button:hover {
-    background-color: rgb(228, 228, 228);
-    border: 1px solid black;
-}
-
-a.button:active {
-    background-color: rgb(207, 206, 206);
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692), inset 1px 1px 3px rgba(0, 0, 0, 0.692);
 }
 
 p {
