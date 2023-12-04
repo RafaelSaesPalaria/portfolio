@@ -48,20 +48,24 @@ div.paralax {
     background-repeat: no-repeat;
 }
 
-div#project1-img {
+div#web-project1-img {
     background-image: url(../../projects/clock-test/analog-clock/project-img.png);
 }
 
-div#project2-img {
+div#web-project2-img {
     background-image: url(../../projects/clock-test/sunbased-clock/project-img.png);
 }
 
-div#project3-img {
+div#web-project3-img {
     background-image: url(../../projects/clock-test/solar-system/project-image.png);
 }
 
-div#project4-img {
+div#web-project4-img {
     background-image: url(../../projects/calculator/project-img.png);
+}
+
+div#java-project1-img {
+    background-image: url(java-imgs/simple_chat.png);
 }
 
 li {

@@ -1,4 +1,5 @@
 var menuDisplay = true;
+var iframe_pages = document.querySelector("iframe#show-pages")
 
 function clickMenu() {
     let menuItems = document.querySelectorAll("nav .item");
@@ -32,11 +33,11 @@ function openMenu() {
 }
 
 function showWeb() {
-
+    iframe_pages.src="main-site/pages/web.html"
 }
 
 function showJava() {
-
+    iframe_pages.src="main-site/pages/java.html"
 }
 
 function showPython() {
