@@ -40,7 +40,7 @@ main {
 }
 
 div.paralax {
-    height: 300px;
+    height: 70vh;
     max-width: 100%;
     background-attachment: fixed;
     background-position: 50% 50%;
@@ -70,18 +70,18 @@ li {
     list-style-type: none;
     margin-top: 15px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692);
+    overflow: hidden;
 }
 
 li:hover {
     box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.692);
     background-color: rgb(228, 228, 228);
     padding: 10px 0px 0px 10px;
-    height: calc(2em + 300px + 47px);
 }
 
 li:hover .paralax {
-    background-position: 50% calc(50% + 10px);
-    height: calc(300px - 10px);
+    background-position: calc(50% + 10px) calc(50% + 10px);
+    height: 68vh;
 }
 
 li:active {
