@@ -1,5 +1,16 @@
 @charset "utf-8";
 
+@font-face {
+    font-family: 'digital';
+    src: url(fonts/digital-7.ttf);
+    /*
+    digital_7
+    font made by 
+    https://www.dafont.com/pt/digital-7.font
+    free to personal use, acess in 2023
+    */
+}
+
 * {
     margin: 0px;
     padding: 0px;
@@ -8,7 +19,8 @@
 body {
     background-color: rgb(209, 209, 209);
     background-image: linear-gradient(to bottom, rgb(165, 136, 42), rgb(61, 15, 15));
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'digital' ,Arial, Helvetica, sans-serif;
+    letter-spacing: 0.1em;
     font-size: 2em;
     height: 100vh;
 }
@@ -70,16 +82,20 @@ div#seconds {
 
 div#digital-clock {
     position: absolute;
-    top: 65%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%,-50%);
+    width: 220px;
+    text-align: center;
+    font-size: 2em;
 
     display: inline-block;
-    padding: 10px 25px;
-    border: 1px solid rgb(255, 255, 255);
-    outline: 3px solid black;
+    padding: 20px 50px;
+    border: 2px solid rgb(255, 255, 255);
+    outline: 6px solid black;
     border-radius: 10px;
     background-color: rgb(0, 0, 0);
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.226);
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.226);
     color: red;
+    text-shadow: 0px 0px 20px rgba(255, 0, 0, 0.904);
 }
