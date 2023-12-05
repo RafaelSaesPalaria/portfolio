@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+@media screen and (min-width: 768px) {
+    body {
+        background-image: linear-gradient(to bottom, purple, rgb(0, 131, 131));
+        height: 100vh;
+    }
+}
