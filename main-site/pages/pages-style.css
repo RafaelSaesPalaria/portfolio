@@ -78,22 +78,28 @@ li {
 }
 
 li:hover {
-    transition: 0.3s;
-    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.692);
     background-color: rgb(228, 228, 228);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692), inset 1px 1px 3px rgba(0, 0, 0, 0.692);
+    padding: 5px 0px 0px 5px;
+}
+
+li:active {
+    transition: 0.1s;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.692);
+    background-color: rgb(207, 206, 206);
     padding: 10px 0px 0px 10px;
     
 }
 
 li:hover .paralax {
-    transition: 0.3s;
-    background-position: calc(50% + 10px) calc(50% + 10px);
-    height: 68vh;
+    background-position: calc(50% + 5px) calc(50% + 5px);
+    height: 69vh;
 }
 
-li:active {
-    background-color: rgb(207, 206, 206);
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692), inset 1px 1px 3px rgba(0, 0, 0, 0.692);
+li:active .paralax {
+    transition: 0.1s;
+    background-position: calc(50% + 10px) calc(50% + 10px);
+    height: 68vh;
 }
 
 a.button {
