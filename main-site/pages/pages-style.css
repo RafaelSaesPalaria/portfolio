@@ -64,6 +64,10 @@ div#web-project4-img {
     background-image: url(../../projects/calculator/project-img.png);
 }
 
+div#web-project5-img {
+    background-image: url(../../projects/login/project-img.png);
+}
+
 div#java-project1-img {
     background-image: url(java-imgs/simple_chat.png);
 }
@@ -102,13 +106,17 @@ li:active .paralax {
     height: 68vh;
 }
 
+a {
+    display: inline;
+    color: var(--textColor);
+    text-decoration: none;
+}
+
 a.button {
     display: block;
     border-radius: 10px;
     border: 1px solid transparent;
     padding: 7px 12px;
-    color: var(--textColor);
-    text-decoration: none;
 }
 
 p {
