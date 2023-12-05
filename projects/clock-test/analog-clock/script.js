@@ -40,7 +40,7 @@ function parseAngle(actualTime,cycleMax) {
  */
 function rotatePointer(pointer, deg) {
     deg+=180 // TODO: +180degs because the clock start at the bottom 
-    pointer.style.transformOrigin = 'top center';
+    pointer.style.transformOrigin = 'top left';
     pointer.style.transform = `rotate(${deg}deg)` 
 }
 
