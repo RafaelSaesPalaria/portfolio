@@ -36,11 +36,11 @@ div#sun-axis, div#moon-axis { /*This divs shouldn't exist*/
 }
 
 div#sun-axis {
-    width: 600px;
+    width: 70vh;
 }
 
 div#moon-axis {
-    width: 500px;
+    width: 60vh;
 }
 
 div#sun, div#moon {
@@ -52,7 +52,7 @@ div#sun, div#moon {
 }
 
 div#sun {
-    background-color: yellow;
+    /*background-color: yellow;*/
     width: 70px;
     height: 70px;
 }

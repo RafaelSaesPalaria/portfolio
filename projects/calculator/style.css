@@ -9,11 +9,10 @@
 
 main {
     position: absolute;
-    top: 25%;
-    right: 25%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%,-50%);
 
-    width: 25%;
     display: block;
     padding: 10px;
     border-radius: 10px;

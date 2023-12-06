@@ -16,7 +16,7 @@ function getTime() {
     time = new Date();
     /*time = {
         getHours() {
-            return 12
+            return 13
         },
         getMinutes() {
             return 0

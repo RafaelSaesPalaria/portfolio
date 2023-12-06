@@ -27,7 +27,7 @@ body {
 
 div#analog-clock {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
 
@@ -82,7 +82,7 @@ div#seconds {
 
 div#digital-clock {
     position: absolute;
-    top: 75%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 220px;
