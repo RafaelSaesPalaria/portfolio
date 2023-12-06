@@ -74,7 +74,7 @@ div#java-project1-img {
 
 li {
     border-radius: 10px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.61);
     list-style-type: none;
     margin-top: 15px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692);
@@ -82,7 +82,7 @@ li {
 }
 
 li:hover {
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(228, 228, 228, 0.61);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692), inset 1px 1px 3px rgba(0, 0, 0, 0.692);
     padding: 5px 0px 0px 5px;
 }
@@ -90,7 +90,7 @@ li:hover {
 li:active {
     transition: 0.1s;
     box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.692);
-    background-color: rgb(207, 206, 206);
+    background-color: rgb(207, 206, 206, 0.61);
     padding: 10px 0px 0px 10px;
     
 }

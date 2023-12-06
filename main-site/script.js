@@ -41,5 +41,5 @@ function showJava() {
 }
 
 function showPython() {
-    
+    iframe_pages.src="main-site/pages/python.html"
 }
