@@ -46,6 +46,8 @@ div#player {
 }
 
 div#player span {
+    user-select: none;
+    cursor: pointer;
     padding: 5px;
     border-radius: 15px;
     border: 1px solid black;
