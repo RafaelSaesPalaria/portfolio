@@ -29,6 +29,28 @@ div#digital-clock {
     box-shadow: 1px 1px 1px black; /*Make shadow run oposite to the sun*/
 }
 
+div#player {
+    position: absolute;
+    top: 83.5%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    background-color: white;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    width: 8em;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px black; 
+}
+
+div#player span {
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
 div#sun-axis, div#moon-axis { /*This divs shouldn't exist*/
     position: absolute;
     bottom: 0%;

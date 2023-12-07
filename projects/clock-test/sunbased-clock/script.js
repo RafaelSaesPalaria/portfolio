@@ -1,10 +1,18 @@
 //Global Attributes
-var time;
+var time = new Date();;
+var timeDirection = 1
+var timeSpeed     = 1
+var intervalSpeed = 1000
 
 //Constructor
-setInterval(start,1000)
+setInterval(update,intervalSpeed)
+
 function start() {
-    getTime();
+    update()
+}
+
+function update() {
+    updateTime();
     updateDigitalClock();
     updateSun();
     updateMoon();
@@ -12,19 +20,52 @@ function start() {
 }
 
 //Methods
-function getTime() {
-    time = new Date();
-    /*time = {
-        getHours() {
-            return 13
-        },
-        getMinutes() {
-            return 0
-        },
-        getSeconds() {
-            return 0
-        }
-    }*/
+//Controls
+function disaccelerate() {
+    timeSpeed*=0.9;
+    setInterval(update,intervalSpeed/timeSpeed);
+}
+
+function forward() {
+    timeDirection=1
+}
+
+function pause() {
+    timeSpeed=0
+}
+
+function play() {
+    timeSpeed=1
+}
+
+function backward() {
+    timeDirection=-1
+}
+
+function accelerate() {
+    timeSpeed*=1.1;
+    setInterval(update,intervalSpeed/timeSpeed);
+}
+
+//Update
+function updateTime() {
+    let seconds = time.getSeconds();
+    let minutes = time.getMinutes();
+    let hours = time.getHours();
+
+    time.setSeconds(seconds+=timeDirection*timeSpeed);
+    if (seconds>=60) {
+        seconds=0
+        minutes+=1
+    }
+    if (minutes>=60) {
+        minutes=0
+        hours+=1
+    }
+    if (hours>=60) {
+        minutes=0
+        hours+=1
+    }
 }
 
 function updateDigitalClock() {
