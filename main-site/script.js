@@ -32,7 +32,7 @@ function openMenu() {
     });
 }
 
-function showWeb() {
+/*function showWeb() {
     iframe_pages.src="main-site/pages/web.html"
 }
 
@@ -42,4 +42,4 @@ function showJava() {
 
 function showPython() {
     iframe_pages.src="main-site/pages/python.html"
-}
+}*/

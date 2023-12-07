@@ -8,14 +8,21 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
+
+@font-face {
+    font-family: 'conthrax';
+    src: url(fonts/conthrax-sb.otf);
+}
+
 :root {
-    --font1: 'Bebas Neue', Verdana, 'Geneva', Tahoma, sans-serif;
-    --font2: 'Work Sans', arial, sans-serif;
-    --font2: 'Passion One', 'cursive';
-    --font3: 'Sriracha', 'cursive'; 
+    --font1: 'Gruppo' ,'Bebas Neue', Verdana, 'Geneva', Tahoma, sans-serif;
+    --font2: 'Gruppo','Work Sans', arial, sans-serif;
+    --font2: 'Gruppo','Passion One', 'cursive';
+    --font3: 'conthrax','Sriracha', 'cursive'; 
 
     --backgroundColor: rgb(245, 245, 245);
-    --headerColor: rgb(212, 212, 212);
+    --headerColor: rgba(212, 212, 212, 0.61);
     --textColor: 'rgb(240,0,0)';
 }
 
@@ -30,43 +37,57 @@
 
 body {
     background-color: var(--backgroundColor);
+    background-image: linear-gradient(to bottom, purple,rgb(0, 162, 255));
+    height: 100vh;
     color: var(--textColor);
     overflow-x: hidden;
 }
 
 header {
     padding: 10px;
-    background-color: var(--headerColor);
-    font-size: 1.3em;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.322);
+    /*background-color: var(--headerColor);*/
+    background-color: rgba(243, 243, 243, 0.103);
+    font-size: 1.3em ;
+    border: 1px solid rgba(255, 255, 255, 0.658);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322);
+    border-radius: 23px;
+    color: rgb(255, 255, 255);
+    width: 70vw;
+    margin: 20px auto 20px auto;
 }
 
 h1 {
     font-size: 1.5em;
     font-family: var(--font1);
     letter-spacing: 0.1em;
+    text-align: center;
 }
 
 p {
     text-indent: 30px;
+    font-family: var(--font2);
+    font-size: 1.3em;
+    padding: 5px;
+    text-align: center;
 }
 
 nav {
-    background-color: rgb(228, 228, 228);
-    display: block;
-    padding: 5px;
-    font-size: 1.5em;
-    text-align: center;
-    height: 83%;
+    margin: auto;
+    width: 30vw;
 }
 
 nav a.button {
-    display: block;
-    border-radius: 10px;
-    border: 1px solid black;
-    padding: 7px 12px;
-    color: var(--textColor);
+    padding: 10px;
+    /*background-color: var(--headerColor);*/
+    background-color: rgba(243, 243, 243, 0.103);
+    font-size: 1.3em ;
+    border: 1px solid rgba(255, 255, 255, 0.658);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322);
+    border-radius: 23px;
+    color: rgb(255, 255, 255);
+    text-align: center;
     text-decoration: none;
+    font-family: var(--font2);
 }
 
 nav a.button:hover {
@@ -81,18 +102,6 @@ nav a.button:active {
 
 nav a.item {
     margin: 10px;
-}
-
-nav a#web {
-    background-color: rgb(0, 195, 255);
-}
-
-nav a#java {
-    background-color: rgb(216, 56, 56);
-}
-
-nav a#python{
-    background-color: rgb(255, 255, 79);
 }
 
 main {
@@ -114,6 +123,10 @@ iframe {
 }
 
 footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100vw;
+
     display: block;
     margin-top: 20px;
     box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.329);
