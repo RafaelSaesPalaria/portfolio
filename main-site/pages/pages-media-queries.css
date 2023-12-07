@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@media screen and (min-width: 768px) {
+    a.button {
+        margin: 10px;
+        left: 0%;
+        transform: translate(0%);
+    }
+
+    div.paralax {
+        float: left;
+    }
+}

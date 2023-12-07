@@ -89,9 +89,15 @@ a {
 a.button {
     display: inline-block;
     position: relative;
-    left: 0%;
+    left: 50%;
+
+    border-radius: 15px;
+    transform: translate(-50%);
+    background-color: rgba(255, 255, 255, 0.048);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
+
     padding: 7px 12px;
-    margin-top: 10px;
+    margin: 10px;
     font-family: var(--fontTitle);
 }
 
@@ -107,11 +113,11 @@ a.button:active {
 }
 
 div.paralax {
-    float: left;
     border-radius: 10px;
     margin: 10px;
     height: 25vh;
-    width: 30%;
+    width: 250px;
+    margin: auto;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322);
     background-position: 50% 50%;
     background-size: 100% 100%;
