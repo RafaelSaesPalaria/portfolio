@@ -2,25 +2,32 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 
-:root {
-    --backgroundColor: rgb(245, 245, 245);
-    --headerColor: rgb(212, 212, 212);
-    --textColor: 'rgb(240,0,0)';
-    --fontTitle: 'Gruppo', 'Arial';
-}
-
 * {
     margin: 0px;
     padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.05em;
     line-height: 1.5em;
     box-sizing: border-box;
 }
 
-body {
-    background-color: var(--backgroundColor);
+:root {
+    --fontTitle:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+    --fontSubtitle: 'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+    --fontText:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
 
+    --titleSize: 2em;                         /**/
+    --subTitleSize: 1.5em;               /*Not Implemented yet*/
+    --textSize: 1.3em;                      /**/
+
+    --textColor: rgb(255, 255, 255);
+    --containerColor: rgba(243, 243, 243, 0.103);
+    --hoverColor:rgba(228, 228, 228, 0.219);
+    --activeColor: rgba(207, 206, 206, 0.233);
+    --borderColor: rgba(255, 255, 255, 0.658);
+ 
+}
+
+body {
     background: url(../images/logo.png) no-repeat 50% 50%, rgba(0, 0, 0, 1) linear-gradient(to bottom, purple,rgb(0, 162, 255)) no-repeat 100% 100%;
 
     height: 100vh;
@@ -28,27 +35,23 @@ body {
     background-attachment: fixed;
 }
 
-.container {
-    background-color: rgba(243, 243, 243, 0.103);
-    border: 1px solid rgba(255, 255, 255, 0.658);
-    border-radius: 15px;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322), inset 1px 1px 1px rgba(0, 0, 0, 0.322);
+body::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
 }
 
 header {
     padding: 10px;
-    font-size: 1.3em ;
-    border-radius: 23px;
-    color: rgb(255, 255, 255);
     width: 72vw;
-    margin: 20px auto 20px auto;
+    margin: 20px auto;
     text-align: center;
     font-family: var(--fontTitle);
+    font-size: 1.5em;
 }
 
 header h2 {
     font-family: var(--fontTitle);
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
 header p {
@@ -57,63 +60,31 @@ header p {
 
 main {
     background-color: rgba(243, 243, 243, 0);
-    font-size: 1.3em ;
+    font-size: 1.3em;
     padding: 10px;
-    font-size: 1.2em;
-    overflow-y: hidden;
     width: 73vw;
     margin: auto;
 }
 
-::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-}
-
 li {
-    color: rgb(255, 255, 255);
     font-family: var(--fontTitle);
+    margin-top: 30px;
     padding: 20px;
-    border-radius: 10px;
     list-style-type: none;
-    margin-top: 15px;
     overflow: hidden;
 }
 
-a {
-    display: inline;
-    color: var(--textColor);
-    text-decoration: none;
+li h3 {
+    font-family: var(--fontText)
 }
 
-a.button {
-    display: inline-block;
-    position: relative;
-    left: 50%;
-
-    border-radius: 15px;
-    transform: translate(-50%);
-    background-color: rgba(255, 255, 255, 0.048);
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
-
-    padding: 7px 12px;
-    margin: 10px;
-    font-family: var(--fontTitle);
-}
-
-a.button:hover {
-    background-color: rgba(228, 228, 228, 0.075);
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692), inset 1px 1px 3px rgba(0, 0, 0, 0.692);
-}
-
-a.button:active {
-    transition: 0.1s;
-    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.692);
-    background-color: rgba(207, 206, 206, 0.158);
+li p {
+    text-indent: 30px;
+    font-family: var(--fontText);
+    margin-bottom: 10px;
 }
 
 div.paralax {
-    border-radius: 10px;
     margin: 10px;
     height: 25vh;
     width: 250px;
@@ -123,6 +94,53 @@ div.paralax {
     background-size: 100% 100%;
     /*background-attachment: fixed;*/
     background-repeat: no-repeat;
+}
+
+a.button {
+    display: inline-block;
+    position: relative;
+    transform: translate(-50%);
+    left: 50%;
+
+    color: var(--textColor);
+    text-decoration: none;
+    border-radius: 15px;
+    
+    background-color: var(--containerColor);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
+
+    padding: 7px 12px;
+    margin: 10px;
+    font-family: var(--fontText);
+}
+
+a.button:hover {
+    background-color: var(--hoverColor);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692), inset 1px 1px 3px rgba(0, 0, 0, 0.692);
+}
+
+a.button:active {
+    transition: 0.1s;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.692);
+    background-color: var(--activeColor);
+}
+
+footer {
+    display: block;
+    margin-top: 20px;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.329);
+    padding: 7px;
+    background-color: black;
+    color: var(--textColor);
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.container {
+    background-color: var(--containerColor);
+    border: 1px solid var(--borderColor);
+    border-radius: 15px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322), inset 1px 1px 1px rgba(0, 0, 0, 0.322);
 }
 
 div#web-project1-img {
@@ -147,26 +165,4 @@ div#web-project5-img {
 
 div#java-project1-img {
     background-image: url(java-imgs/simple_chat.png);
-}
-
-h3 {
-    font-family: var(--fontTitle)
-}
-
-p {
-    text-indent: 30px;
-    font-family: var(--fontTitle);
-}
-
-footer {
-    width: 100vw;
-
-    display: block;
-    margin-top: 20px;
-    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.329);
-    padding: 7px;
-    background-color: black;
-    color: white;
-    text-align: center;
-    font-size: 1.2em;
 }

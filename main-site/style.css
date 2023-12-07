@@ -1,30 +1,6 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@700&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
-
-@font-face {
-    font-family: 'conthrax';
-    src: url(fonts/conthrax-sb.otf);
-}
-
-:root {
-    --font1: 'Gruppo' ,'Bebas Neue', Verdana, 'Geneva', Tahoma, sans-serif;
-    --font2: 'Gruppo','Work Sans', arial, sans-serif;
-    --font2: 'Gruppo','Passion One', 'cursive';
-    --font3: 'conthrax','Sriracha', 'cursive'; 
-
-    --backgroundColor: rgb(245, 245, 245);
-    --headerColor: rgba(212, 212, 212, 0.61);
-    --textColor: 'rgb(240,0,0)';
-}
 
 * {
     margin: 0px;
@@ -35,8 +11,24 @@
     box-sizing: border-box;
 }
 
+:root {
+    --fontTitle:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+    --fontSubtitle: 'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+    --fontText:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+
+    --titleSize: 2em;                         /**/
+    --subTitleSize: 1.5em;               /*Not Implemented yet*/
+    --textSize: 1.3em;                      /**/
+
+    --textColor: rgb(255, 255, 255);
+    --containerColor: rgba(243, 243, 243, 0.103);
+    --hoverColor:rgba(228, 228, 228, 0.219);
+    --activeColor: rgba(207, 206, 206, 0.233);
+    --borderColor: rgba(255, 255, 255, 0.658);
+ 
+}
+
 body {
-    background-color: var(--backgroundColor);
     background-image: linear-gradient(to bottom, purple,rgb(0, 162, 255));
     height: 100vh;
     color: var(--textColor);
@@ -45,30 +37,21 @@ body {
 
 header {
     padding: 10px;
-    /*background-color: var(--headerColor);*/
-    font-size: 1.3em ;
-    color: rgb(255, 255, 255);
+    font-size: 1.3em;
     width: 70vw;
     margin: 20px auto 20px auto;
     text-align: center;
 }
 
-.container {
-    background-color: rgba(243, 243, 243, 0.103);
-    border: 1px solid rgba(255, 255, 255, 0.658);
-    border-radius: 15px;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322), inset 1px 1px 1px rgba(0, 0, 0, 0.322);
-}
-
-h1 {
+header h1 {
     font-size: 1.5em;
-    font-family: var(--font1);
+    font-family: var(--fontTitle);
     letter-spacing: 0.1em;
 }
 
-p {
+header p {
     text-indent: 30px;
-    font-family: var(--font2);
+    font-family: var(--fontSubtitle);
     font-size: 1.3em;
     padding: 5px;
 }
@@ -79,22 +62,22 @@ nav {
 }
 
 nav a.button {
+    color: var(--textColor);
+    font-family: var(--fontSubtitle);
     padding: 10px;
     font-size: 1.3em ;
-    color: rgb(255, 255, 255);
     text-align: center;
     text-decoration: none;
-    font-family: var(--font2);
+    border-radius: 15px;
 }
 
 nav a.button:hover {
     cursor: pointer;
-    background-color: lightgray;
-    outline: 1px solid black;
+    background-color: var(--hoverColor);
 }
 
 nav a.button:active {
-    background-color: rgb(207, 206, 206);
+    background-color: var(--activeColor);
 }
 
 nav a.item {
@@ -111,7 +94,13 @@ footer {
     box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.329);
     padding: 7px;
     background-color: black;
-    color: white;
     text-align: center;
     font-size: 1.2em;
+}
+
+.container {
+    background-color: rgba(243, 243, 243, 0.103);
+    border: 1px solid rgba(255, 255, 255, 0.658);
+    border-radius: 15px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322), inset 1px 1px 1px rgba(0, 0, 0, 0.322);
 }
