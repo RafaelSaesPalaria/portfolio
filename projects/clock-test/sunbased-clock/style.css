@@ -43,10 +43,10 @@ div#player {
     border-radius: 10px;
     border: 1px solid black;
     box-shadow: 1px 1px 1px black; 
+    user-select: none;
 }
 
 div#player span {
-    user-select: none;
     cursor: pointer;
     padding: 5px;
     border-radius: 15px;
