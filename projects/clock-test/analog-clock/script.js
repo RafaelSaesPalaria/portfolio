@@ -11,6 +11,7 @@ var pointer_seconds= document.querySelector("div#seconds")
 setInterval(start,1000)
 function start() {
     getTime();
+    setNumbersPosition()
     rotatePointer(pointer_hours     ,parseAngle(time.getHours()    ,12))
     rotatePointer(pointer_minutes ,parseAngle(time.getMinutes() ,60))
     rotatePointer(pointer_seconds,parseAngle(time.getSeconds(),60))
@@ -55,4 +56,12 @@ function updateDigitalClock() {
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
     digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
+}
+
+function setNumbersPosition() {
+    for (let i=1;i<=12;i++) {
+        let n = document.querySelector(`span#n${i}`)
+        n.style.top = `${i*10}%`
+        n.style.left = `${i*10}%`
+    }
 }
