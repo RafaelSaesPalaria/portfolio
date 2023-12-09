@@ -8,10 +8,14 @@ var pointer_seconds= document.querySelector("div#seconds")
 /**
  * used to update the clock based on the computer time at every 1s
  */
-setInterval(start,1000)
+setInterval(clockWork,1000)
 function start() {
-    getTime();
     setNumbersPosition()
+    addMinuteBar()
+}
+
+function clockWork() {
+    getTime();
     rotatePointer(pointer_hours     ,parseAngle(time.getHours()    ,12))
     rotatePointer(pointer_minutes ,parseAngle(time.getMinutes() ,60))
     rotatePointer(pointer_seconds,parseAngle(time.getSeconds(),60))
@@ -71,4 +75,31 @@ function setNumbersPosition() {
         n.style.top = `calc(50% + ${x}px)`;
         n.style.left = `calc(50% + ${y}px)`
     }
+}
+
+function addMinuteBar() {
+    let bars = document.querySelector("div#bars")
+    let r = 140;
+    
+    for (let i=0;i<60;i++) {
+        let bar = document.createElement("div")
+
+        if (i%5==0) {
+            bar.style.width = "8px"
+        }
+
+
+        let theta = (2 * Math.PI) / 60;
+        x = Math.sin(theta*i)*r
+        y = Math.cos(theta*i)*r
+
+        bar.style.top = `calc(50% + ${x}px)`
+        bar.style.left = `calc(49% + ${y}px)`
+
+        bar.style.transformOrigin = "center";
+        bar.style.transform = `rotate(${i*6}deg)`
+
+        bars.appendChild(bar)
+    }
+
 }
