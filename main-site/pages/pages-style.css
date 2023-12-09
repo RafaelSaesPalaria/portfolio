@@ -131,7 +131,6 @@ footer {
     box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.329);
     padding: 7px;
     background-color: black;
-    color: var(--textColor);
     text-align: center;
     font-size: 1.2em;
 }
