@@ -59,9 +59,16 @@ function updateDigitalClock() {
 }
 
 function setNumbersPosition() {
+
+    let r = 120;
+
     for (let i=1;i<=12;i++) {
         let n = document.querySelector(`span#n${i}`)
-        n.style.top = `${i*10}%`
-        n.style.left = `${i*10}%`
+
+        let theta = (2 * Math.PI) / 12;
+        x = (Math.sin((theta*i)+11)*r)
+        y = (Math.cos((theta*i)+11)*r)
+        n.style.top = `calc(50% + ${x}px)`;
+        n.style.left = `calc(50% + ${y}px)`
     }
 }
