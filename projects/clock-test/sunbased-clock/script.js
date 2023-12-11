@@ -4,6 +4,9 @@ var timeDirection = 1
 var timeSpeed     = 1
 var intervalSpeed = 1000
 
+const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+
 //Constructor
 setInterval(update,intervalSpeed)
 
@@ -88,20 +91,27 @@ function getAngle() {
     return degree;
 }
 
+function getCardinalCoordinates(theta, radius) {
+    let y = Math.sin(theta) * radius
+    let x = Math.cos(theta) * radius
+    let cardinal = [Number(x), Number(y)]
+    return cardinal;
+}
+
 function updateSun() {
-    let sun_axis = document.querySelector("div#sun-axis")
+    let sun = document.querySelector("div#sun")
     let deg = getAngle();
-    deg+=90                         // TODO: +90degs because the clock start at the left
-    sun_axis.style.transformOrigin = 'top left';
-    sun_axis.style.transform = `rotate(${deg}deg)` 
+    let cardinal = getCardinalCoordinates(deg , vh*0.70)
+    sun.style.top = `calc(100% + ${cardinal[1]}px)`
+    sun.style.left = `calc(50% + ${cardinal[0]}px)`
 }
 
 function updateMoon() {
-    let moon_axis = document.querySelector("div#moon-axis")
+    let moon = document.querySelector("div#moon")
     let deg = getAngle();
-    deg-=90                         // TODO: +90degs because the clock start at the left
-    moon_axis.style.transformOrigin = 'top left';
-    moon_axis.style.transform = `rotate(${deg}deg)` 
+    let cardinal = getCardinalCoordinates(deg-90 , vh*0.60)
+    moon.style.top = `calc(100% + ${cardinal[1]}px)`
+    moon.style.left = `calc(50% + ${cardinal[0]}px)`
 }
 
 function updateBackground() {
@@ -115,10 +125,5 @@ function updateBackground() {
     let moon_x = moon.getBoundingClientRect().left+25; // 50 is the moon width
     let moon_y = moon.getBoundingClientRect().top+25;
 
-    if (time.getHours()>5 && time.getHours()<18) {
         body.style.backgroundImage = `radial-gradient(circle at ${sun_x}px ${sun_y}px , yellow, orange 10%, lightblue 35%, blue 95%)`
-
-    } else {
-        body.style.backgroundImage = `radial-gradient(circle at ${moon_x}px ${moon_y}px , darkblue 5%, blue 35%)`
-    }
 }
