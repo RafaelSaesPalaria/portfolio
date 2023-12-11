@@ -73,8 +73,13 @@ function setNumbersPosition() {
     let r = 120;
 
     for (let i=1;i<=12;i++) {
-        let n = document.querySelector(`span#n${i}`)
-
+        
+        let n = document.createElement("span");
+        n.setAttribute("id",`n${i}`)
+        n.innerHTML = `${i}`
+        
+        let div = document.querySelector("div#numbers")
+        div.appendChild(n)
         let theta = (2 * Math.PI) / 12;
         x = (Math.sin((theta*i)+11)*r)
         y = (Math.cos((theta*i)+11)*r)
