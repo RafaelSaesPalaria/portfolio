@@ -16,11 +16,14 @@ function start() {
 }
 
 function clockWork() {
+<<<<<<< Updated upstream
     setNumbersPosition()
     addMinuteBar()
 }
 
 function clockWork() {
+=======
+>>>>>>> Stashed changes
     getTime();
     rotatePointer(pointer_hours     ,parseAngle(time.getHours()    ,12))
     rotatePointer(pointer_minutes ,parseAngle(time.getMinutes() ,60))
