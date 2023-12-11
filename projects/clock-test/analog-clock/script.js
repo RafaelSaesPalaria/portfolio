@@ -10,6 +10,15 @@ var pointer_seconds= document.querySelector("div#seconds")
  */
 setInterval(start,1000)
 function start() {
+<<<<<<< Updated upstream
+=======
+    setNumbersPosition()
+    addMinuteBar()
+    clockWork()
+}
+
+function clockWork() {
+>>>>>>> Stashed changes
     getTime();
     rotatePointer(pointer_hours     ,parseAngle(time.getHours()    ,12))
     rotatePointer(pointer_minutes ,parseAngle(time.getMinutes() ,60))
