@@ -1,8 +1,11 @@
 // Global Attributes
-var time = 0;
+var time = new Date();
 var pointer_hours= document.querySelector("div#hours")
 var pointer_minutes= document.querySelector("div#minutes")
 var pointer_seconds= document.querySelector("div#seconds")
+var timeDirection=1
+var timeSpeed =1
+var intervalSpeed = 1000
 
 //Constructor
 /**
@@ -16,23 +19,72 @@ function start() {
 }
 
 function clockWork() {
-    setNumbersPosition()
-    addMinuteBar()
-}
-
-function clockWork() {
-    getTime();
-    rotatePointer(pointer_hours     ,parseAngle(time.getHours()    ,12))
-    rotatePointer(pointer_minutes ,parseAngle(time.getMinutes() ,60))
+    updateTime()
+    rotatePointer(pointer_hours     ,parseAngle(time.getHours()+(time.getMinutes()/60),12))
+    rotatePointer(pointer_minutes ,parseAngle(time.getMinutes()+(time.getSeconds()/60),60))
     rotatePointer(pointer_seconds,parseAngle(time.getSeconds(),60))
     updateDigitalClock()
 }
 
 //Methods
 
+function disaccelerate() {
+    timeSpeed*=0.9;
+    setInterval(clockWork,intervalSpeed/timeSpeed);
+}
+
+function forward() {
+    timeDirection=1
+}
+
+function pause() {
+    timeSpeed=0
+}
+
+function play() {
+    timeSpeed=1
+    timeDirection=1
+}
+
+function backward() {
+    timeDirection=-1
+}
+
+function accelerate() {
+    timeSpeed*=1.1;
+    setInterval(clockWork,intervalSpeed/timeSpeed);
+}
+
 //update global variable time based on the computer time
-function getTime() {
-    time = new Date();
+function updateTime() {
+    let seconds = time.getSeconds();
+    let minutes = time.getMinutes();
+    let hours = time.getHours();
+
+    time.setSeconds(seconds + timeDirection * timeSpeed);
+
+    if (time.getSeconds() >= 60) {
+        time.setSeconds(0);
+        time.setMinutes(minutes + 1);
+    } else if (time.getSeconds() < 0) {
+        time.setSeconds(59);
+        time.setMinutes(minutes - 1);
+    }
+
+    if (time.getMinutes() >= 60) {
+        time.setMinutes(0);
+        time.setHours(hours + 1);
+    } else if (time.getMinutes() < 0) {
+        time.setMinutes(59);
+        time.setHours(hours - 1);
+    }
+
+    if (time.getHours() >= 24) {
+        time.setMinutes(0);
+        time.setHours(0);
+    } else if (time.getHours() < 0) {
+        time.setHours(23);
+    }
 }
 
 /**used to convert time in angle (degs)
@@ -51,12 +103,12 @@ function parseAngle(actualTime,cycleMax) {
  */
 function rotatePointer(pointer, deg) {
     deg+=180 // TODO: +180degs because the clock start at the bottom 
-    pointer.style.transformOrigin = '25% 0%';
+    pointer.style.transformOrigin = '30% 0%';
     pointer.style.transform = `rotate(${deg}deg)` 
 }
 
 function updateDigitalClock() {
-    let digital_clock = document.querySelector("div#digital-clock");
+    let digital_clock = document.querySelector("div#digital-clock #time");
     let hours     = time.getHours();
     let minutes = time.getMinutes();
     let seconds= time.getSeconds();

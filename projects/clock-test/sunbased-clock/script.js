@@ -3,6 +3,7 @@ var time = new Date();;
 var timeDirection = 1
 var timeSpeed     = 1
 var intervalSpeed = 1000
+var degree = 0
 
 const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
@@ -39,6 +40,7 @@ function pause() {
 
 function play() {
     timeSpeed=1
+    timeDirection=1
 }
 
 function backward() {
@@ -56,20 +58,32 @@ function updateTime() {
     let minutes = time.getMinutes();
     let hours = time.getHours();
 
-    time.setSeconds(seconds+=timeDirection*timeSpeed);
-    if (seconds>=60) {
-        seconds=0
-        minutes+=1
+    time.setSeconds(seconds + timeDirection * timeSpeed);
+
+    if (time.getSeconds() >= 60) {
+        time.setSeconds(0);
+        time.setMinutes(minutes + 1);
+    } else if (time.getSeconds() < 0) {
+        time.setSeconds(59);
+        time.setMinutes(minutes - 1);
     }
-    if (minutes>=60) {
-        minutes=0
-        hours+=1
+
+    if (time.getMinutes() >= 60) {
+        time.setMinutes(0);
+        time.setHours(hours + 1);
+    } else if (time.getMinutes() < 0) {
+        time.setMinutes(59);
+        time.setHours(hours - 1);
     }
-    if (hours>=60) {
-        minutes=0
-        hours+=1
+
+    if (time.getHours() >= 24) {
+        time.setMinutes(0);
+        time.setHours(0);
+    } else if (time.getHours() < 0) {
+        time.setHours(23);
     }
 }
+
 
 function updateDigitalClock() {
     let digital_clock = document.querySelector("div#digital-clock");
@@ -84,16 +98,22 @@ function updateDigitalClock() {
     digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
 }
 
+function parseAngle(actualTime,cycleMax) {
+    return (actualTime/cycleMax)*360
+}
+
 function getAngle() {
     let dayTime_inSeconds = 
                         (time.getHours()*3600) + (time.getMinutes()*60) + time.getSeconds()
-    let degree = dayTime_inSeconds/(24*60*60)*360
+    degree = parseAngle(dayTime_inSeconds,(24*60*60))   
     return degree;
 }
 
-function getCardinalCoordinates(theta, radius) {
-    let y = Math.sin(theta) * radius
-    let x = Math.cos(theta) * radius
+function getCardinalCoordinates(deg, radius) {
+    let theta = (2 * Math.PI) / 360;
+
+    let y = Math.cos(theta*(deg+90%360)) * radius
+    let x = Math.sin(theta*(deg+90%360)) * radius
     let cardinal = [Number(x), Number(y)]
     return cardinal;
 }
@@ -102,16 +122,16 @@ function updateSun() {
     let sun = document.querySelector("div#sun")
     let deg = getAngle();
     let cardinal = getCardinalCoordinates(deg , vh*0.70)
-    sun.style.top = `calc(100% + ${cardinal[1]}px)`
-    sun.style.left = `calc(50% + ${cardinal[0]}px)`
+    sun.style.top = `calc(100% + ${cardinal[0]}px)`
+    sun.style.left = `calc(50% + ${cardinal[1]}px)`
 }
 
 function updateMoon() {
     let moon = document.querySelector("div#moon")
     let deg = getAngle();
-    let cardinal = getCardinalCoordinates(deg-90 , vh*0.60)
-    moon.style.top = `calc(100% + ${cardinal[1]}px)`
-    moon.style.left = `calc(50% + ${cardinal[0]}px)`
+    let cardinal = getCardinalCoordinates((deg+180%360) , vh*0.60)
+    moon.style.top = `calc(100% + ${cardinal[0]}px)`
+    moon.style.left = `calc(50% + ${cardinal[1]}px)`
 }
 
 function updateBackground() {

@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+
     <link rel="stylesheet" href="style.css">
     <title>Relógio</title>
 </head>
@@ -21,7 +24,14 @@
         free for personal use, acess in 2023
         https://www.dafont.com/pt/digital-7.font">
     <div id="digital-clock">
-        00:00:00
+        <div id="player">
+            <span class="material-symbols-outlined" onclick="disaccelerate()">fast_rewind</span>
+            <span class="material-symbols-outlined" onclick="backward()">arrow_back</span>
+            <span class="material-symbols-outlined" onclick="pause()">pause</span>
+            <span class="material-symbols-outlined" onclick="play()">play_arrow</span>
+            <span class="material-symbols-outlined" onclick="accelerate()">fast_forward</span>
+        </div>
+        <div id="time">00:00:00</div>
     </div>
     </abbr>
     <script src="script.js"></script>

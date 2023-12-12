@@ -54,22 +54,8 @@ div#player span {
     border: 1px solid black;
 }
 
-div#sun-axis, div#moon-axis { /*This divs shouldn't exist*/
-    position: absolute;
-    bottom: 0%;
-    left: 50%;
-}
-
-div#sun-axis {
-    width: 70vh;
-}
-
-div#moon-axis {
-    width: 60vh;
-}
-
 div#sun, div#moon {
-    position: relative;
+    position: absolute;
     top: 50%;
     left: 100%;
     transform: translate(-50%,-50%);
