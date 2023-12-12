@@ -45,9 +45,10 @@ div.pointer {
     display: block;
     position: absolute;
     transform: translate(-50%,0%);
-    top: 50%;
-    left: 50%;
+    top: 49.5%;
+    left: 49%;
 
+    transform-origin: 50% 1%;
     border-radius: 0% 0% 35% 35%;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.562);
 }
@@ -65,6 +66,8 @@ div#minutes {
 }
 
 div#seconds {
+    top: 50%;
+    left: 50%;
     width: 2px;
     height: 140px;
     background-color: red;
@@ -78,7 +81,7 @@ div#axis {
 
     width: 13px;
     height: 13px;
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     border-radius: 50%;
 }
 

@@ -103,7 +103,6 @@ function parseAngle(actualTime,cycleMax) {
  */
 function rotatePointer(pointer, deg) {
     deg+=180 // TODO: +180degs because the clock start at the bottom 
-    pointer.style.transformOrigin = '30% 0%';
     pointer.style.transform = `rotate(${deg}deg)` 
 }
 
@@ -159,7 +158,6 @@ function addMinuteBar() {
         bar.style.top = `calc(50% + ${x}px)`
         bar.style.left = `calc(49% + ${y}px)`
 
-        bar.style.transformOrigin = "center";
         bar.style.transform = `rotate(${i*6}deg)`
 
         bars.appendChild(bar)
