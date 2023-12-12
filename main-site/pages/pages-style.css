@@ -7,6 +7,7 @@
     padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5em;
+    font-size: 1.05em;
     box-sizing: border-box;
 }
 
@@ -15,9 +16,9 @@
     --fontSubtitle: 'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
     --fontText:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
 
-    --titleSize: 2em;                         /**/
-    --subTitleSize: 1.5em;               /*Not Implemented yet*/
-    --textSize: 1.3em;                      /**/
+    --titleSize: 2em;                        
+    --subTitleSize: 1.5em;              
+    --textSize: 1.3em;                      
 
     --textColor: rgb(255, 255, 255);
     --containerColor: rgba(243, 243, 243, 0.103);
@@ -46,41 +47,43 @@ header {
     margin: 20px auto;
     text-align: center;
     font-family: var(--fontTitle);
-    font-size: 1.5em;
 }
 
-header h2 {
+header h1 {
     font-family: var(--fontTitle);
-    font-size: 2em;
+    font-size: var(--titleSize);
 }
 
 header p {
-    font-family: var(--fontTitle);
+    font-family: var(--fontSubtitle);
+    font-size: var(--subTitleSize);
 }
 
 main {
     background-color: rgba(243, 243, 243, 0);
-    font-size: 1.3em;
+    font-size: var(--fontText);
     padding: 10px;
     width: 73vw;
     margin: auto;
 }
 
 li {
-    font-family: var(--fontTitle);
+    font-family: var(--fontText);
     margin-top: 30px;
     padding: 20px;
     list-style-type: none;
     overflow: hidden;
 }
 
-li h3 {
-    font-family: var(--fontText)
+li h2 {
+    font-family: var(--fontSubtitle);
+    font-size: var(--subTitleSize);
 }
 
 li p {
     text-indent: 30px;
     font-family: var(--fontText);
+    font-size: var(--textSize);
     margin-bottom: 10px;
 }
 
@@ -132,7 +135,7 @@ footer {
     padding: 7px;
     background-color: black;
     text-align: center;
-    font-size: 1.2em;
+    font-size: var(--subTitleSize);
 }
 
 .container {

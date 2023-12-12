@@ -16,9 +16,9 @@
     --fontSubtitle: 'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
     --fontText:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
 
-    --titleSize: 2em;                         /**/
-    --subTitleSize: 1.5em;               /*Not Implemented yet*/
-    --textSize: 1.3em;                      /**/
+    --titleSize: 2em;                        
+    --subTitleSize: 1.5em;               
+    --textSize: 1.3em;                     
 
     --textColor: rgb(255, 255, 255);
     --containerColor: rgba(243, 243, 243, 0.103);
@@ -37,14 +37,13 @@ body {
 
 header {
     padding: 10px;
-    font-size: 1.3em;
     width: 70vw;
     margin: 20px auto 20px auto;
     text-align: center;
 }
 
 header h1 {
-    font-size: 1.5em;
+    font-size: var(--titleSize);
     font-family: var(--fontTitle);
     letter-spacing: 0.1em;
 }
@@ -52,7 +51,7 @@ header h1 {
 header p {
     text-indent: 30px;
     font-family: var(--fontSubtitle);
-    font-size: 1.3em;
+    font-size: var(--subTitleSize);
     padding: 5px;
 }
 
@@ -66,7 +65,7 @@ nav a.button {
     color: var(--textColor);
     font-family: var(--fontSubtitle);
     padding: 10px;
-    font-size: 1.3em ;
+    font-size: var(--subTitleSize) ;
     text-align: center;
     text-decoration: none;
     border-radius: 15px;
@@ -93,12 +92,12 @@ footer {
     padding: 7px;
     background-color: black;
     text-align: center;
-    font-size: 1.2em;
+    font-size: var(--subTitleSize);
 }
 
 .container {
-    background-color: rgba(243, 243, 243, 0.103);
-    border: 1px solid rgba(255, 255, 255, 0.658);
+    background-color: var(--containerColor);
+    border: 1px solid var(--borderColor);
     border-radius: 15px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322), inset 1px 1px 1px rgba(0, 0, 0, 0.322);
 }
