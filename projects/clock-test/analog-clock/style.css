@@ -122,7 +122,6 @@ div#digital-clock {
     left: 50%;
     transform: translate(-50%,-50%);
     width: 220px;
-    text-align: center;
 
     display: inline-block;
     padding: 5px 50px 20px 50px;
@@ -136,12 +135,18 @@ div#digital-clock {
 div#digital-clock #player {
     color: rgba(255, 255, 255, 0.541);
     cursor: pointer;
+    display: block;
+    width: max-content;
+    margin:auto
 }
 
 div#digital-clock #time {
     font-family: 'digital' ,Arial, Helvetica, sans-serif;
     letter-spacing: 0.1em;
     font-size: 3em;
+    display: block;
+    width: max-content;
+    margin-left: 20px;
     box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.226);
     color: red;
     text-shadow: 0px 0px 20px rgba(255, 0, 0, 0.904);
