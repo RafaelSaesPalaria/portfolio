@@ -13,8 +13,8 @@ function earthCentered() {
     let earth = document.querySelector("div#earth")
     let moon = document.querySelector("div#moon")
 
-    orbit(sun   ,earth,i*0.4,vh*0.4)
-    orbit(earth,moon,i*0.4,vh*0.4)
+    orbit(sun   ,earth,i*1.4,vh*0.4)
+    orbit(earth,moon,i*1.4,vh*0.2)
 
     i+=1
 }
@@ -25,14 +25,12 @@ function orbit(centerObj,satelliteObj,deg,radius) {
     let orbitX = Math.sin(theta*deg)*radius
     let orbitY = Math.cos(theta*deg)*radius
 
-    //let centerX = centerObj.width()  - centerObj.offset().left();
-    //let centerY = centerObj.height() - centerObj.offset().top();
+    let centerX = centerObj.getBoundingClientRect().left + centerObj.getBoundingClientRect().width / 2;
 
-    let centerX = 50
-    let centerY = 50
+    let centerY = centerObj.getBoundingClientRect().top + centerObj.getBoundingClientRect().height / 2;
 
-    satelliteObj.style.top = `calc(${centerY}% + ${orbitY}px)`
-    satelliteObj.style.left = `calc(${centerX}% + ${orbitX}px)`
+    satelliteObj.style.top = `calc(${centerY}px + ${orbitY}px)`
+    satelliteObj.style.left = `calc(${centerX}px + ${orbitX}px)`
     satelliteObj.style.backgroundColor="red"
 }
 
