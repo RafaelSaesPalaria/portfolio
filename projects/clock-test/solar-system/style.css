@@ -14,16 +14,11 @@ main {
 }
 
 div#sun,div#earth,div#moon,div#solar-system {
-    position: relative;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 50%;
-}
-
-div#solar-system {
-    width: 30vw;
-    height: 30vw;
 }
 
 div#sun {
@@ -32,9 +27,6 @@ div#sun {
 
     background-color: yellow;
     box-shadow: 0px 0px 13px white;
-
-    /*animation: rotate 36.5s linear;*/
-    /*animation-iteration-count: infinite;*/
 }
 
 div#earth {
@@ -43,9 +35,6 @@ div#earth {
 
     background-color: blue;
     background-image: radial-gradient(circle at 100% 0%, darkblue, blue 60%, yellow 95%);
-
-    animation: rotate 9.5s linear, orbit 9.5s linear;
-    animation-iteration-count: infinite;
 }
 
 div#moon {
@@ -54,13 +43,11 @@ div#moon {
 
     background-color: rgb(255, 255, 255);
     background-image: linear-gradient(10deg, rgb(161, 161, 161) 30%, rgb(255, 255, 255));
-
-    animation: rotate 2s linear, orbit 2.5s linear;
-    animation-iteration-count: infinite;
 }
 
 div#stars {
-    position: relative;
+    background-color: transparent;
+    position: absolute;
     top: -73%;
     left: -23%;
     width: 150vw;
@@ -68,29 +55,11 @@ div#stars {
 }
 
 div.star {
-    position: relative;
+    position: absolute;
     border: 1px solid white;
     width: 1px;
     height: 1px;
     background-color: white;
     border-radius: 50%;
     box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.514);
-}
-
-@keyframes rotate {
-    0% {
-        transform: translate(-50%,-50%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%,-50%) rotate(360deg);
-    }
-}
-
-@keyframes orbit {
-    0% {
-        transform: rotate(0deg) translate(250%,-250%);
-    }
-    100% {
-        transform: rotate(360deg) translate(250%,-250%);
-    }
 }
