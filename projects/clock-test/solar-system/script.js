@@ -1,22 +1,57 @@
 const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
-var i=0
+var sun = document.querySelector("div#sun")
+var earth = document.querySelector("div#earth")
+var moon = document.querySelector("div#moon")
+
+var position=0
+var moonspeed = 0.8
+var earthspeed = 0.4
+
+var interval = setInterval(sunCentered,10)
 
 function start() {
     createStars();
+    sunCentered()
+}
+
+function sunClicked() {
+    clearInterval(interval)
+    interval = setInterval(sunCentered,10)
+    sunCentered()
+}
+
+function earthClicked() {
+    clearInterval(interval)
+    interval = setInterval(earthCentered,10)
     earthCentered()
 }
 
-setInterval(earthCentered,10)
+function moonClicked() {
+    clearInterval(interval)
+    interval = setInterval(moonCentered,10)
+    moonCentered()
+}
+
+function sunCentered() {
+    orbit(sun   ,earth,position*0.4,vh*0.4)
+    orbit(earth,moon,position*0.8,vh*0.2)
+
+    position+=1
+}
+
 function earthCentered() {
-    let sun = document.querySelector("div#sun")
-    let earth = document.querySelector("div#earth")
-    let moon = document.querySelector("div#moon")
+    orbit(earth, sun,position*0.4,vh*0.4)
+    orbit(earth,moon,position*0.8,vh*0.2)
 
-    orbit(sun   ,earth,i*1.4,vh*0.4)
-    orbit(earth,moon,i*1.4,vh*0.2)
+    position+=1
+}
 
-    i+=1
+function moonCentered() {
+    orbit(moon,sun,position*0.4,vh*0.4)
+    orbit(moon,earth,position*0.8,vh*0.2)
+
+    position+=1
 }
 
 function orbit(centerObj,satelliteObj,deg,radius) {
@@ -31,7 +66,6 @@ function orbit(centerObj,satelliteObj,deg,radius) {
 
     satelliteObj.style.top = `calc(${centerY}px + ${orbitY}px)`
     satelliteObj.style.left = `calc(${centerX}px + ${orbitX}px)`
-    satelliteObj.style.backgroundColor="red"
 }
 
 function createStars() {
