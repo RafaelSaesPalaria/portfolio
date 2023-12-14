@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
 
 body {
@@ -13,12 +14,16 @@ main {
     height: 100vh;
 }
 
-div#sun,div#earth,div#moon,div#solar-system {
+div#sun,div#earth,div#moon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 50%;
+}
+
+div#sun:hover, div#earth:hover, div#moon:hover {
+    border: 2px solid white;
 }
 
 div#sun {
