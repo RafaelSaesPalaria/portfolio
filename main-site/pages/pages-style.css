@@ -168,3 +168,7 @@ div#web-project5-img {
 div#java-project1-img {
     background-image: url(java-imgs/simple_chat.png);
 }
+
+div#java-project2-img {
+    background-image: url(java-imgs/tetris.png);
+}
