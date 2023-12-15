@@ -1,4 +1,4 @@
-const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+var vw = 0
 
 var sun = document.querySelector("div#sun")
 var earth = document.querySelector("div#earth")
@@ -11,8 +11,14 @@ var earthspeed = 0.4
 var interval = setInterval(sunCentered,10)
 
 function start() {
+    resize();
+    window.addEventListener('zoom', resize);
     createStars();
     sunCentered()
+}
+
+function resize() {
+    vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 }
 
 function sunClicked() {
@@ -34,22 +40,22 @@ function moonClicked() {
 }
 
 function sunCentered() {
-    orbit(sun   ,earth,position*0.4,vh*0.4)
-    orbit(earth,moon,position*0.8,vh*0.2)
+    orbit(sun   ,earth,position*0.4,vw*0.4)
+    orbit(earth,moon,position*0.8,vw*0.2)
 
     position+=1
 }
 
 function earthCentered() {
-    orbit(earth, sun,position*0.4,vh*0.4)
-    orbit(earth,moon,position*0.8,vh*0.2)
+    orbit(earth, sun,position*0.4,vw*0.4)
+    orbit(earth,moon,position*0.8,vw*0.2)
 
     position+=1
 }
 
 function moonCentered() {
-    orbit(moon,sun,position*0.4,vh*0.4)
-    orbit(moon,earth,position*0.8,vh*0.2)
+    orbit(moon,sun,position*0.4,vw*0.4)
+    orbit(moon,earth,position*0.8,vw*0.2)
 
     position+=1
 }
@@ -57,8 +63,8 @@ function moonCentered() {
 function orbit(centerObj,satelliteObj,deg,radius) {
 
     let theta = (Math.PI*2)/360
-    let orbitX = Math.sin(theta*deg)*radius
-    let orbitY = Math.cos(theta*deg)*radius
+    let orbitX = Math.sin(theta*deg)*(radius)
+    let orbitY = Math.cos(theta*deg)*(radius)
 
     let centerX = centerObj.getBoundingClientRect().left + centerObj.getBoundingClientRect().width / 2;
 

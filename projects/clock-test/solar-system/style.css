@@ -23,7 +23,7 @@ div#sun,div#earth,div#moon {
 }
 
 div#sun:hover, div#earth:hover, div#moon:hover {
-    border: 2px solid white;
+    border: 0.2vw solid white;
 }
 
 div#sun {
@@ -55,16 +55,16 @@ div#stars {
     position: absolute;
     top: -73%;
     left: -23%;
-    width: 150vw;
-    height: 250vh;
+    width: 200vw;
+    height: 100vw;
 }
 
 div.star {
     position: absolute;
-    border: 1px solid white;
-    width: 1px;
-    height: 1px;
+    border: 0.1vw solid white;
+    width: 0.1vw;
+    height: 0.1vw;
     background-color: white;
     border-radius: 50%;
-    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.514);
+    box-shadow: 0px 0px 0.5vw rgba(255, 255, 255, 0.514);
 }
