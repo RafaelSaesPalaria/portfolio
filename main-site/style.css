@@ -6,8 +6,9 @@
     margin: 0px;
     padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.05em;
-    line-height: 1.5em;
+
+    font-size: 1.3vw;
+    line-height: 3vw;
     box-sizing: border-box;
 }
 
@@ -16,9 +17,9 @@
     --fontSubtitle: 'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
     --fontText:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
 
-    --titleSize: 2em;                        
-    --subTitleSize: 1.5em;               
-    --textSize: 1.3em;                     
+    --titleSize: 3vw;                        
+    --subTitleSize: 2vw;               
+    --textSize: 1.3vw;                     
 
     --textColor: rgb(255, 255, 255);
     --containerColor: rgba(243, 243, 243, 0.103);
@@ -30,28 +31,35 @@
 
 body {
     background-image: linear-gradient(to bottom, purple,rgb(0, 162, 255));
+    background-attachment: fixed;
     height: 95vh;
     color: var(--textColor);
 }
 
+body::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
 header {
-    padding: 10px;
+    padding: 2vw;
     width: 70vw;
-    margin: 20px auto 20px auto;
+    margin: 0.20vw auto 0.20vw auto;
     text-align: center;
+    border-radius: 15vw;
 }
 
 header h1 {
     font-size: var(--titleSize);
     font-family: var(--fontTitle);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.01vw;
 }
 
 header p {
-    text-indent: 30px;
+    text-indent: 3vw;
     font-family: var(--fontSubtitle);
     font-size: var(--subTitleSize);
-    padding: 5px;
+    padding: 0.5vw;
 }
 
 nav {
@@ -61,14 +69,14 @@ nav {
 
 nav a.button {
     display: block;
+    margin: 1.0vw auto;
     color: var(--textColor);
     font-family: var(--fontSubtitle);
-    padding: 10px;
+    padding: 1vw 4vw;
     font-size: var(--subTitleSize) ;
     text-align: center;
     text-decoration: none;
-    border-radius: 15px;
-    margin: 10px;
+    border-radius: 1.05vw;
 }
 
 nav a.button:hover {
@@ -81,14 +89,12 @@ nav a.button:active {
 }
 
 footer {
-    position: absolute;
-    bottom: 0%;
-    width: 100%;
+    width: 100vw;
 
     display: block;
-    margin-top: 20px;
-    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.329);
-    padding: 7px;
+    margin-top: 2.0vw;
+    box-shadow: 0px -0.5vw 1.0vw rgba(0, 0, 0, 0.329);
+    padding: 0.7vw;
     background-color: black;
     text-align: center;
     font-size: var(--subTitleSize);
@@ -96,7 +102,7 @@ footer {
 
 .container {
     background-color: var(--containerColor);
-    border: 1px solid var(--borderColor);
-    border-radius: 15px;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322), inset 1px 1px 1px rgba(0, 0, 0, 0.322);
+    border: 0.1vw solid var(--borderColor);
+    border-radius: 1.5vw;
+    box-shadow: 0.3vw 0.3vw 0.5vw rgba(0, 0, 0, 0.322), inset 0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.322);
 }
