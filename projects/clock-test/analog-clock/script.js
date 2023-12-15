@@ -7,15 +7,23 @@ var timeDirection=1
 var timeSpeed =1
 var intervalSpeed = 1000
 
+var vw=0
+
 //Constructor
 /**
  * used to update the clock based on the computer time at every 1s
  */
 setInterval(clockWork,1000)
 function start() {
+    resize()
+    window.addEventListener('zoom', resize);
     setNumbersPosition()
     addMinuteBar()
     clockWork()
+}
+
+function resize() {
+    vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 }
 
 function clockWork() {
@@ -121,7 +129,7 @@ function updateDigitalClock() {
 
 function setNumbersPosition() {
 
-    let r = 120;
+    let r = 0.1*vw;
 
     for (let i=1;i<=12;i++) {
         
@@ -141,13 +149,13 @@ function setNumbersPosition() {
 
 function addMinuteBar() {
     let bars = document.querySelector("div#bars")
-    let r = 140;
+    let r = 0.112*vw;
     
     for (let i=0;i<60;i++) {
         let bar = document.createElement("div")
 
         if (i%5==0) {
-            bar.style.width = "8px"
+            bar.style.width = "0.8vw"
         }
 
 
