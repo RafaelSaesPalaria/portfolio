@@ -32,7 +32,7 @@
 body {
     background: url(../images/logo.png) no-repeat 50% 50%, rgba(0, 0, 0, 1) linear-gradient(to bottom, purple,rgb(0, 162, 255)) no-repeat 100% 100%;
 
-    height: 200vh;
+    height: 95vh;
     color: var(--textColor);
     background-attachment: fixed;
 }
@@ -44,7 +44,7 @@ body::-webkit-scrollbar {
 
 header {
     padding: 2.0vh;
-    width: 144vh;
+    width: 72vh;
     margin: 4.0vh auto;
     text-align: center;
     font-family: var(--fontTitle);
@@ -64,7 +64,7 @@ main {
     background-color: rgba(243, 243, 243, 0);
     font-size: var(--fontText);
     padding: 2.0vh;
-    width: 73vw;
+    width: 90vw;
     margin: auto;
 }
 
@@ -131,6 +131,8 @@ a.button:active {
 }
 
 footer {
+    position: relative;
+    bottom: 0%;
     width: 100%;
 
     display: block;
