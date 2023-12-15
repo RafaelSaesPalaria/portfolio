@@ -30,9 +30,8 @@
 
 body {
     background-image: linear-gradient(to bottom, purple,rgb(0, 162, 255));
-    height: 100vh;
+    height: 95vh;
     color: var(--textColor);
-    overflow: hidden;
 }
 
 header {
@@ -83,8 +82,8 @@ nav a.button:active {
 
 footer {
     position: absolute;
-    bottom: 0px;
-    width: 100vw;
+    bottom: 0%;
+    width: 100%;
 
     display: block;
     margin-top: 20px;

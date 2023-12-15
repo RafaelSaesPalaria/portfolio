@@ -88,9 +88,10 @@ li p {
 }
 
 div.paralax {
+    display: block;
     margin: 10px;
-    height: 25vh;
-    width: 250px;
+    height: 30vh;
+    width: 40vh;
     margin: auto;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322);
     background-position: 50% 50%;
