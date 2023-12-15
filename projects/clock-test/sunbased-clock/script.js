@@ -5,13 +5,14 @@ var timeSpeed     = 1
 var intervalSpeed = 1000
 var degree = 0
 
-const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+var vw = 0
 
 //Constructor
 setInterval(update,intervalSpeed)
 
 function start() {
+    resize()
+    window.addEventListener('zoom', resize);
     update()
 }
 
@@ -21,6 +22,10 @@ function update() {
     updateSun();
     updateMoon();
     updateBackground();
+}
+
+function resize() {
+    vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 }
 
 //Methods
@@ -121,7 +126,7 @@ function getCardinalCoordinates(deg, radius) {
 function updateSun() {
     let sun = document.querySelector("div#sun")
     let deg = getAngle();
-    let cardinal = getCardinalCoordinates(deg , vh*0.70)
+    let cardinal = getCardinalCoordinates(deg , vw*0.35)
     sun.style.top = `calc(100% + ${cardinal[0]}px)`
     sun.style.left = `calc(50% + ${cardinal[1]}px)`
 }
@@ -129,7 +134,7 @@ function updateSun() {
 function updateMoon() {
     let moon = document.querySelector("div#moon")
     let deg = getAngle();
-    let cardinal = getCardinalCoordinates((deg+180%360) , vh*0.60)
+    let cardinal = getCardinalCoordinates((deg+180%360) , vw*0.30)
     moon.style.top = `calc(100% + ${cardinal[0]}px)`
     moon.style.left = `calc(50% + ${cardinal[1]}px)`
 }

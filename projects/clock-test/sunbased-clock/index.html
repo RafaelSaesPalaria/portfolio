@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="style.css">
     <title>Relógio</title>
 </head>
-<body onload="start()">
+<body onload="start()" onresize="resize()">
     <div id="sun"></div>
     <div id="moon"></div>
     <div id="digital-clock">00:00:00</div>
     <div id="player">
-        <span class="material-symbols-outlined" onclick="disaccelerate()">fast_rewind</span>
-        <span class="material-symbols-outlined" onclick="backward()">arrow_back</span>
-        <span class="material-symbols-outlined" onclick="pause()">pause</span>
-        <span class="material-symbols-outlined" onclick="play()">play_arrow</span>
-        <span class="material-symbols-outlined" onclick="accelerate()">fast_forward</span>
+        <span style="font-size: 2vw;" class="material-symbols-outlined" onclick="disaccelerate()">fast_rewind</span>
+        <span style="font-size: 2vw;" class="material-symbols-outlined" onclick="backward()">arrow_back</span>
+        <span style="font-size: 2vw;" class="material-symbols-outlined" onclick="pause()">pause</span>
+        <span style="font-size: 2vw;" class="material-symbols-outlined" onclick="play()">play_arrow</span>
+        <span style="font-size: 2vw;" class="material-symbols-outlined" onclick="accelerate()">fast_forward</span>
     </div>
     <script src="script.js"></script>
 </body>
