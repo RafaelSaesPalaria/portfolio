@@ -7,8 +7,8 @@
     padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
 
-    font-size: 1.3vw;
-    line-height: 3vw;
+    font-size: 2.6vh;
+    line-height: 6vh;
     box-sizing: border-box;
 }
 
@@ -17,9 +17,9 @@
     --fontSubtitle: 'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
     --fontText:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
 
-    --titleSize: 3vw;                        
-    --subTitleSize: 2vw;               
-    --textSize: 1.3vw;                     
+    --titleSize: 6vh;                        
+    --subTitleSize: 4vh;               
+    --textSize: 2.6vh;                     
 
     --textColor: rgb(255, 255, 255);
     --containerColor: rgba(243, 243, 243, 0.103);
@@ -32,7 +32,7 @@
 body {
     background-image: linear-gradient(to bottom, purple,rgb(0, 162, 255));
     background-attachment: fixed;
-    height: 95vh;
+    height: 100vh;
     color: var(--textColor);
 }
 
@@ -42,41 +42,41 @@ body::-webkit-scrollbar {
 }
 
 header {
-    padding: 2vw;
-    width: 70vw;
-    margin: 0.20vw auto 0.20vw auto;
+    padding: 4vh;
+    width: 140vh;
+    margin: 0.40vh auto 0.40vh auto;
     text-align: center;
-    border-radius: 15vw;
+    border-radius: 30vh;
 }
 
 header h1 {
     font-size: var(--titleSize);
     font-family: var(--fontTitle);
-    letter-spacing: 0.01vw;
+    letter-spacing: 0.02vh;
 }
 
 header p {
-    text-indent: 3vw;
+    text-indent: 6vh;
     font-family: var(--fontSubtitle);
     font-size: var(--subTitleSize);
-    padding: 0.5vw;
+    padding: 1vh;
 }
 
 nav {
     margin: auto;
-    width: 30vw;
+    width: 60vh;
 }
 
 nav a.button {
     display: block;
-    margin: 1.0vw auto;
+    margin: 2.0vh auto;
     color: var(--textColor);
     font-family: var(--fontSubtitle);
-    padding: 1vw 4vw;
+    padding: 2vh 8vh;
     font-size: var(--subTitleSize) ;
     text-align: center;
     text-decoration: none;
-    border-radius: 1.05vw;
+    border-radius: 2.1vh;
 }
 
 nav a.button:hover {
@@ -89,12 +89,12 @@ nav a.button:active {
 }
 
 footer {
-    width: 100vw;
+    width: 100%;
 
     display: block;
-    margin-top: 2.0vw;
-    box-shadow: 0px -0.5vw 1.0vw rgba(0, 0, 0, 0.329);
-    padding: 0.7vw;
+    margin-top: 4.0vh;
+    box-shadow: 0px -1vh 2.0vh rgba(0, 0, 0, 0.329);
+    padding: 1.4vh;
     background-color: black;
     text-align: center;
     font-size: var(--subTitleSize);
@@ -102,7 +102,7 @@ footer {
 
 .container {
     background-color: var(--containerColor);
-    border: 0.1vw solid var(--borderColor);
-    border-radius: 1.5vw;
-    box-shadow: 0.3vw 0.3vw 0.5vw rgba(0, 0, 0, 0.322), inset 0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.322);
+    border: 0.2vh solid var(--borderColor);
+    border-radius: 3vh;
+    box-shadow: 0.6vh 0.6vh 1vh rgba(0, 0, 0, 0.322), inset 0.2vh 0.2vh 0.2vh rgba(0, 0, 0, 0.322);
 }
