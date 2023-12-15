@@ -8,7 +8,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1em;
+    font-size: 1.1vw;
     background-color: blueviolet;
 }
 
@@ -18,12 +18,12 @@ main {
     left: 50%;
     transform: translate(-50%,-50%);
 
-    min-width: 460px;
+    min-width: 46vw;
     width: 60vw;
     height: 50vh;
     background-color: white;
-    border-radius: 15px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.733);
+    border-radius: 1.5vw;
+    box-shadow: 0px 0px 0.5vw rgba(0, 0, 0, 0.733);
 }
 
 section#login {
@@ -50,7 +50,7 @@ section#img img {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 128px;
+    width: 12.8vw;
 }
 
 section#img p {
@@ -65,25 +65,25 @@ section#img p {
 div#name, div#password {
     color:white;
     font-weight: bold;
-    text-indent: 7px;
+    text-indent: 0.7vw;
     display: inline-block;
-    margin: 20px 0px 0px 20px;
-    padding: 5px;
+    margin: 2vw 0px 0px 2vw;
+    padding: 0.5vw;
     background-color: purple;
-    border-radius: 10px;
-    font-size: 1.3em;
+    border-radius: 1vw;
+    font-size: 1.3vw;
 }
 
 label {
-    font-size: 20px;
+    font-size: 1.2vw;
 }
 
 input {
-    max-width: 200px;
-    height: 2.2em;  
+    max-width: 20vw;
+    height: 2.2vw;  
     background-color: rgb(133, 219, 198);
-    border-radius: 5px;
-    text-indent: 10px;
+    border-radius: 0.5vw;
+    text-indent: 1vw;
 }
 
 input[type="text"]:focus, input[type="password"]:focus {
@@ -92,13 +92,13 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 input[type="button"] {
     text-align: center;
-    margin: 20px 0px 0px 20px;
-    padding: 20px;
+    margin: 2vw 0px 0px 2vw;
+    padding: 2vw;
     text-indent: 0px;
 }
 
 input#enter {
-    border: 1px solid rgb(101, 167, 150);;
+    border: 0.1vw solid rgb(101, 167, 150);;
 }
 
 input#enter:hover {
@@ -111,7 +111,7 @@ input#enter:active {
 
 input#forgot {
     background-color: white;
-    border: 1px solid rgb(101, 167, 150);
+    border: 0.1vw solid rgb(101, 167, 150);
 }
 
 input#forgot:hover {
