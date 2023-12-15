@@ -121,7 +121,7 @@ a.button {
 
 a.button:hover {
     background-color: var(--hoverColor);
-    box-shadow: 0.1px 0.1px 0.3px rgba(0, 0, 0, 0.692), inset 0.1vw 0.1vw 0.3vw rgba(0, 0, 0, 0.692);
+    box-shadow: 0.1vw 0.1vw 0.3vw rgba(0, 0, 0, 0.692), inset 0.1vw 0.1vw 0.3vw rgba(0, 0, 0, 0.692);
 }
 
 a.button:active {
