@@ -17,8 +17,8 @@
     --fontSubtitle: 'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
     --fontText:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
 
-    --titleSize: 6vh;                        
-    --subTitleSize: 4vh;               
+    --titleSize: 4vh;                        
+    --subTitleSize: 2vh;               
     --textSize: 2.6vh;                     
 
     --textColor: rgb(255, 255, 255);
@@ -42,8 +42,8 @@ body::-webkit-scrollbar {
 }
 
 header {
-    padding: 4vh;
-    width: 70vh;
+    padding: 1vh;
+    width: 30vh;
     margin: 0.40vh auto 0.40vh auto;
     text-align: center;
     border-radius: 30vh;
@@ -52,14 +52,14 @@ header {
 header h1 {
     font-size: var(--titleSize);
     font-family: var(--fontTitle);
-    letter-spacing: 0.02vh;
+    letter-spacing: 0.02vw;
 }
 
 header p {
-    text-indent: 6vh;
+    text-indent: 3vh;
     font-family: var(--fontSubtitle);
     font-size: var(--subTitleSize);
-    padding: 1vh;
+    padding: 0.1vh 0.5vh;
 }
 
 nav {

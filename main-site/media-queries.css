@@ -45,31 +45,16 @@
         padding: 1.2vw;
     }
 
-    main {
-        width: 75vw;
-    }
-
-    li {
-        margin-top: 1.0vw;
-        padding: 2vw;
-    }
-
-    li h2 {
+    header p {
         padding: 1vw;
     }
 
-    div.paralax {
-        margin: 0.20vw;
-        height: 12vw;
-        width: 20vw;
+    nav a.button {
+        padding: 2vw;
     }
 
-    a.button {
-        position: relative;
-        top: -10vw;
-        left: 30vw;
-        padding: 1.6vw 4.0vw;
-        border-radius: 1vw;
+    footer {
+        padding: 1.4vw;
     }
 
 }
