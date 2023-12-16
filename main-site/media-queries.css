@@ -29,6 +29,10 @@
         
     }
 
+    html {
+        position: inherit;
+    }
+
     .container {
         background-color: var(--containerColor);
         border: 0.2vh solid var(--borderColor);

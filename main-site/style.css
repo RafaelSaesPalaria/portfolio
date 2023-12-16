@@ -29,10 +29,14 @@
  
 }
 
+html {
+    position: fixed;
+}
+
 body {
     background-image: linear-gradient(to bottom, purple,rgb(0, 162, 255));
     background-attachment: fixed;
-    height: 95vh;
+    height: 100vh;
     color: var(--textColor);
 }
 

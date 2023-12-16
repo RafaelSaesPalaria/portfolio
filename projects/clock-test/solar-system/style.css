@@ -10,7 +10,7 @@ html {
 
 main {
     background-color: rgb(0, 0, 0);
-    width: 100vw;
+    width: 105vw;
     height: 100vh;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
