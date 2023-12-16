@@ -28,11 +28,11 @@ div#analog-clock {
     left: 50%;
     transform: translate(-50%,-50%);
 
-    width: 24vw;
-    height: 24vw;
+    width: 48vh;
+    height: 48vh;
     background-color: gray;
-    box-shadow: 0.03vw 0.03vw 0.1vw black;
-    border: 0.1vw solid black;
+    box-shadow: 0.06vh 0.06vh 0.2vh black;
+    border: 0.2vh solid black;
     border-radius: 50%;
     background-image: radial-gradient(ellipse at 50% 50%,rgb(150, 150, 150), rgb(63, 63, 63));
 }
@@ -46,26 +46,26 @@ div.pointer {
 
     transform-origin: 50% 1%;
     border-radius: 0% 0% 35% 35%;
-    box-shadow: 0px 0.3vw 1vw rgba(0, 0, 0, 0.562);
+    box-shadow: 0px 0.3vh 1vh rgba(0, 0, 0, 0.562);
 }
 
 div#hours {
-    width: 0.6vw;
-    height: 7vw;
+    width: 1.2vh;
+    height: 14vh;
     background-color: white;
 }
 
 div#minutes {
-    width: 0.6vw;
-    height: 10vw;
+    width: 1.2vh;
+    height: 20vh;
     background-color: rgb(255, 255, 255)
 }
 
 div#seconds {
     top: 50%;
     left: 50%;
-    width: 0.3vw;
-    height: 10vw;
+    width: 0.6vh;
+    height: 20vh;
     background-color: red;
 }
 
@@ -75,8 +75,8 @@ div#axis {
     top: 50%;
     left: 50%;
 
-    width: 1.3vw;
-    height: 1.3vw;
+    width: 2.6vh;
+    height: 2.6vh;
     background-color: rgb(255, 0, 0);
     border-radius: 50%;
 }
@@ -89,7 +89,7 @@ div#numbers span{
 
     text-align: center;
     color: white;
-    font-size: 2vw;
+    font-size: 4vh;
 }
 
 div#bars {
@@ -107,8 +107,8 @@ div#bars div {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 0.5vw;
-    height: 0.2vw;
+    width: 1.0vh;
+    height: 0.4vh;
     background-color:rgb(255, 255, 255);
 }
 
@@ -117,13 +117,13 @@ div#digital-clock {
     top: 85%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 14vw;
+    width: 28vh;
 
     display: inline-block;
-    padding: 0.5vw 5vw 2vw 5vw;
-    border: 0.2vw solid rgb(255, 255, 255);
-    outline: 0.6vw solid black;
-    border-radius: 1vw;
+    padding: 1.0vh 10vh 4vh 10vh;
+    border: 0.4vh solid rgb(255, 255, 255);
+    outline: 1.2vh solid black;
+    border-radius: 2vh;
     background-color: rgb(0, 0, 0);
     user-select: none;
 }
@@ -133,17 +133,17 @@ div#digital-clock #player {
     cursor: pointer;
     display: block;
     width: max-content;
-    margin:auto
+    margin:auto;
 }
 
 div#digital-clock #time {
     font-family: 'digital' ,Arial, Helvetica, sans-serif;
-    letter-spacing: 0.1vw;
-    font-size: 5vw;
+    letter-spacing: 0.2vh;
+    font-size: 10vh;
     display: block;
     width: max-content;
-    margin-left: 0vw;
-    box-shadow: 0.6vw 0.6vw 1vw rgba(0, 0, 0, 0.226);
+    margin-left: -2vh;
+    box-shadow: 1.2vh 1.2vh 2vh rgba(0, 0, 0, 0.226);
     color: red;
-    text-shadow: 0px 0px 2vw rgba(255, 0, 0, 0.904);
+    text-shadow: 0px 0px 4vh rgba(255, 0, 0, 0.904);
 }

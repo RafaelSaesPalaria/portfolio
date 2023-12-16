@@ -7,7 +7,7 @@ var timeDirection=1
 var timeSpeed =1
 var intervalSpeed = 1000
 
-var vw=0
+var vh=0
 
 //Constructor
 /**
@@ -23,7 +23,7 @@ function start() {
 }
 
 function resize() {
-    vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 }
 
 function clockWork() {
@@ -129,7 +129,7 @@ function updateDigitalClock() {
 
 function setNumbersPosition() {
 
-    let r = 0.1*vw;
+    let r = 0.2*vh;
 
     for (let i=1;i<=12;i++) {
         
@@ -149,13 +149,13 @@ function setNumbersPosition() {
 
 function addMinuteBar() {
     let bars = document.querySelector("div#bars")
-    let r = 0.112*vw;
+    let r = 0.224*vh;
     
     for (let i=0;i<60;i++) {
         let bar = document.createElement("div")
 
         if (i%5==0) {
-            bar.style.width = "0.8vw"
+            bar.style.width = "0.8vh"
         }
 
 
