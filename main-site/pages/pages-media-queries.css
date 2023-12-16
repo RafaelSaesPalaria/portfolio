@@ -50,7 +50,7 @@
     }
 
     li {
-        margin-top: 1.0vw;
+        margin-top: 3.0vw;
         padding: 2vw;
     }
 
@@ -59,16 +59,16 @@
     }
 
     div.paralax {
+        display: inline-block;
         margin: 0.20vw;
         height: 12vw;
         width: 20vw;
     }
 
     a.button {
-        position: relative;
-        top: -10vw;
-        left: 30vw;
+        position: absolute;
         padding: 1.6vw 4.0vw;
+        margin: 2vw;
         border-radius: 1vw;
     }
 

@@ -8,7 +8,7 @@
     font-family: Arial, Helvetica, sans-serif;
 
     font-size: 2.6vh;
-    line-height: 6vh;
+    line-height: 4vh;
     box-sizing: border-box;
 }
 
@@ -43,7 +43,7 @@ body::-webkit-scrollbar {
 
 header {
     padding: 1vh;
-    width: 30vh;
+    width: 50vh;
     margin: 0.40vh auto 0.40vh auto;
     text-align: center;
     border-radius: 30vh;
@@ -52,7 +52,7 @@ header {
 header h1 {
     font-size: var(--titleSize);
     font-family: var(--fontTitle);
-    letter-spacing: 0.02vw;
+    padding: 0.2vh;
 }
 
 header p {
@@ -69,7 +69,7 @@ nav {
 
 nav a.button {
     display: block;
-    margin: 2.0vh auto;
+    margin: 2.0vh auto 2.0vh auto;
     color: var(--textColor);
     font-family: var(--fontSubtitle);
     padding: 2vh 8vh;
