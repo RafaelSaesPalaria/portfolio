@@ -29,6 +29,10 @@
         
     }
 
+    body {
+        height: 95vh;
+    }
+
     .container {
         background-color: var(--containerColor);
         border: 0.2vh solid var(--borderColor);

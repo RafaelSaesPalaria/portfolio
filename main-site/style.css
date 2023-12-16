@@ -42,9 +42,10 @@ body::-webkit-scrollbar {
 }
 
 header {
+    display: block;
     padding: 1vh;
-    width: 50vh;
-    margin: 0.40vh auto 0.40vh auto;
+    width: 70vw;
+    margin: 0.80vw auto 0.80vw auto;
     text-align: center;
     border-radius: 30vh;
 }
@@ -64,7 +65,7 @@ header p {
 
 nav {
     margin: auto;
-    width: 60vh;
+    width: 60vw;
 }
 
 nav a.button {
@@ -91,13 +92,13 @@ nav a.button:active {
 
 footer {
     position: absolute;
-    width: 100%;
-    bottom: calc(0%);
+    width: 100vw;
+    bottom: 0vh;
 
     display: block;
     margin-top: 4.0vh;
     box-shadow: 0px -1vh 2.0vh rgba(0, 0, 0, 0.329);
-    padding: 1.4vh;
+    padding: 1.5vh;
     background-color: black;
     text-align: center;
     font-size: var(--subTitleSize);
