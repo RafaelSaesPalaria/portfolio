@@ -3,7 +3,11 @@
 * {
     margin: 0px;
     padding: 0px;
-    font: normal 2.50vw 'Arial';
+    font: normal 5vh 'Arial';
+}
+
+html {
+    position: fixed;
 }
 
 body {
@@ -23,11 +27,11 @@ div#digital-clock {
     background-color: white;
     margin: auto;
     text-align: center;
-    padding: 1vw;
-    width: 19vw;
-    border-radius: 1vw;
-    border: 0.1vw solid black;
-    box-shadow: 0.1vw 0.1vw 0.1vw black; /*Make shadow run oposite to the sun*/
+    padding: 2vh;
+    width: 40vh;
+    border-radius: 2vh;
+    border: 0.2vh solid black;
+    box-shadow: 0.2vh 0.2vh 0.2vh black; /*Make shadow run oposite to the sun*/
 }
 
 div#player {
@@ -39,19 +43,19 @@ div#player {
     background-color: white;
     margin: auto;
     text-align: center;
-    padding: 1vw;
-    width: 19vw;
-    border-radius: 1vw;
-    border: 0.1vw solid black;
-    box-shadow: 0.1vw 0.1vw 0.1vw black; 
+    padding: 2vh;
+    width: 40vh;
+    border-radius: 2vh;
+    border: 0.2vh solid black;
+    box-shadow: 0.2vh 0.2vh 0.2vh black; 
     user-select: none;
 }
 
 div#player span {
     cursor: pointer;
-    padding: 0.5vw;
-    border-radius: 1.5vw;
-    border: 0.1vw solid black;
+    padding: 1vh;
+    border-radius: 3vh;
+    border: 0.2vh solid black;
 }
 
 div#sun, div#moon {
@@ -64,13 +68,13 @@ div#sun, div#moon {
 
 div#sun {
     /*background-color: yellow;*/
-    width: 7.0vw;
-    height: 7.0vw;
+    width: 14.0vh;
+    height: 14.0vh;
 }
 
 div#moon {
-    box-shadow: 0px 0px 0.5vw rgba(255, 255, 255, 0.829);
+    box-shadow: 0px 0px 1vh rgba(255, 255, 255, 0.829);
     background-color: white;
-    width: 5.0vw;
-    height: 5.0vw;
+    width: 10.0vh;
+    height: 10.0vh;
 }
