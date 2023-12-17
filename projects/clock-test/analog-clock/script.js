@@ -129,7 +129,8 @@ function updateDigitalClock() {
 
 function setNumbersPosition() {
 
-    let r = 0.2*vh;
+    //Check if it is mobile
+    let r = 0.18*vh;
 
     for (let i=1;i<=12;i++) {
         
@@ -149,7 +150,8 @@ function setNumbersPosition() {
 
 function addMinuteBar() {
     let bars = document.querySelector("div#bars")
-    let r = 0.224*vh;
+        //Check if it is mobile
+    let r = 0.21*vh;
     
     for (let i=0;i<60;i++) {
         let bar = document.createElement("div")
