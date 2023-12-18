@@ -18,15 +18,32 @@ function Circle(x,y,dx,dy,radius) {
         c.closePath()
     };
 
+    this.update = function() {
+        this.draw()
+    }
+
+}
+
+var circleArray = []
+function init() {
+    for (let i=0;i<10;i++) {
+        let radius = 30
+        let x = radius+Math.random()*(level.width-2*radius)
+        let y = radius+Math.random()*(level.height-2*radius)
+        let circle = new Circle(x,y,10,10,radius);
+        circleArray.push(circle)
+    }
 }
 
 function animate() {
     c.clearRect(0,0,level.width,level.height)
     requestAnimationFrame(animate)
 
-    cx = new Circle(100,100,10,10,100);
-    cx.draw()
+    circleArray.forEach(circle => {
+        circle.update()
+    })
 
 }
 
+init()
 animate()
