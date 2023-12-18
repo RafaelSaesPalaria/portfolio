@@ -5,10 +5,12 @@ level.height= innerHeight*0.7
 var c = level.getContext("2d")
 
 var score = 0
+var redcount = 0
 
 var mouse = {
     x:undefined,
-    y:undefined
+    y:undefined,
+    clickCount:0
 }
 window.addEventListener("resize",function() {
     level.width = this.innerWidth*0.95
@@ -16,20 +18,23 @@ window.addEventListener("resize",function() {
     init()
 })
 window.addEventListener("mousedown",function(event) {
+   mouseClick(event)
+})
+
+window.addEventListener("touchstart",function(event) {
+    mouseClick(event)
+})
+
+function mouseClick(event) {
     console.log(event)
     if ((event.clientX>level.offsetLeft & event.clientX<level.offsetLeft+level.width) &
         (event.clientY>level.offsetTop & event.clientY<level.offsetTop+level.width)) {
         mouse.x = event.clientX - level.offsetLeft
         mouse.y = event.clientY - level.offsetTop
+        mouse.clickCount+=1
+        updateScore()
     }
-})
-
-window.addEventListener("touchstart",function(event) {
-    mouse.x = event.x 
-    mouse.y = event.y
-})
-
-
+}
 
 function Circle(x,y,dx,dy,radius,color,points) {
     this.x = x
@@ -51,8 +56,16 @@ function Circle(x,y,dx,dy,radius,color,points) {
 
     this.update = function() {
 
-        if ((mouse.x - (this.x) < this.radius & mouse.x - (this.x) >-this.radius)&
-        (mouse.y - (this.y) < this.radius & mouse.y - (this.y) >-this.radius)) {
+        if ((mouse.x - (this.x) - this.dx< this.radius & mouse.x - (this.x) + this.dx>-this.radius)&
+        (mouse.y - (this.y) - this.dy < this.radius & mouse.y - (this.y) + this.dy>-this.radius)) {
+
+            if (this.points==3) {
+                redcount-=1
+            }
+            if (redcount==0) {
+                init()
+            }
+
             score+=this.points
             updateScore()
             let indexOfCircle =circleArray.indexOf(this)
@@ -87,7 +100,7 @@ function Circle(x,y,dx,dy,radius,color,points) {
 function updateScore() {
     var scoreboard = document.querySelector("#scoreboard");
     if (scoreboard) {
-        scoreboard.innerText = `Score: ${score}`;
+        scoreboard.innerText = `Score: ${score}\nClicks: ${mouse.clickCount}\n`;
     } else {
         console.error("Scoreboard element not found");
     }
@@ -111,7 +124,7 @@ function init() {
     }
 
     let redPercentage = 20
-    for (let qnt=0; qnt<circleArray.length/100*redPercentage;qnt++) {
+    for (redcount=0; redcount<circleArray.length/100*redPercentage;redcount++) {
         let i = Math.floor(Math.random()*circleArray.length)
         circleArray[i].setRed()
     }

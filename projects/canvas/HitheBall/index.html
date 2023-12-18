@@ -18,6 +18,7 @@
         body {
             width: 100vw;
             height: 100vh;
+            background-color: darkgray;
         }
 
         canvas {
@@ -27,12 +28,19 @@
             height: 70vh;
             margin: 10px auto;
             user-select: all;
+            background-color: white;
+        }
+
+        div#scoreboard {
+            margin: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5em;
         }
     </style>
 </head>
 <body>
     <canvas></canvas>
     <script src="script.js"></script>
-    <div id="scoreboard">Score: </div>
+    <div id="scoreboard">Score: 0<br>Clicks: 0</div>
 </body>
 </html>
