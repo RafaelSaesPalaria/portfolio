@@ -94,6 +94,10 @@ function Circle(x,y,dx,dy,radius,color,points) {
         this.dy*=1.2
     }
 
+    this.isRed = function() {
+        return this.color=="red"
+    }
+
 }
 
 function updateScore() {
@@ -146,7 +150,9 @@ function init() {
     let redPercentage = 20
     for (redcount=0; redcount<circleArray.length/100*redPercentage;redcount++) {
         let i = Math.floor(Math.random()*circleArray.length)
-
+        if (circleArray[i].isRed()) {
+            redcount-=1
+        }
         circleArray[i].setRed()
     }
 
