@@ -26,7 +26,6 @@ window.addEventListener("touchstart",function(event) {
 })
 
 function mouseClick(event) {
-    console.log(event)
     if ((event.clientX>level.offsetLeft & event.clientX<level.offsetLeft+level.width) &
         (event.clientY>level.offsetTop & event.clientY<level.offsetTop+level.width)) {
         mouse.x = event.clientX - level.offsetLeft
@@ -63,7 +62,7 @@ function Circle(x,y,dx,dy,radius,color,points) {
                 redcount-=1
             }
             if (redcount==0) {
-                init()
+                end()
             }
 
             score+=this.points
@@ -95,21 +94,46 @@ function Circle(x,y,dx,dy,radius,color,points) {
         this.dy*=1.2
     }
 
+    this.isRed = function() {
+        return this.color=="red"
+    }
+
 }
 
 function updateScore() {
     var scoreboard = document.querySelector("#scoreboard");
     if (scoreboard) {
-        scoreboard.innerText = `Score: ${score}\nClicks: ${mouse.clickCount}\n`;
+        scoreboard.innerText = `Score: ${score}\nClicks: ${mouse.clickCount}\n`;/*+`Reds: ${redcount}`;*/
     } else {
         console.error("Scoreboard element not found");
     }
 }
 
+function end() {
+    document.querySelector("div#end").style.display="block"
+    let points = document.querySelector("div#end span#points")
+    let point = score*100/mouse.clickCount
+    points.innerText = `Points: ${(point.toFixed(0))}\n`
+
+    let result = document.querySelector("div#end span#result")
+    if (score>0) {
+        result.innerText = `YOU WON\n`
+    } else {
+        result.innerText= `YOU LOST\n`
+    }
+}
+
 var circleArray = []
 function init() {
+    document.querySelector("div#end").style.display = "none"
+
     circleArray = []
-    for (let i=0;i<50;i++) {
+    redcount=0
+    clickCount=0
+    score=0
+    let levelArea = level.width*level.height
+
+    for (let i=0;i<levelArea/2000;i++) {
         let radius = 20
         let x = radius+Math.random()*(level.width-2*radius)
         let y = radius+Math.random()*(level.height-2*radius)
@@ -126,6 +150,9 @@ function init() {
     let redPercentage = 20
     for (redcount=0; redcount<circleArray.length/100*redPercentage;redcount++) {
         let i = Math.floor(Math.random()*circleArray.length)
+        if (circleArray[i].isRed()) {
+            redcount-=1
+        }
         circleArray[i].setRed()
     }
 
