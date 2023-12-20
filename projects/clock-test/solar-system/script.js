@@ -1,84 +1,23 @@
-var vh = 0
+var canvas = document.querySelector("canvas")
+var c = canvas.getContext("2d")
 
-var sun = document.querySelector("div#sun")
-var earth = document.querySelector("div#earth")
-var moon = document.querySelector("div#moon")
-
-var position=0
-var moonspeed = 0.8
-var earthspeed = 0.4
-
-var interval = setInterval(sunCentered,10)
-
-function start() {
-    resize();
-    window.addEventListener('zoom', resize);
-    createStars();
-    sunCentered()
-}
-
-function resize() {
-    vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-}
-
-function sunClicked() {
-    clearInterval(interval)
-    interval = setInterval(sunCentered,10)
-    sunCentered()
-}
-
-function earthClicked() {
-    clearInterval(interval)
-    interval = setInterval(earthCentered,10)
-    earthCentered()
-}
-
-function moonClicked() {
-    clearInterval(interval)
-    interval = setInterval(moonCentered,10)
-    moonCentered()
-}
-
-function sunCentered() {
-    orbit(sun   ,earth,position*0.4,vh*0.4)
-    orbit(earth,moon,position*0.8,vh*0.2)
-
-    position+=1
-}
-
-function earthCentered() {
-    orbit(earth, sun,position*0.4,vh*0.4)
-    orbit(earth,moon,position*0.8,vh*0.2)
-
-    position+=1
-}
-
-function moonCentered() {
-    orbit(moon,sun,position*0.4,vh*0.4)
-    orbit(moon,earth,position*0.8,vh*0.2)
-
-    position+=1
-}
-
-function orbit(centerObj,satelliteObj,deg,radius) {
-
-    let theta = (Math.PI*2)/360
-    let orbitX = Math.sin(theta*deg)*(radius)
-    let orbitY = Math.cos(theta*deg)*(radius)
-
-    let centerX = centerObj.getBoundingClientRect().left + centerObj.getBoundingClientRect().width / 2;
-
-    let centerY = centerObj.getBoundingClientRect().top + centerObj.getBoundingClientRect().height / 2;
-
-    satelliteObj.style.top = `calc(${centerY}px + ${orbitY}px)`
-    satelliteObj.style.left = `calc(${centerX}px + ${orbitX}px)`
-}
+canvas.width = innerWidth
+canvas.height = innerHeight
 
 function createStars() {
-    for (n=0;n<200;n++) {
-        window.document.getElementById("stars").innerHTML += '<div class="star" id=star-'+n+'></div>';
-
-        window.document.getElementById("star-"+n).style.top = (Math.random()*100)+"%";
-        window.document.getElementById("star-"+n).style.left = (Math.random()*100)+"%";
+    for (let i=0;i<100;i++) {
+        let x=Math.random()*canvas.width
+        let y=Math.random()*canvas.height
+        createStar(x,y)
     }
 }
+
+function createStar(x,y) {
+    c.beginPath()
+    c.fillStyle = "white"
+    c.arc(x,y,1,0,Math.PI*2,false)
+    c.fill()
+    c.closePath()
+}
+
+createStars()
