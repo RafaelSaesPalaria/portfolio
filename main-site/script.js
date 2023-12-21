@@ -32,6 +32,8 @@ function openMenu() {
     });
 }
 
+clickMenu()
+
 /*function showWeb() {
     iframe_pages.src="main-site/pages/web.html"
 }

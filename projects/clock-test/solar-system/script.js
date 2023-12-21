@@ -25,18 +25,25 @@ function sunClicked() {
     clearInterval(interval)
     interval = setInterval(sunCentered,10)
     sunCentered()
+    center(sun)
 }
 
 function earthClicked() {
     clearInterval(interval)
     interval = setInterval(earthCentered,10)
     earthCentered()
+    center(earth)
 }
 
 function moonClicked() {
     clearInterval(interval)
     interval = setInterval(moonCentered,10)
     moonCentered()
+    center(moon)
+}
+
+function center(obj) {
+
 }
 
 function sunCentered() {
