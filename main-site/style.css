@@ -50,7 +50,7 @@ header {
     display: block;
     padding: 1vh;
     width: 70vw;
-    margin: 0.80vw auto 0.80vw auto;
+    margin: 1.80vw auto 0.80vw auto;
     text-align: center;
     border-radius: 30vh;
 }
@@ -70,7 +70,7 @@ header p {
 
 nav {
     margin: auto;
-    width: 60vw;
+    width: 100vw;
 }
 
 nav a.button {
