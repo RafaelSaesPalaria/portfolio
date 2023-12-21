@@ -129,8 +129,7 @@ function updateDigitalClock() {
 
 function setNumbersPosition() {
 
-    //Check if it is mobile
-    let r = 0.18*vh;
+    let r = 0.19*vh;
 
     for (let i=1;i<=12;i++) {
         
