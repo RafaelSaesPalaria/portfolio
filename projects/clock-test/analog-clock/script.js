@@ -129,7 +129,7 @@ function updateDigitalClock() {
 
 function setNumbersPosition() {
 
-    let r = 0.2*vh;
+    let r = 0.19*vh;
 
     for (let i=1;i<=12;i++) {
         
@@ -149,7 +149,7 @@ function setNumbersPosition() {
 
 function addMinuteBar() {
     let bars = document.querySelector("div#bars")
-    let r = 0.224*vh;
+    let r = 0.22*vh;
     
     for (let i=0;i<60;i++) {
         let bar = document.createElement("div")
