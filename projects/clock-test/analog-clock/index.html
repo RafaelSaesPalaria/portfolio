@@ -1,39 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
-
-    <link rel="stylesheet" href="style.css">
-    <title>Relógio</title>
+    <title>Analog clock</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        html {
+            position: fixed;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+        canvas {
+            border: 1px solid black;
+            background-image: linear-gradient(to bottom, rgb(165, 136, 42), rgb(61, 15, 15));
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
 </head>
-<body onload="start()" onresize="resize()">
-    <div id="analog-clock">
-        <div id="numbers"></div>
-        <div id="bars"></div>
-        <div class="pointer" id="hours"></div>
-        <div class="pointer" id="minutes"></div>
-        <div class="pointer" id="seconds"></div>
-        <div id="axis"></div>
-    </div>
-    <abbr title="
-        font: digital_7, made by Style_7
-        http://www.styleseven.com/
-        free for personal use, acess in 2023
-        https://www.dafont.com/pt/digital-7.font">
-    <div id="digital-clock">
-        <div id="player">
-            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="disaccelerate()">fast_rewind</span>
-            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="backward()">arrow_back</span>
-            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="pause()">pause</span>
-            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="play()">play_arrow</span>
-            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="accelerate()">fast_forward</span>
-        </div>
-        <div id="time">00:00:00</div>
-    </div>
-    </abbr>
-    <script src="script.js"></script>
+<body>
+    <canvas></canvas>
+    <script src="scripts.js"></script>
 </body>
 </html>
