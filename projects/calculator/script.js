@@ -2,12 +2,20 @@ var main = document.querySelector("main");
 
 var value = Number();
 var lastOperator = "+"
+var firstDecimal = false
 
 var normalCalculator = [[                   "+"],
                                                       ["7","8","9"   ,"-"],
                                                       ["4","5","6"   ,"*"],
                                                       ["3","2","1"   ,"/"],
                                                       [">","0","del","="]]
+
+addEventListener("keydown",keyhandler)
+
+function keyhandler(event) {
+    console.log(event)
+    onClick(event.key)
+}
 
 function start() {
     createComponents(normalCalculator);
@@ -54,17 +62,27 @@ function onClick(txt) {
 }
 
 function onClick_number(number) {
+    if (firstDecimal) {
+        number= "."+number
+    }
     document.querySelector(`input[type="number"]#txtResult`).value+=number;
+    firstDecimal=false
 }
 
 function onClick_operator(operator) {
     let textField = document.querySelector(`input[type="number"]#txtResult`);
 
     switch (operator) {
+        case ".":
+        case ",":
+            firstDecimal= true
+            break;
         case ">":
+        case "Backspace":
             textField.value = textField.value.substring(0,textField.value.length-1)
             break;
         case "del":
+        case "Delete":
             textField.value = ""
             break;
         default:
@@ -76,7 +94,7 @@ function onClick_operator(operator) {
 function aritmeticOperator(operator) {
     let textField = document.querySelector(`input[type="number"]#txtResult`);
 
-    if (!(operator === "=")) {
+    if (!(operator === "=" || operator === "Enter")) {
         lastOperator = operator
     }
 
