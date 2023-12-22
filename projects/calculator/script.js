@@ -9,6 +9,13 @@ var normalCalculator = [[                   "+"],
                                                       ["3","2","1"   ,"/"],
                                                       [">","0","del","="]]
 
+addEventListener("keydown",keyhandler)
+
+function keyhandler(event) {
+    console.log(event)
+    onClick(event.key)
+}
+
 function start() {
     createComponents(normalCalculator);
 }
