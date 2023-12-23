@@ -5,22 +5,30 @@ canvas.width = innerWidth
 canvas.height= innerHeight
 
 addEventListener("keydown",keyhandler)
+addEventListener("keyup",keyhandler)
 
+var up = false
+var down = false
+var right = false
+var left = false
 function keyhandler(event) {
+    direction = true
+    if (event.type === "keyup") {
+        direction = false
+    }
     switch (event.key) {
         case 'w':
-            player.dy-=player.speed
+            up = direction
             break;
         case 's':
-            player.dy+=player.speed
+            down = direction
             break;
         case 'a':
-            player.dx-=player.speed
+            left = direction
             break
         case 'd':
-            player.dx+=player.speed
+            right = direction
             break
-        break;
     }
 }
 
@@ -42,7 +50,26 @@ function Player() {
         c.closePath()
     }
 
+    this.keyboardMoviment = function() {
+        if (up & !down) {
+            this.dy-=this.speed*2
+        } else if (!up & down) {
+            this.dy+=this.speed
+        } else {
+        }
+
+        if (left & !right) {
+            this.dx-=this.speed
+        } else if (!left & right) {
+            this.dx+=this.speed
+        } else {
+            
+        }
+    }
+
     this.update = function() {
+
+        this.keyboardMoviment()
 
         if (this.dx>0) {
             this.dx-=1
