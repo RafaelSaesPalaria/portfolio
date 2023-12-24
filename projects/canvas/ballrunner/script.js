@@ -32,16 +32,18 @@ function keyhandler(event) {
     }
 }
 
-function Player() {
-    this.x = 200
-    this.y = 200
-    this.dx=0
-    this.dy=0
-    this.radius = 50
-    this.color = "red"
-    this.speed = 5
+class Circle {
+    constructor() {
+        this.x = 200
+        this.y = 200
+        this.dx=0
+        this.dy=0
+        this.radius = 50
+        this.color = "red"
+        this.speed = 5
+    }
     
-    this.draw = function() {
+    draw() {
         c.beginPath()
         c.arc(this.x,this.y,this.radius,0,Math.PI*2,false)
         c.fillStyle = this.color
@@ -50,7 +52,37 @@ function Player() {
         c.closePath()
     }
 
-    this.keyboardMoviment = function() {
+    update() {
+        if (this.y+this.radius+this.dy>canvas.height || this.y - this.radius + this.dy < 0) {
+            this.dy = -this.dy
+        } else {
+            this.dy+=1
+        }
+
+        this.x+=this.dx
+        this.y+=this.dy
+        this.draw();
+    }
+
+}
+
+class Enemy extends Circle {
+    constructor() {
+        super()
+        this.y = this.radius+Math.random()*(canvas.height-2*this.radius);
+        this.x = canvas.width+this.radius
+        this.dx= -(Math.random()*30)
+        this.color="blue"
+    }
+}
+
+class Player extends Circle {
+    constructor() {
+        super()
+        this.color="red"
+    }
+
+    keyboardMoviment() {
         if (up & !down & (canvas.height-this.y-this.radius<30)) {
             this.dy=-this.speed*7
         } else if (!up & down) {
@@ -68,10 +100,9 @@ function Player() {
         }
     }
 
-    this.update = function() {
-
+    update() {
         this.keyboardMoviment()
-
+        
         if (this.dx>0) {
             this.dx-=1
         } else if (this.dx<0) {
@@ -85,29 +116,24 @@ function Player() {
         if (this.x+this.radius+this.dx>canvas.width || this.x - this.radius + this.dx < 0) {
             this.dx = -this.dx
         }
-        
-        if (this.y+this.radius+this.dy>canvas.height || this.y - this.radius + this.dy < 0) {
-            this.dy = -this.dy
-        } else {
-            this.dy+=1
-        }
 
-        this.x+=this.dx
-        this.y+=this.dy
-        this.draw();
+        super.update()
     }
 
 }
 
 var player = new Player()
-function init() {
-    
-}
+var enemy= new Enemy()
+
+function init() {}
+function enemySpawn() {}
+
 function animate() {
     c.clearRect(0,0,canvas.width,canvas.height)
     requestAnimationFrame(animate)
 
     player.update()
+    enemy.update()
 }
 
 init()
