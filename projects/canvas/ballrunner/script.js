@@ -51,17 +51,18 @@ function Player() {
     }
 
     this.keyboardMoviment = function() {
-        if (up & !down) {
-            this.dy-=this.speed*2
+        if (up & !down & (canvas.height-this.y-this.radius<30)) {
+            this.dy=-this.speed*7
         } else if (!up & down) {
             this.dy+=this.speed
         } else {
+
         }
 
         if (left & !right) {
-            this.dx-=this.speed
+            this.dx-=this.speed/2
         } else if (!left & right) {
-            this.dx+=this.speed
+            this.dx+=this.speed/2
         } else {
             
         }
