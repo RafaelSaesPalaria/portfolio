@@ -49,6 +49,7 @@ function center(obj) {
 function sunCentered() {
     orbit(sun   ,earth,position*0.4,vh*0.4)
     orbit(earth,moon,position*0.8,vh*0.2)
+    updateEarthBackground(position*0.4)
 
     position+=1
 }
@@ -56,6 +57,7 @@ function sunCentered() {
 function earthCentered() {
     orbit(earth, sun,position*0.4,vh*0.4)
     orbit(earth,moon,position*0.8,vh*0.2)
+    updateEarthBackground((position*0.4)+180)
 
     position+=1
 }
@@ -63,6 +65,7 @@ function earthCentered() {
 function moonCentered() {
     orbit(moon,sun,position*0.4,vh*0.4)
     orbit(moon,earth,position*0.8,vh*0.2)
+    updateEarthBackground((position*0.4)+180)
 
     position+=1
 }
@@ -88,4 +91,14 @@ function createStars() {
         window.document.getElementById("star-"+n).style.top = (Math.random()*100)+"%";
         window.document.getElementById("star-"+n).style.left = (Math.random()*100)+"%";
     }
+}
+
+function updateEarthBackground(deg) {
+    deg = (360 - (deg-90)) % 360;
+    let theta = (deg * Math.PI) / 180;
+
+    let x = Math.cos(theta) * 100;
+    let y = Math.sin(theta) * 100;
+
+    earth.style.background = `radial-gradient(circle at ${50 + x}% ${50 + y}%, darkblue, blue 60%, yellow 95%)`;
 }
