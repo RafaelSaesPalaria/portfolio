@@ -1,11 +1,13 @@
 var canvas = document.querySelector("canvas")
 var c = canvas.getContext("2d")
+var alive = true
 
-canvas.width = innerWidth
-canvas.height= innerHeight
+canvas.width = innerWidth*0.95
+canvas.height= innerHeight*0.7
 
 addEventListener("keydown",keyhandler)
 addEventListener("keyup",keyhandler)
+addEventListener("resize",init)
 
 var up = false
 var down = false
@@ -42,7 +44,7 @@ class Circle {
         this.color = "red"
         this.gravity = 1.5
         this.friction = 0
-        this.speed = 5
+        this.speed = 6
     }
     
     draw() {
@@ -68,7 +70,7 @@ class Enemy extends Circle {
         super()
         this.y = (canvas.height/2+this.radius+Math.random()*((canvas.height/2)-2*this.radius)); 
         this.x = canvas.width+this.radius
-        this.dx= -10-(Math.random()*30)
+        this.dx= -10-(Math.random()*(canvas.width/1000))
         this.radius=25
         this.color="blue"
     }
@@ -86,12 +88,12 @@ class Enemy extends Circle {
             if (Math.random()>0.5) {
                 this.y = (canvas.height/2+this.radius+Math.random()*((canvas.height/2)-2*this.radius));
                 this.x = canvas.width+this.radius
-                this.dx= -10-(Math.random()*30)
+                this.dx= -10-(Math.random()*(canvas.width/1000))
                 this.dy = 0
             } else {
                 this.x = (this.radius+Math.random()*((canvas.width)-2*this.radius));
                 this.y = 0
-                this.dy= +10+(Math.random()*20)
+                this.dy= +10+(Math.random()*(canvas.height/1000))
                 this.dx = 0
             }
         }   
@@ -104,7 +106,7 @@ class Player extends Circle {
     constructor() {
         super()
         this.color="red"
-        this.maxSpeed = 30
+        this.maxSpeed = (canvas.width/100)*6
     }
 
     keyboardMoviment() {
@@ -148,34 +150,42 @@ class Player extends Circle {
     }
 
     die() {
-        this.color = "purple"
+        alive = false
+        let dieScreen = document.querySelector("div#end")
+        dieScreen.style.display = "block"
     }
-
 }
-
-
 
 var enemys = []
 var players = []
 function init() {
+    alive = true
+    document.querySelector("div#end").style.display = "none"
+    canvas.width = innerWidth*0.95
+    canvas.height= innerHeight*0.7
+    enemys = []
+    players = []
     players.push(new Player())
     enemys.push(new Enemy())
     enemys.push(new Enemy())
+    animate()
 }
 function enemySpawn() {}
 
 function animate() {
-    c.clearRect(0,0,canvas.width,canvas.height)
-    requestAnimationFrame(animate)
+    if (alive) {
+        c.clearRect(0,0,canvas.width,canvas.height)
+        requestAnimationFrame(animate)
 
-    enemys.forEach(enemy =>{
-        enemy.update()
-    })
+        enemys.forEach(enemy =>{
+            enemy.update()
+        })
 
-    players.forEach(player =>{
-        player.update()
-    })
+        players.forEach(player =>{
+            player.update()
+        })
 
+    }
 }
 
 init()
