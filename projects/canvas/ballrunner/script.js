@@ -1,5 +1,6 @@
 var canvas = document.querySelector("canvas")
 var c = canvas.getContext("2d")
+var alive = true
 
 canvas.width = innerWidth*0.95
 canvas.height= innerHeight*0.7
@@ -149,16 +150,17 @@ class Player extends Circle {
     }
 
     die() {
-        this.color = "purple"
+        alive = false
+        let dieScreen = document.querySelector("div#end")
+        dieScreen.style.display = "block"
     }
-
 }
-
-
 
 var enemys = []
 var players = []
 function init() {
+    alive = true
+    document.querySelector("div#end").style.display = "none"
     canvas.width = innerWidth*0.95
     canvas.height= innerHeight*0.7
     enemys = []
@@ -166,21 +168,24 @@ function init() {
     players.push(new Player())
     enemys.push(new Enemy())
     enemys.push(new Enemy())
+    animate()
 }
 function enemySpawn() {}
 
 function animate() {
-    c.clearRect(0,0,canvas.width,canvas.height)
-    requestAnimationFrame(animate)
+    if (alive) {
+        c.clearRect(0,0,canvas.width,canvas.height)
+        requestAnimationFrame(animate)
 
-    enemys.forEach(enemy =>{
-        enemy.update()
-    })
+        enemys.forEach(enemy =>{
+            enemy.update()
+        })
 
-    players.forEach(player =>{
-        player.update()
-    })
+        players.forEach(player =>{
+            player.update()
+        })
 
+    }
 }
 
 init()
