@@ -38,6 +38,7 @@ body {
     background-attachment: fixed;
     height: 100vh;
     color: var(--textColor);
+    position: fixed;
 }
 
 body::-webkit-scrollbar {

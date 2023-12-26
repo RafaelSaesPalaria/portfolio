@@ -171,6 +171,10 @@ div#web-project-5-img {
     background-image: url(../../projects/canvas/dontmisstheball/project-img.png);
 }
 
+div#web-project-6-img {
+    background-image: url(../../projects/canvas/ballrunner/project-img.png);
+}
+
 div#java-project1-img {
     background-image: url(java-imgs/simple_chat.png);
 }
