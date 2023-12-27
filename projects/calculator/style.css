@@ -7,6 +7,12 @@
     font-size: 4vh;
 }
 
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgb(25, 0, 255), rgb(85, 3, 85));
+}
+
 main {
     width: 50vh;
     position: absolute;
@@ -15,10 +21,12 @@ main {
     transform: translate(-50%,-50%);
 
     display: block;
-    padding: 1vh;
+    padding: 1.2vh;
     border-radius: 2vh;
     background-color: rgb(168, 168, 168);
     margin: auto;
+    border: 1px solid black;
+    outline: 1px solid rgba(255, 255, 255, 0.623);
 }
 
 input {
@@ -26,12 +34,18 @@ input {
 }
 
 input[type=number] {
-    border: 0.2vh solid black;
+    border: 0.2vh solid transparent;
+    background-color: white;
     padding: 1.4vh 1vh;
     /*border-radius: 0.5vh;*/
     width: calc(34.7vh);
     text-align: right;
     -moz-appearance: textfield;
+}
+
+input[type=number]:focus-visible {
+    outline: -webkit-focus-ring-color auto 0px;
+    outline: 1px solid black;
 }
 
 input::-webkit-inner-spin-button { 
@@ -41,6 +55,15 @@ input::-webkit-inner-spin-button {
 input[type=button] {
     padding: 1.4vh 1.6vh;
     /*border-radius: 0.5vh;*/
-    border: 0.2vh solid black ;
+    border: 0.2vh solid transparent;
     width: calc(25% - 0.4vh);
+    background-color: white;
+}
+
+input[type=button]:hover {
+    background-color: rgb(214, 214, 214);
+}
+
+input[type=button]:active {
+    background-color: rgb(173, 173, 173);
 }
