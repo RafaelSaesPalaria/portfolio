@@ -20,7 +20,7 @@ function addKeyListener() {
 
     function notifyAll(command) {
         for (const observerFunction of state.observers) {
-            observerFunction(command)
+            observerFunction(command.key)
         }
     }
 
@@ -76,7 +76,6 @@ function isNumeric(s) {
 }
 
 function onClick(txt) {
-    txt = txt.key
     if (isNumeric(txt)) {
         onClick_number(txt)
     } else {
@@ -136,8 +135,8 @@ function aritmeticOperator(operator) {
                 textField.value = Number(value) / Number(textField.value)
                 break;
             case "+":
-            default:
                 textField.value = Number(value) + Number(textField.value)
+            default:
                 break;
         }
         value = Number()
