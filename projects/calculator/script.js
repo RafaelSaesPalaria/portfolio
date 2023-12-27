@@ -10,12 +10,34 @@ var normalCalculator = [[                   "+"],
                                                       ["3","2","1"   ,"/"],
                                                       [">","0","del","="]]
 
-addEventListener("keydown",keyhandler)
+function addKeyListener() {
+    const state = {
+        observers: []
+    }
+    function subscribe(observerFunction) {
+        state.observers.push(observerFunction)
+    }
 
-function keyhandler(event) {
-    console.log(event)
-    onClick(event.key)
+    function notifyAll(command) {
+        for (const observerFunction of state.observers) {
+            observerFunction(command)
+        }
+    }
+
+    addEventListener("keydown",keyhandler)
+
+    function keyhandler(event) {
+        notifyAll(event)
+    }
+
+    return {
+        subscribe
+    }
+
 }
+
+var listener = addKeyListener()
+listener.subscribe(onClick);
 
 function start() {
     createComponents(normalCalculator);
@@ -54,6 +76,7 @@ function isNumeric(s) {
 }
 
 function onClick(txt) {
+    txt = txt.key
     if (isNumeric(txt)) {
         onClick_number(txt)
     } else {
