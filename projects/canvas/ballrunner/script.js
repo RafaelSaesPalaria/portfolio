@@ -216,6 +216,7 @@ var players = []
 var points = []
 function init() {
     time = 0
+    score = 0
     alive = true
     document.querySelector("div#end").style.display = "none"
     canvas.width = innerWidth*0.95
