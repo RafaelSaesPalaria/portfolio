@@ -5,14 +5,37 @@ var alive = true
 canvas.width = innerWidth*0.95
 canvas.height= innerHeight*0.7
 
-addEventListener("keydown",keyhandler)
-addEventListener("keyup",keyhandler)
-addEventListener("resize",init)
-
 var up = false
 var down = false
 var right = false
 var left = false
+
+function addKeyListener() {
+    const state = {
+        observers : []
+    }
+
+    addEventListener("keyup",notifyAll)
+    addEventListener("keydown",notifyAll)
+
+    function subscribe(functionObserver) {
+        state.observers.push(functionObserver)
+    }
+
+    function notifyAll(command) {
+        state.observers.forEach(functionObserver => {
+            functionObserver(command)
+        })
+    }
+
+    return {
+        subscribe       
+    }
+}
+
+addEventListener("resize",init)
+addKeyListener().subscribe(keyhandler)
+
 function keyhandler(event) {
     direction = true
     if (event.type === "keyup") {
