@@ -5,14 +5,44 @@ var alive = true
 canvas.width = innerWidth*0.95
 canvas.height= innerHeight*0.7
 
-addEventListener("keydown",keyhandler)
-addEventListener("keyup",keyhandler)
-addEventListener("resize",init)
-
 var up = false
 var down = false
 var right = false
 var left = false
+var time =  0
+var score = 0
+
+setInterval(countTime,1000)
+function countTime() {
+    time+=1
+}
+
+function addKeyListener() {
+    const state = {
+        observers : []
+    }
+
+    addEventListener("keyup",notifyAll)
+    addEventListener("keydown",notifyAll)
+
+    function subscribe(functionObserver) {
+        state.observers.push(functionObserver)
+    }
+
+    function notifyAll(command) {
+        state.observers.forEach(functionObserver => {
+            functionObserver(command)
+        })
+    }
+
+    return {
+        subscribe       
+    }
+}
+
+addEventListener("resize",init)
+addKeyListener().subscribe(keyhandler)
+
 function keyhandler(event) {
     direction = true
     if (event.type === "keyup") {
@@ -102,11 +132,34 @@ class Enemy extends Circle {
     }
 }
 
+class Points extends Circle {
+    constructor() {
+        super()
+        this.color = "green"
+        this.radius*=0.7
+        this.x = this.radius+(Math.random()*(canvas.width-2*this.radius))
+        this.y = this.radius+(Math.random()*(canvas.height-2*this.radius))
+    }
+    update() {
+        super.update()
+
+        players.forEach(player => {
+            if ((player.x - (this.x) - this.dx< this.radius+player.radius & player.x - (this.x) + this.dx>-this.radius-player.radius)&
+            (player.y - (this.y) - this.dy < this.radius+player.radius & player.y - (this.y) + this.dy>-this.radius-player.radius)) {
+                score+=1
+                this.x = this.radius+(Math.random()*(canvas.width-2*this.radius))
+                this.y = this.radius+(Math.random()*(canvas.height-2*this.radius))
+            }
+        })
+
+    }
+}
+
 class Player extends Circle {
     constructor() {
         super()
         this.color="red"
-        this.maxSpeed = (canvas.width/100)*6
+        this.maxSpeed = 30
     }
 
     keyboardMoviment() {
@@ -153,21 +206,27 @@ class Player extends Circle {
         alive = false
         let dieScreen = document.querySelector("div#end")
         dieScreen.style.display = "block"
+        let dieScreenTime = document.querySelector("div#end span#time")
+        dieScreenTime.innerText = `${time} Seconds\n${score} Points`
     }
 }
 
 var enemys = []
 var players = []
+var points = []
 function init() {
+    time = 0
     alive = true
     document.querySelector("div#end").style.display = "none"
     canvas.width = innerWidth*0.95
     canvas.height= innerHeight*0.7
     enemys = []
     players = []
+    points = []
     players.push(new Player())
     enemys.push(new Enemy())
     enemys.push(new Enemy())
+    points.push(new Points())
     animate()
 }
 function enemySpawn() {}
@@ -183,6 +242,10 @@ function animate() {
 
         players.forEach(player =>{
             player.update()
+        })
+
+        points.forEach(point => {
+            point.update()
         })
 
     }
