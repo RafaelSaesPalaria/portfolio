@@ -54,7 +54,7 @@ div#end {
     transform: translate(-50%,-50%);
 
     width: 200px;
-    height: 150px;
+    height: 100px;
 
     border: 3px solid var(--borderColor);
     background-color: var(--backgroundColor);
@@ -69,8 +69,6 @@ div#end {
 
 div#end a {
     position: relative;
-    top: 25%;
-
     display: block;
     margin: 10px auto;
     padding: 5px;

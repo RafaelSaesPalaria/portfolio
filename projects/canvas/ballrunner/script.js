@@ -9,6 +9,12 @@ var up = false
 var down = false
 var right = false
 var left = false
+var time =  0
+
+setInterval(countTime,1000)
+function countTime() {
+    time+=1
+}
 
 function addKeyListener() {
     const state = {
@@ -176,12 +182,15 @@ class Player extends Circle {
         alive = false
         let dieScreen = document.querySelector("div#end")
         dieScreen.style.display = "block"
+        let dieScreenTime = document.querySelector("div#end span#time")
+        dieScreenTime.innerText = `${time} Seconds`
     }
 }
 
 var enemys = []
 var players = []
 function init() {
+    time = 0
     alive = true
     document.querySelector("div#end").style.display = "none"
     canvas.width = innerWidth*0.95
