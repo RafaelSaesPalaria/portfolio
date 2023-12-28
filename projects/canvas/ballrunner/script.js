@@ -10,6 +10,7 @@ var down = false
 var right = false
 var left = false
 var time =  0
+var score = 0
 
 setInterval(countTime,1000)
 function countTime() {
@@ -131,11 +132,34 @@ class Enemy extends Circle {
     }
 }
 
+class Points extends Circle {
+    constructor() {
+        super()
+        this.color = "green"
+        this.radius*=0.7
+        this.x = this.radius+(Math.random()*(canvas.width-2*this.radius))
+        this.y = this.radius+(Math.random()*(canvas.height-2*this.radius))
+    }
+    update() {
+        super.update()
+
+        players.forEach(player => {
+            if ((player.x - (this.x) - this.dx< this.radius+player.radius & player.x - (this.x) + this.dx>-this.radius-player.radius)&
+            (player.y - (this.y) - this.dy < this.radius+player.radius & player.y - (this.y) + this.dy>-this.radius-player.radius)) {
+                score+=1
+                this.x = this.radius+(Math.random()*(canvas.width-2*this.radius))
+                this.y = this.radius+(Math.random()*(canvas.height-2*this.radius))
+            }
+        })
+
+    }
+}
+
 class Player extends Circle {
     constructor() {
         super()
         this.color="red"
-        this.maxSpeed = (canvas.width/100)*6
+        this.maxSpeed = 30
     }
 
     keyboardMoviment() {
@@ -183,12 +207,13 @@ class Player extends Circle {
         let dieScreen = document.querySelector("div#end")
         dieScreen.style.display = "block"
         let dieScreenTime = document.querySelector("div#end span#time")
-        dieScreenTime.innerText = `${time} Seconds`
+        dieScreenTime.innerText = `${time} Seconds\n${score} Points`
     }
 }
 
 var enemys = []
 var players = []
+var points = []
 function init() {
     time = 0
     alive = true
@@ -197,9 +222,11 @@ function init() {
     canvas.height= innerHeight*0.7
     enemys = []
     players = []
+    points = []
     players.push(new Player())
     enemys.push(new Enemy())
     enemys.push(new Enemy())
+    points.push(new Points())
     animate()
 }
 function enemySpawn() {}
@@ -215,6 +242,10 @@ function animate() {
 
         players.forEach(player =>{
             player.update()
+        })
+
+        points.forEach(point => {
+            point.update()
         })
 
     }
