@@ -11,6 +11,7 @@ var right = false
 var left = false
 var time =  0
 var score = 0
+var highscore = 0
 
 setInterval(countTime,1000)
 function countTime() {
@@ -147,6 +148,11 @@ class Points extends Circle {
             if ((player.x - (this.x) - this.dx< this.radius+player.radius & player.x - (this.x) + this.dx>-this.radius-player.radius)&
             (player.y - (this.y) - this.dy < this.radius+player.radius & player.y - (this.y) + this.dy>-this.radius-player.radius)) {
                 score+=1
+                if (score>highscore) {
+                    highscore = score
+                }
+                document.querySelector("div#scoreboard span#score").innerText = `Score: ${score}`
+                document.querySelector("div#scoreboard span#highscore").innerText = `Highscore: ${highscore}`
                 this.x = this.radius+(Math.random()*(canvas.width-2*this.radius))
                 this.y = this.radius+(Math.random()*(canvas.height-2*this.radius))
             }
@@ -221,6 +227,7 @@ function init() {
     document.querySelector("div#end").style.display = "none"
     canvas.width = innerWidth*0.95
     canvas.height= innerHeight*0.7
+    document.querySelector("div#scoreboard span#score").innerText = `Score: ${score}`
     enemys = []
     players = []
     points = []
