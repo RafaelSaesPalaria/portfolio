@@ -2,15 +2,13 @@ var canvas = document.querySelector("canvas")
 var c = canvas.getContext("2d")
 var alive = true
 
-canvas.width = innerWidth*0.95
-canvas.height= innerHeight*0.7
-
 var up = false
 var down = false
 var right = false
 var left = false
 var time =  0
 var score = 0
+var highscore = 0
 
 setInterval(countTime,1000)
 function countTime() {
@@ -40,7 +38,7 @@ function addKeyListener() {
     }
 }
 
-addEventListener("resize",init)
+addEventListener("resize",resize)
 addKeyListener().subscribe(keyhandler)
 
 function keyhandler(event) {
@@ -106,12 +104,9 @@ class Enemy extends Circle {
     }
     update() {
         players.forEach(player => {
-
-        
-        if ((player.x - (this.x) - this.dx< this.radius+player.radius & player.x - (this.x) + this.dx>-this.radius-player.radius)&
-        (player.y - (this.y) - this.dy < this.radius+player.radius & player.y - (this.y) + this.dy>-this.radius-player.radius)) {
-            player.die()
-        }
+            if (isColliding(this,player)) {
+                player.die()
+            }
         })
 
         if (this.x+this.radius<0 || this.y+this.radius>canvas.height) {
@@ -144,9 +139,12 @@ class Points extends Circle {
         super.update()
 
         players.forEach(player => {
-            if ((player.x - (this.x) - this.dx< this.radius+player.radius & player.x - (this.x) + this.dx>-this.radius-player.radius)&
-            (player.y - (this.y) - this.dy < this.radius+player.radius & player.y - (this.y) + this.dy>-this.radius-player.radius)) {
+            if (isColliding(this,player)) {
                 score+=1
+                if (score>highscore) {
+                    highscore = score
+                }
+                updateScoreSpan()
                 this.x = this.radius+(Math.random()*(canvas.width-2*this.radius))
                 this.y = this.radius+(Math.random()*(canvas.height-2*this.radius))
             }
@@ -219,8 +217,8 @@ function init() {
     score = 0
     alive = true
     document.querySelector("div#end").style.display = "none"
-    canvas.width = innerWidth*0.95
-    canvas.height= innerHeight*0.7
+    resize()
+    updateScoreSpan()
     enemys = []
     players = []
     points = []
@@ -230,6 +228,26 @@ function init() {
     points.push(new Points())
     animate()
 }
+
+function isColliding(circle1, circle2) {
+    if ((circle1.x - (circle2.x)< circle2.radius+circle1.radius & circle1.x - (circle2.x) >-circle2.radius-circle1.radius)&
+    (circle1.y - (circle2.y) < circle2.radius+circle1.radius & circle1.y - (circle2.y) >-circle2.radius-circle1.radius)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function resize() {
+    canvas.width = innerWidth*0.95
+    canvas.height= innerHeight*0.7
+}
+
+function updateScoreSpan() {
+    document.querySelector("div#scoreboard span#highscore").innerText = `Highscore: ${highscore}`
+    document.querySelector("div#scoreboard span#score").innerText = `Score: ${score}`
+}
+
 function enemySpawn() {}
 
 function animate() {
