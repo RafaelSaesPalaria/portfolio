@@ -2,13 +2,12 @@ var canvas = document.querySelector("canvas")
 var c = canvas.getContext("2d")
 var alive = true
 
-var up = false
-var down = false
-var right = false
-var left = false
 var time =  0
 var score = 0
 var highscore = 0
+var enemys = []
+var players = []
+var points = []
 
 setInterval(countTime,1000)
 function countTime() {
@@ -39,28 +38,6 @@ function addKeyListener() {
 }
 
 addEventListener("resize",resize)
-addKeyListener().subscribe(keyhandler)
-
-function keyhandler(event) {
-    direction = true
-    if (event.type === "keyup") {
-        direction = false
-    }
-    switch (event.key) {
-        case 'w':
-            up = direction
-            break;
-        case 's':
-            down = direction
-            break;
-        case 'a':
-            left = direction
-            break
-        case 'd':
-            right = direction
-            break
-    }
-}
 
 class Circle {
     constructor() {
@@ -158,20 +135,46 @@ class Player extends Circle {
         super()
         this.color="red"
         this.maxSpeed = 30
+        addKeyListener().subscribe(this.keyhandler.bind(this))
+        this.direction = true
+        this.event = undefined
+        this.up = false
+        this.left = false
+        this.right=false
+        this.down=false
+    }
+
+    keyhandler(event) {
+        this.event = event
+        this.direction = !(this.event.type === "keyup")
+        switch (this.event.key) {
+            case 'w':
+                this.up = this.direction
+                break;
+            case 's':
+                this.down = this.direction
+                break;
+            case 'a':
+                this.left = this.direction
+                break
+            case 'd':
+                this.right = this.direction
+                break
+        }
     }
 
     keyboardMoviment() {
-        if (up & !down & (canvas.height-this.y-this.radius<30)) {
+        if (this.up & !this.down & (canvas.height-this.y-this.radius<30)) {
             this.dy=-this.speed*7
-        } else if (!up & down) {
+        } else if (!this.up & this.down) {
             this.dy+=this.speed
         } else {
 
         }
 
-        if (left & !right & (this.dx>-this.maxSpeed)) {
+        if (this.left & !this.right & (this.dx>-this.maxSpeed)) {
             this.dx-=this.speed/2
-        } else if (!left & right & (this.dx<this.maxSpeed)) {
+        } else if (!this.left & this.right & (this.dx<this.maxSpeed)) {
             this.dx+=this.speed/2
         } else {
             
@@ -201,22 +204,27 @@ class Player extends Circle {
     }
 
     die() {
-        alive = false
-        let dieScreen = document.querySelector("div#end")
-        dieScreen.style.display = "block"
-        let dieScreenTime = document.querySelector("div#end span#time")
-        dieScreenTime.innerText = `${time} Seconds\n${score} Points`
+        showDeathMessage()
     }
 }
 
-var enemys = []
-var players = []
-var points = []
+function showDeathMessage() {
+    alive = false
+    let dieScreen = document.querySelector("div#end")
+    dieScreen.style.display = "block"
+    let dieScreenTime = document.querySelector("div#end span#time")
+    dieScreenTime.innerText = `${time} Seconds\n${score} Points`
+}
+
+function hideDeathMessage() {
+    document.querySelector("div#end").style.display = "none"
+}
+ 
 function init() {
     time = 0
     score = 0
     alive = true
-    document.querySelector("div#end").style.display = "none"
+    hideDeathMessage()
     resize()
     updateScoreSpan()
     enemys = []
