@@ -1,14 +1,21 @@
 var canvas = document.querySelector("canvas")
 var c = canvas.getContext("2d")
-var enemys = []
-var players = []
-var points = []
+var entities = {
+    enemys : [],
+    players : [],
+    points : []
+}
 var game = {
     alive: true,
     time: 0,
     score: 0,
     highscore: 0
 }
+
+var dieScreen = document.querySelector("div#end")
+var dieScreenTime = document.querySelector("div#end span#time")
+var highscoreScreen = document.querySelector("div#scoreboard span#highscore")
+var scoreScreen = document.querySelector("div#scoreboard span#score")
 
 setInterval(countTime,1000)
 function countTime() {
@@ -81,7 +88,7 @@ class Enemy extends Circle {
         this.color="blue"
     }
     update() {
-        players.forEach(player => {
+        entities.players.forEach(player => {
             if (isColliding(this,player)) {
                 player.die()
             }
@@ -116,7 +123,7 @@ class Points extends Circle {
     update() {
         super.update()
 
-        players.forEach(player => {
+        entities.players.forEach(player => {
             if (isColliding(this,player)) {
                 game.score+=1
                 if (game.score>game.highscore) {
@@ -211,14 +218,12 @@ class Player extends Circle {
 
 function showDeathMessage() {
     game.alive = false
-    let dieScreen = document.querySelector("div#end")
     dieScreen.style.display = "block"
-    let dieScreenTime = document.querySelector("div#end span#time")
     dieScreenTime.innerText = `${game.time} Seconds\n${game.score} Points`
 }
 
 function hideDeathMessage() {
-    document.querySelector("div#end").style.display = "none"
+    dieScreen.style.display = "none"
 }
  
 function init() {
@@ -228,13 +233,13 @@ function init() {
     hideDeathMessage()
     resize()
     updateScoreSpan()
-    enemys = []
-    players = []
-    points = []
-    players.push(new Player())
-    enemys.push(new Enemy())
-    enemys.push(new Enemy())
-    points.push(new Points())
+    entities.enemys = []
+    entities.players = []
+    entities.points = []
+    entities.players.push(new Player())
+    entities.enemys.push(new Enemy())
+    entities.enemys.push(new Enemy())
+    entities.points.push(new Points())
     animate()
 }
 
@@ -253,8 +258,8 @@ function resize() {
 }
 
 function updateScoreSpan() {
-    document.querySelector("div#scoreboard span#highscore").innerText = `Highscore: ${game.highscore}`
-    document.querySelector("div#scoreboard span#score").innerText = `Score: ${game.score}`
+    highscoreScreen.innerText = `Highscore: ${game.highscore}`
+    scoreScreen.innerText = `Score: ${game.score}`
 }
 
 function enemySpawn() {}
@@ -264,15 +269,15 @@ function animate() {
         c.clearRect(0,0,canvas.width,canvas.height)
         requestAnimationFrame(animate)
 
-        enemys.forEach(enemy =>{
+        entities.enemys.forEach(enemy =>{
             enemy.update()
         })
 
-        players.forEach(player =>{
+        entities.players.forEach(player =>{
             player.update()
         })
 
-        points.forEach(point => {
+        entities.points.forEach(point => {
             point.update()
         })
 
