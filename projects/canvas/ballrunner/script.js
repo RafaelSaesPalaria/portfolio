@@ -155,6 +155,7 @@ class Player extends Circle {
     keyhandler(event) {
         this.event = event
         this.direction = !(this.event.type === "keyup")
+        //Give the direction based on the key pressed or released
         switch (this.event.key) {
             case 'w':
                 this.up = this.direction
@@ -172,6 +173,7 @@ class Player extends Circle {
     }
 
     keyboardMoviment() {
+        //Accelerate the ball vertically
         if (this.up & !this.down & (canvas.height-this.y-this.radius<30)) {
             this.dy=-this.speed*7
         } else if (!this.up & this.down) {
@@ -180,6 +182,7 @@ class Player extends Circle {
 
         }
 
+        //Accelerate the ball Horizontaly
         if (this.left & !this.right & (this.dx>-this.maxSpeed)) {
             this.dx-=this.speed/2
         } else if (!this.left & this.right & (this.dx<this.maxSpeed)) {
@@ -192,16 +195,19 @@ class Player extends Circle {
     update() {
         this.keyboardMoviment()
         
+        //Always dessacelerate ball
         if (this.dx>0) {
             this.dx-=1
         } else if (this.dx<0) {
             this.dx+=1
         }
 
+        //Change Direction if touch boundaries
         if (this.x+this.radius+this.dx>canvas.width || this.x - this.radius + this.dx < 0) {
             this.dx = -this.dx
         }
 
+        //Gravity + Change Direction if touch boundaries
         if (this.y+this.radius+this.dy>canvas.height || this.y - this.radius + this.dy < 0) {
             this.dy = -this.dy * this.friction
         } else {
