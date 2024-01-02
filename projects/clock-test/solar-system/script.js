@@ -43,7 +43,8 @@ function moonClicked() {
 }
 
 function center(obj) {
-
+    obj.style.left = `${innerWidth/2}px`
+    obj.style.top = `${innerHeight/2}px`
 }
 
 function sunCentered() {
@@ -80,8 +81,8 @@ function orbit(centerObj,satelliteObj,deg,radius) {
 
     let centerY = centerObj.getBoundingClientRect().top + centerObj.getBoundingClientRect().height / 2;
 
-    satelliteObj.style.top = `calc(${centerY}px + ${orbitY}px)`
-    satelliteObj.style.left = `calc(${centerX}px + ${orbitX}px)`
+    satelliteObj.style.top = `${centerY+orbitY}px`
+    satelliteObj.style.left = `${centerX+orbitX}px`
 }
 
 function createStars() {
