@@ -180,5 +180,9 @@ div#java-project1-img {
 }
 
 div#java-project2-img {
+    background-image: url(java-imgs/minesweeper.png);
+}
+
+div#java-project3-img {
     background-image: url(java-imgs/tetris.png);
 }
