@@ -23,19 +23,19 @@ main {
     display: block;
     padding: 1.2vh;
     border-radius: 2vh;
-    background-color: rgb(168, 168, 168);
+    background-color: rgba(168, 168, 168, 0.342);
     margin: auto;
     border: 1px solid black;
-    outline: 1px solid rgba(255, 255, 255, 0.623);
+    outline: 1px solid rgba(255, 255, 255, 0.801);
 }
 
 input {
     margin: 0.2vh;
+    border: 0.2vh solid rgba(0, 0, 0, 0.685);
+    background-color: rgba(255, 255, 255, 0.39);
 }
 
 input[type=number] {
-    border: 0.2vh solid transparent;
-    background-color: white;
     padding: 1.4vh 1vh;
     /*border-radius: 0.5vh;*/
     width: calc(34.7vh);
@@ -55,9 +55,7 @@ input::-webkit-inner-spin-button {
 input[type=button] {
     padding: 1.4vh 1.6vh;
     /*border-radius: 0.5vh;*/
-    border: 0.2vh solid transparent;
     width: calc(25% - 0.4vh);
-    background-color: white;
 }
 
 input[type=button]:hover {
