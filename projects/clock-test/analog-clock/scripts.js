@@ -3,6 +3,8 @@ var c = canvas.getContext("2d")
 canvas.width = innerWidth
 canvas.height= innerHeight
 
+var interval = 1
+
 var timeInSeconds = 0
 var clockLocation = {
     x: canvas.width/2,
@@ -20,7 +22,11 @@ function getTime() {
 }
 
 function updateTime() {
+    timeInSeconds+=1
+}
 
+function getAngle(currentlyCycle,maxCycle) {
+    return (currentlyCycle/maxCycle)*360
 }
 
 function drawClock() {
@@ -42,27 +48,36 @@ class Pointer {
         this.width = width
         this.height = thichness
         this.color = color
+        this.angle = 180
     }
     draw() {
         c.beginPath()
         c.fillStyle = this.color
-        c.fillRect(this.x,this.y,this.width,this.height)
+        c.save()
+        c.translate(this.x,this.y)
+        c.rotate(-this.angle)
+        c.fillRect(0,-this.height/2,this.width,this.height)
+        c.restore()
         c.closePath()
     }
-    update() {
-
+    update(angle) {
+        this.angle = angle
         this.draw()
     }
 }
 
-var p1 = new Pointer(100,10,"red");
+var p1 = new Pointer(100,7,"red");
 function animate() {
     c.clearRect(0,0,canvas.width,canvas.height)
-    requestAnimationFrame(animate)
+    frames.frame
 
     drawClock()
-    p1.update()
+    updateTime()
+    let seconds = timeInSeconds%60
+    console.log(seconds)
+    p1.update(getAngle(seconds,60))
 }
 
 getTime()
 animate()
+setInterval(animate,interval*1000)
