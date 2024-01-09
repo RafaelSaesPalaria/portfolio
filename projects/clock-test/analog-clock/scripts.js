@@ -5,6 +5,8 @@ canvas.height= innerHeight
 
 var interval = 1
 
+import Pointer from "./pointer.js"
+
 var timeInSeconds = 0
 var clockLocation = {
     x: canvas.width/2,
@@ -41,43 +43,18 @@ function drawClock() {
     c.closePath()
 }
 
-class Pointer {
-    constructor(width, thichness, color) {
-        this.x = clockLocation.x
-        this.y = clockLocation.y
-        this.width = width
-        this.height = thichness
-        this.color = color
-        this.angle = 0
-    }
-    draw() {
-        c.beginPath()
-        c.fillStyle = this.color
-        c.save()
-        c.translate(this.x,this.y)
-        c.rotate((this.angle+ 270) * Math.PI /180)
-        c.fillRect(0,-this.height/2,this.width,this.height)
-        c.restore()
-        c.closePath()
-    }
-    update(angle) {
-        this.angle = angle
-        this.draw()
-    }
-}
-
-var p1 = new Pointer(100,7,"red");
-var p2 = new Pointer(100,7,"white");
-var p3 = new Pointer(100,7,"white");
+var p1 = new Pointer(c,clockLocation,100,7,"red");
+var p2 = new Pointer(c,clockLocation,100,7,"white");
+var p3 = new Pointer(c,clockLocation,100,7,"white");
 function animate() {
-    c.clearRect(0,0,canvas.width,canvas.height)
-    frames.frame
+    //c.clearRect(0,0,canvas.width,canvas.height)
 
-    drawClock()
-    updateTime()
     let seconds = timeInSeconds%60
     let minutes = timeInSeconds%3600/60
     let hours = timeInSeconds/3600
+
+    drawClock()
+    updateTime()
 
     console.log(hours+" "+minutes+" "+seconds)
     p1.update(getAngle(Math.floor(seconds),60))
