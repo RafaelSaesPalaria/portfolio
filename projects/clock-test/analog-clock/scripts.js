@@ -48,14 +48,14 @@ class Pointer {
         this.width = width
         this.height = thichness
         this.color = color
-        this.angle = 180
+        this.angle = 0
     }
     draw() {
         c.beginPath()
         c.fillStyle = this.color
         c.save()
         c.translate(this.x,this.y)
-        c.rotate(-this.angle)
+        c.rotate((this.angle+ 270) * Math.PI /180)
         c.fillRect(0,-this.height/2,this.width,this.height)
         c.restore()
         c.closePath()
@@ -67,6 +67,8 @@ class Pointer {
 }
 
 var p1 = new Pointer(100,7,"red");
+var p2 = new Pointer(100,7,"white");
+var p3 = new Pointer(100,7,"white");
 function animate() {
     c.clearRect(0,0,canvas.width,canvas.height)
     frames.frame
@@ -74,8 +76,13 @@ function animate() {
     drawClock()
     updateTime()
     let seconds = timeInSeconds%60
-    console.log(seconds)
-    p1.update(getAngle(seconds,60))
+    let minutes = timeInSeconds%3600/60
+    let hours = timeInSeconds/3600
+
+    console.log(hours+" "+minutes+" "+seconds)
+    p1.update(getAngle(Math.floor(seconds),60))
+    p2.update(getAngle(Math.floor(minutes),60))
+    p3.update(getAngle(Math.floor(hours),24))
 }
 
 getTime()
