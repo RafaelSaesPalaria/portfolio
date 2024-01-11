@@ -9,23 +9,12 @@ var intervalSpeed = 1000
 
 var vh=0
 
-//Constructor
-/**
- * used to update the clock based on the computer time at every 1s
- */
-setInterval(clockWork,1000)
-function start() {
-    resize()
-    window.addEventListener('zoom', resize);
-    setNumbersPosition()
-    addMinuteBar()
-    clockWork()
-}
-
+//Resize the windows when needed
 function resize() {
     vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 }
 
+//Update the system status
 function clockWork() {
     updateTime()
     rotatePointer(pointer_hours     ,parseAngle(time.getHours()+(time.getMinutes()/60),12))
@@ -35,7 +24,6 @@ function clockWork() {
 }
 
 //Methods
-
 function disaccelerate() {
     timeSpeed*=0.9;
     setInterval(clockWork,intervalSpeed/timeSpeed);
@@ -95,25 +83,18 @@ function updateTime() {
     }
 }
 
-/**used to convert time in angle (degs)
- * @param {Number} actualTime the actual value of the cicle
- * @param {Number} cicleMax the biggest value of the cicle
- * @returns the current angle of the cicle
- */
+/*Get the angle of rotation*/
 function parseAngle(actualTime,cycleMax) {
     return (actualTime/cycleMax)*360
 }
 
-/**
- * used to rotate the pointers based on the degree
- * @param {Element} pointer the pointer thats gonna rotate
- * @param {Number} deg       the rotation in degrees
- */
+/*Rotate the pointers*/
 function rotatePointer(pointer, deg) {
     deg+=180 // TODO: +180degs because the clock start at the bottom 
     pointer.style.transform = `rotate(${deg}deg)` 
 }
 
+// Update and put the formated time on the digital clock
 function updateDigitalClock() {
     let digital_clock = document.querySelector("div#digital-clock #time");
     let hours     = time.getHours();
@@ -127,6 +108,7 @@ function updateDigitalClock() {
     digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
 }
 
+// Create, set the position and add the numbers on the numbers div
 function setNumbersPosition() {
 
     let r = 0.19*vh;
@@ -147,6 +129,7 @@ function setNumbersPosition() {
     }
 }
 
+/*Used to create, calculate the position and add the bars of the minutes into the bars div*/
 function addMinuteBar() {
     let bars = document.querySelector("div#bars")
     let r = 0.22*vh;
@@ -171,4 +154,17 @@ function addMinuteBar() {
         bars.appendChild(bar)
     }
 
+}
+
+//Constructor
+/**
+ * used to update the clock based on the computer time at every 1s
+ */
+setInterval(clockWork,1000)
+function start() {
+    resize()
+    window.addEventListener('zoom', resize);
+    setNumbersPosition()
+    addMinuteBar()
+    clockWork()
 }
