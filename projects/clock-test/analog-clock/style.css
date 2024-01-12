@@ -10,6 +10,24 @@
     free to personal use, acess in 2023
     */
 }
+/*
+*
+:root
+html
+body
+	div#analog-click
+		div#numbers
+		div#bars
+		div.pointer#hours
+		div.pointer#minutes
+		div.pointer#seconds
+		div#axis
+	abbr
+		div#digital-clock
+			div#player
+				span.material-symbols-outlined
+			div#time
+*/
 
 * {
     margin: 0px;

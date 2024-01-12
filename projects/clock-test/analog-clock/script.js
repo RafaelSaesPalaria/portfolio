@@ -83,12 +83,21 @@ function updateTime() {
     }
 }
 
-/*Get the angle of rotation*/
-function parseAngle(actualTime,cycleMax) {
-    return (actualTime/cycleMax)*360
+/**
+ * Get the angle of rotation
+ * @param {Number} currentlyTime the currently period of the cycle 
+ * @param {Number} cycleMax   the cycle max value
+ * @returns the angle of the currently period
+ */
+function parseAngle(currentlyTime,cycleMax) {
+    return (currentlyTime/cycleMax)*360
 }
 
-/*Rotate the pointers*/
+/**
+ * Used to rotate the pointers
+ * @param {Object}   pointer The object thats gonna be rotated
+ * @param {Number} deg      The angle which the pointer is gonna rotate
+ */
 function rotatePointer(pointer, deg) {
     deg+=180 // TODO: +180degs because the clock start at the bottom 
     pointer.style.transform = `rotate(${deg}deg)` 
