@@ -9,13 +9,15 @@ var vh = 0
 
 //Constructor
 setInterval(update,intervalSpeed)
-
 function start() {
     resize()
     window.addEventListener('zoom', resize);
     update()
 }
 
+/**
+ * Updates the system
+ */
 function update() {
     updateTime();
     updateDigitalClock();
@@ -24,6 +26,9 @@ function update() {
     updateBackground();
 }
 
+/**
+ * Resize the screen
+ */
 function resize() {
     vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 }
@@ -57,7 +62,7 @@ function accelerate() {
     setInterval(update,intervalSpeed/timeSpeed);
 }
 
-//Update
+//Update the time based on the timeDirection and in the timeSpeed
 function updateTime() {
     let seconds = time.getSeconds();
     let minutes = time.getMinutes();
@@ -89,7 +94,9 @@ function updateTime() {
     }
 }
 
-
+/**
+ * Update the time in the digital clock
+ */
 function updateDigitalClock() {
     let digital_clock = document.querySelector("div#digital-clock");
     let hours     = time.getHours();
@@ -103,10 +110,20 @@ function updateDigitalClock() {
     digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
 }
 
+/**
+ * Get the angle of rotation based on the period of the cycle
+ * @param {Number} currentlyTime the currently period of the cycle 
+ * @param {Number} cycleMax   the cycle max value
+ * @returns the angle of the currently period
+ */
 function parseAngle(actualTime,cycleMax) {
     return (actualTime/cycleMax)*360
 }
 
+/**
+ * get the angle based on the time
+ * @returns the degree of the angle
+*/
 function getAngle() {
     let dayTime_inSeconds = 
                         (time.getHours()*3600) + (time.getMinutes()*60) + time.getSeconds()
@@ -114,6 +131,12 @@ function getAngle() {
     return degree;
 }
 
+/**
+ * convert polar coordinates to cardinal coordinates
+ * @param {Number} deg     degree of the coordinates
+ * @param {Number} radius  radius of the coordinates
+ * @returns a vector with x and y
+ */
 function getCardinalCoordinates(deg, radius) {
     let theta = (2 * Math.PI) / 360;
 
@@ -123,6 +146,9 @@ function getCardinalCoordinates(deg, radius) {
     return cardinal;
 }
 
+/**
+ * Update the position of the sun in the sky
+ */
 function updateSun() {
     let sun = document.querySelector("div#sun")
     let deg = getAngle();
@@ -131,6 +157,9 @@ function updateSun() {
     sun.style.left = `calc(50% + ${cardinal[1]}px)`
 }
 
+/**
+ * Update the position of the moon in the sky
+ */
 function updateMoon() {
     let moon = document.querySelector("div#moon")
     let deg = getAngle();
@@ -139,6 +168,9 @@ function updateMoon() {
     moon.style.left = `calc(50% + ${cardinal[1]}px)`
 }
 
+/**
+ * Update the background
+ */
 function updateBackground() {
     let body = document.body;
     let sun = document.querySelector("div#sun");
