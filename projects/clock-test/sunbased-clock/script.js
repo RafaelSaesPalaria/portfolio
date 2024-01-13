@@ -7,6 +7,9 @@ var degree = 0
 
 var vh = 0
 
+var sun = document.querySelector("div#sun")
+var moon = document.querySelector("div#moon")
+
 //Constructor
 setInterval(update,intervalSpeed)
 function start() {
@@ -21,8 +24,8 @@ function start() {
 function update() {
     updateTime();
     updateDigitalClock();
-    updateSun();
-    updateMoon();
+    updateStar(sun, 0, vh*0.7)
+    updateStar(moon, 180, vh*0.6)
     updateBackground();
 }
 
@@ -99,15 +102,27 @@ function updateTime() {
  */
 function updateDigitalClock() {
     let digital_clock = document.querySelector("div#digital-clock");
-    let hours     = time.getHours();
-    let minutes = time.getMinutes();
-    let seconds= time.getSeconds();
-    
-    hours      = hours    < 10 ? "0" +  hours     : hours;
-    minutes  = minutes < 10 ? "0" +  minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    let hours = formatNumber(time.getHours(),2)
+    let minutes = formatNumber(time.getMinutes(), 2)
+    let seconds = formatNumber(time.getSeconds(), 2)
     
     digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
+}
+
+/**
+ * Format a number to have a certain length
+ * @param {Number} number the unformatted number
+ * @param {Number} length   the desired length
+ * @returns the formatted number
+ */
+function formatNumber(number ,length) {
+    let string = ""
+    for (let i = number.toString().length; i<length; i++) {
+        string+="0"
+    }
+    number = string+number.toString()
+    return number
 }
 
 /**
@@ -147,25 +162,16 @@ function getCardinalCoordinates(deg, radius) {
 }
 
 /**
- * Update the position of the sun in the sky
+ * move the star to the currently time-location
+ * @param {Object}   star        the star that's gonna be moved      
+ * @param {Number} degPlus the plus factor in the degree calc 
+ * @param {Number} radius    the distance of the star from the center of the orbit
  */
-function updateSun() {
-    let sun = document.querySelector("div#sun")
+function updateStar(star, degPlus, radius) {
     let deg = getAngle();
-    let cardinal = getCardinalCoordinates(deg , vh*0.7)
-    sun.style.top = `calc(100% + ${cardinal[0]}px)`
-    sun.style.left = `calc(50% + ${cardinal[1]}px)`
-}
-
-/**
- * Update the position of the moon in the sky
- */
-function updateMoon() {
-    let moon = document.querySelector("div#moon")
-    let deg = getAngle();
-    let cardinal = getCardinalCoordinates((deg+180%360) , vh*0.60)
-    moon.style.top = `calc(100% + ${cardinal[0]}px)`
-    moon.style.left = `calc(50% + ${cardinal[1]}px)`
+    let cardinal = getCardinalCoordinates((deg+degPlus%360),radius)
+    star.style.top = `calc(100% + ${cardinal[0]}px)`
+    star.style.left = `calc(50% + ${cardinal[1]}px)`
 }
 
 /**
