@@ -110,6 +110,12 @@ function updateDigitalClock() {
     digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
 }
 
+/**
+ * Format a number to have a certain length
+ * @param {Number} number the unformatted number
+ * @param {Number} length   the desired length
+ * @returns the formatted number
+ */
 function formatNumber(number ,length) {
     let string = ""
     for (let i = number.toString().length; i<length; i++) {
