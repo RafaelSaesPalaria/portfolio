@@ -102,15 +102,21 @@ function updateTime() {
  */
 function updateDigitalClock() {
     let digital_clock = document.querySelector("div#digital-clock");
-    let hours     = time.getHours();
-    let minutes = time.getMinutes();
-    let seconds= time.getSeconds();
-    
-    hours      = hours    < 10 ? "0" +  hours     : hours;
-    minutes  = minutes < 10 ? "0" +  minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    let hours = formatNumber(time.getHours(),2)
+    let minutes = formatNumber(time.getMinutes(), 2)
+    let seconds = formatNumber(time.getSeconds(), 2)
     
     digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
+}
+
+function formatNumber(number ,length) {
+    let string = ""
+    for (let i = number.toString().length; i<length; i++) {
+        string+="0"
+    }
+    number = string+number.toString()
+    return number
 }
 
 /**
