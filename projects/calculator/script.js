@@ -39,7 +39,10 @@ function addKeyListener() {
 
 }
 
-/*Put the buttons on the screen*/
+/**
+ * Create and put the buttons on the screen
+ * @param {String} calculator the button set to be created 
+ */
 function createComponents(calculator) {
     createTextField()
     for (y = 0 ; y < calculator.length ; y++) {
@@ -51,7 +54,11 @@ function createComponents(calculator) {
     }
 }
 
-/*Create the buttons */
+/**
+ * Create formated buttons [Factory]
+ * @param {String} txt text exhibited by the button 
+ * @returns 
+ */
 function createButton(txt) {
     let button = document.createElement("input");
     button.setAttribute("type","button");
@@ -70,12 +77,18 @@ function createTextField() {
     return txtField
 }
 
-/*Detect if the key is a number*/
+/**
+ * Detect if the key is a number
+ * @param {String} s the key that's gonna be tested 
+ */
 function isNumeric(s) {
     return /^[0-9]+$/.test(s);
 }
 
-/*Receive the keydown*/
+/**
+ * Receive the keydown/button press and separate numbers from operators
+ * @param {String} txt the key/button
+ */
 function onClick(txt) {
     if (isNumeric(txt)) {
         onClick_number(txt)
@@ -84,7 +97,10 @@ function onClick(txt) {
     }
 }
 
-/*Write the number on the textfield*/
+/**
+ * Write the number on the textfield
+ * @param {Number} number the number pressed (by the button or by the keys) 
+ */
 function onClick_number(number) {
     if (firstDecimal) {
         number= "."+number
@@ -93,8 +109,10 @@ function onClick_number(number) {
     firstDecimal=false
 }
 
-/*Operators
-    select and execute the non-aritmethic operators, and execute the onClick aritimethic operators method*/
+   /**
+    * Operators select and execute the non-aritmethic operators, and execute the onClick aritimethic operators method
+    * @param {String} operator the operator used to change the numbers or to perform a calculation 
+    */
 function onClick_operator(operator) {
     let textField = document.querySelector(`input[type="number"]#txtResult`);
 
@@ -117,7 +135,10 @@ function onClick_operator(operator) {
     }
 }
 
-/*Execute the aritmethic operators and put the value into the textField*/
+/**
+ * Execute the aritmethic operators and put the value into the textField
+ * @param {String} operator operator used in the calculation 
+ */
 function aritmeticOperator(operator) {
     let textField = document.querySelector(`input[type="number"]#txtResult`);
 
