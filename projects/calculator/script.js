@@ -85,15 +85,22 @@ function isNumeric(s) {
     return /^[0-9]+$/.test(s);
 }
 
+function isAritmethicOperator(s) {
+    return /^[+,-,*,/]/.test(s);
+}
+
 /**
  * Receive the keydown/button press and separate numbers from operators
  * @param {String} txt the key/button
  */
 function onClick(txt) {
+    console.log(isAritmethicOperator(txt))
     if (isNumeric(txt)) {
-        onClick_number(txt)
+        number(txt)
+    } else if (isAritmethicOperator(txt)){
+        aritmeticOperator(txt)
     } else {
-        onClick_operator(txt)
+        operator(txt)
     }
 }
 
@@ -101,7 +108,7 @@ function onClick(txt) {
  * Write the number on the textfield
  * @param {Number} number the number pressed (by the button or by the keys) 
  */
-function onClick_number(number) {
+function number(number) {
     if (firstDecimal) {
         number= "."+number
     }
@@ -113,7 +120,7 @@ function onClick_number(number) {
     * Operators select and execute the non-aritmethic operators, and execute the onClick aritimethic operators method
     * @param {String} operator the operator used to change the numbers or to perform a calculation 
     */
-function onClick_operator(operator) {
+function operator(operator) {
     let textField = document.querySelector(`input[type="number"]#txtResult`);
 
     switch (operator) {
@@ -129,8 +136,12 @@ function onClick_operator(operator) {
         case "Delete":
             textField.value = ""
             break;
-        default:
+        case "Enter":
+        case "=":
             aritmeticOperator(operator);
+            break;
+        default:
+            console.log("Inválid Operator: "+operator)
             break;
     }
 }
@@ -162,6 +173,10 @@ function aritmeticOperator(operator) {
                 break;
             case "+":
                 textField.value = Number(value) + Number(textField.value)
+                break;
+            case "=":
+                aritmeticOperator(lastOperator)
+                break;
             default:
                 break;
         }
