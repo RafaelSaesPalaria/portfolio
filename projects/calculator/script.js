@@ -79,14 +79,20 @@ function createTextField() {
 
 /**
  * Detect if the key is a number
- * @param {String} s the key that's gonna be tested 
+ * @param {String} s the key that's gonna be tested
+ * @returns if the key is a number 
  */
 function isNumeric(s) {
     return /^[0-9]+$/.test(s);
 }
 
+/**
+ * Detect if the key is a aritmethic operator
+ * @param {*} s the key that's gonna be tested
+ * @returns if the key if a aritmethic operator
+ */
 function isAritmethicOperator(s) {
-    return /^[+,-,*,/]/.test(s);
+    return /[+\-*\/]/.test(s);
 }
 
 /**
@@ -94,7 +100,6 @@ function isAritmethicOperator(s) {
  * @param {String} txt the key/button
  */
 function onClick(txt) {
-    console.log(isAritmethicOperator(txt))
     if (isNumeric(txt)) {
         number(txt)
     } else if (isAritmethicOperator(txt)){
@@ -130,7 +135,7 @@ function operator(operator) {
             break;
         case ">":
         case "Backspace":
-            textField.value = textField.value.substring(0,textField.value.length-1)
+            textField.value = backspace(textField.value)
             break;
         case "del":
         case "Delete":
@@ -161,18 +166,19 @@ function aritmeticOperator(operator) {
         value = textField.value;
         textField.value = null;
     } else {
+            let value2 = Number(textField.value)
         switch (lastOperator) {            
             case "-":
-                textField.value = Number(value) - Number(textField.value)
+                value2 = subtraction(value,value2)
                 break;
             case "*":
-                textField.value = Number(value) * Number(textField.value)
+                value2 = multiply(value,value2)
                 break;
             case "/":
-                textField.value = Number(value) / Number(textField.value)
+                value2 = divide(value,value2)
                 break;
             case "+":
-                textField.value = Number(value) + Number(textField.value)
+                value2 = addition(value,value2)
                 break;
             case "=":
                 aritmeticOperator(lastOperator)
@@ -180,8 +186,58 @@ function aritmeticOperator(operator) {
             default:
                 break;
         }
+        textField.value = value2
         value = Number()
     }
+}
+
+/**
+ * Removes the last number of a string
+ * @param {String} txt the string to be removed 
+ * @returns the string without the last number
+ */
+function backspace(txt) {
+    return txt = txt.substring(0,txt.length-1)
+}
+
+/**
+ * Subtracts the n2 from the n1
+ * @param {Number} n1 the number to be subtracted
+ * @param {Number} n2 the number that's gonna subtract
+ * @returns the number subtracted
+ */
+function subtraction(n1,n2) {
+    return n1 - n2
+}
+
+/**
+ * Adds the n2 to the n1
+ * @param {Number} n1 the number to be added
+ * @param {Number} n2 the number that's gonna add
+ * @returns the result of the operation
+ */
+function addition(n1,n2) {
+    return Number(n1) + n2
+}
+
+/**
+ * Divide n1 in n2 parts
+ * @param {Number} n1 the number to be divided
+ * @param {Number} n2 the number that's gonna divide
+ * @returns the result of the operation
+ */
+function divide(n1,n2) {
+    return n1 / n2
+}
+
+/**
+ * Multiplies the n2 to the n1
+ * @param {Number} n1 the number to be multiplied
+ * @param {Number} n2 the number that's gonna multiply
+ * @returns the result of the operation
+ */
+function multiply(n1,n2) {
+    return n1 * n2
 }
 
 var listener = addKeyListener()
