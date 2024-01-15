@@ -1,19 +1,12 @@
 //Global Variables
-export var canvasSize = {
-    height: 1000,
-    width: 1000
-}
 export var entities = {
     enemys : [],
     players : [],
     points : []
 }
-export var game = {
-    alive: true,
-    time: 0,
-    score: 0,
-    highscore: 0
-}
+
+import { canvasSize, game, updateScoreSpan } from "./game.js"
+import { showDeathMessage } from "./script.js"
 
 /**
  * Called: [Abstract] When a child is created (Player/Point/Enemy)
@@ -114,11 +107,10 @@ export class Enemy extends Circle {
  * Called: When the game is started or restarted
  * Do: Create and operate the points
  */
-export class Points extends Circle {
+export class Point extends Circle {
     constructor(x, y, radius) {
         super(x, y, radius)
         this.color = "green"
-        this.radius*=0.7
         this.x = this.radius+(Math.random()*(canvasSize.width-2*this.radius))
         this.y = this.radius+(Math.random()*(canvasSize.height-2*this.radius))
     }

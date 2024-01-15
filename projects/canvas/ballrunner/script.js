@@ -2,12 +2,14 @@
 var canvas = document.querySelector("canvas")
 var c = canvas.getContext("2d")
 
-import { Player, Enemy, Points, entities, canvasSize, game } from "./entities.js";
+import { Player, Enemy, Point, entities } from "./entities.js";
+import { game, canvasSize, updateScoreSpan } from "./game.js";
 
-var dieScreen = document.querySelector("div#end")
-var dieScreenTime = document.querySelector("div#end span#time")
-var highscoreScreen = document.querySelector("div#scoreboard span#highscore")
-var scoreScreen = document.querySelector("div#scoreboard span#score")
+export var dieScreen = document.querySelector("div#end")
+export var dieScreenTime = document.querySelector("div#end span#time")
+
+export var highscoreScreen = document.querySelector("div#scoreboard span#highscore")
+export var scoreScreen = document.querySelector("div#scoreboard span#score")
 
 /**
  * Called: by itself at every 1 second
@@ -22,7 +24,7 @@ function countTime() {
  * Called: When a enemy touch the player
  * Do: Pause the game and show the death panel with the currently time and score
  */
-function showDeathMessage() {
+export function showDeathMessage() {
     game.alive = false
     dieScreen.style.display = "block"
     dieScreenTime.innerText = `${game.time} Seconds\n${game.score} Points`
@@ -40,7 +42,7 @@ function hideDeathMessage() {
  * Called: When the game start/restart
  * Do: Set the initial values of the game and start the game
  */
-function init() {
+export function init() {
     game.time = 0
     game.score = 0
     game.alive = true
@@ -53,7 +55,7 @@ function init() {
     entities.players.push(new Player  (200, canvas.height-30 ,30))
     entities.enemys.push(new Enemy(30,30,25))
     entities.enemys.push(new Enemy(30,30,25))
-    entities.points.push(new Points    (30,30, 20))
+    entities.points.push(new Point    (30,30, 20))
     animate()
 }
 
@@ -67,15 +69,6 @@ function resize() {
     canvas.height= innerHeight*0.7
     canvasSize.width = canvas.width
     canvasSize.height= canvas.height
-}
-
-/**
- * Called: When a point is adquired
- * Do: Update the value of the scoreboard
- */
-function updateScoreSpan() {
-    highscoreScreen.innerText = `Highscore: ${game.highscore}`
-    scoreScreen.innerText = `Score: ${game.score}`
 }
 
 /**
