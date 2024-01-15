@@ -95,6 +95,8 @@ function isAritmethicOperator(s) {
     return /[+\-*\/]/.test(s);
 }
 
+
+
 /**
  * Receive the keydown/button press and separate numbers from operators
  * @param {String} txt the key/button
