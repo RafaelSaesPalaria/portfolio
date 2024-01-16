@@ -147,6 +147,7 @@ export class Player extends Circle {
         this.color="red"
         this.maxSpeed = 30
         addKeyListener().subscribe(this.keyhandler.bind(this))
+        addTouchListener().subscribe(this.touchhandler.bind(this))
         this.direction = true
         this.event = undefined
         this.up = false
@@ -177,6 +178,11 @@ export class Player extends Circle {
                 this.right = this.direction
                 break
         }
+    }
+
+    touchhandler(event) {
+        this.event = event
+        console.log(event.touches[0])
     }
 
     /**
@@ -276,6 +282,44 @@ function addKeyListener() {
         subscribe       
     }
 }
+
+/**
+ * Called: When the player is created
+ * Do: execute all the methods that are subscribed when a touchmove happens
+ * @returns the subscribe method
+ */
+function addTouchListener() {
+    const state = {
+        observers : []
+    }
+
+    addEventListener("touchmove",notifyAll)
+
+    /**
+     * Called: When the player is created
+     * Do: Add the function to the state.observers array
+     * @param {Function} functionObserver the function to be executed
+     */
+    function subscribe(functionObserver) {
+        state.observers.push(functionObserver)
+    }
+
+    /**
+     * Called: When a keyup/keydown happens
+     * Do: Execute all methods in state.observers
+     * @param {Object} command the keyboard event
+     */
+    function notifyAll(command) {
+        state.observers.forEach(functionObserver => {
+            functionObserver(command)
+        })
+    }
+
+    return {
+        subscribe       
+    }
+}
+
 
 /**
  * Called: When a enemy or a point updates
