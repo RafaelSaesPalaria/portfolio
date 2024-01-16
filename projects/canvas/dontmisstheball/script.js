@@ -203,7 +203,21 @@ function init() {
     let levelArea = level.width*level.height
 
     //Generate the blue balls
-    for (let i=0;i<levelArea/2000;i++) {
+   generateBlueCircles(levelArea/5000)
+
+    //Turns some of blue balls into red balls
+    let redPercentage = 20
+    addRedCircles(redPercentage)
+
+}
+
+/**
+ * When: The game start/restart
+ * Do: Generate the blue balls
+ * @param {Number} blueTotal the total of blue balls to be added
+ */
+function generateBlueCircles(blueTotal) {
+    for (let i=0;i<blueTotal;i++) {
         let radius = 20
         let x = radius+Math.random()*(level.width-2*radius)
         let y = radius+Math.random()*(level.height-2*radius)
@@ -216,9 +230,14 @@ function init() {
         let circle = new Circle(x,y,dx,dy,radius,color,points);
         circleArray.push(circle)
     }
+}
 
-    //Turns some of blue balls into red balls
-    let redPercentage = 20
+/**
+ * When: The game start/restart
+ * Do: Turns some of blue balls into red balls
+ * @param {Number} redPercentage 
+ */
+function addRedCircles(redPercentage) {
     for (redcount=0; redcount<circleArray.length/100*redPercentage;redcount++) {
         let i = Math.floor(Math.random()*circleArray.length)
         if (circleArray[i].isRed()) {
@@ -226,7 +245,6 @@ function init() {
         }
         circleArray[i].setRed()
     }
-
 }
 
 /**
