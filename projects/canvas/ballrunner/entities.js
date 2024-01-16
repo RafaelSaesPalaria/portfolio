@@ -65,7 +65,7 @@ export class Enemy extends Circle {
         super(x, y, radius)
         this.y = (canvasSize.height/2+this.radius+Math.random()*((canvasSize.height/2)-2*this.radius)); 
         this.x = canvasSize.width+this.radius
-        this.dx= -10-(Math.random()*(canvasSize.width/1000))
+        this.dx= -5-(Math.random()*(canvasSize.width/1000))
         this.radius=25
         this.color="blue"
     }
@@ -88,13 +88,13 @@ export class Enemy extends Circle {
             if (Math.random()>0.5) { // Vertical Attack
                 this.y = (canvasSize.height/2+this.radius+Math.random()*((canvasSize.height/2)-2*this.radius));
                 this.x = canvasSize.width+this.radius
-                this.dx= -10-(Math.random()*(canvasSize.width/1000))
+                this.dx= -5-(Math.random()*(canvasSize.width/1000))
                 this.dy = 0
 
             } else { //Horizontal Attack
                 this.x = (this.radius+Math.random()*((canvasSize.width)-2*this.radius));
                 this.y = 0
-                this.dy= +10+(Math.random()*(canvasSize.height/1000))
+                this.dy= +5+(Math.random()*(canvasSize.height/1000))
                 this.dx = 0
             }
         }   
@@ -147,6 +147,7 @@ export class Player extends Circle {
         this.color="red"
         this.maxSpeed = 30
         addKeyListener().subscribe(this.keyhandler.bind(this))
+        addTouchListener().subscribe(this.touchhandler.bind(this))
         this.direction = true
         this.event = undefined
         this.up = false
@@ -158,7 +159,7 @@ export class Player extends Circle {
     /**
      * Called: When the keylistener call (keyup/keydown)
      * Do: change the up/left/right/down attributes based on the keyevent
-     * @param {Object} event 
+     * @param {Object} event the movement
      */
     keyhandler(event) {
         this.event = event
@@ -180,8 +181,31 @@ export class Player extends Circle {
     }
 
     /**
+     * Called: When the touchlistener call (touchmove/touchstart)
+     * Do: change the up/left/right/down attributes based on the keyevent
+     * @param {Object} event the movement
+     */
+    touchhandler(event) {
+        if (event.type == "touchstart") {
+            this.event = event
+        }
+        let startPos = {x: this.event.touches[0].clientX,
+             y: this.event.touches[0].clientY }
+
+        let currentlyPos = {x: event.touches[0].clientX,
+            y: event.touches[0].clientY }
+
+        let differPos = {x:(startPos.x - currentlyPos.x),
+            y:(startPos.y - currentlyPos.y)}
+
+        this.dy = -differPos.y/this.speed
+        this.dx = -differPos.x/this.speed
+
+    }
+
+    /**
      * Called: When the player updates
-     * Do: change the dx and dy based on the up/left/right/down attributes 
+     * Do: 
      */
     keyboardMoviment() {
         if (this.up & !this.down & (canvasSize.height-this.y-this.radius<30)) {
@@ -276,6 +300,45 @@ function addKeyListener() {
         subscribe       
     }
 }
+
+/**
+ * Called: When the player is created
+ * Do: execute all the methods that are subscribed when a touchmove/touchstart happens
+ * @returns the subscribe method
+ */
+function addTouchListener() {
+    const state = {
+        observers : []
+    }
+
+    addEventListener("touchmove",notifyAll)
+    addEventListener("touchstart",notifyAll)
+
+    /**
+     * Called: When the player is created
+     * Do: Add the function to the state.observers array
+     * @param {Function} functionObserver the function to be executed
+     */
+    function subscribe(functionObserver) {
+        state.observers.push(functionObserver)
+    }
+
+    /**
+     * Called: When a keyup/keydown happens
+     * Do: Execute all methods in state.observers
+     * @param {Object} command the keyboard event
+     */
+    function notifyAll(command) {
+        state.observers.forEach(functionObserver => {
+            functionObserver(command)
+        })
+    }
+
+    return {
+        subscribe       
+    }
+}
+
 
 /**
  * Called: When a enemy or a point updates
