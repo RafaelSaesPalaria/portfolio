@@ -10,6 +10,8 @@ var pointer_seconds= document.querySelector("div#seconds")
 var timeDirection=1
 var timeSpeed =1
 var intervalSpeed = 1000
+var interval = setInterval(clockWork,1000)
+
 
 var vh=0
 
@@ -23,7 +25,6 @@ function resize() {
 }
 
 /**
- * Error: Has Multiple intervals
  * Called: at every clock second (if you speed the clock you speed the time)
  * Do: change the time of the analog clock and of the digital clock
  */
@@ -38,7 +39,8 @@ function clockWork() {
 //Methods
 function disaccelerate() {
     timeSpeed*=0.9;
-    setInterval(clockWork,intervalSpeed/timeSpeed);
+    clearInterval(interval)
+    interval = setInterval(clockWork,intervalSpeed/timeSpeed);
 }
 
 function forward() {
@@ -60,7 +62,8 @@ function backward() {
 
 function accelerate() {
     timeSpeed*=1.1;
-    setInterval(clockWork,intervalSpeed/timeSpeed);
+    clearInterval(interval)
+    interval = setInterval(clockWork,intervalSpeed/timeSpeed);
 }
 
 /**
@@ -72,7 +75,7 @@ function updateTime() {
     let minutes = time.getMinutes();
     let hours = time.getHours();
 
-    time.setSeconds(seconds + timeDirection * timeSpeed);
+    time.setSeconds(seconds + timeDirection);
 
     if (time.getSeconds() >= 60) {
         time.setSeconds(0);
@@ -200,7 +203,6 @@ function addMinuteBar() {
  * Called: When the application Start
  * Do: Iniciate the application functions
  */
-setInterval(clockWork,1000)
 function start() {
     resize()
     window.addEventListener('zoom', resize);
