@@ -144,7 +144,22 @@ function updateDigitalClock() {
 }
 
 /**
- * Error: Calculate the cardinal position based on the polar cordinates should be a method
+ * ERROR/TODO: Deg+=270 shouldn't exist
+ * Called: When the numbers and bars position are set
+ * Do: Convert A position in polar coordination to cardinal coordination
+ * @param {Number} radius radius of the coordinate
+ * @param {Number} deg degree of the angle
+ * @returns The cardinal coordinates
+ */
+function polarToCardinal(radius, deg) {
+    deg+=270
+    let theta = (2 * Math.PI) / (360/deg)
+    let x = (Math.sin(theta)*radius)
+    let y = (Math.cos(theta)* radius)
+    return [x,y]
+}
+
+/**
  * Called: At the start of the application
  * Do: Create and position the numbers elements
  */
@@ -161,16 +176,15 @@ function setNumbersPosition() {
         n.innerHTML = `${i}`
         
         div.appendChild(n)
-        let theta = (2 * Math.PI) / 12;
-        x = (Math.sin((theta*i)+11)*r)
-        y = (Math.cos((theta*i)+11)*r)
+        let coords= polarToCardinal(r,i*(360/12))
+        let x = coords[0]
+        let y = coords[1]
         n.style.top = `calc(50% + ${x}px)`;
         n.style.left = `calc(50% + ${y}px)`
     }
 }
 
 /**
- * Error: Calculate the cardinal position based on the polar cordinates should be a method
  * Called: at the start of the application
  * Do: Create the bars of the minutes and positions it's elements
  */
@@ -184,22 +198,20 @@ function addMinuteBar() {
         let bar = document.createElement("div")
 
         if (i%5==0) {
-            bar.style.width = "0.8vh"
+            bar.style.width = "1.2vh"
         }
 
-
-        let theta = (2 * Math.PI) / 60;
-        x = Math.sin(theta*i)*r
-        y = Math.cos(theta*i)*r
+        let coords = polarToCardinal(r,i*(360/60))
+        let x = coords[0]
+        let y = coords[1]
 
         bar.style.top = `calc(50% + ${x}px)`
         bar.style.left = `calc(49% + ${y}px)`
 
-        bar.style.transform = `rotate(${i*6}deg)`
+        bar.style.transform = `rotate(${i*(360/60)+90}deg)`
 
         bars.appendChild(bar)
     }
-
 }
 
 //Constructor
