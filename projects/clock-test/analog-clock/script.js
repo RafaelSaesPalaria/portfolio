@@ -16,12 +16,13 @@ var interval = setInterval(clockWork,1000)
 var vh=0
 
 /**
- * Error: Dont update the elements in the screen
  * Called: When the screen is zoomed
  * Do: update the vh
  */
 function resize() {
     vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    setNumbersPosition()
+    addMinuteBar()
 }
 
 /**
@@ -148,6 +149,8 @@ function updateDigitalClock() {
  * Do: Create and position the numbers elements
  */
 function setNumbersPosition() {
+    let div = document.querySelector("div#numbers")
+    div.innerHTML = '';
 
     let r = 0.19*vh;
 
@@ -157,7 +160,6 @@ function setNumbersPosition() {
         n.setAttribute("id",`n${i}`)
         n.innerHTML = `${i}`
         
-        let div = document.querySelector("div#numbers")
         div.appendChild(n)
         let theta = (2 * Math.PI) / 12;
         x = (Math.sin((theta*i)+11)*r)
@@ -174,6 +176,8 @@ function setNumbersPosition() {
  */
 function addMinuteBar() {
     let bars = document.querySelector("div#bars")
+    bars.innerHTML = '';
+
     let r = 0.22*vh;
     
     for (let i=0;i<60;i++) {
