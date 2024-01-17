@@ -1,3 +1,7 @@
+/**
+Clock Second = seconds of the digital/analog clocks, if you accelerate them the clock-seconds will pass faster
+ */
+
 // Global Attributes
 var time = new Date();
 var pointer_hours= document.querySelector("div#hours")
@@ -9,12 +13,20 @@ var intervalSpeed = 1000
 
 var vh=0
 
-//Resize the windows when needed
+/**
+ * Error: Dont update the elements in the screen
+ * Called: When the screen is zoomed
+ * Do: update the vh
+ */
 function resize() {
     vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 }
 
-//Update the system status
+/**
+ * Error: Has Multiple intervals
+ * Called: at every clock second (if you speed the clock you speed the time)
+ * Do: change the time of the analog clock and of the digital clock
+ */
 function clockWork() {
     updateTime()
     rotatePointer(pointer_hours     ,parseAngle(time.getHours()+(time.getMinutes()/60),12))
@@ -51,7 +63,10 @@ function accelerate() {
     setInterval(clockWork,intervalSpeed/timeSpeed);
 }
 
-//update global variable time based on the computer time
+/**
+ * Called: At every clock second
+ * Do: Calculate the new time based on the currently time and on the timeDirection and timeSpeed
+ */
 function updateTime() {
     let seconds = time.getSeconds();
     let minutes = time.getMinutes();
@@ -84,7 +99,8 @@ function updateTime() {
 }
 
 /**
- * Get the angle of rotation
+ * Called: When the angle of a pointer need to be calculated (every clock second)
+ * Do: Get the angle of rotation based on the period of the cycle
  * @param {Number} currentlyTime the currently period of the cycle 
  * @param {Number} cycleMax   the cycle max value
  * @returns the angle of the currently period
@@ -94,16 +110,22 @@ function parseAngle(currentlyTime,cycleMax) {
 }
 
 /**
- * Used to rotate the pointers
+ * Error: the deg shouldn't +=180 in this method
+ * Called: at every clock second
+ * Do: Rotate the pointer elements based on the deg
  * @param {Object}   pointer The object thats gonna be rotated
  * @param {Number} deg      The angle which the pointer is gonna rotate
  */
 function rotatePointer(pointer, deg) {
-    deg+=180 // TODO: +180degs because the clock start at the bottom 
+    deg+=180
     pointer.style.transform = `rotate(${deg}deg)` 
 }
 
-// Update and put the formated time on the digital clock
+/**
+ * Error: the formatted number should be a new method
+ * Called: at every clock-second
+ * Do: update the elements of the digital clock based on the clock-time
+ */
 function updateDigitalClock() {
     let digital_clock = document.querySelector("div#digital-clock #time");
     let hours     = time.getHours();
@@ -117,7 +139,11 @@ function updateDigitalClock() {
     digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
 }
 
-// Create, set the position and add the numbers on the numbers div
+/**
+ * Error: Calculate the cardinal position based on the polar cordinates should be a method
+ * Called: At the start of the application
+ * Do: Create and position the numbers elements
+ */
 function setNumbersPosition() {
 
     let r = 0.19*vh;
@@ -138,7 +164,11 @@ function setNumbersPosition() {
     }
 }
 
-/*Used to create, calculate the position and add the bars of the minutes into the bars div*/
+/**
+ * Error: Calculate the cardinal position based on the polar cordinates should be a method
+ * Called: at the start of the application
+ * Do: Create the bars of the minutes and positions it's elements
+ */
 function addMinuteBar() {
     let bars = document.querySelector("div#bars")
     let r = 0.22*vh;
@@ -167,7 +197,8 @@ function addMinuteBar() {
 
 //Constructor
 /**
- * used to update the clock based on the computer time at every 1s
+ * Called: When the application Start
+ * Do: Iniciate the application functions
  */
 setInterval(clockWork,1000)
 function start() {
