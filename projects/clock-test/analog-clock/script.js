@@ -39,7 +39,7 @@ function clockWork() {
 
 //Methods
 function disaccelerate() {
-    timeSpeed*=0.5;
+    timeSpeed*=0.9;
     clearInterval(interval)
     interval = setInterval(clockWork,intervalSpeed/timeSpeed);
     updateTimeSpeed()
@@ -63,7 +63,7 @@ function backward() {
 }
 
 function accelerate() {
-    timeSpeed*=2;
+    timeSpeed*=1.1;
     clearInterval(interval)
     interval = setInterval(clockWork,intervalSpeed/timeSpeed);
     updateTimeSpeed()
@@ -75,7 +75,7 @@ function accelerate() {
  */
 function updateTimeSpeed() {
     let span = document.querySelector("div#player span#timespeed")
-    span.innerText=`${timeSpeed}x`
+    span.innerText=`${timeSpeed.toFixed(2)}x`
 }
 
 /**
@@ -87,7 +87,11 @@ function updateTime() {
     let minutes = time.getMinutes();
     let hours = time.getHours();
 
-    time.setSeconds(seconds + timeDirection);
+    if (timeSpeed>250) {
+        time.setSeconds(seconds + timeDirection * (timeSpeed-250));
+    } else {
+        time.setSeconds(seconds + timeDirection);
+    }
 
     if (time.getSeconds() >= 60) {
         time.setSeconds(0);
