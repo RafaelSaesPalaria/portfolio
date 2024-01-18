@@ -51,11 +51,13 @@ function forward() {
 
 function pause() {
     timeSpeed=0
+    updateTimeSpeed()
 }
 
 function play() {
     timeSpeed=1
     timeDirection=1
+    updateTimeSpeed()
 }
 
 function backward() {
@@ -87,12 +89,16 @@ function updateTime() {
     let minutes = time.getMinutes();
     let hours = time.getHours();
 
-    if (timeSpeed>250) {
-        time.setSeconds(seconds + timeDirection * (timeSpeed-250));
-    } else {
-        time.setSeconds(seconds + timeDirection);
+    //Time Run
+    if (timeSpeed!=0) {
+        if (timeSpeed>250) {
+            time.setSeconds(seconds + timeDirection * (timeSpeed-250));
+        } else {
+            time.setSeconds(seconds + timeDirection);
+        }
     }
 
+    //Time Adjust
     if (time.getSeconds() >= 60) {
         time.setSeconds(0);
         time.setMinutes(minutes + 1);
