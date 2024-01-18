@@ -42,6 +42,7 @@ function disaccelerate() {
     timeSpeed*=0.9;
     clearInterval(interval)
     interval = setInterval(clockWork,intervalSpeed/timeSpeed);
+    updateTimeSpeed()
 }
 
 function forward() {
@@ -50,11 +51,13 @@ function forward() {
 
 function pause() {
     timeSpeed=0
+    updateTimeSpeed()
 }
 
 function play() {
     timeSpeed=1
     timeDirection=1
+    updateTimeSpeed()
 }
 
 function backward() {
@@ -65,6 +68,16 @@ function accelerate() {
     timeSpeed*=1.1;
     clearInterval(interval)
     interval = setInterval(clockWork,intervalSpeed/timeSpeed);
+    updateTimeSpeed()
+}
+
+/**
+ * Called: When the timespeed changes
+ * Do: change the timespeed on the player
+ */
+function updateTimeSpeed() {
+    let span = document.querySelector("div#player span#timespeed")
+    span.innerText=`${timeSpeed.toFixed(2)}x`
 }
 
 /**
@@ -76,8 +89,16 @@ function updateTime() {
     let minutes = time.getMinutes();
     let hours = time.getHours();
 
-    time.setSeconds(seconds + timeDirection);
+    //Time Run
+    if (timeSpeed!=0) {
+        if (timeSpeed>250) {
+            time.setSeconds(seconds + timeDirection * (timeSpeed-250));
+        } else {
+            time.setSeconds(seconds + timeDirection);
+        }
+    }
 
+    //Time Adjust
     if (time.getSeconds() >= 60) {
         time.setSeconds(0);
         time.setMinutes(minutes + 1);
