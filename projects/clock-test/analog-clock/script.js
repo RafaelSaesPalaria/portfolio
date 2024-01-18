@@ -39,9 +39,10 @@ function clockWork() {
 
 //Methods
 function disaccelerate() {
-    timeSpeed*=0.9;
+    timeSpeed*=0.5;
     clearInterval(interval)
     interval = setInterval(clockWork,intervalSpeed/timeSpeed);
+    updateTimeSpeed()
 }
 
 function forward() {
@@ -62,9 +63,19 @@ function backward() {
 }
 
 function accelerate() {
-    timeSpeed*=1.1;
+    timeSpeed*=2;
     clearInterval(interval)
     interval = setInterval(clockWork,intervalSpeed/timeSpeed);
+    updateTimeSpeed()
+}
+
+/**
+ * Called: When the timespeed changes
+ * Do: change the timespeed on the player
+ */
+function updateTimeSpeed() {
+    let span = document.querySelector("div#player span#timespeed")
+    span.innerText=`${timeSpeed}x`
 }
 
 /**
