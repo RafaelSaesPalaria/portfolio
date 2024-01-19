@@ -135,13 +135,12 @@ function parseAngle(currentlyTime,cycleMax) {
  * Do: rotate the pointers
  */
 function rotatePointers() {
-    let pointer_hours= document.querySelector("div#hours")
-    let pointer_minutes= document.querySelector("div#minutes")
-    let pointer_seconds= document.querySelector("div#seconds")
+    //Pointers  [0] = Hours, [1] = Minutes, [2] = Seconds
+    let pointers = document.querySelectorAll("div.pointer")
 
-    rotatePointer(pointer_hours     ,parseAngle(time.getHours()+(time.getMinutes()/60),12))
-    rotatePointer(pointer_minutes ,parseAngle(time.getMinutes()+(time.getSeconds()/60),60))
-    rotatePointer(pointer_seconds,parseAngle(time.getSeconds(),60))
+    rotatePointer(pointers[0],parseAngle(time.getHours()+(time.getMinutes()/60),12))
+    rotatePointer(pointers[1],parseAngle(time.getMinutes()+(time.getSeconds()/60),60))
+    rotatePointer(pointers[2],parseAngle(time.getSeconds(),60))
 }
 
 /**
