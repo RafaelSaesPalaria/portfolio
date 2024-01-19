@@ -1,12 +1,10 @@
 /**
 Clock Second = seconds of the digital/analog clocks, if you accelerate them the clock-seconds will pass faster
+VH = Viewport Height, the weight of the screen basically
  */
 
 // Global Attributes
 var time = new Date();
-var pointer_hours= document.querySelector("div#hours")
-var pointer_minutes= document.querySelector("div#minutes")
-var pointer_seconds= document.querySelector("div#seconds")
 var timeDirection=1
 var timeSpeed =1
 var intervalSpeed = 1000
@@ -31,9 +29,7 @@ function resize() {
  */
 function clockWork() {
     updateTime()
-    rotatePointer(pointer_hours     ,parseAngle(time.getHours()+(time.getMinutes()/60),12))
-    rotatePointer(pointer_minutes ,parseAngle(time.getMinutes()+(time.getSeconds()/60),60))
-    rotatePointer(pointer_seconds,parseAngle(time.getSeconds(),60))
+    rotatePointers()
     updateDigitalClock()
 }
 
@@ -132,6 +128,20 @@ function updateTime() {
  */
 function parseAngle(currentlyTime,cycleMax) {
     return (currentlyTime/cycleMax)*360
+}
+
+/**
+ * Called: At every clock-second
+ * Do: rotate the pointers
+ */
+function rotatePointers() {
+    let pointer_hours= document.querySelector("div#hours")
+    let pointer_minutes= document.querySelector("div#minutes")
+    let pointer_seconds= document.querySelector("div#seconds")
+
+    rotatePointer(pointer_hours     ,parseAngle(time.getHours()+(time.getMinutes()/60),12))
+    rotatePointer(pointer_minutes ,parseAngle(time.getMinutes()+(time.getSeconds()/60),60))
+    rotatePointer(pointer_seconds,parseAngle(time.getSeconds(),60))
 }
 
 /**
