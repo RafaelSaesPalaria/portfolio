@@ -156,24 +156,6 @@ function rotatePointer(pointer, deg) {
 }
 
 /**
- * Error: the formatted number should be a new method
- * Called: at every clock-second
- * Do: update the elements of the digital clock based on the clock-time
- */
-function updateDigitalClock() {
-    let digital_clock = document.querySelector("div#digital-clock #time");
-    let hours     = time.getHours();
-    let minutes = time.getMinutes();
-    let seconds= time.getSeconds();
-
-    hours      = hours    < 10 ? "0" +  hours     : hours;
-    minutes  = minutes < 10 ? "0" +  minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
-}
-
-/**
  * ERROR/TODO: Deg+=270 shouldn't exist
  * Called: When the numbers and bars position are set
  * Do: Convert A position in polar coordination to cardinal coordination
@@ -187,6 +169,37 @@ function polarToCardinal(radius, deg) {
     let x = (Math.sin(theta)*radius)
     let y = (Math.cos(theta)* radius)
     return [x,y]
+}
+
+/**
+ * ERROR/TODO: the formatted number should be a new method
+ * Called: at every clock-second
+ * Do: update the elements of the digital clock based on the clock-time
+ */
+function updateDigitalClock() {
+    let digital_clock = document.querySelector("div#digital-clock #time");
+
+    hours      = formattedNumbers(time.getHours(), 2)
+    minutes  = formattedNumbers(time.getMinutes(), 2)
+    seconds = formattedNumbers( time.getSeconds(), 2)
+
+    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
+}
+
+/**
+ * Called: when update clock need (every clock-second)
+ * Do: Check if the number has the desired length and add zeros at the start if it don't
+ * @param {Number} numbers unformatted number
+ * @param {Number} length desired length
+ * @returns formatted number
+ */
+function formattedNumbers(numbers, length) {
+    let zeros=""
+    for (let i=0; i < length-numbers.toString().length; i++) {
+        zeros+="0"
+    }
+    numbers=zeros+numbers
+    return numbers
 }
 
 /**
