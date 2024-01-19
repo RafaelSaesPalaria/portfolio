@@ -1,12 +1,10 @@
 /**
 Clock Second = seconds of the digital/analog clocks, if you accelerate them the clock-seconds will pass faster
+VH = Viewport Height, the weight of the screen basically
  */
 
 // Global Attributes
 var time = new Date();
-var pointer_hours= document.querySelector("div#hours")
-var pointer_minutes= document.querySelector("div#minutes")
-var pointer_seconds= document.querySelector("div#seconds")
 var timeDirection=1
 var timeSpeed =1
 var intervalSpeed = 1000
@@ -31,9 +29,7 @@ function resize() {
  */
 function clockWork() {
     updateTime()
-    rotatePointer(pointer_hours     ,parseAngle(time.getHours()+(time.getMinutes()/60),12))
-    rotatePointer(pointer_minutes ,parseAngle(time.getMinutes()+(time.getSeconds()/60),60))
-    rotatePointer(pointer_seconds,parseAngle(time.getSeconds(),60))
+    rotatePointers()
     updateDigitalClock()
 }
 
@@ -135,6 +131,19 @@ function parseAngle(currentlyTime,cycleMax) {
 }
 
 /**
+ * Called: At every clock-second
+ * Do: rotate the pointers
+ */
+function rotatePointers() {
+    //Pointers  [0] = Hours, [1] = Minutes, [2] = Seconds
+    let pointers = document.querySelectorAll("div.pointer")
+
+    rotatePointer(pointers[0],parseAngle(time.getHours()+(time.getMinutes()/60),12))
+    rotatePointer(pointers[1],parseAngle(time.getMinutes()+(time.getSeconds()/60),60))
+    rotatePointer(pointers[2],parseAngle(time.getSeconds(),60))
+}
+
+/**
  * Error: the deg shouldn't +=180 in this method
  * Called: at every clock second
  * Do: Rotate the pointer elements based on the deg
@@ -144,24 +153,6 @@ function parseAngle(currentlyTime,cycleMax) {
 function rotatePointer(pointer, deg) {
     deg+=180
     pointer.style.transform = `rotate(${deg}deg)` 
-}
-
-/**
- * Error: the formatted number should be a new method
- * Called: at every clock-second
- * Do: update the elements of the digital clock based on the clock-time
- */
-function updateDigitalClock() {
-    let digital_clock = document.querySelector("div#digital-clock #time");
-    let hours     = time.getHours();
-    let minutes = time.getMinutes();
-    let seconds= time.getSeconds();
-
-    hours      = hours    < 10 ? "0" +  hours     : hours;
-    minutes  = minutes < 10 ? "0" +  minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
 }
 
 /**
@@ -178,6 +169,37 @@ function polarToCardinal(radius, deg) {
     let x = (Math.sin(theta)*radius)
     let y = (Math.cos(theta)* radius)
     return [x,y]
+}
+
+/**
+ * ERROR/TODO: the formatted number should be a new method
+ * Called: at every clock-second
+ * Do: update the elements of the digital clock based on the clock-time
+ */
+function updateDigitalClock() {
+    let digital_clock = document.querySelector("div#digital-clock #time");
+
+    hours      = formattedNumbers(time.getHours(), 2)
+    minutes  = formattedNumbers(time.getMinutes(), 2)
+    seconds = formattedNumbers( time.getSeconds(), 2)
+
+    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
+}
+
+/**
+ * Called: when update clock need (every clock-second)
+ * Do: Check if the number has the desired length and add zeros at the start if it don't
+ * @param {Number} numbers unformatted number
+ * @param {Number} length desired length
+ * @returns formatted number
+ */
+function formattedNumbers(numbers, length) {
+    let zeros=""
+    for (let i=0; i < length-numbers.toString().length; i++) {
+        zeros+="0"
+    }
+    numbers=zeros+numbers
+    return numbers
 }
 
 /**
