@@ -94,28 +94,26 @@ function updateTime() {
         }
     }
 
-    //Time Adjust
-    if (time.getSeconds() >= 60) {
-        time.setSeconds(0);
-        time.setMinutes(minutes + 1);
-    } else if (time.getSeconds() < 0) {
-        time.setSeconds(59);
-        time.setMinutes(minutes - 1);
-    }
+    /*timeAdjust(seconds, minutes, 60)
+    timeAdjust(minutes, hours,60)
+    timeAdjust(hours, ////, 24)*/
 
-    if (time.getMinutes() >= 60) {
-        time.setMinutes(0);
-        time.setHours(hours + 1);
-    } else if (time.getMinutes() < 0) {
-        time.setMinutes(59);
-        time.setHours(hours - 1);
-    }
+}
 
-    if (time.getHours() >= 24) {
-        time.setMinutes(0);
-        time.setHours(0);
-    } else if (time.getHours() < 0) {
-        time.setHours(23);
+/**
+ * Called: When the time is updated
+ * Do: rotate the cycle when its over and call the next one
+ * @param {Number} actual 
+ * @param {Number} next 
+ * @param {Number} maxCycle 
+ */
+function timeAdjust(actual,next,maxCycle) {
+    if (actual >= maxCycle) {
+        actual = 0 ;
+        next+=1
+    } else if (actual < 0) {
+        actual = maxCycle-1;
+        next-=1;
     }
 }
 
