@@ -5,6 +5,7 @@ canvas.height= innerHeight
 
 var interval = 1
 
+import DigitalClock from "./digital.js"
 import Pointer from "./pointer.js"
 
 var timeInSeconds = 0
@@ -46,6 +47,8 @@ function drawClock() {
 var p1 = new Pointer(c,clockLocation,100,7,"red");
 var p2 = new Pointer(c,clockLocation,100,7,"white");
 var p3 = new Pointer(c,clockLocation,100,7,"white");
+
+var player = new DigitalClock(100,100,100,100);
 function animate() {
     //c.clearRect(0,0,canvas.width,canvas.height)
 
@@ -60,6 +63,8 @@ function animate() {
     p1.update(getAngle(Math.floor(seconds),60))
     p2.update(getAngle(Math.floor(minutes),60))
     p3.update(getAngle(Math.floor(hours),24))
+
+    player.update(c,timeInSeconds)
 }
 
 getTime()
