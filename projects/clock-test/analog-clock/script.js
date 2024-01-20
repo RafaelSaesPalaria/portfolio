@@ -172,7 +172,6 @@ function polarToCardinal(radius, deg) {
 }
 
 /**
- * ERROR/TODO: the formatted number should be a new method
  * Called: at every clock-second
  * Do: update the elements of the digital clock based on the clock-time
  */
@@ -205,53 +204,51 @@ function formattedNumbers(numbers, length) {
 /**
  * Called: At the start of the application
  * Do: Create and position the numbers elements
+ * @param {number} qntNumbers amount of numbers to be displayed on the clock
+ * @param {number} radius distance from the center
  */
-function setNumbersPosition() {
+function setNumbersPosition(radius, qntNumbers) {
     let div = document.querySelector("div#numbers")
     div.innerHTML = '';
 
-    let r = 0.19*vh;
-
-    for (let i=1;i<=12;i++) {
+    for (let i=1;i<=qntNumbers;i++) {
         
         let n = document.createElement("span");
         n.setAttribute("id",`n${i}`)
         n.innerHTML = `${i}`
         
+        let coords= polarToCardinal(radius,i*(360/qntNumbers))
+        n.style.top = `calc(50% + ${coords[0]}px)`;
+        n.style.left = `calc(50% + ${coords[1]}px)`
+
         div.appendChild(n)
-        let coords= polarToCardinal(r,i*(360/12))
-        let x = coords[0]
-        let y = coords[1]
-        n.style.top = `calc(50% + ${x}px)`;
-        n.style.left = `calc(50% + ${y}px)`
     }
 }
 
 /**
  * Called: at the start of the application
  * Do: Create the bars of the minutes and positions it's elements
+ * @param {*} nbars amount of bars to be displayed at the clock
+ * @param {*} radius distance from the center
  */
-function addMinuteBar() {
+function addMinuteBar(radius, nbars) {
+    console.log(radius +" "+ nbars)
     let bars = document.querySelector("div#bars")
     bars.innerHTML = '';
 
-    let r = 0.22*vh;
-    
-    for (let i=0;i<60;i++) {
+    for (let i=0;i<nbars;i++) {
         let bar = document.createElement("div")
 
         if (i%5==0) {
             bar.style.width = "1.2vh"
         }
 
-        let coords = polarToCardinal(r,i*(360/60))
-        let x = coords[0]
-        let y = coords[1]
+        let coords = polarToCardinal(radius,i*(360/nbars))
 
-        bar.style.top = `calc(50% + ${x}px)`
-        bar.style.left = `calc(49% + ${y}px)`
+        bar.style.top = `calc(50% + ${coords[0]}px)`
+        bar.style.left = `calc(49% + ${coords[1]}px)`
 
-        bar.style.transform = `rotate(${i*(360/60)+90}deg)`
+        bar.style.transform = `rotate(${i*(360/nbars)+90}deg)`
 
         bars.appendChild(bar)
     }
@@ -262,10 +259,11 @@ function addMinuteBar() {
  * Called: When the application Start
  * Do: Iniciate the application functions
  */
+
 function start() {
-    resize()
     window.addEventListener('zoom', resize);
-    setNumbersPosition()
-    addMinuteBar()
+    resize()
+    setNumbersPosition((0.19*vh), 12)
+    addMinuteBar((0.22*vh), 60)
     clockWork()
 }
