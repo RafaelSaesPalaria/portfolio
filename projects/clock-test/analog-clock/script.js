@@ -14,13 +14,13 @@ var interval = setInterval(clockWork,1000)
 var vh=0
 
 /**
- * Called: When the screen is zoomed
+ * Called: When the screen is zoomed or when the application start
  * Do: update the vh
  */
 function resize() {
     vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    setNumbersPosition()
-    addMinuteBar()
+    setNumbersPosition((0.19*vh), 12)
+    addMinuteBar((0.22*vh), 60)
 }
 
 /**
@@ -200,10 +200,10 @@ function formattedNumbers(numbers, length) {
 }
 
 /**
- * Called: At the start of the application
+ * Called: At the start of the application or when the application is zoomed
  * Do: Create and position the numbers elements
- * @param {number} qntNumbers amount of numbers to be displayed on the clock
- * @param {number} radius distance from the center
+ * @param {Number} qntNumbers amount of numbers to be displayed on the clock
+ * @param {Number} radius distance from the center
  */
 function setNumbersPosition(radius, qntNumbers) {
     let div = document.querySelector("div#numbers")
@@ -224,13 +224,12 @@ function setNumbersPosition(radius, qntNumbers) {
 }
 
 /**
- * Called: at the start of the application
+ * Called: at the start of the application or when the application is zoomed
  * Do: Create the bars of the minutes and positions it's elements
- * @param {*} nbars amount of bars to be displayed at the clock
- * @param {*} radius distance from the center
+ * @param {Number} nbars amount of bars to be displayed at the clock
+ * @param {Number} radius distance from the center
  */
 function addMinuteBar(radius, nbars) {
-    console.log(radius +" "+ nbars)
     let bars = document.querySelector("div#bars")
     bars.innerHTML = '';
 
@@ -257,11 +256,9 @@ function addMinuteBar(radius, nbars) {
  * Called: When the application Start
  * Do: Iniciate the application functions
  */
-
+window.addEventListener('zoom', resize);
 function start() {
-    window.addEventListener('zoom', resize);
+    
     resize()
-    setNumbersPosition((0.19*vh), 12)
-    addMinuteBar((0.22*vh), 60)
     clockWork()
 }
