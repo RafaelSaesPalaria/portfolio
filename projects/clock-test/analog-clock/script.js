@@ -166,7 +166,7 @@ function polarToCardinal(radius, deg) {
     let theta = (2 * Math.PI) / (360/deg)
     let x = (Math.sin(theta)*radius)
     let y = (Math.cos(theta)* radius)
-    return [x,y]
+    return {x:x,y:y}
 }
 
 /**
@@ -216,8 +216,8 @@ function setNumbersPosition(radius, qntNumbers) {
         n.innerHTML = `${i}`
         
         let coords= polarToCardinal(radius,i*(360/qntNumbers))
-        n.style.top = `calc(50% + ${coords[0]}px)`;
-        n.style.left = `calc(50% + ${coords[1]}px)`
+        n.style.top = `calc(50% + ${coords.x}px)`;
+        n.style.left = `calc(50% + ${coords.y}px)`
 
         div.appendChild(n)
     }
@@ -243,8 +243,8 @@ function addMinuteBar(radius, nbars) {
 
         let coords = polarToCardinal(radius,i*(360/nbars))
 
-        bar.style.top = `calc(50% + ${coords[0]}px)`
-        bar.style.left = `calc(49% + ${coords[1]}px)`
+        bar.style.top = `calc(50% + ${coords.x}px)`
+        bar.style.left = `calc(49% + ${coords.y}px)`
 
         bar.style.transform = `rotate(${i*(360/nbars)+90}deg)`
 
