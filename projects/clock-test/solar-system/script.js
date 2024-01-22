@@ -145,16 +145,29 @@ function createStars() {
 }
 
 /**
+ * Called: When the earth need to update it's background
+ * Do: Convert polar coordinates to cardinal coordinates
+ * @param {Number} deg    degree of the coordinate
+ * @param {Number} radius distance from the center
+ * @returns x, y as hash
+ */
+function polarToCardinal(deg, radius) {
+    let theta = (deg * Math.PI) / 180;
+
+    let x = Math.cos(theta) * radius;
+    let y = Math.sin(theta) * radius;
+    return {x:x,y:y}
+}
+
+/**
  * Called: after the stars are centered
  * Do: Create a radial gradient in the earth to look like the sun light
  * @param {Number} deg the degree of the rotation of the gradient in the earth 
  */
 function updateEarthBackground(deg) {
     deg = (360 - (deg-90)) % 360;
-    let theta = (deg * Math.PI) / 180;
+    let coords = polarToCardinal(deg,100)
 
-    let x = Math.cos(theta) * 100;
-    let y = Math.sin(theta) * 100;
 
-    earth.style.background = `radial-gradient(circle at ${50 + x}% ${50 + y}%, darkblue, blue 60%, yellow 95%)`;
+    earth.style.background = `radial-gradient(circle at ${50 + coords.x}% ${50 + coords.y}%, darkblue, blue 60%, yellow 95%)`;
 }
