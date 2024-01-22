@@ -75,13 +75,13 @@ div.pointer {
 div#hours {
     width: 1.2vh;
     height: 14vh;
-    background-color: white;
+    background-color: green;
 }
 
 div#minutes {
     width: 1.2vh;
     height: 20vh;
-    background-color: rgb(255, 255, 255)
+    background-color: yellow
 }
 
 div#seconds {
@@ -89,7 +89,7 @@ div#seconds {
     left: 50%;
     width: 0.6vh;
     height: 20vh;
-    background-color: red;
+    background-color: blue;
 }
 
 div#axis {
@@ -100,7 +100,7 @@ div#axis {
 
     width: 2.6vh;
     height: 2.6vh;
-    background-color: rgb(255, 0, 0);
+    background-color: blue;
     border-radius: 50%;
 }
 
