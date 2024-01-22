@@ -19,12 +19,19 @@ function start() {
     sunCentered()
 }
 
-//Resizes the screen
+/**
+ * ERROR/TODO: this method don't actually resize the screen
+ * Called: at the start or when a zoom happens
+ * Do: Resizes the screen
+ */
 function resize() {
     vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 }
 
-//Set the position of the component to align with the center of the sun
+/**
+ * Called: When the sun is clicked
+ * Do: Set the position of the components to align with the center of the sun
+ */
 function sunClicked() {
     clearInterval(interval)
     interval = setInterval(sunCentered,10)
@@ -32,7 +39,11 @@ function sunClicked() {
     center(sun)
 }
 
-//Set the position of the component to align with the center of the earth
+/**
+ * Called: When the earth is clicked
+ * Do: Set the position of the components to align with the earth of the sun 
+ * //Give the impression that the camera is moving with the earth
+ */
 function earthClicked() {
     clearInterval(interval)
     interval = setInterval(earthCentered,10)
@@ -40,7 +51,11 @@ function earthClicked() {
     center(earth)
 }
 
-//Set the position of the component to align with the center of the moon
+/**
+ * Called: When the moon is clicked
+ * Do: Set the position of the components to align with the center of the moon 
+ * //Give the impression that the camera is moving with the moon
+ */
 function moonClicked() {
     clearInterval(interval)
     interval = setInterval(moonCentered,10)
@@ -49,15 +64,19 @@ function moonClicked() {
 }
 
 /**
- * Center the currently star
- * @param {Object} star 
+ * Called: When any non-farway-star is called
+ * Do: Center the currently star
+ * @param {Object} star the star that's gonna be centered
  */
 function center(star) {
     star.style.left = `${innerWidth/2}px`
     star.style.top = `${innerHeight/2}px`
 }
 
-//Update the position of the stars the align with the sun
+/**
+ * Called: At the start and at every 10ms after the sunClick active the interval
+ * Do: Update the position of the stars the align with the sun
+ */
 function sunCentered() {
     orbit(sun   ,earth,position*0.4,vh*0.4)
     orbit(earth,moon,position*0.8,vh*0.2)
@@ -66,7 +85,10 @@ function sunCentered() {
     position+=1
 }
 
-//Update the position of the stars the align with the earth
+/**
+ * Called: at every 10ms after the earthClick active the interval
+ * Do: Update the position of the stars the align with the earth
+ */
 function earthCentered() {
     orbit(earth, sun,position*0.4,vh*0.4)
     orbit(earth,moon,position*0.8,vh*0.2)
@@ -75,7 +97,10 @@ function earthCentered() {
     position+=1
 }
 
-//Update the position of the stars the align with the moon
+/**
+ * Called: at every 10ms after the moonClick active the interval
+ * Do: Update the position of the stars the align with the moon
+ */
 function moonCentered() {
     orbit(moon,sun,position*0.4,vh*0.4)
     orbit(moon,earth,position*0.8,vh*0.2)
@@ -85,7 +110,8 @@ function moonCentered() {
 }
 
 /**
- * Make the one star orbit another one
+ * Called: When any centered star need the orbit of it's satellites
+ * Do: Make the one star orbit another one
  * @param {Object}   centerStar   the primary star
  * @param {Object}   satelliteStar the star thats gonna orbit the primary star
  * @param {Number} deg             the currently degree of the orbit
@@ -106,7 +132,8 @@ function orbit(centerStar,satelliteStar,deg,radius) {
 }
 
 /**
- * Create the far-away stars in the background
+ * Called: at the start
+ * Do: Create the far-away stars in the background
  */
 function createStars() {
     for (n=0;n<200;n++) {
@@ -118,7 +145,8 @@ function createStars() {
 }
 
 /**
- * Create a radial gradient in the earth to look like the sun light
+ * Called: after the stars are centered
+ * Do: Create a radial gradient in the earth to look like the sun light
  * @param {Number} deg the degree of the rotation of the gradient in the earth 
  */
 function updateEarthBackground(deg) {
