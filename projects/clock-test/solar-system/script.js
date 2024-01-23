@@ -152,7 +152,7 @@ function createStars() {
  * @returns x, y as hash
  */
 function polarToCardinal(deg, radius) {
-    let theta = (deg * Math.PI) / 180;
+    let theta = (Math.PI * 2) / (360/deg)
 
     let x = Math.cos(theta) * radius;
     let y = Math.sin(theta) * radius;
