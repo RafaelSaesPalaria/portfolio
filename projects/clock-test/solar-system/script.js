@@ -4,6 +4,7 @@ var vh = 0
 var sun = document.querySelector("div#sun")
 var earth = document.querySelector("div#earth")
 var moon = document.querySelector("div#moon")
+var starField = document.querySelector("div#starField")
 
 var position=0
 var moonspeed = 0.8
@@ -78,6 +79,7 @@ function center(star) {
  * Do: Update the position of the stars the align with the sun
  */
 function sunCentered() {
+    rotateStar(starField, -position*0.1)
     orbit(sun   ,earth,position*0.4,vh*0.4)
     orbit(earth,moon,position*0.8,vh*0.2)
     updateEarthBackground(position*0.4)
@@ -90,6 +92,7 @@ function sunCentered() {
  * Do: Update the position of the stars the align with the earth
  */
 function earthCentered() {
+    rotateStar(starField, -position*0.2)
     orbit(earth, sun,position*0.4,vh*0.4)
     orbit(earth,moon,position*0.8,vh*0.2)
     updateEarthBackground((position*0.4)+180)
@@ -102,11 +105,16 @@ function earthCentered() {
  * Do: Update the position of the stars the align with the moon
  */
 function moonCentered() {
+    rotateStar(starField, -position*0.4)
     orbit(moon,sun,position*0.4,vh*0.4)
     orbit(moon,earth,position*0.8,vh*0.2)
     updateEarthBackground((position*0.4)+180)
 
     position+=1
+}
+
+function rotateStar(star, position) {
+    star.style.transform = `translateY(-25%) rotate(${position%360}deg)`;
 }
 
 /**
@@ -136,8 +144,19 @@ function orbit(centerStar,satelliteStar,deg,radius) {
  * Do: Create the far-away stars in the background
  */
 function createStars() {
-    for (n=0;n<200;n++) {
-        window.document.getElementById("stars").innerHTML += '<div class="star" id=star-'+n+'></div>';
+
+    // Change the size of the starfield to match the biggest side
+    if (starField.offsetHeight>starField.offsetWidth) {
+        starField.style.width = `${starField.offsetHeight}px`
+    } else {
+        starField.style.height = `${starField.offsetWidth}px`
+    }
+
+    for (let n = 0 ; n < 200 ; n++) {
+        let star = window.document.createElement("div")
+        star.id = `star-${n}`
+        star.classList.add("star")
+        starField.appendChild(star)
 
         window.document.getElementById("star-"+n).style.top = (Math.random()*100)+"%";
         window.document.getElementById("star-"+n).style.left = (Math.random()*100)+"%";
@@ -152,7 +171,7 @@ function createStars() {
  * @returns x, y as hash
  */
 function polarToCardinal(deg, radius) {
-    let theta = (deg * Math.PI) / 180;
+    let theta = (Math.PI * 2) / (360/deg)
 
     let x = Math.cos(theta) * radius;
     let y = Math.sin(theta) * radius;
