@@ -142,8 +142,13 @@ function orbit(centerStar,satelliteStar,deg,radius) {
  * Do: Create the far-away stars in the background
  */
 function createStars() {
-    for (n=0;n<200;n++) {
-        starField.innerHTML += '<div class="star" id=star-'+n+'></div>';
+    for (let n = 0 ; n < 200 ; n++) {
+        let star = window.document.createElement("div")
+        star.id = `star-${n}`
+        star.classList.add("star")
+        starField.appendChild(star)
+
+        
 
         window.document.getElementById("star-"+n).style.top = (Math.random()*100)+"%";
         window.document.getElementById("star-"+n).style.left = (Math.random()*100)+"%";
