@@ -4,6 +4,7 @@ var vh = 0
 var sun = document.querySelector("div#sun")
 var earth = document.querySelector("div#earth")
 var moon = document.querySelector("div#moon")
+var starField = document.querySelector("div#starField")
 
 var position=0
 var moonspeed = 0.8
@@ -78,6 +79,7 @@ function center(star) {
  * Do: Update the position of the stars the align with the sun
  */
 function sunCentered() {
+    rotateStar(starField, position)
     orbit(sun   ,earth,position*0.4,vh*0.4)
     orbit(earth,moon,position*0.8,vh*0.2)
     updateEarthBackground(position*0.4)
@@ -109,6 +111,10 @@ function moonCentered() {
     position+=1
 }
 
+function rotateStar(star, position) {
+    star.style.transform = `rotate(${position%360}deg)`;
+}
+
 /**
  * Called: When any centered star need the orbit of it's satellites
  * Do: Make the one star orbit another one
@@ -137,7 +143,7 @@ function orbit(centerStar,satelliteStar,deg,radius) {
  */
 function createStars() {
     for (n=0;n<200;n++) {
-        window.document.getElementById("stars").innerHTML += '<div class="star" id=star-'+n+'></div>';
+        starField.innerHTML += '<div class="star" id=star-'+n+'></div>';
 
         window.document.getElementById("star-"+n).style.top = (Math.random()*100)+"%";
         window.document.getElementById("star-"+n).style.left = (Math.random()*100)+"%";
