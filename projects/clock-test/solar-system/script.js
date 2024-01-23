@@ -79,7 +79,7 @@ function center(star) {
  * Do: Update the position of the stars the align with the sun
  */
 function sunCentered() {
-    rotateStar(starField, position)
+    rotateStar(starField, -position*0.1)
     orbit(sun   ,earth,position*0.4,vh*0.4)
     orbit(earth,moon,position*0.8,vh*0.2)
     updateEarthBackground(position*0.4)
@@ -92,6 +92,7 @@ function sunCentered() {
  * Do: Update the position of the stars the align with the earth
  */
 function earthCentered() {
+    rotateStar(starField, -position*0.2)
     orbit(earth, sun,position*0.4,vh*0.4)
     orbit(earth,moon,position*0.8,vh*0.2)
     updateEarthBackground((position*0.4)+180)
@@ -104,6 +105,7 @@ function earthCentered() {
  * Do: Update the position of the stars the align with the moon
  */
 function moonCentered() {
+    rotateStar(starField, -position*0.4)
     orbit(moon,sun,position*0.4,vh*0.4)
     orbit(moon,earth,position*0.8,vh*0.2)
     updateEarthBackground((position*0.4)+180)
@@ -112,7 +114,7 @@ function moonCentered() {
 }
 
 function rotateStar(star, position) {
-    star.style.transform = `rotate(${position%360}deg)`;
+    star.style.transform = `translateY(-25%) rotate(${position%360}deg)`;
 }
 
 /**
@@ -142,13 +144,19 @@ function orbit(centerStar,satelliteStar,deg,radius) {
  * Do: Create the far-away stars in the background
  */
 function createStars() {
+
+    // Change the size of the starfield to match the biggest side
+    if (starField.offsetHeight>starField.offsetWidth) {
+        starField.style.width = `${starField.offsetHeight}px`
+    } else {
+        starField.style.height = `${starField.offsetWidth}px`
+    }
+
     for (let n = 0 ; n < 200 ; n++) {
         let star = window.document.createElement("div")
         star.id = `star-${n}`
         star.classList.add("star")
         starField.appendChild(star)
-
-        
 
         window.document.getElementById("star-"+n).style.top = (Math.random()*100)+"%";
         window.document.getElementById("star-"+n).style.left = (Math.random()*100)+"%";
