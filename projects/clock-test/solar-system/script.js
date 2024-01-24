@@ -17,7 +17,7 @@ function start() {
     resize();
     window.addEventListener('zoom', resize);
     createStars();
-    sunCentered()
+    starClicked(sun)
 }
 
 /**
@@ -33,21 +33,22 @@ function resize() {
  * Called: When a star is clicked
  * Do: Set the position of the components to align with the center of the star
  */
-function starClicked(x) {
+function starClicked(star) {
     clearInterval(interval)
-    if (x===sun) {
-        interval = setInterval(sunCentered,10)
-        sunCentered()
-        center(sun)
-    } else if (x===earth) {
-        interval = setInterval(earthCentered,10)
-        earthCentered()
-        center(earth)
-    } else if (x===moon) {
-        interval = setInterval(moonCentered,10)
-        moonCentered()
-        center(moon)
+    interval = setInterval(function() {starCentered(star)},10)
+    starCentered(star)
+    center(star)
+}
+
+function starCentered(star) {
+    rotateStar(starField, -position*0.4)
+    orbit(star,sun,position*0.4,vh*0.4)
+    orbit(star,earth,position*0.8,vh*0.2)
+    if (star!==moon) {
+    orbit(earth,moon,position*0.9,vh*0.1)
     }
+        updateEarthBackground((position*0.8)+180)
+    position+=1
 }
 
 /**
@@ -58,45 +59,6 @@ function starClicked(x) {
 function center(star) {
     star.style.left = `${innerWidth/2}px`
     star.style.top = `${innerHeight/2}px`
-}
-
-/**
- * Called: At the start and at every 10ms after the sunClick active the interval
- * Do: Update the position of the stars the align with the sun
- */
-function sunCentered() {
-    rotateStar(starField, -position*0.1)
-    orbit(sun   ,earth,position*0.4,vh*0.4)
-    orbit(earth,moon,position*0.8,vh*0.2)
-    updateEarthBackground(position*0.4)
-
-    position+=1
-}
-
-/**
- * Called: at every 10ms after the earthClick active the interval
- * Do: Update the position of the stars the align with the earth
- */
-function earthCentered() {
-    rotateStar(starField, -position*0.2)
-    orbit(earth, sun,position*0.4,vh*0.4)
-    orbit(earth,moon,position*0.8,vh*0.2)
-    updateEarthBackground((position*0.4)+180)
-
-    position+=1
-}
-
-/**
- * Called: at every 10ms after the moonClick active the interval
- * Do: Update the position of the stars the align with the moon
- */
-function moonCentered() {
-    rotateStar(starField, -position*0.4)
-    orbit(moon,sun,position*0.4,vh*0.4)
-    orbit(moon,earth,position*0.8,vh*0.2)
-    updateEarthBackground((position*0.4)+180)
-
-    position+=1
 }
 
 function rotateStar(star, position) {
@@ -112,6 +74,7 @@ function rotateStar(star, position) {
  * @param {Number} radius         the radius of the orbit
  */
 function orbit(centerStar,satelliteStar,deg,radius) {
+    if (centerStar===satelliteStar) {return}
 
     let theta = (Math.PI*2)/360
     let orbitX = Math.sin(theta*deg)*(radius)
@@ -123,6 +86,7 @@ function orbit(centerStar,satelliteStar,deg,radius) {
 
     satelliteStar.style.top = `${centerY+orbitY}px`
     satelliteStar.style.left = `${centerX+orbitX}px`
+    
 }
 
 /**
