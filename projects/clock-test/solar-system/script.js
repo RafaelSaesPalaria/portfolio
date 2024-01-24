@@ -40,6 +40,12 @@ function starClicked(star) {
     center(star)
 }
 
+/**
+ * ERROR/TODO: if star!==moon shouldn exist
+ * Called: Called when a star is clicked, or at every 10ms [Recursive]
+ * Do: Position the orbit to center a star
+ * @param {Object} star the star thats gonna be in the center
+ */
 function starCentered(star) {
     rotateStar(starField, -position*0.4)
     orbit(star,sun,position*0.4,vh*0.4)
@@ -47,7 +53,7 @@ function starCentered(star) {
     if (star!==moon) {
     orbit(earth,moon,position*0.9,vh*0.1)
     }
-        updateEarthBackground((position*0.8)+180)
+    updateEarthBackground((position*0.8)+180)
     position+=1
 }
 
@@ -61,6 +67,12 @@ function center(star) {
     star.style.top = `${innerHeight/2}px`
 }
 
+/**
+ * Called: When a star is centered
+ * Do: Rotate the obj
+ * @param {Object} star object to be rotated
+ * @param {Number} position degree of rotation 
+ */
 function rotateStar(star, position) {
     star.style.transform = `translateY(-25%) rotate(${position%360}deg)`;
 }
