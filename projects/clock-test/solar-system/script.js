@@ -30,38 +30,24 @@ function resize() {
 }
 
 /**
- * Called: When the sun is clicked
- * Do: Set the position of the components to align with the center of the sun
+ * Called: When a star is clicked
+ * Do: Set the position of the components to align with the center of the star
  */
-function sunClicked() {
+function starClicked(x) {
     clearInterval(interval)
-    interval = setInterval(sunCentered,10)
-    sunCentered()
-    center(sun)
-}
-
-/**
- * Called: When the earth is clicked
- * Do: Set the position of the components to align with the earth of the sun 
- * //Give the impression that the camera is moving with the earth
- */
-function earthClicked() {
-    clearInterval(interval)
-    interval = setInterval(earthCentered,10)
-    earthCentered()
-    center(earth)
-}
-
-/**
- * Called: When the moon is clicked
- * Do: Set the position of the components to align with the center of the moon 
- * //Give the impression that the camera is moving with the moon
- */
-function moonClicked() {
-    clearInterval(interval)
-    interval = setInterval(moonCentered,10)
-    moonCentered()
-    center(moon)
+    if (x===sun) {
+        interval = setInterval(sunCentered,10)
+        sunCentered()
+        center(sun)
+    } else if (x===earth) {
+        interval = setInterval(earthCentered,10)
+        earthCentered()
+        center(earth)
+    } else if (x===moon) {
+        interval = setInterval(moonCentered,10)
+        moonCentered()
+        center(moon)
+    }
 }
 
 /**
