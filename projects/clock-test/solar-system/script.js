@@ -10,14 +10,37 @@ var position=0
 var moonspeed = 0.8
 var earthspeed = 0.4
 
-var interval = setInterval(sunCentered,10)
+//var interval = setInterval(sunCentered,10)
+
+class Star {
+    constructor(element, satellite, speed, distance) {
+        this.element = element
+        this.satellite = satellite
+        this.distance = distance
+        this.speed = speed
+    }
+    update() {
+        orbit(this.element,this.satellite,position*this.speed,vh*this.distance)
+    }
+}
+
+var ssun = new Star(sun,earth,0.4,0.4)
+var searth = new Star(earth,moon,0.8,0.2)
 
 //Constructor
 function start() {
     resize();
     window.addEventListener('zoom', resize);
     createStars();
-    starClicked(sun)
+    //starClicked(sun)
+    animate()
+}
+
+function animate() {
+    ssun.update()
+    searth.update()
+    position+=1
+    requestAnimationFrame(animate)
 }
 
 /**
