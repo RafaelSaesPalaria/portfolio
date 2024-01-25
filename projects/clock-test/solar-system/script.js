@@ -8,6 +8,10 @@ var starField = document.querySelector("div#starField")
 
 var position=0
 
+var ssun = new Star(sun,earth,0.4,0.4)
+var searth = new Star(earth,moon,0.8,0.2)
+var smoon = new Star(moon, moon, 0.8, 0.2)
+
 /**
  * Called: When a star is created
  * Do: Represent the star
@@ -20,21 +24,24 @@ class Star {
         this.speed = speed
         this.center = false
     }
+    /**
+     * Called: At every frame
+     * Do: Set the position of the star and of the satellite
+     */
     update() {
         orbit(this.element,this.satellite,position*this.speed,vh*this.distance)
-        if (this.center) {
-            center(this.element)
-        }
+        if (this.center) {center(this.element)}
     }
+
+    /**
+     * Do: Center the obj
+     * Called: When a star is clicked
+     * @param {Boolean} center if the object is supposed to be centered
+     */
     setCenter(center) {
         this.center = center
     }
 }
-
-var ssun = new Star(sun,earth,0.4,0.4)
-var searth = new Star(earth,moon,0.8,0.2)
-var smoon = new Star(moon, null, 0.8, 0)
-
 
 //Constructor
 function start() {
@@ -51,6 +58,8 @@ function start() {
 function animate() {
     ssun.update()
     searth.update()
+    smoon.update()
+    rotateStar(starField, position*0.2)
     position+=1
     requestAnimationFrame(animate)
 }
