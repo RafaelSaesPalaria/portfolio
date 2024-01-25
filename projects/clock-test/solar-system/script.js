@@ -8,10 +8,6 @@ var starField = document.querySelector("div#starField")
 
 var position=0
 
-var ssun = new Star(sun,earth,0.4,0.4)
-var searth = new Star(earth,moon,0.8,0.2)
-var smoon = new Star(moon, moon, 0.8, 0.2)
-
 /**
  * Called: When a star is created
  * Do: Represent the star
@@ -42,6 +38,10 @@ class Star {
         this.center = center
     }
 }
+
+var ssun = new Star(sun,earth,0.4,0.4)
+var searth = new Star(earth,moon,0.8,0.2)
+var smoon = new Star(moon, moon, 0.8, 0.2)
 
 //Constructor
 function start() {
