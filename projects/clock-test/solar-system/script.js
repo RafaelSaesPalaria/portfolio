@@ -7,17 +7,52 @@ var moon = document.querySelector("div#moon")
 var starField = document.querySelector("div#starField")
 
 var position=0
-var moonspeed = 0.8
-var earthspeed = 0.4
 
-var interval = setInterval(sunCentered,10)
+/**
+ * Called: When a star is created
+ * Do: Represent the star
+ */
+class Star {
+    constructor(element, satellite, speed, distance) {
+        this.element = element
+        this.satellite = satellite
+        this.distance = distance
+        this.speed = speed
+        this.center = false
+    }
+    update() {
+        orbit(this.element,this.satellite,position*this.speed,vh*this.distance)
+        if (this.center) {
+            center(this.element)
+        }
+    }
+    setCenter(center) {
+        this.center = center
+    }
+}
+
+var ssun = new Star(sun,earth,0.4,0.4)
+var searth = new Star(earth,moon,0.8,0.2)
+var smoon = new Star(moon, null, 0.8, 0)
+
 
 //Constructor
 function start() {
     resize();
     window.addEventListener('zoom', resize);
     createStars();
-    starClicked(sun)
+    animate()
+}
+
+/**
+ * Called: called at every frame
+ * Do: animate the css
+ */
+function animate() {
+    ssun.update()
+    searth.update()
+    position+=1
+    requestAnimationFrame(animate)
 }
 
 /**
@@ -34,27 +69,10 @@ function resize() {
  * Do: Set the position of the components to align with the center of the star
  */
 function starClicked(star) {
-    clearInterval(interval)
-    interval = setInterval(function() {starCentered(star)},10)
-    starCentered(star)
-    center(star)
-}
-
-/**
- * ERROR/TODO: if star!==moon shouldn exist
- * Called: Called when a star is clicked, or at every 10ms [Recursive]
- * Do: Position the orbit to center a star
- * @param {Object} star the star thats gonna be in the center
- */
-function starCentered(star) {
-    rotateStar(starField, -position*0.4)
-    orbit(star,sun,position*0.4,vh*0.4)
-    orbit(star,earth,position*0.8,vh*0.2)
-    if (star!==moon) {
-    orbit(earth,moon,position*0.9,vh*0.1)
-    }
-    updateEarthBackground((position*0.8)+180)
-    position+=1
+    ssun.setCenter(false)
+    searth.setCenter(false)
+    smoon.setCenter(false)
+    star.setCenter(true)
 }
 
 /**
@@ -63,8 +81,8 @@ function starCentered(star) {
  * @param {Object} star the star that's gonna be centered
  */
 function center(star) {
-    star.style.left = `${innerWidth/2}px`
-    star.style.top = `${innerHeight/2}px`
+    sun.style.left = `${(innerWidth/2)  - star.offsetLeft+sun.offsetLeft}px`
+    sun.style.top = `${(innerHeight/2) - star.offsetTop+sun.offsetTop}px`
 }
 
 /**
