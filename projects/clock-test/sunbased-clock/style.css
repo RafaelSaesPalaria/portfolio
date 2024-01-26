@@ -35,19 +35,6 @@ div#digital-clock {
 }
 
 div#player {
-    position: absolute;
-    top: 83.5%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-
-    background-color: white;
-    margin: auto;
-    text-align: center;
-    padding: 2vh;
-    width: 40vh;
-    border-radius: 2vh;
-    border: 0.2vh solid black;
-    box-shadow: 0.2vh 0.2vh 0.2vh black; 
     user-select: none;
 }
 

@@ -44,9 +44,9 @@ var searth = new Star(earth,moon,0.8,0.2)
 var smoon = new Star(moon, moon, 0.8, 0.2)
 
 //Constructor
+resize();
+window.addEventListener('zoom', resize);
 function start() {
-    resize();
-    window.addEventListener('zoom', resize);
     createStars();
     animate()
 }
@@ -71,6 +71,7 @@ function animate() {
  */
 function resize() {
     vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    start()
 }
 
 /**
@@ -141,6 +142,7 @@ function createStars() {
         starField.style.height = `${starField.offsetWidth}px`
     }
 
+    starField.innerHTML = ""
     for (let n = 0 ; n < 200 ; n++) {
         let star = window.document.createElement("div")
         star.id = `star-${n}`

@@ -101,7 +101,7 @@ function updateTime() {
  * Update the time in the digital clock
  */
 function updateDigitalClock() {
-    let digital_clock = document.querySelector("div#digital-clock");
+    let digital_clock = document.querySelector("div#time");
 
     let hours = formatNumber(time.getHours(),2)
     let minutes = formatNumber(time.getMinutes(), 2)

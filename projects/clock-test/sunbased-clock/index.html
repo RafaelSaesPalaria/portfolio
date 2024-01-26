@@ -12,13 +12,15 @@
 <body onload="start()" onresize="resize()">
     <div id="sun"></div>
     <div id="moon"></div>
-    <div id="digital-clock">00:00:00</div>
-    <div id="player">
-        <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="disaccelerate()">fast_rewind</span>
-        <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="backward()">arrow_back</span>
-        <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="pause()">pause</span>
-        <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="play()">play_arrow</span>
-        <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="accelerate()">fast_forward</span>
+    <div id="digital-clock">
+        <div id="time">00:00:00</div>
+        <div id="player">
+            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="disaccelerate()">fast_rewind</span>
+            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="backward()">arrow_back</span>
+            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="pause()">pause</span>
+            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="play()">play_arrow</span>
+            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="accelerate()">fast_forward</span>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
