@@ -34,6 +34,10 @@ div#digital-clock {
     box-shadow: 0.2vh 0.2vh 0.2vh black; /*Make shadow run oposite to the sun*/
 }
 
+div#time {
+    padding-bottom: 1vh;
+}
+
 div#player {
     user-select: none;
 }

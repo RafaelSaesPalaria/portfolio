@@ -98,6 +98,34 @@ function updateTime() {
 }
 
 /**
+ * Called: when the digital clock changes
+ * Do: change the player from lightmode to nightmode when needed
+ */
+function daynightmodePlayer() {
+    let digitalclock = document.querySelector("div#digital-clock")
+    let timed = document.querySelector("div#time");
+    let players = document.querySelectorAll("div#player span")
+    let color1 = "white";
+    let color2 = "black"
+
+    if (time.getHours()>=18 || time.getHours()<6) {
+        let aux = color1;
+        color1 = color2
+        color2 = aux
+    }
+
+    digitalclock.style.background = `${color1}`
+    digitalclock.style.borderColor = `${color2}`
+    timed.style.background = `${color1}`
+    timed.style.color = `${color2}`
+    players.forEach(player => {
+        player.style.background = `${color1}`
+        player.style.borderColor = `${color2}`
+        player.style.color = `${color2}`
+    }) 
+}
+
+/**
  * Update the time in the digital clock
  */
 function updateDigitalClock() {
@@ -108,6 +136,7 @@ function updateDigitalClock() {
     let seconds = formatNumber(time.getSeconds(), 2)
     
     digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
+    daynightmodePlayer()
 }
 
 /**
@@ -180,13 +209,9 @@ function updateStar(star, degPlus, radius) {
 function updateBackground() {
     let body = document.body;
     let sun = document.querySelector("div#sun");
-    let moon = document.querySelector("div#moon")
 
     let sun_x = sun.getBoundingClientRect().left+35; //70 is the sun width
     let sun_y = sun.getBoundingClientRect().top+35;
-
-    let moon_x = moon.getBoundingClientRect().left+25; // 50 is the moon width
-    let moon_y = moon.getBoundingClientRect().top+25;
 
         body.style.backgroundImage = `radial-gradient(circle at ${sun_x}px ${sun_y}px , yellow, orange 10%, lightblue 35%, blue 95%)`
 }
