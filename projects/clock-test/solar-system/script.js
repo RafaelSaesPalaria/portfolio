@@ -13,12 +13,13 @@ var position=0
  * Do: Represent the star
  */
 class Star {
-    constructor(element, satellite, speed, distance) {
+    constructor(element, satellite, speed, distance, background) {
         this.element = element
         this.satellite = satellite
         this.distance = distance
         this.speed = speed
         this.center = false
+        this.background = background
     }
     /**
      * Called: At every frame
@@ -27,6 +28,9 @@ class Star {
     update() {
         orbit(this.element,this.satellite,position*this.speed,vh*this.distance)
         if (this.center) {center(this.element)}
+        if (this.background) { 
+            updateBackground(this.element, position*0.4) 
+        }
     }
 
     /**
@@ -39,9 +43,9 @@ class Star {
     }
 }
 
-var ssun = new Star(sun,earth,0.4,0.4)
-var searth = new Star(earth,moon,0.8,0.2)
-var smoon = new Star(moon, moon, 0.8, 0.2)
+var ssun = new Star(sun,earth,0.4,0.4, false)
+var searth = new Star(earth,moon,0.8,0.2, true)
+var smoon = new Star(moon, moon, 0.8, 0.2, false)
 
 //Constructor
 resize();
@@ -172,12 +176,13 @@ function polarToCardinal(deg, radius) {
 /**
  * Called: after the stars are centered
  * Do: Create a radial gradient in the earth to look like the sun light
+ * @param {Object} element the element have its background changed
  * @param {Number} deg the degree of the rotation of the gradient in the earth 
  */
-function updateEarthBackground(deg) {
+function updateBackground(element,deg) {
     deg = (360 - (deg-90)) % 360;
     let coords = polarToCardinal(deg,100)
 
 
-    earth.style.background = `radial-gradient(circle at ${50 + coords.x}% ${50 + coords.y}%, darkblue, blue 60%, yellow 95%)`;
+    element.style.background = `radial-gradient(circle at ${50 + coords.x}% ${50 + coords.y}%, darkblue, blue 60%, yellow 95%)`;
 }
