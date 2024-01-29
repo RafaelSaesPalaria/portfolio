@@ -74,7 +74,8 @@ function animate() {
  * Do: Resizes the screen
  */
 function resize() {
-    vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    //vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    vh = 500
     start()
 }
 

@@ -10,7 +10,7 @@ html {
 
 main {
     background-color: rgb(0, 0, 0);
-    width: 105vw;
+    width: 100vw;
     height: 100vh;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -25,28 +25,28 @@ div#sun,div#earth,div#moon {
 }
 
 div#sun:hover, div#earth:hover, div#moon:hover {
-    border: 0.2vh solid white;
+    border: 1px solid white;
 }
 
 div#sun {
-    width: 20vh;
-    height: 20vh;
+    width: 100px;
+    height: 100px;
 
     background-color: yellow;
     box-shadow: 0px 0px 26px white;
 }
 
 div#earth {
-    width: 10vh;
-    height: 10vh;
+    width: 50px;
+    height: 50px;
 
     background-color: blue;
     background-image: radial-gradient(circle at 100% 0%, darkblue, blue 60%, yellow 95%);
 }
 
 div#moon {
-    width: 2vh;
-    height: 2vh;
+    width: 10px;
+    height: 10px;
 
     background-color: rgb(255, 255, 255);
     background-image: linear-gradient(10deg, rgb(161, 161, 161) 30%, rgb(255, 255, 255));
@@ -63,10 +63,10 @@ div#starField {
 
 div.star {
     position: absolute;
-    border: 0.1vh solid white;
-    width: 0.1vh;
-    height: 0.1vh;
+    border: 0.5px solid white;
+    width: 0.5px;
+    height: 0.5px;
     background-color: white;
     border-radius: 50%;
-    box-shadow: 0px 0px 0.5vh rgba(255, 255, 255, 0.514);
+    box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.514);
 }
