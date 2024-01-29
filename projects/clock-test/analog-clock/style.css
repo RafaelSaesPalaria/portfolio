@@ -10,24 +10,7 @@
     free to personal use, acess in 2023
     */
 }
-/*
-*
-:root
-html
-body
-	div#analog-click
-		div#numbers
-		div#bars
-		div.pointer#hours
-		div.pointer#minutes
-		div.pointer#seconds
-		div#axis
-	abbr
-		div#digital-clock
-			div#player
-				span.material-symbols-outlined
-			div#time
-*/
+
 
 * {
     margin: 0px;
@@ -51,11 +34,10 @@ div#analog-clock {
     left: 50%;
     transform: translate(-50%,-50%);
 
-    width: 45vh;
-    height: 45vh;
+    width: 235px;
+    height: 235px;
     background-color: gray;
-    box-shadow: 0.06vh 0.06vh 0.2vh black;
-    border: 0.2vh solid black;
+    border: 1px solid black;
     border-radius: 50%;
     background-image: radial-gradient(ellipse at 50% 50%,rgb(150, 150, 150), rgb(63, 63, 63));
 }
@@ -73,22 +55,22 @@ div.pointer {
 }
 
 div#hours {
-    width: 1.2vh;
-    height: 14vh;
+    width: 6px;
+    height: 72px;
     background-color: green;
 }
 
 div#minutes {
-    width: 1.2vh;
-    height: 20vh;
+    width: 6px;
+    height: 100px;
     background-color: yellow
 }
 
 div#seconds {
     top: 50%;
     left: 50%;
-    width: 0.6vh;
-    height: 20vh;
+    width: 6px;
+    height: 100px;
     background-color: blue;
 }
 
@@ -98,8 +80,8 @@ div#axis {
     top: 50%;
     left: 50%;
 
-    width: 2.6vh;
-    height: 2.6vh;
+    width: 14px;
+    height: 14px;
     background-color: blue;
     border-radius: 50%;
 }
@@ -112,7 +94,7 @@ div#numbers span{
 
     text-align: center;
     color: white;
-    font-size: 4vh;
+    font-size: 20px;
 }
 
 div#bars {
@@ -130,23 +112,23 @@ div#bars div {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 1.0vh;
-    height: 0.4vh;
+    width: 5px;
+    height: 2px;
     background-color:rgb(255, 255, 255);
 }
 
 div#digital-clock {
     position: absolute;
-    top: 85%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 28vh;
+    width: 144px;
 
     display: inline-block;
-    padding: 1.0vh 10vh 4vh 10vh;
-    border: 0.4vh solid rgb(255, 255, 255);
-    outline: 1.2vh solid black;
-    border-radius: 2vh;
+    padding: 5px 50px 20px 50px;
+    border: 2px solid rgb(255, 255, 255);
+    outline: 6px solid black;
+    border-radius: 10px;
     background-color: rgb(0, 0, 0);
     user-select: none;
 }
@@ -161,11 +143,12 @@ div#digital-clock #player {
 
 div#digital-clock #time {
     font-family: 'digital' ,Arial, Helvetica, sans-serif;
-    letter-spacing: 0.2vh;
-    font-size: 10vh;
+    letter-spacing: 1px;
+    font-size: 50px;
     display: block;
     width: max-content;
-    box-shadow: 1.2vh 1.2vh 2vh rgba(0, 0, 0, 0.226);
+    margin: auto;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.226);
     color: red;
-    text-shadow: 0px 0px 4vh rgba(255, 0, 0, 0.904);
+    text-shadow: 0px 0px 20px rgba(255, 0, 0, 0.904);
 }
