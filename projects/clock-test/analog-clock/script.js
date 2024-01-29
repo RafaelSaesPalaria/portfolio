@@ -18,7 +18,8 @@ var vh=0
  * Do: update the vh
  */
 function resize() {
-    vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    //vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    vh = 500
     setNumbersPosition((0.19*vh), 12)
     addMinuteBar((0.22*vh), 60)
 }
