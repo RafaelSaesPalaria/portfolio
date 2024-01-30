@@ -3,7 +3,7 @@
 * {
     margin: 0px;
     padding: 0px;
-    font: normal 5vh 'Arial';
+    font: normal 35px 'Arial';
 }
 
 html {
@@ -27,15 +27,17 @@ div#digital-clock {
     background-color: white;
     margin: auto;
     text-align: center;
-    padding: 2vh;
-    width: 40vh;
-    border-radius: 2vh;
-    border: 0.2vh solid black;
-    box-shadow: 0.2vh 0.2vh 0.2vh black; /*Make shadow run oposite to the sun*/
+    padding: 10px;
+    width: 336px;
+    border-radius: 5%;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px black; /*Make shadow run oposite to the sun*/
 }
 
 div#time {
-    padding-bottom: 1vh;
+    padding-bottom: 5px;
+    width: fit-content;
+    margin: auto;
 }
 
 div#player {
@@ -44,9 +46,9 @@ div#player {
 
 div#player span {
     cursor: pointer;
-    padding: 1vh;
-    border-radius: 3vh;
-    border: 0.2vh solid black;
+    padding: 5px;
+    border-radius: 50%;
+    border: 1px solid black;
 }
 
 div#sun, div#moon {
@@ -59,13 +61,13 @@ div#sun, div#moon {
 
 div#sun {
     /*background-color: yellow;*/
-    width: 14.0vh;
-    height: 14.0vh;
+    width: 110px;
+    height: 110px;
 }
 
 div#moon {
-    box-shadow: 0px 0px 1vh rgba(255, 255, 255, 0.829);
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.829);
     background-color: white;
-    width: 10.0vh;
-    height: 10.0vh;
+    width: 78px;
+    height: 78px;
 }
