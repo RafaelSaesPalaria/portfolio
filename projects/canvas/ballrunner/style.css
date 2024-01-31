@@ -28,7 +28,7 @@ canvas {
     border: 3px solid var(--borderColor);
     border-radius: 15px;
     width: 95vw;
-    height: 70vh;
+    height: 75vh;
     margin: 10px auto;
     user-select: all;
     background-color: var(--backgroundColor);

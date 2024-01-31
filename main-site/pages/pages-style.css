@@ -8,7 +8,7 @@
     font-family: Arial, Helvetica, sans-serif;
 
     font-size: 2.6vh;
-    line-height: 4vh;
+    line-height: 1.4em;
     box-sizing: border-box;
 }
 
@@ -43,9 +43,9 @@ body::-webkit-scrollbar {
 }
 
 header {
-    padding: 2.0vw;
-    width: 72vw;
-    margin: 4.0vw auto;
+    padding: 10px;
+    width: 320px;
+    margin: 20px auto;
     text-align: center;
     font-family: var(--fontTitle);
 }
@@ -63,15 +63,15 @@ header p {
 main {
     background-color: rgba(243, 243, 243, 0);
     font-size: var(--fontText);
-    padding: 2.0vw;
-    width: 70vw;
+    padding: 10px;
+    width: 300px;
     margin: auto;
 }
 
 li {
     font-family: var(--fontText);
-    margin-top: 6.0vw;
-    padding: 4.0vw;
+    margin-top: 30px;
+    padding: 10px;
     list-style-type: none;
     overflow: hidden;
 }
@@ -82,18 +82,18 @@ li h2 {
 }
 
 li p {
-    text-indent: 6.0vw;
+    text-indent: 30px;
     font-family: var(--fontText);
     font-size: var(--textSize);
-    margin-bottom: 2.0vw;
+    margin-bottom: 10px;
 }
 
 div.paralax {
     display: block;
-    height: 24vw;
-    width: 40vw;
+    height: 92px;
+    width: 154px;
     margin: auto;
-    box-shadow: 0.6vw 0.6vw 1.0vw rgba(0, 0, 0, 0.322);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322);
     background-position: 50% 50%;
     background-size: 100% 100%;
     /*background-attachment: fixed;*/
@@ -108,33 +108,33 @@ a.button {
 
     color: var(--textColor);
     text-decoration: none;
-    border-radius: 1.5vw;
+    border-radius: 10%;
     
     background-color: var(--containerColor);
-    box-shadow: 0.2vw 0.2vw 0.6vw rgba(0, 0, 0, 0.404);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
 
-    padding: 0.8vw 2.4vw;
-    margin: 2.0vw;
+    padding: 4px 12px;
+    margin: 10px;
     font-family: var(--fontText);
     font-size: var(--textSize);
 }
 
 a.button:hover {
     background-color: var(--hoverColor);
-    box-shadow: 0.2vw 0.2vw 0.6vw rgba(0, 0, 0, 0.692), inset 0.2vw 0.2vw 0.6vw rgba(0, 0, 0, 0.692);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.692), inset 1px 1px 3px rgba(0, 0, 0, 0.692);
 }
 
 a.button:active {
     transition: 0.1s;
-    box-shadow: inset 0.2vw 0.2vw 1vw rgba(0, 0, 0, 0.692);
+    box-shadow: inset 1px 1px 0.5px rgba(0, 0, 0, 0.692);
     background-color: var(--activeColor);
 }
 
 .container {
     background-color: var(--containerColor);
-    border: 0.2vh solid var(--borderColor);
-    border-radius: 3vh;
-    box-shadow: 0.6vh 0.6vh 1vh rgba(0, 0, 0, 0.322), inset 0.2vh 0.2vh 0.2vh rgba(0, 0, 0, 0.322);
+    border: 1px solid var(--borderColor);
+    border-radius: 6%;
+    box-shadow: 3px 3px 0.5px rgba(0, 0, 0, 0.322), inset 1px 1px 1px rgba(0, 0, 0, 0.322);
 }
 
 footer {
@@ -143,9 +143,9 @@ footer {
     width: 100%;
 
     display: block;
-    margin-top: 5.0vw;
-    box-shadow: 0px -1vw 2vw rgba(0, 0, 0, 0.329);
-    padding: 1.4vw;
+    margin-top: 25px;
+    box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.329);
+    padding: 7px;
     background-color: black;
     text-align: center;
     font-size: var(--subTitleSize);
