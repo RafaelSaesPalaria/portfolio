@@ -35,45 +35,59 @@
 
     .container {
         background-color: var(--containerColor);
-        border: 0.2vh solid var(--borderColor);
-        border-radius: 3vh;
-        box-shadow: 0.6vh 0.6vh 1vh rgba(0, 0, 0, 0.322), inset 0.2vh 0.2h 0.2vh rgba(0, 0, 0, 0.322);
+        border: 1px solid var(--borderColor);
+        border-radius: 15px;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322), inset 1px 1px 1px rgba(0, 0, 0, 0.322);
     }
 
     header {
-        width: 72vw;
-        margin: 4.0vh auto;
+        width: 1000px;
+        margin: 25px auto;
     }
 
     header h1 {
-        padding: 1.2vw;
+        width: fit-content;
+        margin: auto;
+        padding: 20px;
+    }
+
+    header p {
+        margin-bottom: 15px;
     }
 
     main {
-        width: 75vw;
+        margin: auto;
+        width: 1000px;
     }
 
     li {
-        margin-top: 3.0vw;
-        padding: 2vw;
+        margin-top: 41px;
+        padding: 27px;
+        margin: 41px auto 0px auto;
     }
 
     li h2 {
-        padding: 1vw;
+        padding: 13px;
+        width: fit-content;
     }
 
     div.paralax {
         display: inline-block;
-        margin: 0.20vw;
-        height: 12vw;
-        width: 20vw;
+        margin: 3px;
+        height: 162px;
+        width: 273px;
     }
 
     a.button {
         position: absolute;
-        padding: 1.6vw 4.0vw;
-        margin: 2vw;
+        padding: 22px 54px;
+        margin: 27px;
         border-radius: 1vw;
+    }
+
+    footer {
+        margin-top: 60px;
+        padding: 20px;
     }
 
 }
