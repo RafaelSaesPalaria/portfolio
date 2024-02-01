@@ -49,42 +49,45 @@ body::-webkit-scrollbar {
 
 header {
     display: block;
-    padding: 1vh;
-    width: 70vw;
-    margin: 1.80vw auto 0.80vw auto;
+    padding: 5px;
+    width: 212px;
+    margin: 6px auto 2.5px auto;
     text-align: center;
     border-radius: 30vh;
 }
 
 header h1 {
+    width: fit-content;
+    margin: auto;
     font-size: var(--titleSize);
     font-family: var(--fontTitle);
-    padding: 0.2vh;
+    padding: 1px;
 }
 
 header p {
-    text-indent: 3vh;
+    text-indent: 15px;
     font-family: var(--fontSubtitle);
     font-size: var(--subTitleSize);
-    padding: 0.1vh 0.5vh;
+    padding: 0.5px 2.5px;
 }
 
 nav {
+    display: block;
+    width: fit-content;
     margin: auto;
-    width: 100vw;
 }
 
 nav a.button {
     display: block;
-    margin: 2.0vh auto 2.0vh auto;
+    margin: 10px auto;
     color: var(--textColor);
     font-family: var(--fontSubtitle);
-    padding: 2vh 8vh;
+    padding: 10px 41px;
     font-size: var(--subTitleSize) ;
     text-align: center;
     text-decoration: none;
-    border-radius: 2.1vh;
-    width: 30vh;
+    border-radius: 10px;
+    width: 150px;
 }
 
 nav a.button:hover {
@@ -102,9 +105,9 @@ footer {
     bottom: 0vh;
 
     display: block;
-    margin-top: 4.0vh;
-    box-shadow: 0px -1vh 2.0vh rgba(0, 0, 0, 0.329);
-    padding: 1.5vh;
+    margin-top: 20px;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.329);
+    padding: 8px;
     background-color: black;
     text-align: center;
     font-size: var(--subTitleSize);
@@ -112,7 +115,7 @@ footer {
 
 .container {
     background-color: var(--containerColor);
-    border: 0.2vh solid var(--borderColor);
-    border-radius: 3vh;
-    box-shadow: 0.6vh 0.6vh 1vh rgba(0, 0, 0, 0.322), inset 0.2vh 0.2vh 0.2vh rgba(0, 0, 0, 0.322);
+    border: 1px solid var(--borderColor);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.322), inset 1px 1px 1px rgba(0, 0, 0, 0.322);
 }
