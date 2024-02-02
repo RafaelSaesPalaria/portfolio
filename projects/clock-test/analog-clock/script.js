@@ -35,6 +35,10 @@ function clockWork() {
 }
 
 //Methods
+/**
+ * Called: When the dissacelarate button is pressed
+ * Do: Dissacelerate the interval
+ */
 function disaccelerate() {
     timeSpeed*=0.9;
     clearInterval(interval)
@@ -42,25 +46,45 @@ function disaccelerate() {
     updateTimeSpeed()
 }
 
+/**
+ * Called: When the forward button is pressed
+ * Do: Go forward in timel
+ */
 function forward() {
     timeDirection=1
 }
 
+/**
+ * Called: When the pause button is pressed
+ * Do: Pause the interval
+ */
 function pause() {
     timeSpeed=0
     updateTimeSpeed()
 }
 
+/**
+ * Called: When the play button is pressed
+ * Do: restart the time speed
+ */
 function play() {
     timeSpeed=1
     timeDirection=1
     updateTimeSpeed()
 }
 
+/**
+ * Called: When the backward button is pressed
+ * Do: Go back in time
+ */
 function backward() {
     timeDirection=-1
 }
 
+/**
+ * Called: When the accelarate button is pressed
+ * Do: Accelerate the interval
+ */
 function accelerate() {
     timeSpeed*=1.1;
     clearInterval(interval)
