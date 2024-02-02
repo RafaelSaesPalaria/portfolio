@@ -175,7 +175,8 @@ function updateDigitalClock() {
 }
 
 /**
- * Format a number to have a certain length
+ * Called: When the digital clock updates
+ * Do: Format a number to have a certain length
  * @param {Number} number the unformatted number
  * @param {Number} length   the desired length
  * @returns the formatted number
@@ -190,7 +191,8 @@ function formatNumber(number ,length) {
 }
 
 /**
- * Get the angle of rotation based on the period of the cycle
+ * Called: When the angle of a star is updated
+ * Do: Get the angle of rotation based on the period of the cycle
  * @param {Number} currentlyTime the currently period of the cycle 
  * @param {Number} cycleMax   the cycle max value
  * @returns the angle of the currently period
@@ -200,18 +202,29 @@ function parseAngle(actualTime,cycleMax) {
 }
 
 /**
- * get the angle based on the time
+ * Called: When the star position is updated
+ * Do: get the angle based on the time
  * @returns the degree of the angle
 */
 function getAngle() {
-    let dayTime_inSeconds = 
-                        (time.getHours()*3600) + (time.getMinutes()*60) + time.getSeconds()
+    let dayTime_inSeconds = get_dayTime_inSeconds()
+                        
     degree = parseAngle(dayTime_inSeconds,(24*60*60))   
     return degree;
 }
 
 /**
- * convert polar coordinates to cardinal coordinates
+ * Called: when the angle is defined
+ * Do: get the time.hours minuts and seconds and convert it all into seconds
+ * @returns the daytime in seconds
+ */
+function get_dayTime_inSeconds() {
+    return (time.getHours()*3600) + (time.getMinutes()*60) + time.getSeconds()
+}
+
+/**
+ * Called: When the star position is updated
+ * Do: convert polar coordinates to cardinal coordinates
  * @param {Number} deg     degree of the coordinates
  * @param {Number} radius  radius of the coordinates
  * @returns a vector with x and y
@@ -226,7 +239,8 @@ function getCardinalCoordinates(deg, radius) {
 }
 
 /**
- * move the star to the currently time-location
+ * Called: at every clock-second
+ * Do: move the star to the currently time-location
  * @param {Object}   star        the star that's gonna be moved      
  * @param {Number} degPlus the plus factor in the degree calc 
  * @param {Number} radius    the distance of the star from the center of the orbit
