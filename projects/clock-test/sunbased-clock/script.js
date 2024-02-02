@@ -11,6 +11,10 @@ var sun = document.querySelector("div#sun")
 var moon = document.querySelector("div#moon")
 
 //Constructor
+/**
+ * Called: When the application start
+ * Do: Set the resize/update function
+ */
 setInterval(update,intervalSpeed)
 function start() {
     resize()
@@ -19,7 +23,8 @@ function start() {
 }
 
 /**
- * Updates the system
+ * Called: When the program start and at every clock-second
+ * Do: Updates the system
  */
 function update() {
     updateTime();
@@ -30,7 +35,8 @@ function update() {
 }
 
 /**
- * Resize the screen
+ * Called: When the application is zoomed
+ * Do: Resize the screen
  */
 function resize() {
     //vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
@@ -39,34 +45,61 @@ function resize() {
 
 //Methods
 //Controls
+/**
+ * Called: When the dissacelarate button is pressed
+ * Do: Dissacelerate the interval
+ */
 function disaccelerate() {
     timeSpeed*=0.9;
     setInterval(update,intervalSpeed/timeSpeed);
 }
 
+/**
+ * Called: When the forward button is pressed
+ * Do: Go forward in timel
+ */
 function forward() {
     timeDirection=1
 }
 
+/**
+ * Called: When the pause button is pressed
+ * Do: Pause the interval
+ */
 function pause() {
     timeSpeed=0
 }
 
+/**
+ * Called: When the play button is pressed
+ * Do: restart the time speed
+ */
 function play() {
     timeSpeed=1
     timeDirection=1
 }
 
+/**
+ * Called: When the backward button is pressed
+ * Do: Go back in time
+ */
 function backward() {
     timeDirection=-1
 }
 
+/**
+ * Called: When the accelarate button is pressed
+ * Do: Accelerate the interval
+ */
 function accelerate() {
     timeSpeed*=1.1;
     setInterval(update,intervalSpeed/timeSpeed);
 }
 
-//Update the time based on the timeDirection and in the timeSpeed
+/*
+* Called: Every clock-second
+* Do: Update the time based on the timeDirection and in the timeSpeed
+*/
 function updateTime() {
     let seconds = time.getSeconds();
     let minutes = time.getMinutes();
@@ -127,7 +160,8 @@ function daynightmodePlayer() {
 }
 
 /**
- * Update the time in the digital clock
+ * Called: At every clock-second
+ * Do: Update the time in the digital clock
  */
 function updateDigitalClock() {
     let digital_clock = document.querySelector("div#time");
@@ -205,7 +239,8 @@ function updateStar(star, degPlus, radius) {
 }
 
 /**
- * Update the background
+ * Called: At every clock-second
+ * Do: Update the background
  */
 function updateBackground() {
     let body = document.body;
