@@ -46,20 +46,14 @@ function resize() {
 //Methods
 //Controls
 /**
- * Called: When the dissacelarate button is pressed
- * Do: Dissacelerate the interval
+ * Called: When the fast_rewind button is pressed
+ * Do: fast_rewind the interval
  */
-function disaccelerate() {
-    timeSpeed*=0.9;
+function fast_rewind() {
+    if (timeSpeed==0) {timeSpeed=1}
+    timeDirection=-1;
+    timeSpeed*=1.1;
     setInterval(update,intervalSpeed/timeSpeed);
-}
-
-/**
- * Called: When the forward button is pressed
- * Do: Go forward in timel
- */
-function forward() {
-    timeDirection=1
 }
 
 /**
@@ -85,6 +79,7 @@ function play() {
  */
 function backward() {
     timeDirection=-1
+    timeSpeed=1
 }
 
 /**
@@ -92,6 +87,8 @@ function backward() {
  * Do: Accelerate the interval
  */
 function accelerate() {
+    if (timeSpeed==0) {timeSpeed=1}
+    timeDirection=1;
     timeSpeed*=1.1;
     setInterval(update,intervalSpeed/timeSpeed);
 }
@@ -102,33 +99,7 @@ function accelerate() {
 */
 function updateTime() {
     let seconds = time.getSeconds();
-    let minutes = time.getMinutes();
-    let hours = time.getHours();
-
     time.setSeconds(seconds + timeDirection * timeSpeed);
-
-    if (time.getSeconds() >= 60) {
-        time.setSeconds(0);
-        time.setMinutes(minutes + 1);
-    } else if (time.getSeconds() < 0) {
-        time.setSeconds(59);
-        time.setMinutes(minutes - 1);
-    }
-
-    if (time.getMinutes() >= 60) {
-        time.setMinutes(0);
-        time.setHours(hours + 1);
-    } else if (time.getMinutes() < 0) {
-        time.setMinutes(59);
-        time.setHours(hours - 1);
-    }
-
-    if (time.getHours() >= 24) {
-        time.setMinutes(0);
-        time.setHours(0);
-    } else if (time.getHours() < 0) {
-        time.setHours(23);
-    }
 }
 
 /**
