@@ -51,18 +51,9 @@ function resize() {
  */
 function fast_rewind() {
     if (timeSpeed==0) {timeSpeed=1}
-    timeDirection=1;
+    timeDirection=-1;
     timeSpeed*=1.1;
     setInterval(update,intervalSpeed/timeSpeed);
-}
-
-/**
- * Called: When the forward button is pressed
- * Do: Go forward in timel
- */
-function forward() {
-    timeDirection=1
-    timeSpeed=1
 }
 
 /**
@@ -88,6 +79,7 @@ function play() {
  */
 function backward() {
     timeDirection=-1
+    timeSpeed=1
 }
 
 /**
