@@ -102,33 +102,7 @@ function accelerate() {
 */
 function updateTime() {
     let seconds = time.getSeconds();
-    let minutes = time.getMinutes();
-    let hours = time.getHours();
-
     time.setSeconds(seconds + timeDirection * timeSpeed);
-
-    if (time.getSeconds() >= 60) {
-        time.setSeconds(0);
-        time.setMinutes(minutes + 1);
-    } else if (time.getSeconds() < 0) {
-        time.setSeconds(59);
-        time.setMinutes(minutes - 1);
-    }
-
-    if (time.getMinutes() >= 60) {
-        time.setMinutes(0);
-        time.setHours(hours + 1);
-    } else if (time.getMinutes() < 0) {
-        time.setMinutes(59);
-        time.setHours(hours - 1);
-    }
-
-    if (time.getHours() >= 24) {
-        time.setMinutes(0);
-        time.setHours(0);
-    } else if (time.getHours() < 0) {
-        time.setHours(23);
-    }
 }
 
 /**
