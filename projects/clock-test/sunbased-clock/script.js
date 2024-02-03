@@ -46,11 +46,13 @@ function resize() {
 //Methods
 //Controls
 /**
- * Called: When the dissacelarate button is pressed
- * Do: Dissacelerate the interval
+ * Called: When the fast_rewind button is pressed
+ * Do: fast_rewind the interval
  */
-function disaccelerate() {
-    timeSpeed*=0.9;
+function fast_rewind() {
+    if (timeSpeed==0) {timeSpeed=1}
+    timeDirection=1;
+    timeSpeed*=1.1;
     setInterval(update,intervalSpeed/timeSpeed);
 }
 
@@ -60,6 +62,7 @@ function disaccelerate() {
  */
 function forward() {
     timeDirection=1
+    timeSpeed=1
 }
 
 /**
@@ -92,6 +95,8 @@ function backward() {
  * Do: Accelerate the interval
  */
 function accelerate() {
+    if (timeSpeed==0) {timeSpeed=1}
+    timeDirection=1;
     timeSpeed*=1.1;
     setInterval(update,intervalSpeed/timeSpeed);
 }
