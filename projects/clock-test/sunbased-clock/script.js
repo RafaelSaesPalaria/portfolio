@@ -54,6 +54,7 @@ function fast_rewind() {
     timeDirection=-1;
     timeSpeed*=1.1;
     setInterval(update,intervalSpeed/timeSpeed);
+    updateTimeSpeed()
 }
 
 /**
@@ -62,6 +63,7 @@ function fast_rewind() {
  */
 function pause() {
     timeSpeed=0
+    updateTimeSpeed()
 }
 
 /**
@@ -71,6 +73,7 @@ function pause() {
 function play() {
     timeSpeed=1
     timeDirection=1
+    updateTimeSpeed()
 }
 
 /**
@@ -80,6 +83,7 @@ function play() {
 function backward() {
     timeDirection=-1
     timeSpeed=1
+    updateTimeSpeed()
 }
 
 /**
@@ -91,6 +95,15 @@ function accelerate() {
     timeDirection=1;
     timeSpeed*=1.1;
     setInterval(update,intervalSpeed/timeSpeed);
+    updateTimeSpeed()
+}
+
+/**
+ * Called: When the application accelerate or dessacelerate
+ * Do: change the timespeed indicator in the screen
+ */
+function updateTimeSpeed() {
+    document.querySelector("span#timespeed").innerHTML = `${timeSpeed.toFixed(2)+"x"}`
 }
 
 /*
@@ -108,7 +121,8 @@ function updateTime() {
  */
 function daynightmodePlayer() {
     let digitalclock = document.querySelector("div#digital-clock")
-    let timed = document.querySelector("div#time");
+    let timed = document.querySelector("span#time");
+    let times = document.querySelector("span#timespeed")
     let players = document.querySelectorAll("div#player span")
     let color1 = "white";
     let color2 = "black"
@@ -121,8 +135,8 @@ function daynightmodePlayer() {
 
     digitalclock.style.background = `${color1}`
     digitalclock.style.borderColor = `${color2}`
-    timed.style.background = `${color1}`
     timed.style.color = `${color2}`
+    times.style.color = `${color2}`
     players.forEach(player => {
         player.style.background = `${color1}`
         player.style.borderColor = `${color2}`
@@ -135,7 +149,7 @@ function daynightmodePlayer() {
  * Do: Update the time in the digital clock
  */
 function updateDigitalClock() {
-    let digital_clock = document.querySelector("div#time");
+    let digital_clock = document.querySelector("span#time");
 
     let hours = formatNumber(time.getHours(),2)
     let minutes = formatNumber(time.getMinutes(), 2)
