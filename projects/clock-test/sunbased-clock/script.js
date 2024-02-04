@@ -1,7 +1,7 @@
 //Global Attributes
-var time = new Date();;
+export var time = new Date();
 var timeDirection = 1
-var timeSpeed     = 1
+export var timeSpeed     = 1
 var intervalSpeed = 1000
 var degree = 0
 
@@ -10,11 +10,15 @@ var vh = 0
 var sun = document.querySelector("div#sun")
 var moon = document.querySelector("div#moon")
 
+import { updateDigitalClock, updateTimeSpeed } from "./digital_clock.js"
+
 //Constructor
 /**
  * Called: When the application start
  * Do: Set the resize/update function
  */
+addEventListener("resize", resize)
+start()
 setInterval(update,intervalSpeed)
 function start() {
     resize()
@@ -49,48 +53,53 @@ function resize() {
  * Called: When the fast_rewind button is pressed
  * Do: fast_rewind the interval
  */
-function fast_rewind() {
+export function fast_rewind() {
     if (timeSpeed==0) {timeSpeed=1}
     timeDirection=-1;
     timeSpeed*=1.1;
     setInterval(update,intervalSpeed/timeSpeed);
+    updateTimeSpeed()
 }
 
 /**
  * Called: When the pause button is pressed
  * Do: Pause the interval
  */
-function pause() {
+export function pause() {
     timeSpeed=0
+    updateTimeSpeed()
 }
 
 /**
  * Called: When the play button is pressed
  * Do: restart the time speed
  */
-function play() {
+export function play() {
     timeSpeed=1
     timeDirection=1
+    updateTimeSpeed()
 }
 
 /**
  * Called: When the backward button is pressed
  * Do: Go back in time
  */
-function backward() {
+export function backward() {
     timeDirection=-1
     timeSpeed=1
+    updateTimeSpeed()
 }
 
 /**
  * Called: When the accelarate button is pressed
  * Do: Accelerate the interval
  */
-function accelerate() {
+export function accelerate() {
     if (timeSpeed==0) {timeSpeed=1}
     timeDirection=1;
     timeSpeed*=1.1;
     setInterval(update,intervalSpeed/timeSpeed);
+    updateTimeSpeed()
 }
 
 /*
@@ -103,56 +112,13 @@ function updateTime() {
 }
 
 /**
- * Called: when the digital clock changes
- * Do: change the player from lightmode to nightmode when needed
- */
-function daynightmodePlayer() {
-    let digitalclock = document.querySelector("div#digital-clock")
-    let timed = document.querySelector("div#time");
-    let players = document.querySelectorAll("div#player span")
-    let color1 = "white";
-    let color2 = "black"
-
-    if (time.getHours()>=18 || time.getHours()<6) {
-        let aux = color1;
-        color1 = color2
-        color2 = aux
-    }
-
-    digitalclock.style.background = `${color1}`
-    digitalclock.style.borderColor = `${color2}`
-    timed.style.background = `${color1}`
-    timed.style.color = `${color2}`
-    players.forEach(player => {
-        player.style.background = `${color1}`
-        player.style.borderColor = `${color2}`
-        player.style.color = `${color2}`
-    }) 
-}
-
-/**
- * Called: At every clock-second
- * Do: Update the time in the digital clock
- */
-function updateDigitalClock() {
-    let digital_clock = document.querySelector("div#time");
-
-    let hours = formatNumber(time.getHours(),2)
-    let minutes = formatNumber(time.getMinutes(), 2)
-    let seconds = formatNumber(time.getSeconds(), 2)
-    
-    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
-    daynightmodePlayer()
-}
-
-/**
  * Called: When the digital clock updates
  * Do: Format a number to have a certain length
  * @param {Number} number the unformatted number
  * @param {Number} length   the desired length
  * @returns the formatted number
  */
-function formatNumber(number ,length) {
+export function formatNumber(number ,length) {
     let string = ""
     for (let i = number.toString().length; i<length; i++) {
         string+="0"
