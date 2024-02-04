@@ -1,5 +1,5 @@
 //Global Attributes
-var time = new Date();;
+export var time = new Date();
 var timeDirection = 1
 var timeSpeed     = 1
 var intervalSpeed = 1000
@@ -10,11 +10,15 @@ var vh = 0
 var sun = document.querySelector("div#sun")
 var moon = document.querySelector("div#moon")
 
+import { daynightmodePlayer } from "./digital_clock.js"
+
 //Constructor
 /**
  * Called: When the application start
  * Do: Set the resize/update function
  */
+addEventListener("resize", resize)
+start()
 setInterval(update,intervalSpeed)
 function start() {
     resize()
@@ -49,7 +53,7 @@ function resize() {
  * Called: When the fast_rewind button is pressed
  * Do: fast_rewind the interval
  */
-function fast_rewind() {
+export function fast_rewind() {
     if (timeSpeed==0) {timeSpeed=1}
     timeDirection=-1;
     timeSpeed*=1.1;
@@ -61,7 +65,7 @@ function fast_rewind() {
  * Called: When the pause button is pressed
  * Do: Pause the interval
  */
-function pause() {
+export function pause() {
     timeSpeed=0
     updateTimeSpeed()
 }
@@ -70,7 +74,7 @@ function pause() {
  * Called: When the play button is pressed
  * Do: restart the time speed
  */
-function play() {
+export function play() {
     timeSpeed=1
     timeDirection=1
     updateTimeSpeed()
@@ -80,7 +84,7 @@ function play() {
  * Called: When the backward button is pressed
  * Do: Go back in time
  */
-function backward() {
+export function backward() {
     timeDirection=-1
     timeSpeed=1
     updateTimeSpeed()
@@ -90,7 +94,7 @@ function backward() {
  * Called: When the accelarate button is pressed
  * Do: Accelerate the interval
  */
-function accelerate() {
+export function accelerate() {
     if (timeSpeed==0) {timeSpeed=1}
     timeDirection=1;
     timeSpeed*=1.1;
@@ -113,35 +117,6 @@ function updateTimeSpeed() {
 function updateTime() {
     let seconds = time.getSeconds();
     time.setSeconds(seconds + timeDirection * timeSpeed);
-}
-
-/**
- * Called: when the digital clock changes
- * Do: change the player from lightmode to nightmode when needed
- */
-function daynightmodePlayer() {
-    let digitalclock = document.querySelector("div#digital-clock")
-    let timed = document.querySelector("span#time");
-    let times = document.querySelector("span#timespeed")
-    let players = document.querySelectorAll("div#player span")
-    let color1 = "white";
-    let color2 = "black"
-
-    if (time.getHours()>=18 || time.getHours()<6) {
-        let aux = color1;
-        color1 = color2
-        color2 = aux
-    }
-
-    digitalclock.style.background = `${color1}`
-    digitalclock.style.borderColor = `${color2}`
-    timed.style.color = `${color2}`
-    times.style.color = `${color2}`
-    players.forEach(player => {
-        player.style.background = `${color1}`
-        player.style.borderColor = `${color2}`
-        player.style.color = `${color2}`
-    }) 
 }
 
 /**
