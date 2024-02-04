@@ -3,7 +3,31 @@
  * Do: change the player from lightmode to nightmode when needed
  */
 
-import { time } from "./script.js";
+import { time, timeSpeed, formatNumber } from "./script.js";
+
+/**
+ * Called: At every clock-second
+ * Do: Update the time in the digital clock
+ */
+export function updateDigitalClock() {
+    let digital_clock = document.querySelector("span#time");
+
+    let hours = formatNumber(time.getHours(),2)
+    let minutes = formatNumber(time.getMinutes(), 2)
+    let seconds = formatNumber(time.getSeconds(), 2)
+    
+    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
+    daynightmodePlayer()
+}
+
+/**
+ * Called: When the application accelerate or dessacelerate
+ * Do: change the timespeed indicator in the screen
+ */
+export function updateTimeSpeed() {
+    document.querySelector("span#timespeed").innerHTML = `${timeSpeed.toFixed(2)+"x"}`
+}
+
 
 export function daynightmodePlayer() {
     let digitalclock = document.querySelector("div#digital-clock")

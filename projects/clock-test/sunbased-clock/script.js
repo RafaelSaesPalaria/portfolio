@@ -1,7 +1,7 @@
 //Global Attributes
 export var time = new Date();
 var timeDirection = 1
-var timeSpeed     = 1
+export var timeSpeed     = 1
 var intervalSpeed = 1000
 var degree = 0
 
@@ -10,7 +10,7 @@ var vh = 0
 var sun = document.querySelector("div#sun")
 var moon = document.querySelector("div#moon")
 
-import { daynightmodePlayer } from "./digital_clock.js"
+import { updateDigitalClock, updateTimeSpeed } from "./digital_clock.js"
 
 //Constructor
 /**
@@ -102,14 +102,6 @@ export function accelerate() {
     updateTimeSpeed()
 }
 
-/**
- * Called: When the application accelerate or dessacelerate
- * Do: change the timespeed indicator in the screen
- */
-function updateTimeSpeed() {
-    document.querySelector("span#timespeed").innerHTML = `${timeSpeed.toFixed(2)+"x"}`
-}
-
 /*
 * Called: Every clock-second
 * Do: Update the time based on the timeDirection and in the timeSpeed
@@ -120,28 +112,13 @@ function updateTime() {
 }
 
 /**
- * Called: At every clock-second
- * Do: Update the time in the digital clock
- */
-function updateDigitalClock() {
-    let digital_clock = document.querySelector("span#time");
-
-    let hours = formatNumber(time.getHours(),2)
-    let minutes = formatNumber(time.getMinutes(), 2)
-    let seconds = formatNumber(time.getSeconds(), 2)
-    
-    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
-    daynightmodePlayer()
-}
-
-/**
  * Called: When the digital clock updates
  * Do: Format a number to have a certain length
  * @param {Number} number the unformatted number
  * @param {Number} length   the desired length
  * @returns the formatted number
  */
-function formatNumber(number ,length) {
+export function formatNumber(number ,length) {
     let string = ""
     for (let i = number.toString().length; i<length; i++) {
         string+="0"
