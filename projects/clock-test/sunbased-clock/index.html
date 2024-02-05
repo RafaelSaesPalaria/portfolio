@@ -16,13 +16,20 @@
         <span id="time">00:00:00</span>
         <span id="timespeed">1x</span>
         <div id="player">
-            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="import('./script.js').then(module => module.fast_rewind())">fast_rewind</span>
-            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="import('./script.js').then(module => module.backward())">arrow_back</span>
-            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="import('./script.js').then(module => module.pause())">pause</span>
-            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="import('./script.js').then(module => module.play())">play_arrow</span>
-            <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="import('./script.js').then(module => module.accelerate())">fast_forward</span>
+            <span class="material-symbols-outlined" onclick= "fast_rewind()">fast_rewind</span>
+            <span class="material-symbols-outlined" onclick= "backward()">arrow_back</span>
+            <span class="material-symbols-outlined" onclick= "pause()">pause</span>
+            <span class="material-symbols-outlined" onclick= "play()">play_arrow</span>
+            <span class="material-symbols-outlined" onclick= "accelerate()">fast_forward</span>
         </div>
     </div>
-    <script type="module" src="script.js"></script>
+    <script type="module" defer>
+        import * as scriptModule from "./script.js"
+        window.fast_rewind = scriptModule.fast_rewind
+        window.backward = scriptModule.backward
+        window.pause = scriptModule.pause
+        window.play = scriptModule.play
+        window.accelerate = scriptModule.accelerate
+    </script>
 </body>
 </html>
