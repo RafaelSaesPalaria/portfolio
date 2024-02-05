@@ -11,6 +11,7 @@ var sun = document.querySelector("div#sun")
 var moon = document.querySelector("div#moon")
 
 import { updateDigitalClock, updateTimeSpeed } from "./digital_clock.js"
+import { parseAngle, getCardinalCoordinates } from "./util.js"
 
 //Constructor
 /**
@@ -112,33 +113,6 @@ function updateTime() {
 }
 
 /**
- * Called: When the digital clock updates
- * Do: Format a number to have a certain length
- * @param {Number} number the unformatted number
- * @param {Number} length   the desired length
- * @returns the formatted number
- */
-export function formatNumber(number ,length) {
-    let string = ""
-    for (let i = number.toString().length; i<length; i++) {
-        string+="0"
-    }
-    number = string+number.toString()
-    return number
-}
-
-/**
- * Called: When the angle of a star is updated
- * Do: Get the angle of rotation based on the period of the cycle
- * @param {Number} currentlyTime the currently period of the cycle 
- * @param {Number} cycleMax   the cycle max value
- * @returns the angle of the currently period
- */
-function parseAngle(actualTime,cycleMax) {
-    return (actualTime/cycleMax)*360
-}
-
-/**
  * Called: When the star position is updated
  * Do: get the angle based on the time
  * @returns the degree of the angle
@@ -157,22 +131,6 @@ function getAngle() {
  */
 function get_dayTime_inSeconds() {
     return (time.getHours()*3600) + (time.getMinutes()*60) + time.getSeconds()
-}
-
-/**
- * Called: When the star position is updated
- * Do: convert polar coordinates to cardinal coordinates
- * @param {Number} deg     degree of the coordinates
- * @param {Number} radius  radius of the coordinates
- * @returns a vector with x and y
- */
-function getCardinalCoordinates(deg, radius) {
-    let theta = (2 * Math.PI) / 360;
-
-    let y = Math.cos(theta*(deg+90%360)) * radius
-    let x = Math.sin(theta*(deg+90%360)) * radius
-    let cardinal = [Number(x), Number(y)]
-    return cardinal;
 }
 
 /**

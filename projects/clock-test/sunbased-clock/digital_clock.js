@@ -1,9 +1,5 @@
-/**
- * Called: when the digital clock changes
- * Do: change the player from lightmode to nightmode when needed
- */
-
-import { time, timeSpeed, formatNumber } from "./script.js";
+import { time, timeSpeed } from "./script.js";
+import { formatNumber } from "./util.js";
 
 /**
  * Called: At every clock-second
@@ -28,7 +24,10 @@ export function updateTimeSpeed() {
     document.querySelector("span#timespeed").innerHTML = `${timeSpeed.toFixed(2)+"x"}`
 }
 
-
+/**
+ * Called: when the digital clock changes
+ * Do: change the player from lightmode to nightmode when needed
+ */
 export function daynightmodePlayer() {
     let digitalclock = document.querySelector("div#digital-clock")
     let timed = document.querySelector("span#time");
