@@ -25,11 +25,7 @@
     </div>
     <script type="module" defer>
         import * as scriptModule from "./script.js"
-        window.fast_rewind = scriptModule.fast_rewind
-        window.backward = scriptModule.backward
-        window.pause = scriptModule.pause
-        window.play = scriptModule.play
-        window.accelerate = scriptModule.accelerate
+        Object.assign(window, scriptModule);
     </script>
 </body>
 </html>
