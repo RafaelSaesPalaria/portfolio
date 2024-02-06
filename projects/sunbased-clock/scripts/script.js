@@ -1,8 +1,5 @@
 //Global Attributes
-export var time = new Date();
-var timeDirection = 1
-export var timeSpeed     = 1
-var intervalSpeed = 1000
+export var intervalSpeed = 1000
 var degree = 0
 
 var vh = 0
@@ -10,11 +7,13 @@ var vh = 0
 var sun = document.querySelector("div#sun")
 var moon = document.querySelector("div#moon")
 
-import { updateDigitalClock, updateTimeSpeed } from "./digital_clock.js"
+import { timeSpeed, timeDirection, time} from "./controls.js"
+import { updateDigitalClock } from "./digital_clock.js"
 import { parseAngle, getCardinalCoordinates } from "./util.js"
 
 //Constructor
 /**
+ * ERROR/TODO: Update when start
  * Called: When the application start
  * Do: Set the resize/update function
  */
@@ -22,16 +21,16 @@ addEventListener("resize", resize)
 start()
 setInterval(update,intervalSpeed)
 function start() {
+    
     resize()
     window.addEventListener('zoom', resize);
-    update()
 }
 
 /**
  * Called: When the program start and at every clock-second
  * Do: Updates the system
  */
-function update() {
+export function update() {
     updateTime();
     updateDigitalClock();
     updateStar(sun, 0, vh*0.7)
@@ -49,60 +48,6 @@ function resize() {
 }
 
 //Methods
-//Controls
-/**
- * Called: When the fast_rewind button is pressed
- * Do: fast_rewind the interval
- */
-export function fast_rewind() {
-    if (timeSpeed==0) {timeSpeed=1}
-    timeDirection=-1;
-    timeSpeed*=1.1;
-    setInterval(update,intervalSpeed/timeSpeed);
-    updateTimeSpeed()
-}
-
-/**
- * Called: When the pause button is pressed
- * Do: Pause the interval
- */
-export function pause() {
-    timeSpeed=0
-    updateTimeSpeed()
-}
-
-/**
- * Called: When the play button is pressed
- * Do: restart the time speed
- */
-export function play() {
-    timeSpeed=1
-    timeDirection=1
-    updateTimeSpeed()
-}
-
-/**
- * Called: When the backward button is pressed
- * Do: Go back in time
- */
-export function backward() {
-    timeDirection=-1
-    timeSpeed=1
-    updateTimeSpeed()
-}
-
-/**
- * Called: When the accelarate button is pressed
- * Do: Accelerate the interval
- */
-export function accelerate() {
-    if (timeSpeed==0) {timeSpeed=1}
-    timeDirection=1;
-    timeSpeed*=1.1;
-    setInterval(update,intervalSpeed/timeSpeed);
-    updateTimeSpeed()
-}
-
 /*
 * Called: Every clock-second
 * Do: Update the time based on the timeDirection and in the timeSpeed
