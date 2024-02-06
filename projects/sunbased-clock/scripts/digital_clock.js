@@ -25,6 +25,7 @@ export function updateTimeSpeed() {
 }
 
 /**
+ * ERROR/TODO: add the shadow in the oposite direction of the sun
  * Called: when the digital clock changes
  * Do: change the player from lightmode to nightmode when needed
  */
