@@ -32,10 +32,6 @@ export function updateTimeSpeed() {
  * Do: change the player from lightmode to nightmode when needed
  */
 export function daynightmodePlayer() {
-    let digitalclock = document.querySelector("div#digital-clock")
-    let timed = document.querySelector("span#time");
-    let times = document.querySelector("span#timespeed")
-    let players = document.querySelectorAll("div#player span")
     let color1 = "white";
     let color2 = "black"
 
@@ -45,13 +41,29 @@ export function daynightmodePlayer() {
         color2 = aux
     }
 
-    digitalclock.style.background = `${color1}`
-    digitalclock.style.borderColor = `${color2}`
-    timed.style.color = `${color2}`
-    times.style.color = `${color2}`
+    playerStyle(color1,color2)
+     
+}
+
+/**
+ * Called: When the digital clock change color
+ * Do: Change the color of the digital clock
+ * @param {String} mainColor the main color of the player
+ * @param {String} secondColor the contrast color of the player
+ */
+function playerStyle(mainColor, secondColor) {
+    let digitalclock = document.querySelector("div#digital-clock")
+    let timed = document.querySelector("span#time");
+    let times = document.querySelector("span#timespeed")
+    let players = document.querySelectorAll("div#player span")
+
+    digitalclock.style.background = `${mainColor}`
+    digitalclock.style.borderColor = `${secondColor}`
+    timed.style.color = `${secondColor}`
+    times.style.color = `${secondColor}`
     players.forEach(player => {
-        player.style.background = `${color1}`
-        player.style.borderColor = `${color2}`
-        player.style.color = `${color2}`
-    }) 
+        player.style.background = `${mainColor}`
+        player.style.borderColor = `${secondColor}`
+        player.style.color = `${secondColor}`
+    })
 }
