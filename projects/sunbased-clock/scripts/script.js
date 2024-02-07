@@ -33,8 +33,8 @@ function start() {
 export function update() {
     updateTime();
     updateDigitalClock();
-    updateStar(sun, 0, vh*0.7)
-    updateStar(moon, 180, vh*0.6)
+    updateStar(sun, 90, vh*0.7)
+    updateStar(moon, 270, vh*0.6)
     updateBackground();
 }
 
@@ -88,8 +88,8 @@ function get_dayTime_inSeconds() {
 function updateStar(star, degPlus, radius) {
     let deg = getAngle();
     let cardinal = getCardinalCoordinates((deg+degPlus%360),radius)
-    star.style.top = `calc(100% + ${cardinal[0]}px)`
-    star.style.left = `calc(50% + ${cardinal[1]}px)`
+    star.style.top = `calc(100% + ${cardinal.x}px)`
+    star.style.left = `calc(50% + ${cardinal.y}px)`
 }
 
 /**

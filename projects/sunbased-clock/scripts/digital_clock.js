@@ -42,7 +42,6 @@ export function daynightmodePlayer() {
     }
 
     playerStyle(color1,color2)
-     
 }
 
 /**

@@ -27,7 +27,6 @@ export function formatNumber(number ,length) {
 }
 
 /**
- * ERROR/TODO: deg+90 shouldn't exist, cardinal should be a hashmap
  * Called: When the star position is updated
  * Do: convert polar coordinates to cardinal coordinates
  * @param {Number} deg     degree of the coordinates
@@ -37,8 +36,8 @@ export function formatNumber(number ,length) {
 export function getCardinalCoordinates(deg, radius) {
     let theta = (2 * Math.PI) / 360;
 
-    let y = Math.cos(theta*(deg+90%360)) * radius
-    let x = Math.sin(theta*(deg+90%360)) * radius
-    let cardinal = [Number(x), Number(y)]
+    let y = Math.cos(theta*(deg%360)) * radius
+    let x = Math.sin(theta*(deg%360)) * radius
+    let cardinal = {x:Number(x),y: Number(y)}
     return cardinal;
 }
