@@ -51,6 +51,7 @@ function accelerate() {
 }
 
 /**
+ * ERROR/TODO this class is gonna create the same listeners multiple times
  * Called: by the update time speed
  * Do: Add all the buttons to the listener
  * @returns the subscription
@@ -80,6 +81,7 @@ export function addButtonListener() {
      * Do: Execute every observer function
      */
     function notifyAll() {
+        console.log(state.observers)
         state.observers.forEach(observer => {
             observer()
         })
