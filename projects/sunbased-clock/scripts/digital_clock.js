@@ -1,6 +1,6 @@
 import { intervalSpeed ,update } from "./script.js";
 import { formatNumber } from "./util.js";
-import { timeSpeed, time } from "./controls.js";
+import { timeSpeed, timeDirection, time } from "./controls.js";
 
 /**
  * Called: At every clock-second
@@ -23,7 +23,7 @@ export function updateDigitalClock() {
  */
 export function updateTimeSpeed() {
     setInterval(update,intervalSpeed/timeSpeed);
-    document.querySelector("span#timespeed").innerHTML = `${timeSpeed.toFixed(2)+"x"}`
+    document.querySelector("span#timespeed").innerHTML = `${timeDirection*timeSpeed.toFixed(2)+"x"}`
 }
 
 /**

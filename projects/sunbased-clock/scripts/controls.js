@@ -53,5 +53,4 @@ export function accelerate() {
     timeDirection=1;
     timeSpeed*=1.1;
     updateTimeSpeed()
-    console.log(time)
 }

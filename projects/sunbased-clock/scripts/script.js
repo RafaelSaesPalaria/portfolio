@@ -87,7 +87,7 @@ function get_dayTime_inSeconds() {
  */
 function updateStar(star, degPlus, radius) {
     let deg = getAngle();
-    let cardinal = getCardinalCoordinates((deg+degPlus%360),radius)
+    let cardinal = getCardinalCoordinates((deg+degPlus)%360,radius)
     star.style.top = `calc(100% + ${cardinal.x}px)`
     star.style.left = `calc(50% + ${cardinal.y}px)`
 }

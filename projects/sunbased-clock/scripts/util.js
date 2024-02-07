@@ -36,8 +36,8 @@ export function formatNumber(number ,length) {
 export function getCardinalCoordinates(deg, radius) {
     let theta = (2 * Math.PI) / 360;
 
-    let y = Math.cos(theta*(deg%360)) * radius
-    let x = Math.sin(theta*(deg%360)) * radius
-    let cardinal = {x:Number(x),y: Number(y)}
+    let y = Math.cos(theta*deg) * radius
+    let x = Math.sin(theta*deg) * radius
+    let cardinal = {x:x,y:y}
     return cardinal;
 }
