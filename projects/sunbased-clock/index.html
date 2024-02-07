@@ -16,16 +16,13 @@
         <span id="time">00:00:00</span>
         <span id="timespeed">1x</span>
         <div id="player">
-            <span class="material-symbols-outlined" onclick= "fast_rewind()">fast_rewind</span>
-            <span class="material-symbols-outlined" onclick= "backward()">arrow_back</span>
-            <span class="material-symbols-outlined" onclick= "pause()">pause</span>
-            <span class="material-symbols-outlined" onclick= "play()">play_arrow</span>
-            <span class="material-symbols-outlined" onclick= "accelerate()">fast_forward</span>
+            <span class="material-symbols-outlined" id="fast_rewind">fast_rewind</span>
+            <span class="material-symbols-outlined" id="backward">arrow_back</span>
+            <span class="material-symbols-outlined" id="pause">pause</span>
+            <span class="material-symbols-outlined" id="play">play_arrow</span>
+            <span class="material-symbols-outlined" id="accelerate">fast_forward</span>
         </div>
     </div>
-    <script type="module" defer>
-        import * as scriptModule from "./scripts/controls.js"
-        Object.assign(window, scriptModule);
-    </script>
+    <script type="module" src="./scripts/controls.js" defer></script>
 </body>
 </html>

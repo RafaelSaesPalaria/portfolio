@@ -1,6 +1,6 @@
 import { intervalSpeed ,update } from "./script.js";
 import { formatNumber } from "./util.js";
-import { timeSpeed, timeDirection, time } from "./controls.js";
+import { timeSpeed, timeDirection, time, addButtonListener } from "./controls.js";
 
 /**
  * Called: At every clock-second
@@ -21,6 +21,7 @@ export function updateDigitalClock() {
  * Called: When the application accelerate or dessacelerate
  * Do: change the timespeed and indicates it in the screen
  */
+addButtonListener().subscribe(updateTimeSpeed)
 export function updateTimeSpeed() {
     setInterval(update,intervalSpeed/timeSpeed);
     document.querySelector("span#timespeed").innerHTML = `${timeDirection*timeSpeed.toFixed(2)+"x"}`
