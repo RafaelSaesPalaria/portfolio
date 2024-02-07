@@ -57,13 +57,23 @@ function playerStyle(mainColor, secondColor) {
     let times = document.querySelector("span#timespeed")
     let players = document.querySelectorAll("div#player span")
 
-    digitalclock.style.background = `${mainColor}`
-    digitalclock.style.borderColor = `${secondColor}`
-    timed.style.color = `${secondColor}`
-    times.style.color = `${secondColor}`
+    contrast(timed, mainColor, secondColor)
+    contrast(times, mainColor, secondColor)
+    contrast(digitalclock, mainColor, secondColor)
     players.forEach(player => {
-        player.style.background = `${mainColor}`
-        player.style.borderColor = `${secondColor}`
-        player.style.color = `${secondColor}`
+        contrast(player, mainColor, secondColor)
     })
+}
+
+/**
+ * Called: When the player style changes
+ * Do: Contrast the main color in the second color of the element
+ * @param {Element} element element to be contrasted
+ * @param {String} mainColor     main color to be used in the element
+ * @param {String} secondColor second color to be used in the element
+ */
+function contrast(element, mainColor, secondColor) {
+    element.style.background = mainColor
+    element.style.borderColor = secondColor
+    element.style.color = secondColor
 }
