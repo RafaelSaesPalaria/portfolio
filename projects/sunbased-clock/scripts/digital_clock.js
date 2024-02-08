@@ -24,7 +24,7 @@ export function updateDigitalClock() {
 addButtonListener().subscribe(updateTimeSpeed)
 export function updateTimeSpeed() {
     setInterval(update,intervalSpeed/timeSpeed);
-    document.querySelector("span#timespeed").innerHTML = `${timeDirection*timeSpeed.toFixed(2)+"x"}`
+    document.querySelector("span#timespeed").innerText = `${timeDirection*timeSpeed.toFixed(2)+"x"}`
 }
 
 /**
