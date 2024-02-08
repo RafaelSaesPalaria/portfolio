@@ -38,11 +38,17 @@ export function updateTimeSpeed() {
 export function daynightmodePlayer() {
     let mainColor = "white";
     let secondColor = "black"
+    let neutralColor = "gray"
 
     if (time.getHours()>=18 || time.getHours()<6) {
         let aux = mainColor;
         mainColor = secondColor
         secondColor = aux
+    }
+
+    if (timeSpeed>100) {
+        mainColor = "lightgray"
+        secondColor = "black"
     }
 
     contrast(timed, mainColor, secondColor)
