@@ -36,25 +36,14 @@ export function updateTimeSpeed() {
  * Do: change the player from lightmode to nightmode when needed
  */
 export function daynightmodePlayer() {
-    let color1 = "white";
-    let color2 = "black"
+    let mainColor = "white";
+    let secondColor = "black"
 
     if (time.getHours()>=18 || time.getHours()<6) {
-        let aux = color1;
-        color1 = color2
-        color2 = aux
+        let aux = mainColor;
+        mainColor = secondColor
+        secondColor = aux
     }
-
-    playerStyle(color1,color2)
-}
-
-/**
- * Called: When the digital clock change color
- * Do: Change the color of the digital clock
- * @param {String} mainColor the main color of the player
- * @param {String} secondColor the contrast color of the player
- */
-function playerStyle(mainColor, secondColor) {
 
     contrast(timed, mainColor, secondColor)
     contrast(times, mainColor, secondColor)
