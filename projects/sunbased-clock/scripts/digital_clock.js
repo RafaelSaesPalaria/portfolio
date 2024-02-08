@@ -2,18 +2,21 @@ import { intervalSpeed ,update } from "./script.js";
 import { formatNumber } from "./util.js";
 import { timeSpeed, timeDirection, time, addButtonListener } from "./controls.js";
 
+var digitalclock = document.querySelector("div#digital-clock")
+var timed = document.querySelector("span#time");
+var times = document.querySelector("span#timespeed")
+var players = document.querySelectorAll("div#player span")
+
 /**
  * Called: At every clock-second
  * Do: Update the time in the digital clock
  */
 export function updateDigitalClock() {
-    let digital_clock = document.querySelector("span#time");
-
     let hours = formatNumber(time.getHours(),2)
     let minutes = formatNumber(time.getMinutes(), 2)
     let seconds = formatNumber(time.getSeconds(), 2)
     
-    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
+    timed.innerText = `${hours}:${minutes}:${seconds}`;
     daynightmodePlayer()
 }
 
@@ -52,10 +55,6 @@ export function daynightmodePlayer() {
  * @param {String} secondColor the contrast color of the player
  */
 function playerStyle(mainColor, secondColor) {
-    let digitalclock = document.querySelector("div#digital-clock")
-    let timed = document.querySelector("span#time");
-    let times = document.querySelector("span#timespeed")
-    let players = document.querySelectorAll("div#player span")
 
     contrast(timed, mainColor, secondColor)
     contrast(times, mainColor, secondColor)
