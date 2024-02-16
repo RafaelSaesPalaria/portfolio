@@ -48,8 +48,7 @@ export function daynightmodePlayer() {
     let mainColor = digital_clock.mainColor
     let secondColor = digital_clock.secondColor
 
-    if ((time.getHours()<digital_clock.nightMax ||
-        time.getHours()>=digital_clock.nightMin) &
+    if ( isNight() &
       timeSpeed<=digital_clock.maxChangeSpeed) {
 
         let aux = mainColor;
@@ -63,6 +62,19 @@ export function daynightmodePlayer() {
     players.forEach(player => {
         contrast(player, mainColor, secondColor)
     })
+}
+
+/**
+ * Called: When the player need to know if it changes its colors
+ * Do: say if it's night
+ * @returns true if is night, false if it isn't
+ */
+function isNight() {
+    if (time.getHours()<digital_clock.nightMax ||
+    time.getHours()>=digital_clock.nightMin) {
+        return true
+    }
+    return false
 }
 
 /**
