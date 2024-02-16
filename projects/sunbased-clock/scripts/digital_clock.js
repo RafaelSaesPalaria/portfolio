@@ -7,6 +7,14 @@ var timed = document.querySelector("span#time");
 var times = document.querySelector("span#timespeed")
 var players = document.querySelectorAll("div#player span")
 
+var digital_clock = {
+    mainColor: "white",
+    secondColor: "black",
+    maxChangeSpeed:100,
+    nightMin:18,
+    nightMax:6
+}
+
 /**
  * Called: At every clock-second
  * Do: Update the time in the digital clock
@@ -36,19 +44,17 @@ export function updateTimeSpeed() {
  * Do: change the player from lightmode to nightmode when needed
  */
 export function daynightmodePlayer() {
-    let mainColor = "white";
-    let secondColor = "black"
-    let neutralColor = "gray"
 
-    if (time.getHours()>=18 || time.getHours()<6) {
+    let mainColor = digital_clock.mainColor
+    let secondColor = digital_clock.secondColor
+
+    if ((time.getHours()<digital_clock.nightMax ||
+        time.getHours()>=digital_clock.nightMin) &
+      timeSpeed<=digital_clock.maxChangeSpeed) {
+
         let aux = mainColor;
         mainColor = secondColor
         secondColor = aux
-    }
-
-    if (timeSpeed>100) {
-        mainColor = "lightgray"
-        secondColor = "black"
     }
 
     contrast(timed, mainColor, secondColor)
