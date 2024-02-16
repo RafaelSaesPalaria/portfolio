@@ -2,12 +2,18 @@ import { intervalSpeed ,update } from "./script.js";
 import { formatNumber } from "./util.js";
 import { timeSpeed, timeDirection, time, addButtonListener } from "./controls.js";
 
-var digitalclock = document.querySelector("div#digital-clock")
-var timed = document.querySelector("span#time");
-var times = document.querySelector("span#timespeed")
-var players = document.querySelectorAll("div#player span")
-
 var digital_clock = {
+    elements: {
+        digitalclock: document.querySelector("div#digital-clock"),
+        timed:          document.querySelector("span#time"),
+        times:          document.querySelector("span#timespeed"),
+
+        fast_rewind:document.querySelector("div#player span#fast_rewind"),
+        backward:   document.querySelector("div#player span#backward"),
+        pause:         document.querySelector("div#player span#pause"),
+        play:            document.querySelector("div#player span#play"),
+        accelerate:  document.querySelector("div#player span#accelerate")
+    },
     mainColor: "white",
     secondColor: "black",
     maxChangeSpeed:100,
@@ -24,7 +30,7 @@ export function updateDigitalClock() {
     let minutes = formatNumber(time.getMinutes(), 2)
     let seconds = formatNumber(time.getSeconds(), 2)
     
-    timed.innerText = `${hours}:${minutes}:${seconds}`;
+    digital_clock.elements.timed.innerText = `${hours}:${minutes}:${seconds}`;
     daynightmodePlayer()
 }
 
@@ -35,7 +41,7 @@ export function updateDigitalClock() {
 addButtonListener().subscribe(updateTimeSpeed)
 export function updateTimeSpeed() {
     setInterval(update,intervalSpeed/timeSpeed);
-    document.querySelector("span#timespeed").innerText = `${timeDirection*timeSpeed.toFixed(2)+"x"}`
+    digital_clock.elements.times.innerText = `${timeDirection*timeSpeed.toFixed(2)+"x"}`
 }
 
 /**
@@ -56,25 +62,25 @@ export function daynightmodePlayer() {
         secondColor = aux
     }
 
-    contrast(timed, mainColor, secondColor)
+    /*contrast(timed, mainColor, secondColor)
     contrast(times, mainColor, secondColor)
     contrast(digitalclock, mainColor, secondColor)
     players.forEach(player => {
         contrast(player, mainColor, secondColor)
-    })
+    })*/
+    contrastPlayer(mainColor,secondColor)
 }
 
 /**
- * Called: When the player need to know if it changes its colors
- * Do: say if it's night
- * @returns true if is night, false if it isn't
+ * Called: When the player style changes
+ * Do: Contrast the main color in the second color of the player
+ * @param {String} mainColor main color to be used in the elements
+ * @param {String} secondColor second color to be used in the element
  */
-function isNight() {
-    if (time.getHours()<digital_clock.nightMax ||
-    time.getHours()>=digital_clock.nightMin) {
-        return true
+function contrastPlayer(mainColor, secondColor) {
+    for (var element in digital_clock.elements) {
+        contrast(digital_clock.elements[element], mainColor, secondColor)
     }
-    return false
 }
 
 /**
@@ -88,4 +94,17 @@ function contrast(element, mainColor, secondColor) {
     element.style.background = mainColor
     element.style.borderColor = secondColor
     element.style.color = secondColor
+}
+
+/**
+ * Called: When the player need to know if it changes its colors
+ * Do: say if it's night
+ * @returns true if is night, false if it isn't
+ */
+function isNight() {
+    if (time.getHours()<digital_clock.nightMax ||
+    time.getHours()>=digital_clock.nightMin) {
+        return true
+    }
+    return false
 }
