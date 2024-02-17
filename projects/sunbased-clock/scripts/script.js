@@ -7,6 +7,11 @@ var vh = 0
 var sun = document.querySelector("div#sun")
 var moon = document.querySelector("div#moon")
 
+const maxSeconds = 60
+const maxMinutes = 60
+const maxHours = 24
+const maxDegree = 360
+
 import { timeSpeed, timeDirection, time} from "./controls.js"
 import { updateDigitalClock } from "./digital_clock.js"
 import { parseAngle, getCardinalCoordinates } from "./util.js"
@@ -65,7 +70,7 @@ function updateTime() {
 function getAngle() {
     let dayTime_inSeconds = get_dayTime_inSeconds()
                         
-    degree = parseAngle(dayTime_inSeconds,(24*60*60))   
+    degree = parseAngle(dayTime_inSeconds,(maxHours*maxMinutes*maxSeconds))   
     return degree;
 }
 
@@ -75,7 +80,11 @@ function getAngle() {
  * @returns the daytime in seconds
  */
 function get_dayTime_inSeconds() {
-    return (time.getHours()*3600) + (time.getMinutes()*60) + time.getSeconds()
+    return (
+        (time.getHours()*(maxSeconds*maxMinutes)) +
+        (time.getMinutes()*maxSeconds) +
+        time.getSeconds()
+    )
 }
 
 /**
@@ -87,7 +96,7 @@ function get_dayTime_inSeconds() {
  */
 function updateStar(star, degPlus, radius) {
     let deg = getAngle();
-    let cardinal = getCardinalCoordinates((deg+degPlus)%360,radius)
+    let cardinal = getCardinalCoordinates((deg+degPlus)%maxDegree,radius)
     star.style.top = `calc(100% + ${cardinal.x}px)`
     star.style.left = `calc(50% + ${cardinal.y}px)`
 }
@@ -100,8 +109,8 @@ function updateBackground() {
     let body = document.body;
     let sun = document.querySelector("div#sun");
 
-    let sun_x = sun.getBoundingClientRect().left+35; //70 is the sun width
-    let sun_y = sun.getBoundingClientRect().top+35;
+    let sun_x = sun.getBoundingClientRect().left+sun.clientWidth/2; //70 is the sun width
+    let sun_y = sun.getBoundingClientRect().top+sun.clientHeight/2;
 
         body.style.backgroundImage = `radial-gradient(circle at ${sun_x}px ${sun_y}px , yellow, orange 10%, lightblue 35%, blue 95%)`
 }

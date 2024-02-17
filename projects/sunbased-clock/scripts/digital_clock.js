@@ -60,14 +60,8 @@ export function daynightmodePlayer() {
         let aux = mainColor;
         mainColor = secondColor
         secondColor = aux
+        
     }
-
-    /*contrast(timed, mainColor, secondColor)
-    contrast(times, mainColor, secondColor)
-    contrast(digitalclock, mainColor, secondColor)
-    players.forEach(player => {
-        contrast(player, mainColor, secondColor)
-    })*/
     contrastPlayer(mainColor,secondColor)
 }
 
