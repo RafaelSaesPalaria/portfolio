@@ -2,19 +2,26 @@
 export var intervalSpeed = 1000
 var degree = 0
 
-var vh = 0
-
-var sun = document.querySelector("div#sun")
-var moon = document.querySelector("div#moon")
+var stars = {
+    sun: {
+        element: document.querySelector("div#sun"),
+        degPlus: 90,
+        distance: 350
+    },
+    moon: {
+        element: document.querySelector("div#moon"),
+        degPlus: 270,
+        distance: 300
+    }
+}
 
 const maxSeconds = 60
 const maxMinutes = 60
 const maxHours = 24
-const maxDegree = 360
 
 import { timeSpeed, timeDirection, time} from "./controls.js"
 import { updateDigitalClock } from "./digital_clock.js"
-import { parseAngle, getCardinalCoordinates } from "./util.js"
+import { parseAngle, getCardinalCoordinates, maxDegree } from "./util.js"
 
 //Constructor
 /**
@@ -22,14 +29,7 @@ import { parseAngle, getCardinalCoordinates } from "./util.js"
  * Called: When the application start
  * Do: Set the resize/update function
  */
-addEventListener("resize", resize)
-start()
 setInterval(update,intervalSpeed)
-function start() {
-    
-    resize()
-    window.addEventListener('zoom', resize);
-}
 
 /**
  * Called: When the program start and at every clock-second
@@ -38,18 +38,10 @@ function start() {
 export function update() {
     updateTime();
     updateDigitalClock();
-    updateStar(sun, 90, vh*0.7)
-    updateStar(moon, 270, vh*0.6)
     updateBackground();
-}
-
-/**
- * Called: When the application is zoomed
- * Do: Resize the screen
- */
-function resize() {
-    //vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    vh = 500
+    for (let star in stars) {
+        updateStar(stars[star].element, stars[star].degPlus, stars[star].distance)
+    }
 }
 
 //Methods
@@ -106,11 +98,10 @@ function updateStar(star, degPlus, radius) {
  * Do: Update the background
  */
 function updateBackground() {
-    let body = document.body;
-    let sun = document.querySelector("div#sun");
+    let sun = stars.sun.element;
 
-    let sun_x = sun.getBoundingClientRect().left+sun.clientWidth/2; //70 is the sun width
+    let sun_x = sun.getBoundingClientRect().left+sun.clientWidth/2;
     let sun_y = sun.getBoundingClientRect().top+sun.clientHeight/2;
 
-        body.style.backgroundImage = `radial-gradient(circle at ${sun_x}px ${sun_y}px , yellow, orange 10%, lightblue 35%, blue 95%)`
+    document.body.style.backgroundImage = `radial-gradient(circle at ${sun_x}px ${sun_y}px , yellow, orange 10%, lightblue 35%, blue 95%)`
 }
