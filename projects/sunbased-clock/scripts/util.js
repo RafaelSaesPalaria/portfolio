@@ -6,10 +6,15 @@
  * @returns the angle of the currently period
  */
 
-export const maxDegree = 360
+export const max = {
+    seconds: 60,
+    minutes: 60,
+    hours: 24,
+    degree: 360
+}
 
 export function parseAngle(actualTime,cycleMax) {
-    return (actualTime/cycleMax)*maxDegree
+    return (actualTime/cycleMax)*max.degree
 }
 
 /**
@@ -37,7 +42,7 @@ export function formatNumber(number ,length) {
  * @returns a vector with x and y
  */
 export function getCardinalCoordinates(deg, radius) {
-    let theta = (2 * Math.PI) / maxDegree;
+    let theta = (2 * Math.PI) / max.degree;
 
     let y = Math.cos(theta*deg) * radius
     let x = Math.sin(theta*deg) * radius

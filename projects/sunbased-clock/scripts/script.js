@@ -15,13 +15,9 @@ var stars = {
     }
 }
 
-const maxSeconds = 60
-const maxMinutes = 60
-const maxHours = 24
-
 import { timeSpeed, timeDirection, time} from "./controls.js"
 import { updateDigitalClock } from "./digital_clock.js"
-import { parseAngle, getCardinalCoordinates, maxDegree } from "./util.js"
+import { parseAngle, getCardinalCoordinates, max } from "./util.js"
 
 //Constructor
 /**
@@ -62,7 +58,7 @@ function updateTime() {
 function getAngle() {
     let dayTime_inSeconds = get_dayTime_inSeconds()
                         
-    degree = parseAngle(dayTime_inSeconds,(maxHours*maxMinutes*maxSeconds))   
+    degree = parseAngle(dayTime_inSeconds,(max.hours*max.minutes*max.seconds))   
     return degree;
 }
 
@@ -73,8 +69,8 @@ function getAngle() {
  */
 function get_dayTime_inSeconds() {
     return (
-        (time.getHours()*(maxSeconds*maxMinutes)) +
-        (time.getMinutes()*maxSeconds) +
+        (time.getHours()*(max.seconds*max.minutes)) +
+        (time.getMinutes()*max.seconds) +
         time.getSeconds()
     )
 }
@@ -88,7 +84,7 @@ function get_dayTime_inSeconds() {
  */
 function updateStar(star, degPlus, radius) {
     let deg = getAngle();
-    let cardinal = getCardinalCoordinates((deg+degPlus)%maxDegree,radius)
+    let cardinal = getCardinalCoordinates((deg+degPlus)%max.degree,radius)
     star.style.top = `calc(100% + ${cardinal.x}px)`
     star.style.left = `calc(50% + ${cardinal.y}px)`
 }
