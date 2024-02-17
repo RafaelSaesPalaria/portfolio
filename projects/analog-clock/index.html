@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Relógio</title>
 </head>
-<body onload="start()" onresize="resize()">
+<body>
     <div id="analog-clock">
         <div id="numbers"></div>
         <div id="bars"></div>
@@ -25,16 +25,16 @@
         https://www.dafont.com/pt/digital-7.font">
         <div id="digital-clock">
             <div id="player">
-                <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="fast_rewind()">fast_rewind</span>
-                <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="backward()">arrow_back</span>
-                <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="pause()">pause</span>
-                <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="play()">play_arrow</span>
-                <span style="font-size: 4vh;" class="material-symbols-outlined" onclick="accelerate()">fast_forward</span>
+                <span style="font-size: 4vh;" class="material-symbols-outlined" id="fast_rewind">fast_rewind</span>
+                <span style="font-size: 4vh;" class="material-symbols-outlined" id="backward">arrow_back</span>
+                <span style="font-size: 4vh;" class="material-symbols-outlined" id="pause">pause</span>
+                <span style="font-size: 4vh;" class="material-symbols-outlined" id="play">play_arrow</span>
+                <span style="font-size: 4vh;" class="material-symbols-outlined" id="accelerate">fast_forward</span>
                 <span id="timespeed">1x</span>
             </div>
             <div id="time">00:00:00</div>
         </div>
     </abbr>
-    <script src="script.js"></script>
+    <script type="module" src="scripts/script.js"></script>
 </body>
 </html>

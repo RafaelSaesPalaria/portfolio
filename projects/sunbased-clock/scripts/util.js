@@ -1,11 +1,3 @@
-/**
- * Called: When the angle of a star is updated
- * Do: Get the angle of rotation based on the period of the cycle
- * @param {Number} currentlyTime the currently period of the cycle 
- * @param {Number} cycleMax   the cycle max value
- * @returns the angle of the currently period
- */
-
 export const max = {
     seconds: 60,
     minutes: 60,
@@ -13,6 +5,13 @@ export const max = {
     degree: 360
 }
 
+/**
+ * Called: When the angle of a star is updated
+ * Do: Get the angle of rotation based on the period of the cycle
+ * @param {Number} currentlyTime the currently period of the cycle 
+ * @param {Number} cycleMax   the cycle max value
+ * @returns the angle of the currently period
+ */
 export function parseAngle(actualTime,cycleMax) {
     return (actualTime/cycleMax)*max.degree
 }

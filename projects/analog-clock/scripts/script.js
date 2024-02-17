@@ -3,6 +3,8 @@ Clock Second = seconds of the digital/analog clocks, if you accelerate them the 
 VH = Viewport Height, the weight of the screen basically
  */
 
+import { formattedNumbers } from "../scripts/util.js";
+
 // Global Attributes
 var time = new Date();
 var timeDirection=1
@@ -39,6 +41,7 @@ function clockWork() {
  * Called: When the fast_rewind button is pressed
  * Do: fast_rewind the interval
  */
+document.querySelector("span#fast_rewind").addEventListener("click",fast_rewind)
 function fast_rewind() {
     if (timeSpeed==0) {timeSpeed=1}
     timeDirection=-1;
@@ -52,6 +55,7 @@ function fast_rewind() {
  * Called: When the pause button is pressed
  * Do: Pause the interval
  */
+document.querySelector("span#pause").addEventListener("click",pause)
 function pause() {
     timeSpeed=0
     updateTimeSpeed()
@@ -61,6 +65,7 @@ function pause() {
  * Called: When the play button is pressed
  * Do: restart the time speed
  */
+document.querySelector("span#play").addEventListener("click",play)
 function play() {
     timeSpeed=1
     timeDirection=1
@@ -71,6 +76,7 @@ function play() {
  * Called: When the backward button is pressed
  * Do: Go back in time
  */
+document.querySelector("span#backward").addEventListener("click",backward)
 function backward() {
     timeDirection=-1
     timeSpeed=1
@@ -81,6 +87,7 @@ function backward() {
  * Called: When the accelarate button is pressed
  * Do: Accelerate the interval
  */
+document.querySelector("span#accelerate").addEventListener("click",accelerate)
 function accelerate() {
     if (timeSpeed==0) {timeSpeed=1}
     timeDirection=1;
@@ -199,27 +206,11 @@ function polarToCardinal(radius, deg) {
 function updateDigitalClock() {
     let digital_clock = document.querySelector("div#digital-clock #time");
 
-    hours      = formattedNumbers(time.getHours(), 2)
-    minutes  = formattedNumbers(time.getMinutes(), 2)
-    seconds = formattedNumbers( time.getSeconds(), 2)
+    let hours      = formattedNumbers(time.getHours(), 2)
+    let minutes  = formattedNumbers(time.getMinutes(), 2)
+    let seconds = formattedNumbers( time.getSeconds(), 2)
 
     digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
-}
-
-/**
- * Called: when update clock need (every clock-second)
- * Do: Check if the number has the desired length and add zeros at the start if it don't
- * @param {Number} numbers unformatted number
- * @param {Number} length desired length
- * @returns formatted number
- */
-function formattedNumbers(numbers, length) {
-    let zeros=""
-    for (let i=0; i < length-numbers.toString().length; i++) {
-        zeros+="0"
-    }
-    numbers=zeros+numbers
-    return numbers
 }
 
 /**
@@ -280,8 +271,8 @@ function addMinuteBar(radius, nbars) {
  * Do: Iniciate the application functions
  */
 window.addEventListener('zoom', resize);
+start()
 function start() {
-    
     resize()
     clockWork()
 }

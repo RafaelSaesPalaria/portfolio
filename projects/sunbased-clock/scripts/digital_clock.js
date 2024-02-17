@@ -2,7 +2,7 @@ import { intervalSpeed ,update } from "./script.js";
 import { formatNumber } from "./util.js";
 import { timeSpeed, timeDirection, time, addButtonListener } from "./controls.js";
 
-var digital_clock = {
+export var digital_clock = {
     elements: {
         digitalclock: document.querySelector("div#digital-clock"),
         timed:          document.querySelector("span#time"),
