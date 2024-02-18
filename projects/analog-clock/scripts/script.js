@@ -8,20 +8,8 @@ import { formattedNumbers } from "../scripts/util.js";
 
 
 
-// Global Attributes
-
-var vh=0
-
-/**
- * Called: When the screen is zoomed or when the application start
- * Do: update the vh
- */
-function resize() {
-    //vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    vh = 500
-    setNumbersPosition((0.19*vh), 12)
-    addMinuteBar((0.22*vh), 60)
-}
+setNumbersPosition((0.19*500), 12)
+addMinuteBar((0.22*500), 60)
 
 /**
  * Called: at every clock second (if you speed the clock you speed the time)
@@ -200,15 +188,4 @@ function addMinuteBar(radius, nbars) {
 
         bars.appendChild(bar)
     }
-}
-
-//Constructor
-/**
- * Called: When the application Start
- * Do: Iniciate the application functions
- */
-window.addEventListener('zoom', resize);
-start()
-function start() {
-    resize()
 }
