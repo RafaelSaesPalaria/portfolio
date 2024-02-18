@@ -13,3 +13,14 @@ export function formattedNumbers(numbers, length) {
     numbers=zeros+numbers
     return numbers
 }
+
+/**
+ * Called: When the angle of a pointer need to be calculated (every clock second)
+ * Do: Get the angle of rotation based on the period of the cycle
+ * @param {Number} currentlyTime the currently period of the cycle 
+ * @param {Number} cycleMax   the cycle max value
+ * @returns the angle of the currently period
+ */
+export function parseAngle(currentlyTime,cycleMax) {
+    return (currentlyTime/cycleMax)*360
+}

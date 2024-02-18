@@ -4,7 +4,7 @@ VH = Viewport Height, the weight of the screen basically
  */
 
 import { time, timeDirection, timeSpeed } from "./controls.js";
-import { formattedNumbers } from "../scripts/util.js";
+import { formattedNumbers, parseAngle } from "../scripts/util.js";
 
 
 
@@ -70,17 +70,6 @@ function timeAdjust(actual,next,maxCycle) {
         actual = maxCycle-1;
         next-=1;
     }
-}
-
-/**
- * Called: When the angle of a pointer need to be calculated (every clock second)
- * Do: Get the angle of rotation based on the period of the cycle
- * @param {Number} currentlyTime the currently period of the cycle 
- * @param {Number} cycleMax   the cycle max value
- * @returns the angle of the currently period
- */
-function parseAngle(currentlyTime,cycleMax) {
-    return (currentlyTime/cycleMax)*360
 }
 
 /**
