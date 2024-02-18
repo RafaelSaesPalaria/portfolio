@@ -24,3 +24,27 @@ export function formattedNumbers(numbers, length) {
 export function parseAngle(currentlyTime,cycleMax) {
     return (currentlyTime/cycleMax)*360
 }
+
+/**
+ * Called: When the numbers and bars position are set
+ * Do: Convert A position in polar coordination to cardinal coordination
+ * @param {Number} radius radius of the coordinate
+ * @param {Number} deg degree of the angle
+ * @returns The cardinal coordinates
+ */
+export function polarToCardinal(radius, deg) {
+    let theta = (2 * Math.PI) / (360/deg)
+    let x = (Math.sin(theta)*radius)
+    let y = (Math.cos(theta)* radius)
+    return {x:x,y:y}
+}
+
+/**
+ * Called: at every clock second
+ * Do: Rotate the pointer elements based on the deg
+ * @param {Object}   pointer The object thats gonna be rotated
+ * @param {Number} deg      The angle which the pointer is gonna rotate
+ */
+export function rotatePointer(pointer, deg) {
+    pointer.style.transform = `rotate(${deg}deg)` 
+}

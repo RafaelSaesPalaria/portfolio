@@ -4,7 +4,7 @@ VH = Viewport Height, the weight of the screen basically
  */
 
 import { time, timeDirection, timeSpeed } from "./controls.js";
-import { formattedNumbers, parseAngle } from "../scripts/util.js";
+import { formattedNumbers, parseAngle, polarToCardinal, rotatePointer } from "../scripts/util.js";
 
 
 
@@ -48,28 +48,6 @@ function updateTime() {
             time.setSeconds(seconds + timeDirection);
         }
     }
-
-    /*timeAdjust(seconds, minutes, 60)
-    timeAdjust(minutes, hours,60)
-    timeAdjust(hours, ////, 24)*/
-
-}
-
-/**
- * Called: When the time is updated
- * Do: rotate the cycle when its over and call the next one
- * @param {Number} actual 
- * @param {Number} next 
- * @param {Number} maxCycle 
- */
-function timeAdjust(actual,next,maxCycle) {
-    if (actual >= maxCycle) {
-        actual = 0 ;
-        next+=1
-    } else if (actual < 0) {
-        actual = maxCycle-1;
-        next-=1;
-    }
 }
 
 /**
@@ -80,37 +58,9 @@ function rotatePointers() {
     //Pointers  [0] = Hours, [1] = Minutes, [2] = Seconds
     let pointers = document.querySelectorAll("div.pointer")
 
-    rotatePointer(pointers[0],parseAngle(time.getHours()+(time.getMinutes()/60),12))
-    rotatePointer(pointers[1],parseAngle(time.getMinutes()+(time.getSeconds()/60),60))
-    rotatePointer(pointers[2],parseAngle(time.getSeconds(),60))
-}
-
-/**
- * Error: the deg shouldn't +=180 in this method
- * Called: at every clock second
- * Do: Rotate the pointer elements based on the deg
- * @param {Object}   pointer The object thats gonna be rotated
- * @param {Number} deg      The angle which the pointer is gonna rotate
- */
-function rotatePointer(pointer, deg) {
-    deg+=180
-    pointer.style.transform = `rotate(${deg}deg)` 
-}
-
-/**
- * ERROR/TODO: Deg+=270 shouldn't exist
- * Called: When the numbers and bars position are set
- * Do: Convert A position in polar coordination to cardinal coordination
- * @param {Number} radius radius of the coordinate
- * @param {Number} deg degree of the angle
- * @returns The cardinal coordinates
- */
-function polarToCardinal(radius, deg) {
-    deg+=270
-    let theta = (2 * Math.PI) / (360/deg)
-    let x = (Math.sin(theta)*radius)
-    let y = (Math.cos(theta)* radius)
-    return {x:x,y:y}
+    rotatePointer(pointers[0],parseAngle(time.getHours()+(time.getMinutes()/60),12)+180)
+    rotatePointer(pointers[1],parseAngle(time.getMinutes()+(time.getSeconds()/60),60)+180)
+    rotatePointer(pointers[2],parseAngle(time.getSeconds(),60)+180)
 }
 
 /**
@@ -143,7 +93,7 @@ function setNumbersPosition(radius, qntNumbers) {
         n.setAttribute("id",`n${i}`)
         n.innerHTML = `${i}`
         
-        let coords= polarToCardinal(radius,i*(360/qntNumbers))
+        let coords= polarToCardinal(radius,(i*(360/qntNumbers))+270)
         n.style.top = `calc(50% + ${coords.x}px)`;
         n.style.left = `calc(50% + ${coords.y}px)`
 
@@ -168,7 +118,7 @@ function addMinuteBar(radius, nbars) {
             bar.style.width = "1.2vh"
         }
 
-        let coords = polarToCardinal(radius,i*(360/nbars))
+        let coords = polarToCardinal(radius,i*(360/nbars)+270)
 
         bar.style.top = `calc(50% + ${coords.x}px)`
         bar.style.left = `calc(49% + ${coords.y}px)`
