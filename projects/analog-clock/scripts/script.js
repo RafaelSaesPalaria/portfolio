@@ -3,15 +3,12 @@ Clock Second = seconds of the digital/analog clocks, if you accelerate them the 
 VH = Viewport Height, the weight of the screen basically
  */
 
+import { time, timeDirection, timeSpeed } from "./controls.js";
 import { formattedNumbers } from "../scripts/util.js";
 
-// Global Attributes
-var time = new Date();
-var timeDirection=1
-var timeSpeed =1
-var intervalSpeed = 1000
-var interval = setInterval(clockWork,1000)
 
+
+// Global Attributes
 
 var vh=0
 
@@ -30,7 +27,7 @@ function resize() {
  * Called: at every clock second (if you speed the clock you speed the time)
  * Do: change the time of the analog clock and of the digital clock
  */
-function clockWork() {
+export function clockWork() {
     updateTime()
     rotatePointers()
     updateDigitalClock()
@@ -38,70 +35,10 @@ function clockWork() {
 
 //Methods
 /**
- * Called: When the fast_rewind button is pressed
- * Do: fast_rewind the interval
- */
-document.querySelector("span#fast_rewind").addEventListener("click",fast_rewind)
-function fast_rewind() {
-    if (timeSpeed==0) {timeSpeed=1}
-    timeDirection=-1;
-    timeSpeed*=1.1;
-    clearInterval(interval)
-    interval = setInterval(clockWork,intervalSpeed/timeSpeed);
-    updateTimeSpeed()
-}
-
-/**
- * Called: When the pause button is pressed
- * Do: Pause the interval
- */
-document.querySelector("span#pause").addEventListener("click",pause)
-function pause() {
-    timeSpeed=0
-    updateTimeSpeed()
-}
-
-/**
- * Called: When the play button is pressed
- * Do: restart the time speed
- */
-document.querySelector("span#play").addEventListener("click",play)
-function play() {
-    timeSpeed=1
-    timeDirection=1
-    updateTimeSpeed()
-}
-
-/**
- * Called: When the backward button is pressed
- * Do: Go back in time
- */
-document.querySelector("span#backward").addEventListener("click",backward)
-function backward() {
-    timeDirection=-1
-    timeSpeed=1
-    updateTimeSpeed()
-}
-
-/**
- * Called: When the accelarate button is pressed
- * Do: Accelerate the interval
- */
-document.querySelector("span#accelerate").addEventListener("click",accelerate)
-function accelerate() {
-    if (timeSpeed==0) {timeSpeed=1}
-    timeDirection=1;
-    timeSpeed*=1.1;
-    clearInterval(interval)
-    interval = setInterval(clockWork,intervalSpeed/timeSpeed);
-    updateTimeSpeed()
-}
-
-/**
  * Called: When the timespeed changes
  * Do: change the timespeed on the player
  */
-function updateTimeSpeed() {
+export function updateTimeSpeed() {
     let span = document.querySelector("div#player span#timespeed")
     span.innerText=`${timeSpeed.toFixed(2)}x`
 }
@@ -274,5 +211,4 @@ window.addEventListener('zoom', resize);
 start()
 function start() {
     resize()
-    clockWork()
 }
