@@ -7,7 +7,7 @@ import { time, timeDirection, timeSpeed } from "./controls.js";
 import { formattedNumbers, parseAngle, rotatePointer } from "../scripts/util.js";
 
 import { setNumbersPosition, addMinuteBar } from "./analog_clock.js";
-
+import { updateDigitalClock} from "./digital_clock.js"
 
 
 setNumbersPosition((0.19*500), 12)
@@ -24,15 +24,6 @@ export function clockWork() {
 }
 
 //Methods
-/**
- * Called: When the timespeed changes
- * Do: change the timespeed on the player
- */
-export function updateTimeSpeed() {
-    let span = document.querySelector("div#player span#timespeed")
-    span.innerText=`${timeSpeed.toFixed(2)}x`
-}
-
 /**
  * Called: At every clock second
  * Do: Calculate the new time based on the currently time and on the timeDirection and timeSpeed
@@ -63,18 +54,4 @@ function rotatePointers() {
     rotatePointer(pointers[0],parseAngle(time.getHours()+(time.getMinutes()/60),12)+180)
     rotatePointer(pointers[1],parseAngle(time.getMinutes()+(time.getSeconds()/60),60)+180)
     rotatePointer(pointers[2],parseAngle(time.getSeconds(),60)+180)
-}
-
-/**
- * Called: at every clock-second
- * Do: update the elements of the digital clock based on the clock-time
- */
-function updateDigitalClock() {
-    let digital_clock = document.querySelector("div#digital-clock #time");
-
-    let hours      = formattedNumbers(time.getHours(), 2)
-    let minutes  = formattedNumbers(time.getMinutes(), 2)
-    let seconds = formattedNumbers( time.getSeconds(), 2)
-
-    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
 }

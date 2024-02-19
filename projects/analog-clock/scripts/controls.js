@@ -2,7 +2,8 @@ export var time =  new Date();
 export var timeDirection=1
 export var timeSpeed =1
 export var intervalSpeed = 1000
-import { clockWork, updateTimeSpeed } from "./script.js";
+import { clockWork } from "./script.js";
+import { updateTimeSpeed } from "./digital_clock.js";
 export var interval = setInterval(clockWork,1000)
 
 /**
