@@ -1,5 +1,8 @@
 import { polarToCardinal, rotatePointer, parseAngle } from "./util.js";
-import { time } from "./controls.js";
+import { timeData } from "./time.js";
+
+setNumbersPosition((0.19*500), 12)
+addMinuteBar((0.22*500), 60)
 
 /**
  * Called: At the start of the application or when the application is zoomed
@@ -61,7 +64,7 @@ export function rotatePointers() {
     //Pointers  [0] = Hours, [1] = Minutes, [2] = Seconds
     let pointers = document.querySelectorAll("div.pointer")
 
-    rotatePointer(pointers[0],parseAngle(time.getHours()+(time.getMinutes()/60),12)+180)
-    rotatePointer(pointers[1],parseAngle(time.getMinutes()+(time.getSeconds()/60),60)+180)
-    rotatePointer(pointers[2],parseAngle(time.getSeconds(),60)+180)
+    rotatePointer(pointers[0],parseAngle(timeData.time.getHours()+(timeData.time.getMinutes()/60),12)+180)
+    rotatePointer(pointers[1],parseAngle(timeData.time.getMinutes()+(timeData.time.getSeconds()/60),60)+180)
+    rotatePointer(pointers[2],parseAngle(timeData.time.getSeconds(),60)+180)
 }
