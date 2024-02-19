@@ -1,4 +1,5 @@
-import { polarToCardinal } from "./util.js";
+import { polarToCardinal, rotatePointer, parseAngle } from "./util.js";
+import { time } from "./controls.js";
 
 /**
  * Called: At the start of the application or when the application is zoomed
@@ -50,4 +51,17 @@ export function addMinuteBar(radius, nbars) {
 
         bars.appendChild(bar)
     }
+}
+
+/**
+ * Called: At every clock-second
+ * Do: rotate the pointers
+ */
+export function rotatePointers() {
+    //Pointers  [0] = Hours, [1] = Minutes, [2] = Seconds
+    let pointers = document.querySelectorAll("div.pointer")
+
+    rotatePointer(pointers[0],parseAngle(time.getHours()+(time.getMinutes()/60),12)+180)
+    rotatePointer(pointers[1],parseAngle(time.getMinutes()+(time.getSeconds()/60),60)+180)
+    rotatePointer(pointers[2],parseAngle(time.getSeconds(),60)+180)
 }

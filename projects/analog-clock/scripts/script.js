@@ -4,9 +4,8 @@ VH = Viewport Height, the weight of the screen basically
  */
 
 import { time, timeDirection, timeSpeed } from "./controls.js";
-import { formattedNumbers, parseAngle, rotatePointer } from "../scripts/util.js";
 
-import { setNumbersPosition, addMinuteBar } from "./analog_clock.js";
+import { setNumbersPosition, addMinuteBar, rotatePointers } from "./analog_clock.js";
 import { updateDigitalClock} from "./digital_clock.js"
 
 
@@ -41,17 +40,4 @@ function updateTime() {
             time.setSeconds(seconds + timeDirection);
         }
     }
-}
-
-/**
- * Called: At every clock-second
- * Do: rotate the pointers
- */
-function rotatePointers() {
-    //Pointers  [0] = Hours, [1] = Minutes, [2] = Seconds
-    let pointers = document.querySelectorAll("div.pointer")
-
-    rotatePointer(pointers[0],parseAngle(time.getHours()+(time.getMinutes()/60),12)+180)
-    rotatePointer(pointers[1],parseAngle(time.getMinutes()+(time.getSeconds()/60),60)+180)
-    rotatePointer(pointers[2],parseAngle(time.getSeconds(),60)+180)
 }
