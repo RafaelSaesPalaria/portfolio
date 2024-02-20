@@ -1,8 +1,11 @@
 import { clockWork } from "./time.js";
 import { timeData } from "./time.js";
 import { updateTimeSpeed } from "./digital_clock.js";
+import { setNumbersPosition,addMinuteBar } from "./analog_clock.js";
 export var interval = setInterval(clockWork,1000)
 var intervalSpeed = 1000
+
+clockWork()
 
 /**
  * Called: When the fast_rewind button is pressed
