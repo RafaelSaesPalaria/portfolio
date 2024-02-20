@@ -5,9 +5,14 @@ import { updateStar, updateBackground, stars } from "./star.js";
 export var intervalSpeed = 1000
 var degree = 0
 
-import { timeSpeed, timeDirection, time} from "./controls.js"
 import { updateDigitalClock } from "./digital_clock.js"
-import { parseAngle, getCardinalCoordinates, max } from "./util.js"
+import { parseAngle, max } from "./util.js";
+
+export var timeData = {
+    direction: 1,
+    speed: 1,
+    time: new Date()
+};
 
 //Constructor
 /**
@@ -15,6 +20,7 @@ import { parseAngle, getCardinalCoordinates, max } from "./util.js"
  * Called: When the application start
  * Do: Set the resize/update function
  */
+
 setInterval(update,intervalSpeed)
 
 /**
@@ -36,8 +42,8 @@ export function update() {
 * Do: Update the time based on the timeDirection and in the timeSpeed
 */
 function updateTime() {
-    let seconds = time.getSeconds();
-    time.setSeconds(seconds + timeDirection * timeSpeed);
+    let seconds = timeData.time.getSeconds();
+    timeData.time.setSeconds(seconds + timeData.direction * timeData.speed);
 }
 
 /**
@@ -59,9 +65,9 @@ export function getAngle() {
  */
 function get_dayTime_inSeconds() {
     return (
-        (time.getHours()*(max.seconds*max.minutes)) +
-        (time.getMinutes()*max.seconds) +
-        time.getSeconds()
+        (timeData.time.getHours()*(max.seconds*max.minutes)) +
+        (timeData.time.getMinutes()*max.seconds) +
+        timeData.time.getSeconds()
     )
 }
 

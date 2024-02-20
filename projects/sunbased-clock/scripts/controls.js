@@ -1,17 +1,13 @@
 import { updateTimeSpeed } from "./digital_clock.js";
-export var timeDirection = 1
-export var timeSpeed     = 1
-export var time = new Date();
-
-
+import { timeData } from "./script.js";
 /**
  * Called: When the fast_rewind button is pressed
  * Do: fast_rewind the interval
  */
 function fast_rewind() {
-    if (timeSpeed==0) {timeSpeed=1}
-    timeDirection=-1;
-    timeSpeed*=1.1;
+    if (timeData.speed==0) {timeData.speed=1}
+    timeData.direction=-1;
+    timeData.speed*=1.1;
 }
 
 /**
@@ -19,7 +15,7 @@ function fast_rewind() {
  * Do: Pause the interval
  */
 function pause() {
-    timeSpeed=0
+    timeData.speed=0
 }
 
 /**
@@ -27,8 +23,8 @@ function pause() {
  * Do: restart the time speed
  */
 function play() {
-    timeSpeed=1
-    timeDirection=1
+    timeData.speed=1
+    timeData.direction=1
 }
 
 /**
@@ -36,8 +32,8 @@ function play() {
  * Do: Go back in time
  */
 function backward() {
-    timeDirection=-1
-    timeSpeed=1
+    timeData.direction=-1
+    timeData.speed=1
 }
 
 /**
@@ -45,9 +41,9 @@ function backward() {
  * Do: Accelerate the interval
  */
 function accelerate() {
-    if (timeSpeed==0) {timeSpeed=1}
-    timeDirection=1;
-    timeSpeed*=1.1;
+    if (timeData.speed==0) {timeData.speed=1}
+    timeData.direction=1;
+    timeData.speed*=1.1;
 }
 
 /**
@@ -81,7 +77,6 @@ export function addButtonListener() {
      * Do: Execute every observer function
      */
     function notifyAll() {
-        console.log(state.observers)
         state.observers.forEach(observer => {
             observer()
         })

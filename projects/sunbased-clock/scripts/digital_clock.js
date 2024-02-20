@@ -1,6 +1,6 @@
-import { intervalSpeed ,update } from "./script.js";
+import { intervalSpeed ,update, timeData } from "./script.js";
 import { formatNumber } from "./util.js";
-import { timeSpeed, timeDirection, time, addButtonListener } from "./controls.js";
+import { addButtonListener } from "./controls.js";
 
 export var digital_clock = {
     elements: {
@@ -26,10 +26,10 @@ export var digital_clock = {
  * Do: Update the time in the digital clock
  */
 export function updateDigitalClock() {
-    let hours = formatNumber(time.getHours(),2)
-    let minutes = formatNumber(time.getMinutes(), 2)
-    let seconds = formatNumber(time.getSeconds(), 2)
-    
+    let hours = formatNumber(timeData.time.getHours(),2)
+    let minutes = formatNumber(timeData.time.getMinutes(), 2)
+    let seconds = formatNumber(timeData.time.getSeconds(), 2)
+
     digital_clock.elements.timed.innerText = `${hours}:${minutes}:${seconds}`;
     daynightmodePlayer()
 }
@@ -40,8 +40,8 @@ export function updateDigitalClock() {
  */
 addButtonListener().subscribe(updateTimeSpeed)
 export function updateTimeSpeed() {
-    setInterval(update,intervalSpeed/timeSpeed);
-    digital_clock.elements.times.innerText = `${timeDirection*timeSpeed.toFixed(2)+"x"}`
+    setInterval(update,intervalSpeed/timeData.speed);
+    digital_clock.elements.times.innerText = `${timeData.direction*timeData.speed.toFixed(2)+"x"}`
 }
 
 /**
@@ -55,7 +55,7 @@ export function daynightmodePlayer() {
     let secondColor = digital_clock.secondColor
 
     if ( isNight() &
-      timeSpeed<=digital_clock.maxChangeSpeed) {
+      timeData.speed<=digital_clock.maxChangeSpeed) {
 
         let aux = mainColor;
         mainColor = secondColor
@@ -96,8 +96,8 @@ function contrast(element, mainColor, secondColor) {
  * @returns true if is night, false if it isn't
  */
 function isNight() {
-    if (time.getHours()<digital_clock.nightMax ||
-    time.getHours()>=digital_clock.nightMin) {
+    if (timeData.time.getHours()<digital_clock.nightMax ||
+    timeData.time.getHours()>=digital_clock.nightMin) {
         return true
     }
     return false
