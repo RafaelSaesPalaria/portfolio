@@ -12,13 +12,12 @@ addMinuteBar((0.22*500), 60)
  */
 export function setNumbersPosition(radius, qntNumbers) {
     let div = document.querySelector("div#numbers")
-    div.innerHTML = '';
 
     for (let i=1;i<=qntNumbers;i++) {
         
         let n = document.createElement("span");
         n.setAttribute("id",`n${i}`)
-        n.innerHTML = `${i}`
+        n.innerText = `${i}`
         
         let coords= polarToCardinal(radius,(i*(360/qntNumbers))+270)
         n.style.top = `calc(50% + ${coords.x}px)`;
