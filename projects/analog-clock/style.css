@@ -98,7 +98,7 @@ div#numbers span{
 div#bars {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 48.5%;
     transform: translate(-50%,-50%);
 
     width: 100%;

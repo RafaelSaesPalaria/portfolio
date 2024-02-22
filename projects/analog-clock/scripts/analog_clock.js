@@ -32,8 +32,7 @@ export function setNumbersPosition(radius, qntNumbers) {
         n.innerText = `${i}`
         
         let coords= polarToCardinal(radius,(i*(360/qntNumbers))+270)
-        n.style.top = `calc(50% + ${coords.x}px)`;
-        n.style.left = `calc(50% + ${coords.y}px)`
+        positionElement(n,coords.x,coords.y)
 
         div.appendChild(n)
     }
@@ -57,8 +56,7 @@ export function addMinuteBar(radius, nbars) {
 
         let coords = polarToCardinal(radius,i*(360/nbars)+270)
 
-        bar.style.top = `calc(50% + ${coords.x}px)`
-        bar.style.left = `calc(49% + ${coords.y}px)`
+        positionElement(bar,coords.x, coords.y)
 
         bar.style.transform = `rotate(${i*(360/nbars)+90}deg)`
 
@@ -77,4 +75,16 @@ export function rotatePointers() {
         parseAngle(timeData.time.getMinutes()+(timeData.time.getSeconds()/60),60)+180)
     rotatePointer(analogic_clock.elements.pointers.seconds,
         parseAngle(timeData.time.getSeconds(),60)+180)
+}
+
+/**
+ * Called: When a bar or a number is positioned
+ * Do: Position the element relative to the center of the analog clock
+ * @param {Element} element the element to be positioned 
+ * @param {Number} x X position relative to the center of the analog clock in pixels 
+ * @param {Number} y Y position relative to the center of the analog clock in pixels
+ */
+function positionElement(element, x, y) {
+    element.style.top = `calc(50% + ${x}px)`
+    element.style.left = `calc(50% + ${y}px)`
 }
