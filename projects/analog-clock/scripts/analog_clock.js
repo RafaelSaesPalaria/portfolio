@@ -46,7 +46,6 @@ export function setNumbersPosition(radius, qntNumbers) {
  */
 export function addMinuteBar(radius, nbars) {
     let bars = analogic_clock.elements.bars
-
     for (let i=0;i<nbars;i++) {
         let bar = document.createElement("div")
 
@@ -70,11 +69,39 @@ export function addMinuteBar(radius, nbars) {
  */
 export function rotatePointers() {
     rotatePointer(analogic_clock.elements.pointers.hours,
-        parseAngle(timeData.time.getHours()+(timeData.time.getMinutes()/60),12)+180)
+        parseAngle(getHours(),12)+180)
     rotatePointer(analogic_clock.elements.pointers.minutes,
-        parseAngle(timeData.time.getMinutes()+(timeData.time.getSeconds()/60),60)+180)
+        parseAngle(getMinutes(),60)+180)
     rotatePointer(analogic_clock.elements.pointers.seconds,
-        parseAngle(timeData.time.getSeconds(),60)+180)
+        parseAngle(getSeconds(),60)+180)
+}
+
+/**
+ * TODO: delete getSeconds and change getMinutes/hours to work with just one function
+ * Called: When a pointer is rotated
+ * Do: return the hours with minutes precision
+ * @returns hours with minutes as decimals
+ */
+function getHours() {
+    return (timeData.time.getHours()+(timeData.time.getMinutes()/60));
+}
+
+/**
+ * Called: When a pointer is rotated
+ * Do: return the minutes with seconds precision
+ * @returns minutes with seconds as decimals
+ */
+function getMinutes() {
+    return timeData.time.getMinutes()+(timeData.time.getSeconds()/60)
+}
+
+/**
+ * Called: When a pointer is rotated
+ * Do: return the seconds
+ * @returns seconds
+ */
+function getSeconds() {
+    return timeData.time.getSeconds()
 }
 
 /**
