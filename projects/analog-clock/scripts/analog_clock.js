@@ -1,6 +1,18 @@
 import { polarToCardinal, rotatePointer, parseAngle } from "./util.js";
 import { timeData } from "./time.js";
 
+var analogic_clock = {
+    elements: {
+        numbers: document.querySelector("div#numbers"),
+        bars: document.querySelector("div#bars"),
+        pointers: {
+            hours: document.querySelector("div.pointer#hours"),
+            minutes: document.querySelector("div.pointer#minutes"),
+            seconds: document.querySelector("div.pointer#seconds")
+        }
+    }
+}
+
 setNumbersPosition((0.19*500), 12)
 addMinuteBar((0.22*500), 60)
 
@@ -11,7 +23,7 @@ addMinuteBar((0.22*500), 60)
  * @param {Number} radius distance from the center
  */
 export function setNumbersPosition(radius, qntNumbers) {
-    let div = document.querySelector("div#numbers")
+    let div = analogic_clock.elements.numbers
 
     for (let i=1;i<=qntNumbers;i++) {
         
@@ -34,8 +46,7 @@ export function setNumbersPosition(radius, qntNumbers) {
  * @param {Number} radius distance from the center
  */
 export function addMinuteBar(radius, nbars) {
-    let bars = document.querySelector("div#bars")
-    bars.innerHTML = '';
+    let bars = analogic_clock.elements.bars
 
     for (let i=0;i<nbars;i++) {
         let bar = document.createElement("div")
@@ -60,10 +71,10 @@ export function addMinuteBar(radius, nbars) {
  * Do: rotate the pointers
  */
 export function rotatePointers() {
-    //Pointers  [0] = Hours, [1] = Minutes, [2] = Seconds
-    let pointers = document.querySelectorAll("div.pointer")
-
-    rotatePointer(pointers[0],parseAngle(timeData.time.getHours()+(timeData.time.getMinutes()/60),12)+180)
-    rotatePointer(pointers[1],parseAngle(timeData.time.getMinutes()+(timeData.time.getSeconds()/60),60)+180)
-    rotatePointer(pointers[2],parseAngle(timeData.time.getSeconds(),60)+180)
+    rotatePointer(analogic_clock.elements.pointers.hours,
+        parseAngle(timeData.time.getHours()+(timeData.time.getMinutes()/60),12)+180)
+    rotatePointer(analogic_clock.elements.pointers.minutes,
+        parseAngle(timeData.time.getMinutes()+(timeData.time.getSeconds()/60),60)+180)
+    rotatePointer(analogic_clock.elements.pointers.seconds,
+        parseAngle(timeData.time.getSeconds(),60)+180)
 }
