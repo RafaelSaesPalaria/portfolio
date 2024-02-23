@@ -56,12 +56,11 @@ export function addMinuteBar(radius, nbars) {
         let coords = polarToCardinal(radius,i*(360/nbars)+270)
 
         positionElement(bar,coords.x, coords.y)
-
-        bar.style.transform = `rotate(${i*(360/nbars)+90}deg)`
+        rotateElement(bar,i*(360/nbars)+90)
 
         bars.appendChild(bar)
     }
-}
+}   
 
 /**
  * Called: At every clock-second
@@ -114,4 +113,14 @@ function getSeconds() {
 function positionElement(element, x, y) {
     element.style.top = `calc(50% + ${x}px)`
     element.style.left = `calc(50% + ${y}px)`
+}
+
+/**
+ * Called: When a bar is rotated
+ * Do: Rotates the element relative to mid-top of itself
+ * @param {Element} element 
+ * @param {Number} deg 
+ */
+function rotateElement(element, deg) {
+    element.style.transform = `rotate(${deg}deg)`
 }
