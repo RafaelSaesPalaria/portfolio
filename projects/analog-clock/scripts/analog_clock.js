@@ -47,20 +47,30 @@ export function setNumbersPosition(radius, qntNumbers) {
 export function addMinuteBar(radius, nbars) {
     let bars = analogic_clock.elements.bars
     for (let i=0;i<nbars;i++) {
-        let bar = document.createElement("div")
+        let coords = polarToCardinal(radius,i*(360/nbars)+270)
+        let bar = createBar(coords,i*(360/nbars)+90)
 
         if (i%5==0) {
-            bar.style.width = "1.2vh"
+            bar.classList.add("five")
         }
-
-        let coords = polarToCardinal(radius,i*(360/nbars)+270)
-
-        positionElement(bar,coords.x, coords.y)
-        rotateElement(bar,i*(360/nbars)+90)
 
         bars.appendChild(bar)
     }
-}   
+}
+
+/**
+ * Called: When a bar is created
+ * Do: Create and configure the bar
+ * @param {Object} coords The coords of the bar 
+ * @param {Number} deg the degree of rotation of the bar 
+ * @returns the bar
+ */
+function createBar(coords,deg) {
+    let bar = document.createElement("div")
+    positionElement(bar,coords.x, coords.y)
+    rotateElement(bar,deg)
+    return bar
+}
 
 /**
  * Called: At every clock-second

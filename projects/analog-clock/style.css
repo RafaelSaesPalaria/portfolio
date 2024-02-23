@@ -108,6 +108,10 @@ div#bars div {
     background-color:rgb(255, 255, 255);
 }
 
+div#bars div.five {
+    width: 8px;
+}
+
 div#digital-clock {
     position: absolute;
     top: 75%;
