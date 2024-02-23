@@ -26,16 +26,27 @@ export function setNumbersPosition(radius, qntNumbers) {
     let div = analogic_clock.elements.numbers
 
     for (let i=1;i<=qntNumbers;i++) {
-        
-        let n = document.createElement("span");
-        n.setAttribute("id",`n${i}`)
-        n.innerText = `${i}`
-        
-        let coords= polarToCardinal(radius,(i*(360/qntNumbers))+270)
-        positionElement(n,coords.x,coords.y)
-
+        let n = createNumber(i,radius,qntNumbers)
         div.appendChild(n)
     }
+}
+
+/**
+ * Called: When a number is created
+ * Do: Create and configure a number position
+ * @param {Number} i the index of the number
+ * @param {Number} radius distance from the center
+ * @param {Number} qntNumbers the total amount of numbers (for angle purporses)
+ * @returns The span element of the number
+ */
+function createNumber(i,radius,qntNumbers){
+    let n = document.createElement("span");
+    n.setAttribute("id",`n${i}`)
+    n.innerText = `${i}`
+        
+    let coords= polarToCardinal(radius,(i*(360/qntNumbers))+270)
+    positionElement(n,coords.x,coords.y)
+    return n
 }
 
 /**
