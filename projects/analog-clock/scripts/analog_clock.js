@@ -72,7 +72,7 @@ export function addMinuteBar(radius, nbars) {
 /**
  * Called: When a bar is created
  * Do: Create and configure the bar
- * @param {Object} coords The coords of the bar 
+ * @param {x: Number, y: Number} coords The coords of the bar 
  * @param {Number} deg the degree of rotation of the bar 
  * @returns the bar
  */
@@ -89,39 +89,31 @@ function createBar(coords,deg) {
  */
 export function rotatePointers() {
     rotatePointer(analogic_clock.elements.pointers.hours,
-        parseAngle(getHours(),12)+180)
+        parseAngle(getTime(3),12)+180)
     rotatePointer(analogic_clock.elements.pointers.minutes,
-        parseAngle(getMinutes(),60)+180)
+        parseAngle(getTime(2),60)+180)
     rotatePointer(analogic_clock.elements.pointers.seconds,
-        parseAngle(getSeconds(),60)+180)
+        parseAngle(getTime(1),60)+180)
 }
 
-/**
- * TODO: delete getSeconds and change getMinutes/hours to work with just one function
- * Called: When a pointer is rotated
- * Do: return the hours with minutes precision
- * @returns hours with minutes as decimals
- */
-function getHours() {
-    return (timeData.time.getHours()+(timeData.time.getMinutes()/60));
-}
 
 /**
- * Called: When a pointer is rotated
- * Do: return the minutes with seconds precision
- * @returns minutes with seconds as decimals
+ * Called: When the pointers rotate
+ * Do: Get the time type in seconds precision
+ * @param {Number} type the type of the time [3 = Hours, 2 = Minutes, 1 = Seconds]
+ * @returns the time in the type
  */
-function getMinutes() {
-    return timeData.time.getMinutes()+(timeData.time.getSeconds()/60)
-}
-
-/**
- * Called: When a pointer is rotated
- * Do: return the seconds
- * @returns seconds
- */
-function getSeconds() {
-    return timeData.time.getSeconds()
+function getTime(type) {
+    let time = [
+        timeData.time.getSeconds(),
+        timeData.time.getMinutes(),
+        timeData.time.getHours()]
+    let totalTime=0
+    for (let i=0; i<type;i++) {
+        totalTime/=60
+        totalTime+=time[i]
+    }
+    return totalTime
 }
 
 /**
