@@ -1,23 +1,25 @@
-import { clockWork } from "./time.js";
-import { timeData } from "./time.js";
+import { clockWork, timeData } from "./time.js";
 import { updateTimeSpeed } from "./digital_clock.js";
-import { setNumbersPosition,addMinuteBar } from "./analog_clock.js";
 export var interval = setInterval(clockWork,1000)
 var intervalSpeed = 1000
 
 clockWork()
 
+document.querySelector("span#fast_rewind").addEventListener("click",fast_rewind)
+document.querySelector("span#pause").addEventListener("click",pause)
+document.querySelector("span#play").addEventListener("click",play)
+document.querySelector("span#backward").addEventListener("click",backward)
+document.querySelector("span#accelerate").addEventListener("click",accelerate)
+
 /**
  * Called: When the fast_rewind button is pressed
  * Do: fast_rewind the interval
  */
-document.querySelector("span#fast_rewind").addEventListener("click",fast_rewind)
 function fast_rewind() {
     if (timeData.timeSpeed==0) {timeData.timeSpeed=1}
     timeData.timeDirection=-1;
     timeData.timeSpeed*=1.1;
-    clearInterval(interval)
-    interval = setInterval(clockWork,intervalSpeed/timeData.timeSpeed);
+    resetInterval()
     updateTimeSpeed()
 }
 
@@ -25,7 +27,6 @@ function fast_rewind() {
  * Called: When the pause button is pressed
  * Do: Pause the interval
  */
-document.querySelector("span#pause").addEventListener("click",pause)
 function pause() {
     timeData.timeSpeed=0
     updateTimeSpeed()
@@ -35,7 +36,6 @@ function pause() {
  * Called: When the play button is pressed
  * Do: restart the time speed
  */
-document.querySelector("span#play").addEventListener("click",play)
 function play() {
     timeData.timeSpeed=1
     timeData.timeDirection=1
@@ -46,7 +46,6 @@ function play() {
  * Called: When the backward button is pressed
  * Do: Go back in time
  */
-document.querySelector("span#backward").addEventListener("click",backward)
 function backward() {
     timeData.timeDirection=-1
     timeData.timeSpeed=1
@@ -57,12 +56,15 @@ function backward() {
  * Called: When the accelarate button is pressed
  * Do: Accelerate the interval
  */
-document.querySelector("span#accelerate").addEventListener("click",accelerate)
 function accelerate() {
     if (timeData.timeSpeed==0) {timeData.timeSpeed=1}
     timeData.timeDirection=1;
     timeData.timeSpeed*=1.1;
+    resetInterval()
+    updateTimeSpeed()
+}
+
+function resetInterval() {
     clearInterval(interval)
     interval = setInterval(clockWork,intervalSpeed/timeData.timeSpeed);
-    updateTimeSpeed()
 }
