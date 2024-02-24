@@ -12,7 +12,7 @@ export function updateDigitalClock() {
     let minutes  = formattedNumbers(timeData.time.getMinutes(), 2)
     let seconds = formattedNumbers( timeData.time.getSeconds(), 2)
 
-    digital_clock.innerHTML = `${hours}:${minutes}:${seconds}`;
+    digital_clock.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
 /**
@@ -21,5 +21,5 @@ export function updateDigitalClock() {
  */
 export function updateTimeSpeed() {
     let span = document.querySelector("div#player span#timespeed")
-    span.innerText=`${timeData.timeSpeed.toFixed(2)}x`
+    span.innerText=`${(timeData.timeDirection*timeData.timeSpeed).toFixed(2)}x`
 }

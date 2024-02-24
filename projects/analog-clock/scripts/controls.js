@@ -64,6 +64,10 @@ function accelerate() {
     updateTimeSpeed()
 }
 
+/**
+ * Called: When the speed changes (accelerate/dissacelerate)
+ * Do: Reset the clock speed to the new speed
+ */
 function resetInterval() {
     clearInterval(interval)
     interval = setInterval(clockWork,intervalSpeed/timeData.timeSpeed);
