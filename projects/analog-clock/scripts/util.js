@@ -40,11 +40,23 @@ export function polarToCardinal(radius, deg) {
 }
 
 /**
- * Called: at every clock second
- * Do: Rotate the pointer elements based on the deg
- * @param {Object}   pointer The object thats gonna be rotated
- * @param {Number} deg      The angle which the pointer is gonna rotate
+ * Called: When a bar is rotated
+ * Do: Rotates the element relative to mid-top of itself
+ * @param {Element} element 
+ * @param {Number} deg 
  */
-export function rotatePointer(pointer, deg) {
-    pointer.style.transform = `rotate(${deg}deg)` 
+export function rotateElement(element, deg) {
+    element.style.transform = `rotate(${deg}deg)`
+}
+
+/**
+ * Called: When a bar or a number is positioned
+ * Do: Position the element relative to the center of the analog clock
+ * @param {Element} element the element to be positioned 
+ * @param {Number} x X position relative to the center of the analog clock in pixels 
+ * @param {Number} y Y position relative to the center of the analog clock in pixels
+ */
+export  function positionElement(element, x, y) {
+    element.style.top = `calc(50% + ${x}px)`
+    element.style.left = `calc(50% + ${y}px)`
 }

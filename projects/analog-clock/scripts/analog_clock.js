@@ -1,4 +1,4 @@
-import { polarToCardinal, rotatePointer, parseAngle } from "./util.js";
+import { polarToCardinal, parseAngle, rotateElement, positionElement } from "./util.js";
 import { timeData } from "./time.js";
 
 var analogic_clock = {
@@ -88,11 +88,11 @@ function createBar(i, radius, qntNumbers) {
  * Do: rotate the pointers
  */
 export function rotatePointers() {
-    rotatePointer(analogic_clock.elements.pointers.hours,
+    rotateElement(analogic_clock.elements.pointers.hours,
         parseAngle(getTime(3),12)+180)
-    rotatePointer(analogic_clock.elements.pointers.minutes,
+    rotateElement(analogic_clock.elements.pointers.minutes,
         parseAngle(getTime(2),60)+180)
-    rotatePointer(analogic_clock.elements.pointers.seconds,
+    rotateElement(analogic_clock.elements.pointers.seconds,
         parseAngle(getTime(1),60)+180)
 }
 
@@ -114,26 +114,4 @@ function getTime(type) {
         totalTime+=time[i]
     }
     return totalTime
-}
-
-/**
- * Called: When a bar or a number is positioned
- * Do: Position the element relative to the center of the analog clock
- * @param {Element} element the element to be positioned 
- * @param {Number} x X position relative to the center of the analog clock in pixels 
- * @param {Number} y Y position relative to the center of the analog clock in pixels
- */
-function positionElement(element, x, y) {
-    element.style.top = `calc(50% + ${x}px)`
-    element.style.left = `calc(50% + ${y}px)`
-}
-
-/**
- * Called: When a bar is rotated
- * Do: Rotates the element relative to mid-top of itself
- * @param {Element} element 
- * @param {Number} deg 
- */
-function rotateElement(element, deg) {
-    element.style.transform = `rotate(${deg}deg)`
 }
