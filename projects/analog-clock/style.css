@@ -80,7 +80,7 @@ div#axis {
     border-radius: 50%;
 }
 
-div#numbers span{
+div#numbers span, div#numbers div {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -89,7 +89,7 @@ div#numbers span{
     text-align: center;
     color: white;
     font-size: 20px;
-}
+} 
 
 div#bars {
     position: absolute;
@@ -117,10 +117,11 @@ div#digital-clock {
     top: 75%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 144px;
+    width: 244px;
+    height: 94px;
 
-    display: inline-block;
-    padding: 5px 50px 20px 50px;
+    display: block;
+    padding: 10px 00px 00px 00px;
     border: 2px solid rgb(255, 255, 255);
     outline: 6px solid black;
     border-radius: 10px;
@@ -133,7 +134,8 @@ div#digital-clock #player {
     cursor: pointer;
     display: block;
     width: max-content;
-    margin:auto;
+    margin: auto;
+    position: relative;
 }
 
 div#digital-clock #time {
@@ -141,8 +143,9 @@ div#digital-clock #time {
     letter-spacing: 1px;
     font-size: 50px;
     display: block;
-    width: max-content;
     margin: auto;
+    width: max-content;
+    position: relative;
     box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.226);
     color: red;
     text-shadow: 0px 0px 20px rgba(255, 0, 0, 0.904);

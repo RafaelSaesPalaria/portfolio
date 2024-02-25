@@ -58,7 +58,7 @@ export function addMinuteBar(radius, nbars) {
  * @returns The span element of the number
  */
 function createNumber(i,radius,qntNumbers){
-    let num = document.createElement("span");
+    let num = document.createElement("div");
     num.innerText = `${i}`
     let deg = parseAngle(i,qntNumbers)
     let coords= polarToCardinal(radius,deg+270)
