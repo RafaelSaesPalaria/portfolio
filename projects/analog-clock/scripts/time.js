@@ -35,3 +35,22 @@ function updateTime() {
         }
     }
 }
+
+/**
+ * Called: When the pointers rotate
+ * Do: Get the time type in seconds precision
+ * @param {Number} type the type of the time [3 = Hours, 2 = Minutes, 1 = Seconds]
+ * @returns the time in the type
+ */
+export function getTime(type) {
+    let time = [
+        timeData.time.getSeconds(),
+        timeData.time.getMinutes(),
+        timeData.time.getHours()]
+    let totalTime=0
+    for (let i=0; i<type;i++) {
+        totalTime/=60
+        totalTime+=time[i]
+    }
+    return totalTime
+}

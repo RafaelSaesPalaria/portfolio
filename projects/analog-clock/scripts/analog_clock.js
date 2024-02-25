@@ -1,5 +1,5 @@
 import { polarToCardinal, parseAngle, rotateElement, positionElement } from "./util.js";
-import { timeData } from "./time.js";
+import { getTime } from "./time.js";
 
 var analogic_clock = {
     elements: {
@@ -94,24 +94,4 @@ export function rotatePointers() {
         parseAngle(getTime(2),60)+180)
     rotateElement(analogic_clock.elements.pointers.seconds,
         parseAngle(getTime(1),60)+180)
-}
-
-
-/**
- * Called: When the pointers rotate
- * Do: Get the time type in seconds precision
- * @param {Number} type the type of the time [3 = Hours, 2 = Minutes, 1 = Seconds]
- * @returns the time in the type
- */
-function getTime(type) {
-    let time = [
-        timeData.time.getSeconds(),
-        timeData.time.getMinutes(),
-        timeData.time.getHours()]
-    let totalTime=0
-    for (let i=0; i<type;i++) {
-        totalTime/=60
-        totalTime+=time[i]
-    }
-    return totalTime
 }
