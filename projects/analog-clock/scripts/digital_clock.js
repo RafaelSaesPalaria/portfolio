@@ -1,9 +1,16 @@
 import { formattedNumbers } from "./util.js";
 import {timeData} from "./time.js";
 
-var digital_clock = {
+export var digital_clock_elements = {
     time: document.querySelector("div#digital-clock #time"),
-    speed: document.querySelector("div#player span#timespeed")
+    speed: document.querySelector("div#player span#timespeed"),
+    controls: {
+        fast_rewind: document.querySelector("span#fast_rewind"),
+        pause: document.querySelector("span#pause"),
+        play: document.querySelector("span#play"),
+        backward: document.querySelector("span#backward"),
+        accelerate: document.querySelector("span#accelerate"),
+    }
 }
 
 /**
@@ -15,7 +22,7 @@ export function updateDigitalClock() {
     let minutes  = formattedNumbers(timeData.time.getMinutes(), 2)
     let seconds = formattedNumbers( timeData.time.getSeconds(), 2)
 
-    digital_clock.time.innerText = `${hours}:${minutes}:${seconds}`;
+    digital_clock_elements.time.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
 /**
@@ -23,5 +30,5 @@ export function updateDigitalClock() {
  * Do: change the timespeed on the player
  */
 export function updateTimeSpeed() {
-    digital_clock.speed.innerText=`${(timeData.timeDirection*timeData.timeSpeed).toFixed(2)}x`
+    digital_clock_elements.speed.innerText=`${(timeData.timeDirection*timeData.timeSpeed).toFixed(2)}x`
 }

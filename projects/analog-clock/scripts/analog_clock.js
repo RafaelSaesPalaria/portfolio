@@ -24,10 +24,10 @@ addMinuteBar((0.22*500), 60)
  */
 export function setNumbersPosition(radius, qntNumbers) {
     for (let i=1;i<=qntNumbers;i++) {
-        //let n = createNumber(i,radius,qntNumbers)
         let deg = parseAngle(i,qntNumbers)
         let n = createElement(radius,deg+270)
         n.innerText = `${i}`
+
         analogic_clock.elements.numbers.appendChild(n)
     }
 }
@@ -39,18 +39,13 @@ export function setNumbersPosition(radius, qntNumbers) {
  * @param {Number} radius distance from the center
  */
 export function addMinuteBar(radius, nbars) {
-    let bars = analogic_clock.elements.bars
     for (let i=0;i<nbars;i++) {
-        //let bar = createBar(i,radius,nbars)
         let deg = parseAngle(i,nbars)
         let bar = createElement(radius, deg)
         rotateElement(bar,deg)
 
-        if (i%5==0) {
-            bar.classList.add("five")
-        }
-
-        bars.appendChild(bar)
+        if (i%5==0) {bar.classList.add("five")}
+        analogic_clock.elements.bars.appendChild(bar)
     }
 }
 
@@ -68,6 +63,7 @@ function createElement(radius, deg) {
     positionElement(element,coords.x, coords.y)
     return element
 }
+
 /**
  * Called: At every clock-second
  * Do: rotate the pointers

@@ -1,15 +1,18 @@
 import { clockWork, timeData } from "./time.js";
-import { updateTimeSpeed } from "./digital_clock.js";
+import { updateTimeSpeed, digital_clock_elements } from "./digital_clock.js";
 export var interval = setInterval(clockWork,1000)
 var intervalSpeed = 1000
 
 clockWork()
 
-document.querySelector("span#fast_rewind").addEventListener("click",fast_rewind)
-document.querySelector("span#pause").addEventListener("click",pause)
-document.querySelector("span#play").addEventListener("click",play)
-document.querySelector("span#backward").addEventListener("click",backward)
-document.querySelector("span#accelerate").addEventListener("click",accelerate)
+clickEmitter()
+function clickEmitter() {
+    digital_clock_elements.controls.fast_rewind.addEventListener("click",fast_rewind)
+    digital_clock_elements.controls.pause.addEventListener("click",pause)
+    digital_clock_elements.controls.play.addEventListener("click",play)
+    digital_clock_elements.controls.backward.addEventListener("click",backward)
+    digital_clock_elements.controls.accelerate.addEventListener("click",accelerate)
+}
 
 /**
  * Called: When the fast_rewind button is pressed
