@@ -1,4 +1,4 @@
-import { polarToCardinal, parseAngle, rotateElement, positionElement } from "./util.js";
+import { polarToCardinal, parseAngle, rotateElement, positionElement, max } from "./util.js";
 import { getTime } from "./time.js";
 
 var analogic_clock = {
@@ -13,11 +13,11 @@ var analogic_clock = {
     },
     numbers: {
         radius: 95,
-        amount: 12,
+        amount: (max.hour/2),
     },
     bars: {
         radius: 110,
-        amount: 60
+        amount: max.minute
     }
 }
 
@@ -50,8 +50,8 @@ export function setNumbersPosition(radius, qntNumbers) {
 export function addMinuteBar(radius, numBars, thickBars=5) {
     for (let i=0;i<numBars;i++) {
         let deg = parseAngle(i,numBars)
-        let bar = createElement(radius, deg)
-        rotateElement(bar,deg)
+        let bar = createElement(radius, deg+270)
+        rotateElement(bar,deg-270)
 
         if (i%thickBars==0) {bar.classList.add("thick")}
         analogic_clock.elements.bars.appendChild(bar)
@@ -79,9 +79,12 @@ function createElement(radius, deg) {
  */
 export function rotatePointers() {
     rotateElement(analogic_clock.elements.pointers.hours,
-        parseAngle(getTime(3),12)+180)
+        parseAngle(getTime(3),
+        analogic_clock.numbers.amount)+180)
     rotateElement(analogic_clock.elements.pointers.minutes,
-        parseAngle(getTime(2),60)+180)
+        parseAngle(getTime(2),
+        max.minute)+180)
     rotateElement(analogic_clock.elements.pointers.seconds,
-        parseAngle(getTime(1),60)+180)
+        parseAngle(getTime(1),
+        max.second)+180)
 }

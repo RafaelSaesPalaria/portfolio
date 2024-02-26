@@ -6,6 +6,7 @@ export var timeData = {
 
 import { rotatePointers } from "./analog_clock.js";
 import { updateDigitalClock } from "./digital_clock.js";
+import { max } from "./util.js";
 
 /**
  * Called: at every clock second (if you speed the clock you speed the time)
@@ -28,8 +29,8 @@ function updateTime() {
 
     //Time Run
     if (timeData.timeSpeed!=0) {
-        if (timeData.timeSpeed>250) {
-            timeData.time.setSeconds(seconds + timeData.timeDirection * (timeData.timeSpeed-250));
+        if (timeData.timeSpeed>max.speed) {
+            timeData.time.setSeconds(seconds + timeData.timeDirection * (timeData.timeSpeed-max.speed));
         } else {
             timeData.time.setSeconds(seconds + timeData.timeDirection);
         }
@@ -49,7 +50,7 @@ export function getTime(type) {
         timeData.time.getHours()]
     let totalTime=0
     for (let i=0; i<type;i++) {
-        totalTime/=60
+        totalTime/=max.minute
         totalTime+=time[i]
     }
     return totalTime

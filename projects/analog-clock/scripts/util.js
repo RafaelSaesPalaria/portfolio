@@ -1,3 +1,11 @@
+export var max = {
+    degree:360,
+    hour:24,
+    minute:60,
+    second:60,
+    speed: 250
+}
+
 /**
  * Called: when update clock need (every clock-second)
  * Do: Check if the number has the desired length and add zeros at the start if it don't
@@ -22,7 +30,7 @@ export function formattedNumbers(numbers, length) {
  * @returns the angle of the currently period
  */
 export function parseAngle(currentlyTime,cycleMax) {
-    return (currentlyTime/cycleMax)*360
+    return (currentlyTime/cycleMax)*max.degree
 }
 
 /**
@@ -33,7 +41,7 @@ export function parseAngle(currentlyTime,cycleMax) {
  * @returns The cardinal coordinates
  */
 export function polarToCardinal(radius, deg) {
-    let theta = (2 * Math.PI) / (360/deg)
+    let theta = (2 * Math.PI) / (max.degree/deg)
     let x = (Math.sin(theta)*radius)
     let y = (Math.cos(theta)* radius)
     return {x:x,y:y}
