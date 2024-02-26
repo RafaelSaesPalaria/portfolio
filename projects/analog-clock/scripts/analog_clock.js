@@ -10,11 +10,19 @@ var analogic_clock = {
             minutes: document.querySelector("div.pointer#minutes"),
             seconds: document.querySelector("div.pointer#seconds")
         }
+    },
+    numbers: {
+        radius: 95,
+        amount: 12,
+    },
+    bars: {
+        radius: 110,
+        amount: 60
     }
 }
 
-setNumbersPosition((0.19*500), 12)
-addMinuteBar((0.22*500), 60)
+setNumbersPosition(analogic_clock.numbers.radius, analogic_clock.numbers.amount)
+addMinuteBar(analogic_clock.bars.radius, analogic_clock.bars.amount)
 
 /**
  * Called: At the start of the application or when the application is zoomed
@@ -35,16 +43,17 @@ export function setNumbersPosition(radius, qntNumbers) {
 /**
  * Called: at the start of the application or when the application is zoomed
  * Do: Create the bars of the minutes and positions it's elements
- * @param {Number} nbars amount of bars to be displayed at the clock
  * @param {Number} radius distance from the center
+ * @param {Number} numBars amount of bars to be displayed at the clock
+ * @param {Number} thickBars how many minutes per thickBar (default = 5)
  */
-export function addMinuteBar(radius, nbars) {
-    for (let i=0;i<nbars;i++) {
-        let deg = parseAngle(i,nbars)
+export function addMinuteBar(radius, numBars, thickBars=5) {
+    for (let i=0;i<numBars;i++) {
+        let deg = parseAngle(i,numBars)
         let bar = createElement(radius, deg)
         rotateElement(bar,deg)
 
-        if (i%5==0) {bar.classList.add("five")}
+        if (i%thickBars==0) {bar.classList.add("thick")}
         analogic_clock.elements.bars.appendChild(bar)
     }
 }
