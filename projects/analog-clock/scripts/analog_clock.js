@@ -24,7 +24,10 @@ addMinuteBar((0.22*500), 60)
  */
 export function setNumbersPosition(radius, qntNumbers) {
     for (let i=1;i<=qntNumbers;i++) {
-        let n = createNumber(i,radius,qntNumbers)
+        //let n = createNumber(i,radius,qntNumbers)
+        let deg = parseAngle(i,qntNumbers)
+        let n = createElement(radius,deg+270)
+        n.innerText = `${i}`
         analogic_clock.elements.numbers.appendChild(n)
     }
 }
@@ -38,7 +41,10 @@ export function setNumbersPosition(radius, qntNumbers) {
 export function addMinuteBar(radius, nbars) {
     let bars = analogic_clock.elements.bars
     for (let i=0;i<nbars;i++) {
-        let bar = createBar(i,radius,nbars)
+        //let bar = createBar(i,radius,nbars)
+        let deg = parseAngle(i,nbars)
+        let bar = createElement(radius, deg)
+        rotateElement(bar,deg)
 
         if (i%5==0) {
             bar.classList.add("five")
@@ -48,41 +54,20 @@ export function addMinuteBar(radius, nbars) {
     }
 }
 
-
 /**
- * Called: When a number is created
- * Do: Create and configure a number position
- * @param {Number} i the index of the number
+ * Called: When a element is created
+ * Do: Create and configure a element position
+ * @param {Number} i the index of the element
  * @param {Number} radius distance from the center
- * @param {Number} qntNumbers the total amount of numbers (for angle purporses)
- * @returns The span element of the number
+ * @param {Number} deg the total amount of element (for angle purporses)
+ * @returns The span element of the element
  */
-function createNumber(i,radius,qntNumbers){
-    let num = document.createElement("div");
-    num.innerText = `${i}`
-    let deg = parseAngle(i,qntNumbers)
-    let coords= polarToCardinal(radius,deg+270)
-    positionElement(num,coords.x,coords.y)
-    return num
-}
-
-/**
- * Called: When a bar is created
- * Do: Create and configure a bar position
- * @param {Number} i the index of the bar
- * @param {Number} radius distance from the center
- * @param {Number} qntNumbers the total amount of bar (for angle purporses)
- * @returns The span element of the bar
- */
-function createBar(i, radius, qntNumbers) {
-    let bar = document.createElement("div")
-    let deg = parseAngle(i,qntNumbers)
+function createElement(radius, deg) {
+    let element = document.createElement("div")
     let coords= polarToCardinal(radius,deg)
-    positionElement(bar,coords.x, coords.y)
-    rotateElement(bar,deg)
-    return bar
+    positionElement(element,coords.x, coords.y)
+    return element
 }
-
 /**
  * Called: At every clock-second
  * Do: rotate the pointers
