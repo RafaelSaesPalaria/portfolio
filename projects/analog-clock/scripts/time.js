@@ -2,6 +2,8 @@ export var timeData = {
     time: new Date(),
     timeDirection:1,
     timeSpeed:1,
+    interval: setInterval(clockWork,1000),
+    intervalSpeed: 1000
 }
 
 import { rotatePointers } from "./analog_clock.js";
@@ -54,4 +56,13 @@ export function getTime(type) {
         totalTime+=time[i]
     }
     return totalTime
+}
+
+/**
+ * Called: When the speed changes (accelerate/dissacelerate)
+ * Do: Reset the clock speed to the new speed
+ */
+export function resetInterval() {
+    clearInterval(timeData.interval)
+    timeData.interval = setInterval(clockWork,timeData.intervalSpeed/timeData.timeSpeed);
 }

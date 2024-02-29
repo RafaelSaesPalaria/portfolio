@@ -1,7 +1,5 @@
-import { clockWork, timeData } from "./time.js";
+import { clockWork, timeData, resetInterval } from "./time.js";
 import { updateTimeSpeed, digital_clock_elements } from "./digital_clock.js";
-export var interval = setInterval(clockWork,1000)
-var intervalSpeed = 1000
 
 clockWork()
 
@@ -65,13 +63,4 @@ function accelerate() {
     timeData.timeSpeed*=1.1;
     resetInterval()
     updateTimeSpeed()
-}
-
-/**
- * Called: When the speed changes (accelerate/dissacelerate)
- * Do: Reset the clock speed to the new speed
- */
-function resetInterval() {
-    clearInterval(interval)
-    interval = setInterval(clockWork,intervalSpeed/timeData.timeSpeed);
 }
