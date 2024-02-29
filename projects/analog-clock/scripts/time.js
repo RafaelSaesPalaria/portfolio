@@ -2,13 +2,23 @@ export var timeData = {
     time: new Date(),
     timeDirection:1,
     timeSpeed:1,
-    interval: setInterval(clockWork,1000),
+    interval: 0,
     intervalSpeed: 1000
 }
 
-import { rotatePointers } from "./analog_clock.js";
+import { rotatePointers, analogic_clock ,setNumbersPosition, addMinuteBar } from "./analog_clock.js";
 import { updateDigitalClock } from "./digital_clock.js";
 import { max } from "./util.js";
+import { clickEmitter } from "./controls.js";
+
+init()
+function init() {
+    clockWork()
+    clickEmitter()
+    setInterval(clockWork,timeData.intervalSpeed)
+    setNumbersPosition(analogic_clock.numbers.radius, analogic_clock.numbers.amount)
+    addMinuteBar(analogic_clock.bars.radius, analogic_clock.bars.amount)
+}
 
 /**
  * Called: at every clock second (if you speed the clock you speed the time)

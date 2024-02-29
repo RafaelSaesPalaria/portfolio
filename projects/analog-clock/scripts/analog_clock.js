@@ -1,7 +1,7 @@
 import { polarToCardinal, parseAngle, rotateElement, positionElement, max } from "./util.js";
 import { getTime } from "./time.js";
 
-var analogic_clock = {
+export var analogic_clock = {
     elements: {
         numbers: document.querySelector("div#numbers"),
         bars: document.querySelector("div#bars"),
@@ -20,9 +20,6 @@ var analogic_clock = {
         amount: max.minute
     }
 }
-
-setNumbersPosition(analogic_clock.numbers.radius, analogic_clock.numbers.amount)
-addMinuteBar(analogic_clock.bars.radius, analogic_clock.bars.amount)
 
 /**
  * Called: At the start of the application or when the application is zoomed
