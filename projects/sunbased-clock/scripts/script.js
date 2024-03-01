@@ -7,12 +7,7 @@ var degree = 0
 
 import { updateDigitalClock } from "./digital_clock.js"
 import { parseAngle, max } from "./util.js";
-
-export var timeData = {
-    direction: 1,
-    speed: 1,
-    time: new Date()
-};
+import { updateTime } from "./time.js";
 
 //Constructor
 /**
@@ -37,15 +32,6 @@ export function update() {
 }
 
 //Methods
-/*
-* Called: Every clock-second
-* Do: Update the time based on the timeDirection and in the timeSpeed
-*/
-function updateTime() {
-    let seconds = timeData.time.getSeconds();
-    timeData.time.setSeconds(seconds + timeData.direction * timeData.speed);
-}
-
 /**
  * Called: When the star position is updated
  * Do: get the angle based on the time

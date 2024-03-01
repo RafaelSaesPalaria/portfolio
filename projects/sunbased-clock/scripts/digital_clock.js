@@ -1,5 +1,6 @@
-import { intervalSpeed ,update, timeData } from "./script.js";
+import { intervalSpeed ,update } from "./script.js";
 import { formatNumber } from "./util.js";
+import { timeData } from "./time.js";
 import { addButtonListener } from "./controls.js";
 
 export var digital_clock = {

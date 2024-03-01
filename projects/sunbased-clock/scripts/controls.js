@@ -1,5 +1,5 @@
 import { updateTimeSpeed } from "./digital_clock.js";
-import { timeData } from "./script.js";
+import { timeData } from "./time.js";
 /**
  * Called: When the fast_rewind button is pressed
  * Do: fast_rewind the interval
