@@ -14,8 +14,8 @@ export var digital_clock_elements = {
 }
 
 /**
- * Called: at every clock-second
- * Do: update the elements of the digital clock based on the clock-time
+ * @Called: at every clock-second
+ * @Do: update the elements of the digital clock based on the clock-time
  */
 export function updateDigitalClock() {
     let hours      = formattedNumbers(timeData.time.getHours(), 2)
@@ -26,8 +26,8 @@ export function updateDigitalClock() {
 }
 
 /**
- * Called: When the timespeed changes
- * Do: change the timespeed on the player
+ * @Called: When the timespeed changes
+ * @Do: change the timespeed on the player
  */
 export function updateTimeSpeed() {
     digital_clock_elements.speed.innerText=`${(timeData.timeDirection*timeData.timeSpeed).toFixed(2)}x`

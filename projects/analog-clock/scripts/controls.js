@@ -11,8 +11,8 @@ export function clickEmitter() {
 }
 
 /**
- * Called: When the fast_rewind button is pressed
- * Do: fast_rewind the interval
+ * @Called: When the fast_rewind button is pressed
+ * @Do: fast_rewind the interval
  */
 function fast_rewind() {
     if (timeData.timeSpeed==0) {timeData.timeSpeed=1}
@@ -23,8 +23,8 @@ function fast_rewind() {
 }
 
 /**
- * Called: When the pause button is pressed
- * Do: Pause the interval
+ * @Called: When the pause button is pressed
+ * @Do: Pause the interval
  */
 function pause() {
     timeData.timeSpeed=0
@@ -32,8 +32,8 @@ function pause() {
 }
 
 /**
- * Called: When the play button is pressed
- * Do: restart the time speed
+ * @Called: When the play button is pressed
+ * @Do: restart the time speed
  */
 function play() {
     timeData.timeSpeed=1
@@ -42,8 +42,8 @@ function play() {
 }
 
 /**
- * Called: When the backward button is pressed
- * Do: Go back in time
+ * @Called: When the backward button is pressed
+ * @Do: Go back in time
  */
 function backward() {
     timeData.timeDirection=-1
@@ -52,8 +52,8 @@ function backward() {
 }
 
 /**
- * Called: When the accelarate button is pressed
- * Do: Accelerate the interval
+ * @Called: When the accelarate button is pressed
+ * @Do: Accelerate the interval
  */
 function accelerate() {
     if (timeData.timeSpeed==0) {timeData.timeSpeed=1}

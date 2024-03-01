@@ -22,8 +22,8 @@ export var analogic_clock = {
 }
 
 /**
- * Called: At the start of the application or when the application is zoomed
- * Do: Create and position the numbers elements
+ * @Called: At the start of the application or when the application is zoomed
+ * @Do: Create and position the numbers elements
  * @param {Number} qntNumbers amount of numbers to be displayed on the clock
  * @param {Number} radius distance from the center
  */
@@ -38,8 +38,8 @@ export function setNumbersPosition(radius, qntNumbers) {
 }
 
 /**
- * Called: at the start of the application or when the application is zoomed
- * Do: Create the bars of the minutes and positions it's elements
+ * @Called: at the start of the application or when the application is zoomed
+ * @Do: Create the bars of the minutes and positions it's elements
  * @param {Number} radius distance from the center
  * @param {Number} numBars amount of bars to be displayed at the clock
  * @param {Number} thickBars how many minutes per thickBar (default = 5)
@@ -56,8 +56,8 @@ export function addMinuteBar(radius, numBars, thickBars=5) {
 }
 
 /**
- * Called: When a element is created
- * Do: Create and configure a element position
+ * @Called: When a element is created
+ * @Do: Create and configure a element position
  * @param {Number} i the index of the element
  * @param {Number} radius distance from the center
  * @param {Number} deg the total amount of element (for angle purporses)
@@ -71,8 +71,8 @@ function createElement(radius, deg) {
 }
 
 /**
- * Called: At every clock-second
- * Do: rotate the pointers
+ * @Called: At every clock-second
+ * @Do: rotate the pointers
  */
 export function rotatePointers() {
     rotateElement(analogic_clock.elements.pointers.hours,

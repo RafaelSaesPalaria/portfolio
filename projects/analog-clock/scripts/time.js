@@ -21,8 +21,8 @@ function init() {
 }
 
 /**
- * Called: at every clock second (if you speed the clock you speed the time)
- * Do: change the time of the analog clock and of the digital clock
+ * @Called: at every clock second (if you speed the clock you speed the time)
+ * @Do: change the time of the analog clock and of the digital clock
  */
 export function clockWork() {
     updateTime()
@@ -31,8 +31,8 @@ export function clockWork() {
 }
 
 /**
- * Called: At every clock second
- * Do: Calculate the new time based on the currently time and on the timeDirection and timeSpeed
+ * @Called: At every clock second
+ * @Do: Calculate the new time based on the currently time and on the timeDirection and timeSpeed
  */
 function updateTime() {
     let seconds = timeData.time.getSeconds();
@@ -50,8 +50,8 @@ function updateTime() {
 }
 
 /**
- * Called: When the pointers rotate
- * Do: Get the time type in seconds precision
+ * @Called: When the pointers rotate
+ * @Do: Get the time type in seconds precision
  * @param {Number} type the type of the time [3 = Hours, 2 = Minutes, 1 = Seconds]
  * @returns the time in the type
  */
@@ -69,8 +69,8 @@ export function getTime(type) {
 }
 
 /**
- * Called: When the speed changes (accelerate/dissacelerate)
- * Do: Reset the clock speed to the new speed
+ * @Called: When the speed changes (accelerate/dissacelerate)
+ * @Do: Reset the clock speed to the new speed
  */
 export function resetInterval() {
     clearInterval(timeData.interval)
