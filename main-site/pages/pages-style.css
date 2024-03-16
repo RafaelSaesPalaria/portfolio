@@ -186,3 +186,7 @@ div#java-project2-img {
 div#java-project3-img {
     background-image: url(java-imgs/tetris.png);
 }
+
+div#chrome-extension1-img {
+    background-image: url(../images/quickCanvas.png);
+}

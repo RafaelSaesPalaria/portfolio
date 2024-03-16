@@ -8,6 +8,8 @@ export var max = {
 
 /**
  * @Called: when update clock need (every clock-second)
+ *      At: (Caller Function)
+ *      When: (When it activates)
  * @Do: Check if the number has the desired length and add zeros at the start if it don't
  * @param {Number} numbers unformatted number
  * @param {Number} length desired length
