@@ -9,8 +9,8 @@ import { canvasSize, game, updateScoreSpan } from "./game.js"
 import { showDeathMessage } from "./script.js"
 
 /**
- * Called: [Abstract] When a child is created (Player/Point/Enemy)
- * Do: Create the circle generic model
+ * @Called: [Abstract] When a child is created (Player/Point/Enemy)
+ * @Do: Create the circle generic model
  */
 class Circle {
     constructor(x, y, radius) {
@@ -26,8 +26,8 @@ class Circle {
     }
     
     /**
-     * Called: When the circle updates
-     * Do: Draw a circle using this.x, this.y, this.radius, this.color
+     * @Called: When the circle updates
+     * @Do: Draw a circle using this.x, this.y, this.radius, this.color
      * @param {canvasRenderingContext2D} c context to be drawn
      */
     draw(c) {
@@ -40,8 +40,8 @@ class Circle {
     }
 
     /**
-     * Called: When a child needs a generic update
-     * Do: Change the position then redraw
+     * @Called: When a child needs a generic update
+     * @Do: Change the position then redraw
      * @param {canvasSizeRenderingContext2D} c context to be drawn
      */
     update(c) {
@@ -57,8 +57,8 @@ class Circle {
 }
 
 /**
- * Called: When the game is started/restarted
- * Do: Create and operate the enemies
+ * @Called: When the game is started/restarted
+ * @Do: Create and operate the enemies
  */
 export class Enemy extends Circle {
     constructor(x, y, radius) {
@@ -71,8 +71,8 @@ export class Enemy extends Circle {
     }
 
     /**
-     * Called: At every frame
-     * Do: Check if the player died or if the enemy is out of the screen then teleport him back
+     * @Called: At every frame
+     * @Do: Check if the player died or if the enemy is out of the screen then teleport him back
      */
     update(c) {
         entities.players.forEach(player => {
@@ -104,8 +104,8 @@ export class Enemy extends Circle {
 }
 
 /**
- * Called: When the game is started or restarted
- * Do: Create and operate the points
+ * @Called: When the game is started or restarted
+ * @Do: Create and operate the points
  */
 export class Point extends Circle {
     constructor(x, y, radius) {
@@ -116,8 +116,8 @@ export class Point extends Circle {
     }
 
     /**
-     * Called: At every frame
-     * Do: Check if the player get the point and teleport him to a random point of the screen
+     * @Called: At every frame
+     * @Do: Check if the player get the point and teleport him to a random point of the screen
      */
     update(c) {
         super.update(c)
@@ -138,8 +138,8 @@ export class Point extends Circle {
 }
 
 /**
- * Called: When the game is started/restarted
- * Do: Create the player circle
+ * @Called: When the game is started/restarted
+ * @Do: Create the player circle
  */
 export class Player extends Circle {
     constructor(x, y, radius) {
@@ -157,8 +157,8 @@ export class Player extends Circle {
     }
 
     /**
-     * Called: When the keylistener call (keyup/keydown)
-     * Do: change the up/left/right/down attributes based on the keyevent
+     * @Called: When the keylistener call (keyup/keydown)
+     * @Do: change the up/left/right/down attributes based on the keyevent
      * @param {Object} event the movement
      */
     keyhandler(event) {
@@ -181,8 +181,8 @@ export class Player extends Circle {
     }
 
     /**
-     * Called: When the touchlistener call (touchmove/touchstart)
-     * Do: change the up/left/right/down attributes based on the keyevent
+     * @Called: When the touchlistener call (touchmove/touchstart)
+     * @Do: change the up/left/right/down attributes based on the keyevent
      * @param {Object} event the movement
      */
     touchhandler(event) {
@@ -204,8 +204,8 @@ export class Player extends Circle {
     }
 
     /**
-     * Called: When the player updates
-     * Do: 
+     * @Called: When the player updates
+     * @Do: 
      */
     keyboardMoviment() {
         if (this.up & !this.down & (canvasSize.height-this.y-this.radius<30)) {
@@ -226,8 +226,8 @@ export class Player extends Circle {
     }
 
     /**
-     * Called: At every frame
-     * Do: Change the position based on the speed
+     * @Called: At every frame
+     * @Do: Change the position based on the speed
      */
     update(c) {
         this.keyboardMoviment()
@@ -255,8 +255,8 @@ export class Player extends Circle {
     }
 
     /**
-     * Called: When a enemy touch the player
-     * Do: Show the death message
+     * @Called: When a enemy touch the player
+     * @Do: Show the death message
      */
     die() {
         showDeathMessage()
@@ -264,8 +264,8 @@ export class Player extends Circle {
 }
 
 /**
- * Called: When the player is created
- * Do: execute all the methods that are subscribed when a keyup or a keydown happens
+ * @Called: When the player is created
+ * @Do: execute all the methods that are subscribed when a keyup or a keydown happens
  * @returns the subscribe method
  */
 function addKeyListener() {
@@ -277,8 +277,8 @@ function addKeyListener() {
     addEventListener("keydown",notifyAll)
 
     /**
-     * Called: When the player is created
-     * Do: Add the function to the state.observers array
+     * @Called: When the player is created
+     * @Do: Add the function to the state.observers array
      * @param {Function} functionObserver the function to be executed
      */
     function subscribe(functionObserver) {
@@ -286,8 +286,8 @@ function addKeyListener() {
     }
 
     /**
-     * Called: When a keyup/keydown happens
-     * Do: Execute all methods in state.observers
+     * @Called: When a keyup/keydown happens
+     * @Do: Execute all methods in state.observers
      * @param {Object} command the keyboard event
      */
     function notifyAll(command) {
@@ -302,8 +302,8 @@ function addKeyListener() {
 }
 
 /**
- * Called: When the player is created
- * Do: execute all the methods that are subscribed when a touchmove/touchstart happens
+ * @Called: When the player is created
+ * @Do: execute all the methods that are subscribed when a touchmove/touchstart happens
  * @returns the subscribe method
  */
 function addTouchListener() {
@@ -315,8 +315,8 @@ function addTouchListener() {
     addEventListener("touchstart",notifyAll)
 
     /**
-     * Called: When the player is created
-     * Do: Add the function to the state.observers array
+     * @Called: When the player is created
+     * @Do: Add the function to the state.observers array
      * @param {Function} functionObserver the function to be executed
      */
     function subscribe(functionObserver) {
@@ -324,8 +324,8 @@ function addTouchListener() {
     }
 
     /**
-     * Called: When a keyup/keydown happens
-     * Do: Execute all methods in state.observers
+     * @Called: When a keyup/keydown happens
+     * @Do: Execute all methods in state.observers
      * @param {Object} command the keyboard event
      */
     function notifyAll(command) {
@@ -341,8 +341,8 @@ function addTouchListener() {
 
 
 /**
- * Called: When a enemy or a point updates
- * Do: Check if the circle1 (enemy/point) is colling with the circle2 (player)
+ * @Called: When a enemy or a point updates
+ * @Do: Check if the circle1 (enemy/point) is colling with the circle2 (player)
  * @param {Circle} circle1 
  * @param {Circle} circle2 
  * @returns true if the are colliding, false if they aren't

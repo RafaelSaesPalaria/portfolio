@@ -13,8 +13,8 @@ export var canvasSize = {
 }
 
 /**
- * Called: When a point is adquired
- * Do: Update the value of the scoreboard
+ * @Called: When a point is adquired
+ * @Do: Update the value of the scoreboard
  */
 export function updateScoreSpan() {
     highscoreScreen.innerText = `Highscore: ${game.highscore}`
