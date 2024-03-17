@@ -2,6 +2,10 @@ import { clockWork, timeData, resetInterval } from "./time.js";
 import { updateTimeSpeed, digital_clock_elements } from "./digital_clock.js";
 
 
+/**
+ * @Called When the system start
+ * @Do connect the html elements to its functions
+ */
 export function clickEmitter() {
     digital_clock_elements.controls.fast_rewind.addEventListener("click",fast_rewind)
     digital_clock_elements.controls.pause.addEventListener("click",pause)
