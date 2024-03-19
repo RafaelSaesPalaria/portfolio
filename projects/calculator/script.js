@@ -10,7 +10,8 @@ var normalCalculator = [[                   "+"],
                                                       ["3","2","1"   ,"/"],
                                                       [">","0","del","="]]
 
-/*KeyListener Observer
+/**
+ * @Do: KeyListener Observer
     listen the keydown and 
 */
 function addKeyListener() {
@@ -40,7 +41,7 @@ function addKeyListener() {
 }
 
 /**
- * Create and put the buttons on the screen
+ * @Do: Create and put the buttons on the screen
  * @param {String} calculator the button set to be created 
  */
 function createComponents(calculator) {
@@ -55,7 +56,7 @@ function createComponents(calculator) {
 }
 
 /**
- * Create formated buttons [Factory]
+ * @Do: Create formated buttons [Factory]
  * @param {String} txt text exhibited by the button 
  * @returns 
  */
@@ -67,7 +68,7 @@ function createButton(txt) {
     return button;
 }
 
-/*Create the textField Element*/
+/*@Do: Create the textField Element*/
 function createTextField() {
     let txtField = document.createElement("input");
     txtField.setAttribute("type","number")
@@ -78,7 +79,7 @@ function createTextField() {
 }
 
 /**
- * Detect if the key is a number
+ * @Do: Detect if the key is a number
  * @param {String} s the key that's gonna be tested
  * @returns if the key is a number 
  */
@@ -87,7 +88,7 @@ function isNumeric(s) {
 }
 
 /**
- * Detect if the key is a aritmethic operator
+ * @Do: Detect if the key is a aritmethic operator
  * @param {*} s the key that's gonna be tested
  * @returns if the key if a aritmethic operator
  */
@@ -98,7 +99,7 @@ function isAritmethicOperator(s) {
 
 
 /**
- * Receive the keydown/button press and separate numbers from operators
+ * @Do: Receive the keydown/button press and separate numbers from operators
  * @param {String} txt the key/button
  */
 function onClick(txt) {
@@ -112,7 +113,7 @@ function onClick(txt) {
 }
 
 /**
- * Write the number on the textfield
+ * @Do: Write the number on the textfield
  * @param {Number} number the number pressed (by the button or by the keys) 
  */
 function number(number) {
@@ -124,7 +125,7 @@ function number(number) {
 }
 
    /**
-    * Operators select and execute the non-aritmethic operators, and execute the onClick aritimethic operators method
+    * @Do: Operators select and execute the non-aritmethic operators, and execute the onClick aritimethic operators method
     * @param {String} operator the operator used to change the numbers or to perform a calculation 
     */
 function operator(operator) {
@@ -154,7 +155,7 @@ function operator(operator) {
 }
 
 /**
- * Execute the aritmethic operators and put the value into the textField
+ * @Do: Execute the aritmethic operators and put the value into the textField
  * @param {String} operator operator used in the calculation 
  */
 function aritmeticOperator(operator) {
@@ -194,7 +195,7 @@ function aritmeticOperator(operator) {
 }
 
 /**
- * Removes the last number of a string
+ * @Do: Removes the last number of a string
  * @param {String} txt the string to be removed 
  * @returns the string without the last number
  */
@@ -203,7 +204,7 @@ function backspace(txt) {
 }
 
 /**
- * Subtracts the n2 from the n1
+ * @Do: Subtracts the n2 from the n1
  * @param {Number} n1 the number to be subtracted
  * @param {Number} n2 the number that's gonna subtract
  * @returns the number subtracted
@@ -213,7 +214,7 @@ function subtraction(n1,n2) {
 }
 
 /**
- * Adds the n2 to the n1
+ * @Do: Adds the n2 to the n1
  * @param {Number} n1 the number to be added
  * @param {Number} n2 the number that's gonna add
  * @returns the result of the operation
@@ -223,7 +224,7 @@ function addition(n1,n2) {
 }
 
 /**
- * Divide n1 in n2 parts
+ * @Do: Divide n1 in n2 parts
  * @param {Number} n1 the number to be divided
  * @param {Number} n2 the number that's gonna divide
  * @returns the result of the operation
@@ -233,7 +234,7 @@ function divide(n1,n2) {
 }
 
 /**
- * Multiplies the n2 to the n1
+ * @Do: Multiplies the n2 to the n1
  * @param {Number} n1 the number to be multiplied
  * @param {Number} n2 the number that's gonna multiply
  * @returns the result of the operation
@@ -245,7 +246,7 @@ function multiply(n1,n2) {
 var listener = addKeyListener()
 listener.subscribe(onClick);
 
-/*Called when the system start, create the components*/
+/*@Do Called when the system start, create the components*/
 function start() {
     createComponents(normalCalculator);
 }
