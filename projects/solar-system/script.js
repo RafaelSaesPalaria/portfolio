@@ -9,8 +9,8 @@ var starField = document.querySelector("div#starField")
 var position=0
 
 /**
- * Called: When a star is created
- * Do: Represent the star
+ * @Called: When a star is created
+ * @Do: Represent the star
  */
 class Star {
     constructor(element, satellite, speed, distance, background) {
@@ -22,8 +22,8 @@ class Star {
         this.background = background
     }
     /**
-     * Called: At every frame
-     * Do: Set the position of the star and of the satellite
+     * @Called: At every frame
+     * @Do: Set the position of the star and of the satellite
      */
     update() {
         orbit(this.element,this.satellite,position*this.speed,vh*this.distance)
@@ -34,8 +34,8 @@ class Star {
     }
 
     /**
-     * Do: Center the obj
-     * Called: When a star is clicked
+     * @Do: Center the obj
+     * @Called: When a star is clicked
      * @param {Boolean} center if the object is supposed to be centered
      */
     setCenter(center) {
@@ -56,8 +56,8 @@ function start() {
 }
 
 /**
- * Called: called at every frame
- * Do: animate the css
+ * @Called: called at every frame
+ * @Do: animate the css
  */
 function animate() {
     ssun.update()
@@ -69,9 +69,9 @@ function animate() {
 }
 
 /**
- * ERROR/TODO: this method don't actually resize the screen
+ * @ERROR/TODO: this method don't actually resize the screen
  * Called: at the start or when a zoom happens
- * Do: Resizes the screen
+ * @Do: Resizes the screen
  */
 function resize() {
     //vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
@@ -80,8 +80,8 @@ function resize() {
 }
 
 /**
- * Called: When a star is clicked
- * Do: Set the position of the components to align with the center of the star
+ * @Called: When a star is clicked
+ * @Do: Set the position of the components to align with the center of the star
  */
 function starClicked(star) {
     ssun.setCenter(false)
@@ -91,8 +91,8 @@ function starClicked(star) {
 }
 
 /**
- * Called: When any non-farway-star is called
- * Do: Center the currently star
+ * @Called: When any non-farway-star is called
+ * @Do: Center the currently star
  * @param {Object} star the star that's gonna be centered
  */
 function center(star) {
@@ -101,8 +101,8 @@ function center(star) {
 }
 
 /**
- * Called: When a star is centered
- * Do: Rotate the obj
+ * @Called: When a star is centered
+ * @Do: Rotate the obj
  * @param {Object} star object to be rotated
  * @param {Number} position degree of rotation 
  */
@@ -111,8 +111,8 @@ function rotateStar(star, position) {
 }
 
 /**
- * Called: When any centered star need the orbit of it's satellites
- * Do: Make the one star orbit another one
+ * @Called: When any centered star need the orbit of it's satellites
+ * @Do: Make the one star orbit another one
  * @param {Object}   centerStar   the primary star
  * @param {Object}   satelliteStar the star thats gonna orbit the primary star
  * @param {Number} deg             the currently degree of the orbit
@@ -135,8 +135,8 @@ function orbit(centerStar,satelliteStar,deg,radius) {
 }
 
 /**
- * Called: at the start
- * Do: Create the far-away stars in the background
+ * @Called: at the start
+ * @Do: Create the far-away stars in the background
  */
 function createStars() {
 
@@ -160,8 +160,8 @@ function createStars() {
 }
 
 /**
- * Called: When the earth need to update it's background
- * Do: Convert polar coordinates to cardinal coordinates
+ * @Called: When the earth need to update it's background
+ * @Do: Convert polar coordinates to cardinal coordinates
  * @param {Number} deg    degree of the coordinate
  * @param {Number} radius distance from the center
  * @returns x, y as hash
@@ -175,8 +175,8 @@ function polarToCardinal(deg, radius) {
 }
 
 /**
- * Called: after the stars are centered
- * Do: Create a radial gradient in the earth to look like the sun light
+ * @Called: after the stars are centered
+ * @Do: Create a radial gradient in the earth to look like the sun light
  * @param {Object} element the element have its background changed
  * @param {Number} deg the degree of the rotation of the gradient in the earth 
  */
