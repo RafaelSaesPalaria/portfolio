@@ -6,17 +6,6 @@ var earth = document.querySelector("div#earth")
 var moon = document.querySelector("div#moon")
 var starField = document.querySelector("div#starField")
 
-sun.addEventListener("click",function () {
-    starClicked(ssun)
-})
-earth.addEventListener("click",function () {
-    starClicked(searth)
-})
-moon.addEventListener("click",function () {
-    starClicked(smoon)
-})
-
-
 var position=0
 
 import { polarToCardinal } from "./util.js"
@@ -33,7 +22,10 @@ class Star {
         this.speed = speed
         this.center = false
         this.background = background
-    }
+        this.element.addEventListener("click", () => {
+            starClicked(this)
+        })
+    }   
     /**
      * @Called: At every frame
      * @Do: Set the position of the star and of the satellite
@@ -101,6 +93,8 @@ function starClicked(star) {
     ssun.setCenter(false)
     searth.setCenter(false)
     smoon.setCenter(false)
+    console.log(star)
+    console.log(smoon)
     star.setCenter(true)
 }
 
