@@ -48,9 +48,11 @@ class Star {
     }
 }
 
-var ssun = new Star(sun,earth,0.4,0.4, false)
-var searth = new Star(earth,moon,0.8,0.2, true)
-var smoon = new Star(moon, moon, 0.8, 0.2, false)
+var stars = []
+
+stars.push(new Star(sun,earth,0.4,0.4, false))
+stars.push(new Star(earth,moon,0.8,0.2, true))
+stars.push(new Star(moon, moon, 0.8, 0.2, false))
 
 //Constructor
 start()
@@ -66,9 +68,9 @@ function start() {
  * @Do: animate the css
  */
 function animate() {
-    ssun.update()
-    searth.update()
-    smoon.update()
+    stars.forEach(star => {
+        star.update()
+    })
     rotateStar(starField, position*0.2)
     position+=1
     requestAnimationFrame(animate)
@@ -76,7 +78,7 @@ function animate() {
 
 /**
  * @ERROR/TODO: this method don't actually resize the screen
- * Called: at the start or when a zoom happens
+ * @Called: at the start or when a zoom happens
  * @Do: Resizes the screen
  */
 function resize() {
@@ -90,11 +92,9 @@ function resize() {
  * @Do: Set the position of the components to align with the center of the star
  */
 function starClicked(star) {
-    ssun.setCenter(false)
-    searth.setCenter(false)
-    smoon.setCenter(false)
-    console.log(star)
-    console.log(smoon)
+    stars.forEach(starr => {
+        starr.setCenter(false)
+    })
     star.setCenter(true)
 }
 
