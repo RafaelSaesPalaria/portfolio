@@ -6,7 +6,20 @@ var earth = document.querySelector("div#earth")
 var moon = document.querySelector("div#moon")
 var starField = document.querySelector("div#starField")
 
+sun.addEventListener("click",function () {
+    starClicked(ssun)
+})
+earth.addEventListener("click",function () {
+    starClicked(searth)
+})
+moon.addEventListener("click",function () {
+    starClicked(smoon)
+})
+
+
 var position=0
+
+import { polarToCardinal } from "./util.js"
 
 /**
  * @Called: When a star is created
@@ -48,6 +61,7 @@ var searth = new Star(earth,moon,0.8,0.2, true)
 var smoon = new Star(moon, moon, 0.8, 0.2, false)
 
 //Constructor
+start()
 resize();
 window.addEventListener('zoom', resize);
 function start() {

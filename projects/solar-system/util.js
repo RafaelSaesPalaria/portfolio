@@ -5,7 +5,7 @@
  * @param {Number} radius distance from the center
  * @returns x, y as hash
  */
-function polarToCardinal(deg, radius) {
+export function polarToCardinal(deg, radius) {
     let theta = (Math.PI * 2) / (360/deg)
 
     let x = Math.cos(theta) * radius;
