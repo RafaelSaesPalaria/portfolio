@@ -1,10 +1,11 @@
-import { position, updateBackground, stars} from "./script.js"
+import { position, updateBackground} from "./script.js"
 import { center } from "./util.js"
 
 /**
  * @Called: When a star is created
  * @Do: Represent the star
  */
+
 export class Star {
     constructor(element, satellite, speed, distance, background) {
         this.element = element
@@ -17,6 +18,7 @@ export class Star {
             starClicked(this)
         })
     }   
+    
     /**
      * @Called: At every frame
      * @Do: Set the position of the star and of the satellite
@@ -38,6 +40,12 @@ export class Star {
         this.center = center
     }
 }
+
+export var stars = {}
+
+stars["sun"] = new Star(sun,earth,0.4,0.4, false)
+stars["earth"] = new Star(earth,moon,0.8,0.2, true)
+stars["moon"] = new Star(moon, moon, 0.8, 0.2, false)
 
 /**
  * @Called: at the start

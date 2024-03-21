@@ -9,13 +9,7 @@ var starField = document.querySelector("div#starField")
 export var position=0
 
 import { polarToCardinal, rotateElement } from "./util.js"
-import { Star, createStars } from "./star.js"
-
-export var stars = {}
-
-stars["sun"] = new Star(sun,earth,0.4,0.4, false)
-stars["earth"] = new Star(earth,moon,0.8,0.2, true)
-stars["moon"] = new Star(moon, moon, 0.8, 0.2, false)
+import { createStars, stars } from "./star.js"
 
 //Constructor
 start()
