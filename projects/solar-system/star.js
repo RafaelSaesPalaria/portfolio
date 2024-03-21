@@ -1,4 +1,5 @@
-import { position, updateBackground, stars, center } from "./script.js"
+import { position, updateBackground, stars} from "./script.js"
+import { center } from "./util.js"
 
 /**
  * @Called: When a star is created

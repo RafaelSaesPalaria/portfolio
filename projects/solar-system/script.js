@@ -1,14 +1,14 @@
 //Global Variables
 var vh = 0
 
-var sun = document.querySelector("div#sun")
+export var sun = document.querySelector("div#sun")
 var earth = document.querySelector("div#earth")
 var moon = document.querySelector("div#moon")
 var starField = document.querySelector("div#starField")
 
 export var position=0
 
-import { polarToCardinal } from "./util.js"
+import { polarToCardinal, rotateElement } from "./util.js"
 import { Star, createStars } from "./star.js"
 
 export var stars = []
@@ -34,7 +34,7 @@ function animate() {
     stars.forEach(star => {
         star.update()
     })
-    rotateStar(starField, position*0.2)
+    rotateElement(starField, position*0.2)
     position+=1
     requestAnimationFrame(animate)
 }
@@ -48,26 +48,6 @@ function resize() {
     //vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
     vh = 500
     start()
-}
-
-/**
- * @Called: When any non-farway-star is called
- * @Do: Center the currently star
- * @param {Object} star the star that's gonna be centered
- */
-export function center(star) {
-    sun.style.left = `${(innerWidth/2)  - star.offsetLeft+sun.offsetLeft}px`
-    sun.style.top = `${(innerHeight/2) - star.offsetTop+sun.offsetTop}px`
-}
-
-/**
- * @Called: When a star is centered
- * @Do: Rotate the obj
- * @param {Object} star object to be rotated
- * @param {Number} position degree of rotation 
- */
-function rotateStar(star, position) {
-    star.style.transform = `translateY(-25%) rotate(${position%360}deg)`;
 }
 
 /**
