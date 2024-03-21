@@ -69,9 +69,9 @@ export function createStars() {
  * @Do: Set the position of the components to align with the center of the star
  */
 export function starClicked(star) {
-    stars.forEach(starr => {
-        starr.setCenter(false)
-    })
+    for (let starr in stars) {
+        stars[starr].setCenter(false)
+    }
     star.setCenter(true)
 }
 

@@ -11,11 +11,11 @@ export var position=0
 import { polarToCardinal, rotateElement } from "./util.js"
 import { Star, createStars } from "./star.js"
 
-export var stars = []
+export var stars = {}
 
-stars.push(new Star(sun,earth,0.4,0.4, false))
-stars.push(new Star(earth,moon,0.8,0.2, true))
-stars.push(new Star(moon, moon, 0.8, 0.2, false))
+stars["sun"] = new Star(sun,earth,0.4,0.4, false)
+stars["earth"] = new Star(earth,moon,0.8,0.2, true)
+stars["moon"] = new Star(moon, moon, 0.8, 0.2, false)
 
 //Constructor
 start()
@@ -31,9 +31,10 @@ function start() {
  * @Do: animate the css
  */
 function animate() {
-    stars.forEach(star => {
-        star.update()
-    })
+    for (let star in stars) {
+        stars[star].update()
+    }
+    
     rotateElement(starField, position*0.2)
     position+=1
     requestAnimationFrame(animate)
