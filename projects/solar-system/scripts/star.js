@@ -24,11 +24,11 @@ export class Star {
      * @Do: Set the position of the star and of the satellite
      */
     update() {
-        orbit(this.element,this.satellite,position*this.speed,500*this.distance)
+        /*orbit(this.element,this.satellite,position*this.speed,500*this.distance)
         if (this.center) {center(this.element)}
         if (this.background) { 
             updateBackground(this.element, position*0.4) 
-        }
+        }*/
     }
 
     /**
@@ -43,9 +43,11 @@ export class Star {
 
 export var stars = {}
 
-stars["sun"] = new Star(sun,earth,0.4,0.4, false)
-stars["earth"] = new Star(earth,moon,0.8,0.2, true)
-stars["moon"] = new Star(moon, moon, 0.8, 0.2, false)
+stars["0"] = new Star(sun,earth,0.4,0.4, false)
+stars["0"]["0"] = new Star(earth,moon,0.8,0.2, true)
+stars["0"]["0"]["0"] = new Star(moon, moon, 0.8, 0.2, false)
+
+console.log(stars)
 
 /**
  * @Called: at the start
@@ -77,10 +79,7 @@ export function createStars() {
  * @Do: Set the position of the components to align with the center of the star
  */
 export function starClicked(star) {
-    for (let starr in stars) {
-        stars[starr].setCenter(false)
-    }
-    star.setCenter(true)
+    stars["0"] = star
 }
 
 /**
@@ -92,6 +91,9 @@ export function starClicked(star) {
  * @param {Number} radius         the radius of the orbit
  */
 export function orbit(centerStar,satelliteStar,deg,radius) {
+    centerStar = centerStar.element
+    satelliteStar=satelliteStar.element
+
     if (centerStar===satelliteStar) {return}
 
     let theta = (Math.PI*2)/360
