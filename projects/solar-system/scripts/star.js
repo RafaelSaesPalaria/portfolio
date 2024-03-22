@@ -79,7 +79,17 @@ export function createStars() {
  * @Do: Set the position of the components to align with the center of the star
  */
 export function starClicked(star) {
+    let auxStars = stars
     stars["0"] = star
+}
+
+/**
+ * @Called Every ms
+ * @Do Make a satellite orbit its star
+ * @param {Object} star the center star 
+ */
+export function orbitStar(star) {
+    orbit(star,star["0"],position*star.speed,500*star.distance)
 }
 
 /**

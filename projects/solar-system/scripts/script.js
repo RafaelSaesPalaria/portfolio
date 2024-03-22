@@ -9,7 +9,7 @@ var starField = document.querySelector("div#starField")
 export var position=0
 
 import { polarToCardinal, rotateElement } from "./util.js"
-import { createStars, orbit, stars } from "./star.js"
+import { createStars, orbitStar, stars } from "./star.js"
 
 //Constructor
 start()
@@ -26,8 +26,8 @@ function start() {
  */
 function animate() {
     /*position*this.speed,500*this.distance */
-    orbit(stars["0"],stars["0"]["0"],position*stars["0"].speed,500*stars["0"].distance)
-    orbit(stars["0"]["0"],stars["0"]["0"]["0"],position*stars["0"]["0"].speed,500*stars["0"]["0"].distance)
+    orbitStar(stars["0"])
+    orbitStar(stars["0"]["0"])
     rotateElement(starField, position*0.2)
     position+=1
     requestAnimationFrame(animate)
