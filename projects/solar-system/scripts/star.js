@@ -23,6 +23,13 @@ export class Star {
     addSatellite = function(satellite) {
         this.satellites[Object.keys(this.satellites).length] = satellite
     }
+    removeSatellite = function(satellite) {
+        for (let sat in this.satellites) {
+            if (this.satellites[sat] == satellite) {
+                return delete this.satellites[sat]
+            }
+        }
+    }
 }
 
 export var stars = {}
@@ -30,7 +37,6 @@ export var stars = {}
 stars = new Star(sun,0.4,0.4, false)
 stars.addSatellite(new Star(earth,0.8,0.2, true))
 stars["satellites"]["0"].addSatellite(new Star(moon, 0.8, 0.2, false))
-console.log(stars)
 
 
 /**
@@ -63,7 +69,14 @@ export function createStars() {
  * @Do: Set the position of the components to align with the center of the star
  */
 export function starClicked(star) {
-    
+    let auxStars = Object.assign(stars,{})
+    auxStars = star
+    stars.removeSatellite(star)
+    auxStars.addSatellite(stars)
+    stars = auxStars
+
+    console.log(stars)
+
 }
 
 /**
@@ -72,8 +85,10 @@ export function starClicked(star) {
  * @param {Object} star the center star 
  */
 export function orbitStar(star) {
-    for (let satellite in star.satellites) {
-        orbit(star.object,star.satellites[satellite].object,position*star.object.speed,500*star.object.distance)
+    if (star) {
+        for (let satellite in star.satellites) {
+            orbit(star.object,star.satellites[satellite].object,position*star.object.speed,500*star.object.distance)
+        }
     }
 }
 
