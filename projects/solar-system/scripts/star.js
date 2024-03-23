@@ -101,7 +101,7 @@ export function starClicked(star) {
 export function orbitStar(star) {
     if (star) {
         for (let satellite in star.satellites) {
-            orbit(star.object,star.satellites[satellite].object,position*star.object.speed,500*star.object.distance)
+            orbit(star.object,star.satellites[satellite].object,position*star.satellites[satellite].object.speed,500*star.satellites[satellite].object.distance)
         }
     }
 }
