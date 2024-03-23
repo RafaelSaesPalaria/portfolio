@@ -26,8 +26,8 @@ function start() {
  */
 function animate() {
     /*position*this.speed,500*this.distance */
-    orbitStar(stars["0"])
-    orbitStar(stars["0"]["0"])
+    orbitStar(stars)
+    orbitStar(stars.satellites["0"])
     rotateElement(starField, position*0.2)
     position+=1
     requestAnimationFrame(animate)

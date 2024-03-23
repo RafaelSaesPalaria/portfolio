@@ -7,47 +7,31 @@ import { center } from "./util.js"
  */
 
 export class Star {
-    constructor(element, satellite, speed, distance, background) {
-        this.element = element
-        this.satellite = satellite
-        this.distance = distance
-        this.speed = speed
-        this.center = false
-        this.background = background
-        this.element.addEventListener("click", () => {
+    constructor(element, speed, distance, background) {
+        this.satellites = {}
+        this.object = {
+            element : element,
+            distance : distance,
+            speed : speed,
+            center : false,
+            background: background,
+        }
+        this.object.element.addEventListener("click", () => {
             starClicked(this)
         })
-    }   
-    
-    /**
-     * @Called: At every frame
-     * @Do: Set the position of the star and of the satellite
-     */
-    update() {
-        /*orbit(this.element,this.satellite,position*this.speed,500*this.distance)
-        if (this.center) {center(this.element)}
-        if (this.background) { 
-            updateBackground(this.element, position*0.4) 
-        }*/
     }
-
-    /**
-     * @Do: Center the obj
-     * @Called: When a star is clicked
-     * @param {Boolean} center if the object is supposed to be centered
-     */
-    setCenter(center) {
-        this.center = center
+    addSatellite = function(satellite) {
+        this.satellites[Object.keys(this.satellites).length] = satellite
     }
 }
 
 export var stars = {}
 
-stars["0"] = new Star(sun,earth,0.4,0.4, false)
-stars["0"]["0"] = new Star(earth,moon,0.8,0.2, true)
-stars["0"]["0"]["0"] = new Star(moon, moon, 0.8, 0.2, false)
-
+stars = new Star(sun,0.4,0.4, false)
+stars.addSatellite(new Star(earth,0.8,0.2, true))
+stars["satellites"]["0"].addSatellite(new Star(moon, 0.8, 0.2, false))
 console.log(stars)
+
 
 /**
  * @Called: at the start
@@ -79,8 +63,7 @@ export function createStars() {
  * @Do: Set the position of the components to align with the center of the star
  */
 export function starClicked(star) {
-    let auxStars = stars
-    stars["0"] = star
+    
 }
 
 /**
@@ -89,7 +72,9 @@ export function starClicked(star) {
  * @param {Object} star the center star 
  */
 export function orbitStar(star) {
-    orbit(star,star["0"],position*star.speed,500*star.distance)
+    for (let satellite in star.satellites) {
+        orbit(star.object,star.satellites[satellite].object,position*star.object.speed,500*star.object.distance)
+    }
 }
 
 /**
