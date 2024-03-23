@@ -42,7 +42,7 @@ function deleteInSatellites(star, satellite) {
         }
     }
     for (let sat in star.satellites) {
-        searchInSatellites(star.satellites[sat],satellite)
+        deleteInSatellites(star.satellites[sat],satellite)
     }
 }
 
