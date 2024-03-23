@@ -24,11 +24,25 @@ export class Star {
         this.satellites[Object.keys(this.satellites).length] = satellite
     }
     removeSatellite = function(satellite) {
-        for (let sat in this.satellites) {
-            if (this.satellites[sat] == satellite) {
-                return delete this.satellites[sat]
-            }
+       deleteInSatellites(this, satellite)
+    }
+}
+
+/**
+ * Called: When a star is clicked
+ * Do: search in satellites and delete the star path to avoid infinite path
+ * @param {Object} star 
+ * @param {Object} satellite 
+ * @returns undefined
+ */
+function deleteInSatellites(star, satellite) {
+    for (let sat in star.satellites) {
+        if (satellite == star.satellites[sat]) {
+            return delete star.satellites[sat]
         }
+    }
+    for (let sat in star.satellites) {
+        searchInSatellites(star.satellites[sat],satellite)
     }
 }
 
