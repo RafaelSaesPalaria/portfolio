@@ -17,8 +17,8 @@ var mouse = {
 var circleArray = []
 
 /**
- * @@When: The screen resizes
- * @@Do: Resizes the canvas
+ * @When : The screen resizes
+ * @Do : Resizes the canvas
  */
 window.addEventListener("resize",function() {
     level.width = this.innerWidth*0.95
@@ -27,24 +27,24 @@ window.addEventListener("resize",function() {
 })
 
 /**
- * @@When: The mouse is pressed
- * @@Do: execute the mouseClick function which change the mouseObj position and clickCount
+ * @When : The mouse is pressed
+ * @Do : execute the mouseClick function which change the mouseObj position and clickCount
  */
 window.addEventListener("mousedown",function(event) {
    mouseClick(event)
 })
 
 /**
- * @When: Someone press his fingers
- * @Do: execute the mouseClick function which change the mouseObj position and clickCount
+ * @When : Someone press his fingers
+ * @Do : execute the mouseClick function which change the mouseObj position and clickCount
  */
 window.addEventListener("touchstart",function(event) {
     mouseClick(event)
 })
 
 /**
- * @When: The mouse is pressed
- * @Do: change the mouseObj position and update the click points / score
+ * @When : The mouse is pressed
+ * @Do : change the mouseObj position and update the click points / score
  * @param {Object} event 
  */
 function mouseClick(event) {
@@ -58,8 +58,8 @@ function mouseClick(event) {
 }
 
 /**
- * @When: The game start/restart
- * @Do: Create and operate the circle obj
+ * @When : The game start/restart
+ * @Do : Create and operate the circle obj
  * @param {Number} x 
  * @param {Number} y 
  * @param {Number} dx 
@@ -78,8 +78,8 @@ function Circle(x,y,dx,dy,radius,color,points) {
     this.points=points
 
     /**
-     * @When: The obj update
-     * @Do: draw the circle
+     * @When : The obj update
+     * @Do : draw the circle
      */
     this.draw = function() {
         c.beginPath()
@@ -91,8 +91,8 @@ function Circle(x,y,dx,dy,radius,color,points) {
     };
 
     /**
-     * @When: at every frame
-     * @Do: 
+     * @When : at every frame
+     * @Do : 
      */
     this.update = function() {
 
@@ -136,8 +136,8 @@ function Circle(x,y,dx,dy,radius,color,points) {
     }
 
     /**
-     * @When: @When the game start
-     * @Do: Give the ball the red preset
+     * @When the game start
+     * @Do Give the ball the red preset
      */
     this.setRed = function() {
         this.points = 3
@@ -148,8 +148,8 @@ function Circle(x,y,dx,dy,radius,color,points) {
     }
 
     /**
-     * @When: The game is generating red balls and want to see if this is one of them
-     * @Do: Return the color of the ball
+     * @When The game is generating red balls and want to see if this is one of them
+     * @Do Return the color of the ball
      * @returns 
      */
     this.isRed = function() {
@@ -159,8 +159,8 @@ function Circle(x,y,dx,dy,radius,color,points) {
 }
 
 /**
- * @When: @When the mouse click or @When a circle is clicked (two different calls)
- * @Do: update the score and the click on the scoreboard
+ * @When the mouse click or when a circle is clicked (two different calls)
+ * @Do update the score and the click on the scoreboard
  */
 function updateScore() {
     var scoreboard = document.querySelector("#scoreboard");
@@ -172,8 +172,8 @@ function updateScore() {
 }
 
 /**
- * @When: A clicked circle detect that theres no more red circles
- * @Do: Show the end div and calculate if you won or you lose
+ * @When a clicked circle detect that theres no more red circles
+ * @Do Show the end div and calculate if you won or you lose
  */
 function end() {
     document.querySelector("div#end").style.display="block"
@@ -190,8 +190,8 @@ function end() {
 }
 
 /**
- * @When: The script start or @When the screen is resized
- * @Do: Start the game
+ * @When The script start or when the screen is resized
+ * @Do Start the game
  */
 function init() {
     document.querySelector("div#end").style.display = "none"
@@ -212,8 +212,8 @@ function init() {
 }
 
 /**
- * @When: The game start/restart
- * @Do: Generate the blue balls
+ * @When The game start/restart
+ * @Do Generate the blue balls
  * @param {Number} blueTotal the total of blue balls to be added
  */
 function generateBlueCircles(blueTotal) {
@@ -233,8 +233,8 @@ function generateBlueCircles(blueTotal) {
 }
 
 /**
- * @When: The game start/restart
- * @Do: Turns some of blue balls into red balls
+ * @When The game start/restart
+ * @Do Turns some of blue balls into red balls
  * @param {Number} redPercentage 
  */
 function addRedCircles(redPercentage) {
@@ -248,8 +248,8 @@ function addRedCircles(redPercentage) {
 }
 
 /**
- * @When: At every frame since the start of the game
- * @Do: Update the screen, the circles and the mouse position
+ * @When At every frame since the start of the game
+ * @Do Update the screen, the circles and the mouse position
  */
 function animate() {
     c.clearRect(0,0,level.width,level.height)
