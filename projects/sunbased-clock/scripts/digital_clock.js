@@ -23,8 +23,8 @@ export var digital_clock = {
 }
 
 /**
- * Called: At every clock-second
- * Do: Update the time in the digital clock
+ * @Called : At every clock-second
+ * @Do : Update the time in the digital clock
  */
 export function updateDigitalClock() {
     let hours = formatNumber(timeData.time.getHours(),2)
@@ -36,8 +36,8 @@ export function updateDigitalClock() {
 }
 
 /**
- * Called: When the application accelerate or dessacelerate
- * Do: change the timespeed and indicates it in the screen
+ * @Called : When the application accelerate or dessacelerate
+ * @Do : change the timespeed and indicates it in the screen
  */
 addButtonListener().subscribe(updateTimeSpeed)
 export function updateTimeSpeed() {
@@ -46,9 +46,9 @@ export function updateTimeSpeed() {
 }
 
 /**
- * ERROR/TODO: add the shadow in the oposite direction of the sun
- * Called: when the digital clock changes
- * Do: change the player from lightmode to nightmode when needed
+ * ERROR/TO@DO : add the sha@do w in the oposite direction of the sun
+ * @Called : when the digital clock changes
+ * @Do : change the player from lightmode to nightmode when needed
  */
 export function daynightmodePlayer() {
 
@@ -67,8 +67,8 @@ export function daynightmodePlayer() {
 }
 
 /**
- * Called: When the player style changes
- * Do: Contrast the main color in the second color of the player
+ * @Called : When the player style changes
+ * @Do : Contrast the main color in the second color of the player
  * @param {String} mainColor main color to be used in the elements
  * @param {String} secondColor second color to be used in the element
  */
@@ -79,8 +79,8 @@ function contrastPlayer(mainColor, secondColor) {
 }
 
 /**
- * Called: When the player style changes
- * Do: Contrast the main color in the second color of the element
+ * @Called : When the player style changes
+ * @Do : Contrast the main color in the second color of the element
  * @param {Element} element element to be contrasted
  * @param {String} mainColor     main color to be used in the element
  * @param {String} secondColor second color to be used in the element
@@ -92,8 +92,8 @@ function contrast(element, mainColor, secondColor) {
 }
 
 /**
- * Called: When the player need to know if it changes its colors
- * Do: say if it's night
+ * @Called : When the player need to know if it changes its colors
+ * @Do : say if it's night
  * @returns true if is night, false if it isn't
  */
 function isNight() {

@@ -20,6 +20,13 @@ export class Star {
             starClicked(this)
         })
     }
+
+    update = function() {
+        if (this.background) {
+            updateBackground()
+        }
+    }
+
     addSatellite = function(satellite) {
         this.satellites[Object.keys(this.satellites).length] = satellite
     }

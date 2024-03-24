@@ -4,9 +4,9 @@ export var timeData = {
     time: new Date()
 };
 
-/*
-* Called: Every clock-second
-* Do: Update the time based on the timeDirection and in the timeSpeed
+/**
+* @Called : Every clock-second
+* @Do : Update the time based on the timeDirection and in the timeSpeed
 */
 export function updateTime() {
     let seconds = timeData.time.getSeconds();

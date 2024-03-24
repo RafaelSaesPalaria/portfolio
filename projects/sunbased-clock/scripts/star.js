@@ -15,8 +15,8 @@ export var stars = {
 }
 
 /**
- * Called: at every clock-second
- * Do: move the star to the currently time-location
+ * @Called : at every clock-second
+ * @Do : move the star to the currently time-location
  * @param {Object}   star        the star that's gonna be moved      
  * @param {Number} degPlus the plus factor in the degree calc 
  * @param {Number} radius    the distance of the star from the center of the orbit
@@ -29,8 +29,8 @@ export function updateStar(star, degPlus, radius) {
 }
 
 /**
- * Called: At every clock-second
- * Do: Update the background
+ * @Called : At every clock-second
+ * @Do : Update the background
  */
 export function updateBackground() {
     let sun = stars.sun.element;

@@ -1,8 +1,8 @@
 import { updateTimeSpeed } from "./digital_clock.js";
 import { timeData } from "./time.js";
 /**
- * Called: When the fast_rewind button is pressed
- * Do: fast_rewind the interval
+ * @Called : When the fast_rewind button is pressed
+ * @Do : fast_rewind the interval
  */
 function fast_rewind() {
     if (timeData.speed==0) {timeData.speed=1}
@@ -11,16 +11,16 @@ function fast_rewind() {
 }
 
 /**
- * Called: When the pause button is pressed
- * Do: Pause the interval
+ * @Called : When the pause button is pressed
+ * @Do : Pause the interval
  */
 function pause() {
     timeData.speed=0
 }
 
 /**
- * Called: When the play button is pressed
- * Do: restart the time speed
+ * @Called : When the play button is pressed
+ * @Do : restart the time speed
  */
 function play() {
     timeData.speed=1
@@ -28,8 +28,8 @@ function play() {
 }
 
 /**
- * Called: When the backward button is pressed
- * Do: Go back in time
+ * @Called : When the backward button is pressed
+ * @Do : Go back in time
  */
 function backward() {
     timeData.direction=-1
@@ -37,8 +37,8 @@ function backward() {
 }
 
 /**
- * Called: When the accelerate button is pressed
- * Do: Accelerate the interval
+ * @Called : When the accelerate button is pressed
+ * @Do : Accelerate the interval
  */
 function accelerate() {
     if (timeData.speed==0) {timeData.speed=1}
@@ -47,9 +47,9 @@ function accelerate() {
 }
 
 /**
- * ERROR/TODO this class is gonna create the same listeners multiple times
- * Called: by the update time speed
- * Do: Add all the buttons to the listener
+ * ERROR/TO@DO  this class is gonna create the same listeners multiple times
+ * @Called : by the update time speed
+ * @Do : Add all the buttons to the listener
  * @returns the subscription
  */
 export function addButtonListener() {
@@ -64,8 +64,8 @@ export function addButtonListener() {
     addEventListenerToButton("span#fast_rewind",fast_rewind)
 
     /**
-     * Called: by the listener
-     * Do: Subscribe the listener
+     * @Called : by the listener
+     * @Do : Subscribe the listener
      * @param {Function} command 
      */
     function subscribe(command) {
@@ -73,8 +73,8 @@ export function addButtonListener() {
     }
 
     /**
-     * Called: When any button is pressed
-     * Do: Execute every observer function
+     * @Called : When any button is pressed
+     * @Do : Execute every observer function
      */
     function notifyAll() {
         state.observers.forEach(observer => {
@@ -83,8 +83,8 @@ export function addButtonListener() {
     }
 
     /**
-     * Called: When a Listener is created
-     * Do: Execute the observers when a listener is executed
+     * @Called : When a Listener is created
+     * @Do : Execute the observers when a listener is executed
      * @param {String} querySelector The Selector of the element that will have the listener
      * @param {Function} method The method to be executed
      */

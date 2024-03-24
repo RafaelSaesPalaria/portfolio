@@ -6,8 +6,8 @@ export const max = {
 }
 
 /**
- * Called: When the angle of a star is updated
- * Do: Get the angle of rotation based on the period of the cycle
+ * @Called : When the angle of a star is updated
+ * @Do : Get the angle of rotation based on the period of the cycle
  * @param {Number} currentlyTime the currently period of the cycle 
  * @param {Number} cycleMax   the cycle max value
  * @returns the angle of the currently period
@@ -17,9 +17,9 @@ export function parseAngle(actualTime,cycleMax) {
 }
 
 /**
- * ERROR/TODO: find a way to improve this function
- * Called: When the digital clock updates
- * Do: Format a number to have a certain length
+ * ERROR/TO@DO : find a way to improve this function
+ * @Called : When the digital clock updates
+ * @Do : Format a number to have a certain length
  * @param {Number} number the unformatted number
  * @param {Number} length   the desired length
  * @returns the formatted number
@@ -34,8 +34,8 @@ export function formatNumber(number ,length) {
 }
 
 /**
- * Called: When the star position is updated
- * Do: convert polar coordinates to cardinal coordinates
+ * @Called : When the star position is updated
+ * @Do : convert polar coordinates to cardinal coordinates
  * @param {Number} deg     degree of the coordinates
  * @param {Number} radius  radius of the coordinates
  * @returns a vector with x and y

@@ -11,16 +11,16 @@ import { updateTime } from "./time.js";
 
 //Constructor
 /**
- * ERROR/TODO: Update when start
- * Called: When the application start
- * Do: Set the resize/update function
+ * ERROR/TO@DO : Update when start
+ * @Called : When the application start
+ * @Do : Set the resize/update function
  */
 
 setInterval(update,intervalSpeed)
 
 /**
- * Called: When the program start and at every clock-second
- * Do: Updates the system
+ * @Called : When the program start and at every clock-second
+ * @Do : Updates the system
  */
 export function update() {
     updateTime();
@@ -33,8 +33,8 @@ export function update() {
 
 //Methods
 /**
- * Called: When the star position is updated
- * Do: get the angle based on the time
+ * @Called : When the star position is updated
+ * @Do : get the angle based on the time
  * @returns the degree of the angle
 */
 export function getAngle() {
@@ -45,8 +45,8 @@ export function getAngle() {
 }
 
 /**
- * Called: when the angle is defined
- * Do: get the time.hours minuts and seconds and convert it all into seconds
+ * @Called : when the angle is defined
+ * @Do : get the time.hours minuts and seconds and convert it all into seconds
  * @returns the daytime in seconds
  */
 function get_dayTime_inSeconds() {
