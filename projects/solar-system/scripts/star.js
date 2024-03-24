@@ -2,8 +2,8 @@ import { position, updateBackground} from "./script.js"
 import { center } from "./util.js"
 
 /**
- * @Called: When a star is created
- * @Do: Represent the star
+ * @Called When a star is created
+ * @Do Represent the star
  */
 
 export class Star {
@@ -29,8 +29,8 @@ export class Star {
 }
 
 /**
- * Called: When a star is clicked
- * Do: search in satellites and delete the star path to avoid infinite path
+ * @Called When a star is clicked
+ * @Do search in satellites and delete the star path to avoid infinite path
  * @param {Object} star 
  * @param {Object} satellite 
  * @returns undefined
@@ -54,8 +54,8 @@ stars["satellites"]["0"].addSatellite(new Star(moon, 0.8, 0.2, false))
 
 
 /**
- * @Called: at the start
- * @Do: Create the far-away stars in the background
+ * @Called at the start
+ * @Do Create the far-away stars in the background
  */
 export function createStars() {
 
@@ -79,18 +79,17 @@ export function createStars() {
 }
 
 /**
- * @Called: When a star is clicked
- * @Do: Set the position of the components to align with the center of the star
+ * @Called When a star is clicked
+ * @Do Set the position of the components to align with the center of the star
+ * @param {Star} star 
  */
 export function starClicked(star) {
-    let auxStars = Object.assign(stars,{})
-    auxStars = star
-    stars.removeSatellite(star)
-    auxStars.addSatellite(stars)
-    stars = auxStars
-
-    console.log(stars)
-
+    if (star != stars) {
+        let auxStars = Object.assign(star,{})
+        stars.removeSatellite(star)
+        auxStars.addSatellite(stars)
+        stars = auxStars
+    }
 }
 
 /**
@@ -107,8 +106,8 @@ export function orbitStar(star) {
 }
 
 /**
- * @Called: When any centered star need the orbit of it's satellites
- * @Do: Make the one star orbit another one
+ * @Called When any centered star need the orbit of it's satellites
+ * @Do Make the one star orbit another one
  * @param {Object}   centerStar   the primary star
  * @param {Object}   satelliteStar the star thats gonna orbit the primary star
  * @param {Number} deg             the currently degree of the orbit
