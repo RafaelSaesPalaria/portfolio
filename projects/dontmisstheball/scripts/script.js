@@ -25,6 +25,8 @@ var elements = {
     }
 }
 
+elements.end.continue.addEventListener("click", init)
+
 /**
  * @When : The screen resizes
  * @Do : Resizes the canvas
@@ -95,7 +97,6 @@ export function end() {
     } else {
         elements.end.result.innerText= `YOU LOST\n`
     }
-    elements.end.continue.addEventListener("click", init)
 }
 
 /**
@@ -109,6 +110,7 @@ function init() {
     level.redcount=0
     mouse.clickCount=0
     level.score=0
+    updateScore()
     let levelArea = level.canvas.width*level.canvas.height
 
     //Generate the blue balls
