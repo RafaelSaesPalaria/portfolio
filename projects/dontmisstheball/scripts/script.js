@@ -157,7 +157,7 @@ function animate() {
     requestAnimationFrame(animate)
 
     level.circleArray.forEach(circle => {
-        circle.update()
+         circle.update()
     })
     
     //Show where the player clicked [Dev tool]
