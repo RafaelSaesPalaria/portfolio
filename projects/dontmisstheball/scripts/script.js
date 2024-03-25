@@ -15,6 +15,16 @@ export var mouse = {
     clickCount:0
 }
 
+var elements = {
+    scoreboard : document.querySelector("#scoreboard"),
+    end : {
+        panel: document.querySelector("div#end"),
+        points : document.querySelector("div#end span#points"),
+        result : document.querySelector("div#end span#result"),
+        continue: document.querySelector("div#end a")
+    }
+}
+
 /**
  * @When : The screen resizes
  * @Do : Resizes the canvas
@@ -63,9 +73,8 @@ function mouseClick(event) {
  * @Do update the score and the click on the scoreboard
  */
 export function updateScore() {
-    var scoreboard = document.querySelector("#scoreboard");
-    if (scoreboard) {
-        scoreboard.innerText = `Score: ${level.score}\nClicks: ${mouse.clickCount}\n`;/*+`Reds: ${redcount}`;*/
+    if (elements.scoreboard) {
+        elements.scoreboard.innerText = `Score: ${level.score}\nClicks: ${mouse.clickCount}\n`;/*+`Reds: ${redcount}`;*/
     } else {
         console.error("Scoreboard element not found");
     }
@@ -76,18 +85,17 @@ export function updateScore() {
  * @Do Show the end div and calculate if you won or you lose
  */
 export function end() {
-    document.querySelector("div#end").style.display="block"
-    let points = document.querySelector("div#end span#points")
-    let point = level.score*100/mouse.clickCount
-    points.innerText = `Points: ${(point.toFixed(0))}\n`
+    elements.end.panel.style.display="block"
 
-    let result = document.querySelector("div#end span#result")
+    let point = level.score*100/mouse.clickCount
+    elements.end.points.innerText = `Points: ${(point.toFixed(0))}\n`
+
     if (level.score>0) {
-        result.innerText = `YOU WON\n`
+        elements.end.result.innerText = `YOU WON\n`
     } else {
-        result.innerText= `YOU LOST\n`
+        elements.end.result.innerText= `YOU LOST\n`
     }
-    document.querySelector("div#end a").addEventListener("click", init)
+    elements.end.continue.addEventListener("click", init)
 }
 
 /**
@@ -95,7 +103,7 @@ export function end() {
  * @Do Start the game
  */
 function init() {
-    document.querySelector("div#end").style.display = "none"
+    elements.end.panel.style.display = "none"
 
     level.circleArray = []
     level.redcount=0
@@ -107,7 +115,7 @@ function init() {
    generateBlueCircles(levelArea/5000)
 
     //Turns some of blue balls into red balls
-    let redPercentage = 20
+    let redPercentage = 2
     addRedCircles(redPercentage)
 
 }
