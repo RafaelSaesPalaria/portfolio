@@ -41,7 +41,7 @@ window.addEventListener("resize",function() {
  * @When : The mouse is pressed
  * @Do : execute the mouseClick function which change the mouseObj position and clickCount
  */
-window.addEventListener("mousedown",function(event) {
+level.canvas.addEventListener("mousedown",function(event) {
    mouseClick(event)
 })
 
@@ -49,7 +49,7 @@ window.addEventListener("mousedown",function(event) {
  * @When : Someone press his fingers
  * @Do : execute the mouseClick function which change the mouseObj position and clickCount
  */
-window.addEventListener("touchstart",function(event) {
+level.canvas.addEventListener("touchstart",function(event) {
     mouseClick(event)
 })
 
@@ -61,13 +61,10 @@ import { Circle } from "./circle.js"
  * @param {Object} event 
  */
 function mouseClick(event) {
-    if ((event.clientX>level.canvas.offsetLeft & event.clientX<level.canvas.offsetLeft+level.canvas.width) &
-        (event.clientY>level.canvas.offsetTop & event.clientY<level.canvas.offsetTop+level.canvas.width)) {
-        mouse.x = event.clientX - level.canvas.offsetLeft
-        mouse.y = event.clientY - level.canvas.offsetTop
-        mouse.clickCount+=1
-        updateScore()
-    }
+    mouse.x = event.clientX - level.canvas.offsetLeft
+    mouse.y = event.clientY - level.canvas.offsetTop
+    mouse.clickCount+=1
+    updateScore()
 }
 
 /**
@@ -117,7 +114,7 @@ function init() {
    generateBlueCircles(levelArea/5000)
 
     //Turns some of blue balls into red balls
-    let redPercentage = 2
+    let redPercentage = 20
     addRedCircles(redPercentage)
 
 }
@@ -169,10 +166,6 @@ function animate() {
     level.circleArray.forEach(circle => {
          circle.update()
     })
-    
-    //Show where the player clicked [Dev tool]
-    /*let mouseC = new Circle(mouse.x,mouse.y,0,0,3,"yellow")
-    circleArray.push(mouseC)*/
     
     mouse.x = undefined
     mouse.y = undefined
