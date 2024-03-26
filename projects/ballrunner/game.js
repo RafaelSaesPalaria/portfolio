@@ -1,4 +1,4 @@
-import { highscoreScreen, scoreScreen } from "./script.js"
+import { components } from "./script.js"
 
 export var game = {
     alive: true,
@@ -17,6 +17,6 @@ export var canvasSize = {
  * @Do: Update the value of the scoreboard
  */
 export function updateScoreSpan() {
-    highscoreScreen.innerText = `Highscore: ${game.highscore}`
-    scoreScreen.innerText = `Score: ${game.score}`
+    components.scoreboard.highscore.innerText = `Highscore: ${game.highscore}`
+    components.scoreboard.score.innerText = `Score: ${game.score}`
 }

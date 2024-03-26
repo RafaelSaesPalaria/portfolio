@@ -5,11 +5,16 @@ var c = canvas.getContext("2d")
 import { Player, Enemy, Point, entities } from "./entities.js";
 import { game, canvasSize, updateScoreSpan } from "./game.js";
 
-export var dieScreen = document.querySelector("div#end")
-export var dieScreenTime = document.querySelector("div#end span#time")
-
-export var highscoreScreen = document.querySelector("div#scoreboard span#highscore")
-export var scoreScreen = document.querySelector("div#scoreboard span#score")
+export var components = {
+    end : {
+        panel: document.querySelector("div#end"),
+        time: document.querySelector("div#end span#time"),
+    },
+    scoreboard : {
+        highscore: document.querySelector("div#scoreboard span#highscore"),
+        score: document.querySelector("div#scoreboard span#score")
+    }
+}
 
 /**
  * Called: by itself at every 1 second
@@ -26,8 +31,8 @@ function countTime() {
  */
 export function showDeathMessage() {
     game.alive = false
-    dieScreen.style.display = "block"
-    dieScreenTime.innerText = `${game.time} Seconds\n${game.score} Points`
+    components.end.panel.style.display = "block"
+    components.end.time.innerText = `${game.time} Seconds\n${game.score} Points`
 }
 
 /**
@@ -35,7 +40,7 @@ export function showDeathMessage() {
  * Do: hide the death message
  */
 function hideDeathMessage() {
-    dieScreen.style.display = "none"
+    components.end.panel.style.display = "none"
 }
  
 /**
