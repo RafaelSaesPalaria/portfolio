@@ -77,7 +77,8 @@ export class Enemy extends Circle {
     update(c) {
         entities.players.forEach(player => {
             if (isColliding(this,player)) {
-                player.die()
+                game.alive = false
+                showDeathMessage()
             }
         })
 
@@ -208,21 +209,15 @@ export class Player extends Circle {
      * @Do: 
      */
     keyboardMoviment() {
-        if (this.up & !this.down & (canvasSize.height-this.y-this.radius<30)) {
-            this.dy=-this.speed*7
-        } else if (!this.up & this.down) {
-            this.dy+=this.speed
-        } else {
-
+        if (canvasSize.height-this.y-this.radius<30) {
+            let l = 1
+            if (this.up & !this.down) {
+                l = 7
+            }
+            this.dy = direction(this.up, this.down, this.speed*l, this.dy, this.maxSpeed)
         }
 
-        if (this.left & !this.right & (this.dx>-this.maxSpeed)) {
-            this.dx-=this.speed/2
-        } else if (!this.left & this.right & (this.dx<this.maxSpeed)) {
-            this.dx+=this.speed/2
-        } else {
-            
-        }
+        this.dx = direction(this.left, this.right, this.speed, this.dx, this.maxSpeed)
     }
 
     /**
@@ -252,14 +247,6 @@ export class Player extends Circle {
         }
 
         super.update(c)
-    }
-
-    /**
-     * @Called: When a enemy touch the player
-     * @Do: Show the death message
-     */
-    die() {
-        showDeathMessage()
     }
 }
 
@@ -354,4 +341,23 @@ function isColliding(circle1, circle2) {
     } else {
         return false
     }
+}
+
+/**
+ * @Called When the player moves
+ * @Do Calculate the dx and dy
+ * @param {Number} direction the direction being tested
+ * @param {Number} oposite   the oposite direction
+ * @param {Number} speed     the currently speed of the ball
+ * @param {Number} directionSpeed the directional speed of the ball
+ * @param {Number} maxSpeed the max speed of the ball
+ * @returns the direction vector
+ */
+function direction(direction, oposite, speed ,directionSpeed ,maxSpeed) {
+    if (direction & !oposite & (directionSpeed>-maxSpeed)) {
+        directionSpeed-=speed/2
+    } else if (!direction & oposite & (directionSpeed<maxSpeed)) {
+        directionSpeed+=speed/2
+    }
+    return directionSpeed
 }

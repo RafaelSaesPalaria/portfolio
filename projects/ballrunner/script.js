@@ -30,7 +30,6 @@ function countTime() {
  * Do: Pause the game and show the death panel with the currently time and score
  */
 export function showDeathMessage() {
-    game.alive = false
     components.end.panel.style.display = "block"
     components.end.time.innerText = `${game.time} Seconds\n${game.score} Points`
 }
