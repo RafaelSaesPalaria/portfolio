@@ -9,10 +9,12 @@ export var components = {
     end : {
         panel: document.querySelector("div#end"),
         time: document.querySelector("div#end span#time"),
+        continue: document.querySelector("div#end a")
     },
     scoreboard : {
         highscore: document.querySelector("div#scoreboard span#highscore"),
         score: document.querySelector("div#scoreboard span#score")
+        
     }
 }
 
@@ -31,6 +33,7 @@ function countTime() {
  */
 export function showDeathMessage() {
     components.end.panel.style.display = "block"
+    components.end.continue.addEventListener("click",init)
     components.end.time.innerText = `${game.time} Seconds\n${game.score} Points`
 }
 
