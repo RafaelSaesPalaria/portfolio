@@ -4,12 +4,9 @@ export var game = {
     alive: true,
     time: 0,
     score: 0,
-    highscore: 0
-}
-
-export var canvasSize = {
-    height: 0,
-    width: 0
+    highscore: 0,
+    canvas: document.querySelector("canvas"),
+    c: document.querySelector("canvas").getContext("2d")
 }
 
 /**

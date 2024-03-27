@@ -5,7 +5,7 @@ export var entities = {
     points : []
 }
 
-import { canvasSize, game, updateScoreSpan } from "./game.js"
+import { game, updateScoreSpan } from "./game.js"
 import { showDeathMessage } from "./script.js"
 import { addKeyListener, addTouchListener } from "./controls.js"
 import { random } from "./util.js"
@@ -44,7 +44,7 @@ class Circle {
     /**
      * @Called: When a child needs a generic update
      * @Do: Change the position then redraw
-     * @param {canvasSizeRenderingContext2D} c context to be drawn
+     * @param {canvasRenderingContext2D} c context to be drawn
      */
     update(c) {
         if (c) {
@@ -65,9 +65,9 @@ class Circle {
 export class Enemy extends Circle {
     constructor(x, y, radius) {
         super(x, y, radius)
-        this.x = canvasSize.width+this.radius
-        this.y = random(this.radius,canvasSize.height-2*this.radius)
-        this.dx= -random(5,canvasSize.height/1000)
+        this.x = game.canvas.width+this.radius
+        this.y = random(this.radius,game.canvas.height-2*this.radius)
+        this.dx= -random(5,10)
         this.radius=25
         this.color="blue"
     }
@@ -85,20 +85,17 @@ export class Enemy extends Circle {
         })
 
         //Check if the enemy is not visible anymore
-        if (this.x+this.radius<0 || this.y+this.radius>canvasSize.height) { 
+        if (this.x+this.radius<0 || this.y+this.radius>game.canvas.height) { 
             
 
             if (Math.random()>0.5) { // Vertical Attack
-                this.y = random(this.radius,canvasSize.height-2*this.radius)
-                this.x = canvasSize.width+this.radius
-                this.dx= -5-(Math.random()*(canvasSize.width/1000))
-                this.dy= -random(5,10)
+                this.y = random(this.radius,game.canvas.height-2*this.radius)
+                this.x = game.canvas.width+this.radius
+                this.dx= -random(5,10)
                 this.dy = 0
-
             } else { //Horizontal Attack    
-                this.x = random(this.radius,canvasSize.width-2*this.radius)
+                this.x = random(this.radius,game.canvas.width-2*this.radius)
                 this.y = 0
-                this.dy= +5+(Math.random()*(canvasSize.height/1000))
                 this.dy= random(5,10)
                 this.dx = 0
             }
@@ -116,8 +113,8 @@ export class Point extends Circle {
     constructor(x, y, radius) {
         super(x, y, radius)
         this.color = "green"
-        this.x = random(this.radius,canvasSize.width-2*this.radius)
-        this.y = random(this.radius,canvasSize.height-2*this.radius)
+        this.x = random(this.radius,game.canvas.width-2*this.radius)
+        this.y = random(this.radius,game.canvas.height-2*this.radius)
     }
 
     /**
@@ -134,8 +131,8 @@ export class Point extends Circle {
                     game.highscore = game.score
                 }
                 updateScoreSpan()
-                this.x = random(this.radius,canvasSize.width-2*this.radius)
-                this.y = random(this.radius,canvasSize.height-2*this.radius)
+                this.x = random(this.radius,game.canvas.width-2*this.radius)
+                this.y = random(this.radius,game.canvas.height-2*this.radius)
             }
         })
 
@@ -213,7 +210,7 @@ export class Player extends Circle {
      * @Do: 
      */
     keyboardMoviment() {
-        if (canvasSize.height-this.y-this.radius<30) {
+        if (game.canvas.height-this.y-this.radius<30) {
             let l = 1
             if (this.up & !this.down) {
                 l = 7
@@ -239,12 +236,12 @@ export class Player extends Circle {
         }
 
         //Bounces if touch a horizontal edge
-        if (this.x+this.radius+this.dx>canvasSize.width || this.x - this.radius + this.dx < 0) {
+        if (this.x+this.radius+this.dx>game.canvas.width || this.x - this.radius + this.dx < 0) {
             this.dx = -this.dx
         }
 
         //Bounces if touch a vertical edge
-        if (this.y+this.radius+this.dy>canvasSize.height || this.y - this.radius + this.dy < 0) {
+        if (this.y+this.radius+this.dy>game.canvas.height || this.y - this.radius + this.dy < 0) {
             this.dy = -this.dy * this.friction
         } else {
             this.dy+=this.gravity

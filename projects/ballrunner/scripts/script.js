@@ -1,9 +1,6 @@
 //Global Variables
-var canvas = document.querySelector("canvas")
-var c = canvas.getContext("2d")
-
 import { Player, Enemy, Point, entities } from "./entities.js";
-import { game, canvasSize, updateScoreSpan } from "./game.js";
+import { game, updateScoreSpan } from "./game.js";
 
 export var components = {
     end : {
@@ -59,7 +56,7 @@ export function init() {
     entities.enemys = []
     entities.players = []
     entities.points = []
-    entities.players.push(new Player  (200, canvas.height-30 ,30))
+    entities.players.push(new Player  (200, game.canvas.height-30 ,30))
     entities.enemys.push(new Enemy(30,30,25))
     entities.enemys.push(new Enemy(30,30,25))
     entities.points.push(new Point    (30,30, 20))
@@ -72,10 +69,8 @@ export function init() {
  */
 addEventListener("resize",resize)
 function resize() {
-    canvas.width = innerWidth*0.95
-    canvas.height= innerHeight*0.7
-    canvasSize.width = canvas.width
-    canvasSize.height= canvas.height
+    game.canvas.width = innerWidth*0.95
+    game.canvas.height= innerHeight*0.7
 }
 
 /**
@@ -84,19 +79,19 @@ function resize() {
  */
 function animate() {
     if (game.alive) {
-        c.clearRect(0,0,canvas.width,canvas.height)
+        game.c.clearRect(0,0,game.canvas.width,game.canvas.height)
         requestAnimationFrame(animate)
 
         entities.enemys.forEach(enemy =>{
-            enemy.update(c)
+            enemy.update(game.c)
         })
 
         entities.players.forEach(player =>{
-            player.update(c)
+            player.update(game.c)
         })
 
         entities.points.forEach(point => {
-            point.update(c)
+            point.update(game.c)
         })
 
     }
