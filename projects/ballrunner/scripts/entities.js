@@ -8,6 +8,7 @@ export var entities = {
 import { canvasSize, game, updateScoreSpan } from "./game.js"
 import { showDeathMessage } from "./script.js"
 import { addKeyListener, addTouchListener } from "./controls.js"
+import { random } from "./util.js"
 
 /**
  * @Called: [Abstract] When a child is created (Player/Point/Enemy)
@@ -51,7 +52,7 @@ class Circle {
             this.y+=this.dy
             this.draw(c);
         } else {
-            console.log("Undefided context")
+            console.log("Undefined context")
         }
     }
 
@@ -64,9 +65,9 @@ class Circle {
 export class Enemy extends Circle {
     constructor(x, y, radius) {
         super(x, y, radius)
-        this.y = (canvasSize.height/2+this.radius+Math.random()*((canvasSize.height/2)-2*this.radius)); 
         this.x = canvasSize.width+this.radius
-        this.dx= -5-(Math.random()*(canvasSize.width/1000))
+        this.y = random(this.radius,canvasSize.height-2*this.radius)
+        this.dy= random(-5,canvasSize.height/1000)
         this.radius=25
         this.color="blue"
     }
@@ -88,15 +89,15 @@ export class Enemy extends Circle {
             
 
             if (Math.random()>0.5) { // Vertical Attack
-                this.y = (canvasSize.height/2+this.radius+Math.random()*((canvasSize.height/2)-2*this.radius));
+                this.y = random(this.radius,canvasSize.height-2*this.radius)
                 this.x = canvasSize.width+this.radius
-                this.dx= -5-(Math.random()*(canvasSize.width/1000))
+                this.dy= random(-5,canvasSize.height/1000)
                 this.dy = 0
 
             } else { //Horizontal Attack
-                this.x = (this.radius+Math.random()*((canvasSize.width)-2*this.radius));
+                this.x = random(this.radius,canvasSize.width-2*this.radius)
                 this.y = 0
-                this.dy= +5+(Math.random()*(canvasSize.height/1000))
+                this.dy= random(5,canvasSize.height/1000)
                 this.dx = 0
             }
         }   
@@ -113,8 +114,8 @@ export class Point extends Circle {
     constructor(x, y, radius) {
         super(x, y, radius)
         this.color = "green"
-        this.x = this.radius+(Math.random()*(canvasSize.width-2*this.radius))
-        this.y = this.radius+(Math.random()*(canvasSize.height-2*this.radius))
+        this.x = random(this.radius,canvasSize.width-2*this.radius)
+        this.y = random(this.radius,canvasSize.height-2*this.radius)
     }
 
     /**
@@ -131,8 +132,8 @@ export class Point extends Circle {
                     game.highscore = game.score
                 }
                 updateScoreSpan()
-                this.x = this.radius+(Math.random()*(canvasSize.width-2*this.radius))
-                this.y = this.radius+(Math.random()*(canvasSize.height-2*this.radius))
+                this.x = random(this.radius,canvasSize.width-2*this.radius)
+                this.y = random(this.radius,canvasSize.height-2*this.radius)
             }
         })
 
