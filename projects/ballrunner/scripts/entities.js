@@ -67,7 +67,7 @@ export class Enemy extends Circle {
         super(x, y, radius)
         this.x = canvasSize.width+this.radius
         this.y = random(this.radius,canvasSize.height-2*this.radius)
-        this.dy= random(-5,canvasSize.height/1000)
+        this.dx= -random(5,canvasSize.height/1000)
         this.radius=25
         this.color="blue"
     }
@@ -91,13 +91,15 @@ export class Enemy extends Circle {
             if (Math.random()>0.5) { // Vertical Attack
                 this.y = random(this.radius,canvasSize.height-2*this.radius)
                 this.x = canvasSize.width+this.radius
-                this.dy= random(-5,canvasSize.height/1000)
+                this.dx= -5-(Math.random()*(canvasSize.width/1000))
+                this.dy= -random(5,10)
                 this.dy = 0
 
-            } else { //Horizontal Attack
+            } else { //Horizontal Attack    
                 this.x = random(this.radius,canvasSize.width-2*this.radius)
                 this.y = 0
-                this.dy= random(5,canvasSize.height/1000)
+                this.dy= +5+(Math.random()*(canvasSize.height/1000))
+                this.dy= random(5,10)
                 this.dx = 0
             }
         }   
