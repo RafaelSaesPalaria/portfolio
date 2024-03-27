@@ -15,6 +15,8 @@ export var components = {
     }
 }
 
+components.end.continue.addEventListener("click",init)
+
 /**
  * Called: by itself at every 1 second
  * Do: add 1 to game.time
@@ -30,7 +32,6 @@ function countTime() {
  */
 export function showDeathMessage() {
     components.end.panel.style.display = "block"
-    components.end.continue.addEventListener("click",init)
     components.end.time.innerText = `${game.time} Seconds\n${game.score} Points`
 }
 
