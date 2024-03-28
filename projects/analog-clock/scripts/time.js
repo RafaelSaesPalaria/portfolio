@@ -42,9 +42,9 @@ function updateTime() {
     //Time Run
     if (timeData.timeSpeed!=0) {
         if (timeData.timeSpeed>max.speed) {
-            timeData.time.setSeconds(seconds + timeData.timeDirection * (timeData.timeSpeed-max.speed));
+            timeData.time.setSeconds((seconds+timeData.timeSpeed-max.speed) * timeData.timeDirection);
         } else {
-            timeData.time.setSeconds(seconds + timeData.timeDirection);
+            timeData.time.setSeconds((seconds+1) * timeData.timeDirection);
         }
     }
 }
