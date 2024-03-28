@@ -1,4 +1,4 @@
-import { formattedNumbers } from "./util.js";
+import { formattedNumbers, write } from "./util.js";
 import {timeData} from "./time.js";
 
 export var digital_clock_elements = {
@@ -22,7 +22,7 @@ export function updateDigitalClock() {
     let minutes  = formattedNumbers(timeData.time.getMinutes(), 2)
     let seconds = formattedNumbers( timeData.time.getSeconds(), 2)
 
-    digital_clock_elements.time.innerText = `${hours}:${minutes}:${seconds}`;
+    write(digital_clock_elements.time,`${hours}:${minutes}:${seconds}`);
 }
 
 /**
@@ -30,5 +30,5 @@ export function updateDigitalClock() {
  * @Do change the timespeed on the player
  */
 export function updateTimeSpeed() {
-    digital_clock_elements.speed.innerText=`${(timeData.timeDirection*timeData.timeSpeed).toFixed(2)}x`
+    write(digital_clock_elements.speed,`${(timeData.timeDirection*timeData.timeSpeed).toFixed(2)}x`)
 }

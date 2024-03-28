@@ -70,3 +70,7 @@ export  function positionElement(element, x, y) {
     element.style.top = `calc(50% + ${x}px)`
     element.style.left = `calc(50% + ${y}px)`
 }
+
+export function write(element,string) {
+    element.innerText = string
+}
