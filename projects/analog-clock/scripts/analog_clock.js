@@ -1,19 +1,19 @@
 import { polarToCardinal, parseAngle, rotateElement, positionElement, max } from "./util.js";
-import { getTime } from "./time.js";
+import { getTime, timeType } from "./time.js";
 
 export var analogic_clock = {
     elements: {
         numbers: document.querySelector("div#numbers"),
         bars: document.querySelector("div#bars"),
         pointers: {
-            hours: document.querySelector("div.pointer#hours"),
-            minutes: document.querySelector("div.pointer#minutes"),
-            seconds: document.querySelector("div.pointer#seconds")
+            hour: document.querySelector("div.pointer#hours"),
+            minute: document.querySelector("div.pointer#minutes"),
+            second: document.querySelector("div.pointer#seconds")
         }
     },
     numbers: {
         radius: 95,
-        amount: (max.hour/2),
+        amount: (max.hour),
     },
     bars: {
         radius: 110,
@@ -75,13 +75,12 @@ function createElement(radius, deg) {
  * @Do rotate the pointers
  */
 export function rotatePointers() {
-    rotateElement(analogic_clock.elements.pointers.hours,
-        parseAngle(getTime(3),
-        analogic_clock.numbers.amount)+180)
-    rotateElement(analogic_clock.elements.pointers.minutes,
-        parseAngle(getTime(2),
-        max.minute)+180)
-    rotateElement(analogic_clock.elements.pointers.seconds,
-        parseAngle(getTime(1),
-        max.second)+180)
+    for (let pointer in analogic_clock.elements.pointers) {
+        rotateElement(
+            analogic_clock.elements.pointers[pointer],
+            parseAngle(
+                getTime(timeType[pointer]),
+                max[pointer])
+            +180)
+    }
 }

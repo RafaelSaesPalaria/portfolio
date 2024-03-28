@@ -6,6 +6,15 @@ export var timeData = {
     intervalSpeed: 1000
 }
 
+/**
+ * Used in getTime()
+ */
+export var timeType = {
+    hour : 3,
+    minute: 2,
+    second: 1
+}
+
 import { rotatePointers, analogic_clock ,setNumbersPosition, addMinuteBar } from "./analog_clock.js";
 import { updateDigitalClock } from "./digital_clock.js";
 import { max } from "./util.js";

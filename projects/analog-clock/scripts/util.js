@@ -1,6 +1,6 @@
 export var max = {
     degree:360,
-    hour:24,
+    hour:12,
     minute:60,
     second:60,
     speed: 250
