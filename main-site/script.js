@@ -8,7 +8,7 @@ let content = {
 function clickMenu() {
     if (menuDisplay) {
         content.items.forEach(element => {
-            element.style.display = "none";
+            showElement(element,false)
         });
     } else {
         openMenu();
@@ -19,17 +19,21 @@ function clickMenu() {
 function adjustToSize() {
     if (window.innerWidth>=768) {
         openMenu();
-        content.icon.style.display = "none"
+        showElement(content.icon,false)
         menuDisplay = true
     } else {
-        content.icon.style.display = "block"
+        showElement(content.icon,true)
     }
 }
 
 function openMenu() {
     content.items.forEach(element => {
-        element.style.display = "block";
+        showElement(element,true)
     });
+}
+
+function showElement(element, show) {
+    element.style.display = show ? "block" : "none"
 }
 
 clickMenu()
