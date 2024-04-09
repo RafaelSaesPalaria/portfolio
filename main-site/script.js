@@ -20,6 +20,7 @@ function adjustToSize() {
     if (window.innerWidth>=768) {
         openMenu();
         content.icon.style.display = "none"
+        menuDisplay = true
     } else {
         content.icon.style.display = "block"
     }
