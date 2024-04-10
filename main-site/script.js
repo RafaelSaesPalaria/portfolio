@@ -7,18 +7,16 @@ let content = {
 
 function clickMenu() {
     if (menuDisplay) {
-        content.items.forEach(element => {
-            showElement(element,false)
-        });
+        showItems(false)
     } else {
-        openMenu();
+        showItems(true);
     }
     menuDisplay = !menuDisplay;
 }
 
 function adjustToSize() {
     if (window.innerWidth>=768) {
-        openMenu();
+        showItems(true);
         showElement(content.icon,false)
         menuDisplay = true
     } else {
@@ -26,9 +24,9 @@ function adjustToSize() {
     }
 }
 
-function openMenu() {
+function showItems(show) {
     content.items.forEach(element => {
-        showElement(element,true)
+        showElement(element,show)
     });
 }
 
