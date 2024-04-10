@@ -1,11 +1,14 @@
 var menuDisplay = true;
 
 let content = {
-    items: document.querySelectorAll("nav .item"),
-    icon: document.querySelector("nav #icon")
+    items: document.querySelectorAll("nav a.item"),
+    icon: document.querySelector("nav a#icon")
 }
 
-function clickMenu() {
+/**
+ * 
+ */
+function onClickMenu() {
     if (menuDisplay) {
         showItems(false)
     } else {
@@ -14,7 +17,7 @@ function clickMenu() {
     menuDisplay = !menuDisplay;
 }
 
-function adjustToSize() {
+function resize() {
     if (window.innerWidth>=768) {
         showItems(true);
         showElement(content.icon,false)
@@ -34,4 +37,10 @@ function showElement(element, show) {
     element.style.display = show ? "block" : "none"
 }
 
-clickMenu()
+init()
+function init() {
+    resize()
+    onClickMenu()
+    content.icon.addEventListener("click",onClickMenu)
+    document.body.addEventListener("resize",resize)
+}
