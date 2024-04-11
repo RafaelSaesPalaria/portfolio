@@ -1,0 +1,36 @@
+{
+    "java": [
+        {
+            "name":"simple_chat",
+            "description":"A simple multi-client chat",
+            "img-name":"#",
+            "link":"https://github.com/RafaelSaesPalaria/simpleChat"
+        },
+        {
+            "name":"Bomb Runner",
+            "description":"Clear the area while avoiding stepping on the bombs.",
+            "img-name":"#",
+            "link":"https://github.com/RafaelSaesPalaria/BombRunner"
+        }
+    ],
+    "web": [
+        {
+            "name":"Quick Canvas",
+            "description":"A Chrome Extension for downloading canvas",
+            "img-href":"#",
+            "link":"https://chromewebstore.google.com/detail/quick-canvas/fdlclenmhidfmdekcbiolbimnkdfemde"
+        },
+        {
+            "name":"Web Chat",
+            "description":"A Web server with a chat",
+            "img-href":"#",
+            "link":"https://github.com/RafaelSaesPalaria/webChat"
+        },
+        {
+            "name":"BallRunner",
+            "description":"Don't let the blue balls touch you",
+            "img-href":"#",
+             "link":"../../projects/ballrunner/"
+        }
+    ]
+}
