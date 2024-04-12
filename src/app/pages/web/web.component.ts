@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
 import { ProjectItemComponent } from '../../components/project-item/project-item.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-web',
   standalone: true,
-  imports: [ProjectItemComponent],
+  imports: [ProjectItemComponent,CommonModule],
   templateUrl: './web.component.html',
   styleUrl: './web.component.css'
 })
@@ -20,4 +21,5 @@ export class WebComponent {
     let general_projects = projectService.getProjects()
     this.projects = general_projects['web']
   }
+  
 }
