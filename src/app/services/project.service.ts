@@ -6,12 +6,11 @@ import { readFileSync } from 'fs';
   providedIn: 'root'
 })
 export class ProjectService {
-
   constructor() {}
   getProjects() {
     return JSON.parse(
       readFileSync(
-        path.resolve(path.dirname(''),'./src/app/projects.json')).toString())
+        path.resolve(path.dirname(''),'./src/app/projects.json')).toString()
+    )
   }
-
 }

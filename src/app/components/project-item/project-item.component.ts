@@ -11,7 +11,7 @@ export class ProjectItemComponent {
   @Input() project!:{
     name: string,
     description: string,
-    image: string,
+    img_name: string,
     link: string
   }
 

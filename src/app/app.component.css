@@ -16,12 +16,12 @@ header {
 }
 
 main {
-    margin: auto;
+    margin: 15px auto;
     width: 700px;
 }
 
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0%;
     width: 100%;
     padding: 15px 0px;

@@ -14,7 +14,7 @@ export class JavaComponent {
   projects!:[{
     name:string,
     description: string;
-    image: string;
+    img_name: string;
     link: string}]
 
   constructor(projectService: ProjectService) {

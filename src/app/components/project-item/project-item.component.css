@@ -181,7 +181,7 @@ li p {
     margin-bottom: 10px;
 }
 
-div.paralax {
+.paralax {
     display: block;
     height: 92px;
     width: 154px;
@@ -243,8 +243,3 @@ footer {
     text-align: center;
     font-size: var(--subTitleSize);
 }
-
-div#java-project1-img {
-    background-image: url(../../resources/project-images/simple_chat.png);
-}
-
