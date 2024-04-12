@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family:  'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+    font-size: 1.1em;
+}
+
+header {
+    width: 700px;
+    margin: auto;
+    margin-top: 15px;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+main {
+    margin: auto;
+    width: 700px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    padding: 15px 0px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
