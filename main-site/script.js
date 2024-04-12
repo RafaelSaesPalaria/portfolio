@@ -59,8 +59,8 @@ function showElement(element, show) {
  */
 init()
 function init() {
-    resize()
     onClickMenu()
+    resize()
     content.icon.addEventListener("click",onClickMenu)
-    document.body.addEventListener("resize",resize)
+    window.addEventListener("resize",resize)
 }
