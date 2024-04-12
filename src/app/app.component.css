@@ -1,8 +1,6 @@
 @charset "utf-8";
 
 * {
-    margin: 0px;
-    padding: 0px;
     font-family:  'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
     font-size: 1.1em;
 }
@@ -13,6 +11,10 @@ header {
     margin-top: 15px;
     padding: 20px 10px;
     text-align: center;
+}
+
+header a {
+    margin: 0px;
 }
 
 main {
