@@ -6,14 +6,16 @@
 }
 
 header {
-    width: 700px;
+    width: 100%;
     margin: auto;
-    margin-top: 15px;
-    padding: 20px 10px;
-    text-align: center;
+    padding: 20px 0px;
+    background-color: rgb(102, 151, 255);
 }
 
 header a {
+    margin-top: 15px;
+    text-align: center;
+    width: 700px;
     margin: 0px;
 }
 

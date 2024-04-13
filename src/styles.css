@@ -5,6 +5,21 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-size: 1.10em;
+}
+
+:root {
+    --containerColor: rgba(255,255,255,0.2);
+    --borderColor: rgb(255,255,255);
+    --textColor: rgb(0,0,0);
+    --fontText: 'Consolas';
+    --textSize: 16px;
+    --hoverColor: rgba(200,200,200,0.2);
+    --activeColor: rgba(155,155,155,0.2);
+}
+
+body {
+    background-color: rgb(226, 226, 226);
 }
 
 .container {
@@ -24,7 +39,7 @@
     color: var(--textColor);
     text-decoration: none;
     vertical-align: auto;
-    border-radius: 10px;
+    border-radius: 15px;
     
     background-color: var(--containerColor);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
