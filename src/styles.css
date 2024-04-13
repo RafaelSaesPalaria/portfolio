@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 
 * {
     margin: 0px;
@@ -12,10 +12,18 @@
     --containerColor: rgba(255,255,255,0.2);
     --borderColor: rgb(255,255,255);
     --textColor: rgb(0,0,0);
-    --fontText: 'Consolas';
-    --textSize: 16px;
+    --textSize: 20px;
     --hoverColor: rgba(200,200,200,0.2);
     --activeColor: rgba(155,155,155,0.2);
+    
+    --fontTitle:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+    --fontSubtitle: 'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+    --fontText:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+
+    --titleSize: 3vw;                        
+    --subTitleSize: 2vw;               
+    --textSize: 1.5vw;
+
 }
 
 body {
@@ -67,3 +75,36 @@ body {
     padding: inherit;
     box-sizing: border-box;
 }
+
+
+
+
+/*@media screen and (min-width: 768px) {
+
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: Arial, Helvetica, sans-serif;
+    
+        font-size: 1.3vh;
+        line-height: 3vh;
+        box-sizing: border-box;
+    }
+    
+    :root {
+        --fontTitle:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+        --fontSubtitle: 'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+        --fontText:      'Gruppo', Verdana, 'Geneva', Tahoma, sans-serif;
+    
+        --titleSize: 3vw;                        
+        --subTitleSize: 2vw;               
+        --textSize: 1.5vw;                     
+    
+        --textColor: rgb(255, 255, 255);
+        --containerColor: rgba(243, 243, 243, 0.103);
+        --hoverColor:rgba(228, 228, 228, 0.219);
+        --activeColor: rgba(207, 206, 206, 0.233);
+        --borderColor: rgba(255, 255, 255, 0.658);
+        
+    }
+    */
