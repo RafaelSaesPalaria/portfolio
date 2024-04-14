@@ -1,7 +1,7 @@
 {
     "java": [
         {
-            "name":"simple_chat",
+            "name":"Simple chat",
             "description":"A simple multi-client chat",
             "img_name":"simple_chat.png",
             "link":"https://github.com/RafaelSaesPalaria/simpleChat"
