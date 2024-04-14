@@ -5,32 +5,60 @@
     font-size: 1.1em;
 }
 
-header {
-    width: 100%;
-    margin: auto;
-    padding: 20px 0px;
-    background-color: rgb(102, 151, 255);
-}
+@media screen and (max-width: 767px) { /*MOBILE*/
+    header {
+        padding: 5px 5px;
+        background-color: rgb(102, 151, 255);
+    }
 
-header a {
-    margin-top: 15px;
-    text-align: center;
-    width: 700px;
-    margin: 0px;
-}
+    header a {
+        padding: 7px 20px;
+        border-radius: 15px;
+    }
 
-main {
-    margin: 15px auto;
-    width: 700px;
-    min-height: calc(100vh - 188px);
-}
+    main {
+        margin: 15px auto;
+        min-height: calc(100vh - 152px);
+    }
 
-footer {
-    position: relative;
-    bottom: 0%;
-    width: 100%;
-    padding: 15px 0px;
-    background-color: black;
-    color: white;
-    text-align: center;
+    footer {
+        position: relative;
+        bottom: 0%;
+        width: 100%;
+        padding: 15px 0px;
+        background-color: black;
+        color: white;
+        text-align: center;
+    }
+}
+@media screen and (min-width: 768px) {
+    header {
+        width: 100%;
+        margin: auto;
+        padding: 20px 0px;
+        background-color: rgb(102, 151, 255);
+    }
+
+    header a {
+        margin-top: 15px;
+        text-align: center;
+        width: 700px;
+        margin: 0px;
+    }
+
+    main {
+        margin: 15px auto;
+        width: 700px;
+        min-height: calc(100vh - 188px);
+    }
+
+    footer {
+        position: relative;
+        bottom: 0%;
+        width: 100%;
+        padding: 15px 0px;
+        background-color: black;
+        color: white;
+        text-align: center;
+    }
 }
