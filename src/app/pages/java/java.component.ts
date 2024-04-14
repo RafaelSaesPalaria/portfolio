@@ -11,11 +11,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './java.component.css'
 })
 export class JavaComponent {
-  projects!:[{
+  projects!:{
     name:string,
     description: string;
     img_name: string;
-    link: string}]
+    link: string}[]
 
   constructor(projectService: ProjectService) {
     let general_projects = projectService.getProjects()
