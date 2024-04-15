@@ -4,7 +4,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { WebComponent } from './pages/web/web.component';
 
 export const routes: Routes = [
-    {path:"", component: MainPageComponent},
-    {path:"web", component: WebComponent},
-    {path:"java", component: JavaComponent}
+    {path:"portfolio/", component: MainPageComponent},
+    {path:"portfolio/web", component: WebComponent},
+    {path:"portfolio/java", component: JavaComponent}
 ];
