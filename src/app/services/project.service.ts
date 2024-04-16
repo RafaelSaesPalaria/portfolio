@@ -33,12 +33,6 @@ export class ProjectService {
               img_name: "web_chat.png",
               link: "https://github.com/RafaelSaesPalaria/webChat"
           },
-          {
-              name: "Ball Runner",
-              description: "Don't let the blue balls touch you",
-              img_name: "ball_runner.png",
-              link: "../../projects/ballrunner/"
-          }
       ]
   };
 }
