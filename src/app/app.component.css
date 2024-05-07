@@ -24,7 +24,7 @@
     }
 
     footer {
-        position: relative;
+        position: absolute;
         bottom: 0%;
         width: 100%;
         padding: 15px 0px;
@@ -51,11 +51,10 @@
     main {
         margin: 15px auto;
         width: 700px;
-        min-height: calc(100vh - 188px);
     }
 
     footer {
-        position: relative;
+        position: absolute;
         bottom: 0%;
         width: 100%;
         padding: 15px 0px;
