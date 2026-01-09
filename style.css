@@ -39,13 +39,13 @@ header p {
 main {
     width: 1100px;
     margin: auto;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 h2 {
     border-left: 4px solid var(--accent);
     padding-left: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 section {
@@ -67,10 +67,20 @@ section {
 }
 
 .card {
-    margin: 10px;
     padding: 15px;
     border-radius: 15px;
     background-color: var(--card);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card a {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: bold;
 }
 
 h3 {
@@ -86,6 +96,5 @@ footer {
     padding: 10px;
 
     text-align: center;
-    background-color: black;
-    color: white;
+    color: var(--muted);
 }
