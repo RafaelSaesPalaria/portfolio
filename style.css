@@ -9,6 +9,7 @@
     --bg-color: #0f172a;
     --card:#1e293b;
     --accent: #38bdf8;
+    --hover: #31a8db;
     --muted: #94a3b8;
 }
 
@@ -51,6 +52,16 @@ h2 {
 section {
     margin-top: 20px;
     padding: 10px;
+}
+
+section p a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section p a:hover {
+    color: var(--hover);
 }
 
 .tag {
@@ -97,4 +108,10 @@ footer {
 
     text-align: center;
     color: var(--muted);
+}
+
+footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
 }
